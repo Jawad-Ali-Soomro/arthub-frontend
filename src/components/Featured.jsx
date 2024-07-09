@@ -27,7 +27,6 @@ const Featured = () => {
   useEffect(() => {
     fetch_data();
   }, []);
-  console.log(main_data);
   return (
     <div className="featuerd-wrap flex col">
       <h1>Featured Art</h1>

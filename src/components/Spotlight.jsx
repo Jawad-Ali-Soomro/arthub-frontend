@@ -30,7 +30,6 @@ const Spotlight = () => {
   useEffect(() => {
     fetch_data();
   }, []);
-  console.log(main_data);
   return (
     <div>
       <div className="featuerd-wrap flex col" style={{marginTop:'0px'}}>

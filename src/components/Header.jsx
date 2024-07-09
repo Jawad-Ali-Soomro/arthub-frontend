@@ -4,11 +4,14 @@ import "../styles/Header.scss";
 import { BiSearch } from "react-icons/bi";
 import { FaAdjust } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { connectMetamask } from "../utils/constant";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = window.location.pathname;
   const navigate = useNavigate()
+  const walletId = window.localStorage.getItem("token")
+  console.log(walletId);
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(
       "(prefers-color-scheme: light)"
@@ -92,7 +95,7 @@ const Header = () => {
         <ul className="flex">
           <li
             className="icon"
-            id={location == "/" ? "active" : ""}
+            id={location == "/" ? "active" : ""}  
             onClick={() => navigate("/")}
           >
             HOme
@@ -124,7 +127,7 @@ const Header = () => {
             style={{ background: `${isDarkMode ? "#fff" : "#111"}` }}
           ></div>
         </div>
-        <button className="border">CONNECT</button>
+        <button className="border" onClick={() => connectMetamask()}>{walletId !== null || undefined ? "CONNECTED" : "CONNECT"}</button>
       </div>
     </div>
   );

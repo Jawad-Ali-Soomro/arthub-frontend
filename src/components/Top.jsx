@@ -29,7 +29,6 @@ const Top = () => {
   useEffect(() => {
     fetch_data();
   }, []);
-  console.log(main_data);
   return (
     <div className="top-wrap flex">
       <div className="left">

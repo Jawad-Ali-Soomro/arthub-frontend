@@ -4,10 +4,12 @@ import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Art from "./pages/Art";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
+    <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
