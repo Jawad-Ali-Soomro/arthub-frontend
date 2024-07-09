@@ -1,0 +1,84 @@
+.top-wrap {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: calc(100% - 200px);
+    padding-left: 100px;
+    padding-right: 100px;
+    gap: 100px;
+    align-items: end;
+    .left {
+        img {
+            width: 500px;
+            height: 550px;
+            border-radius: 5px;
+        }
+    }
+    .right {
+        align-items: end;
+        gap: 20px;
+        h1 {
+            font-weight: 300;
+        }
+        .tags {
+            gap: 10px;
+            p {
+                padding: 10px 30px;
+                border: 1px solid;
+                font-size: .6rem;
+                padding-top: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+        .profile-wrap {
+            cursor: pointer;
+            gap: 5px;
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 1px solid;
+            }
+            h2 {
+                font-weight: 400;
+                text-transform: capitalize;
+            }
+        }
+        .price-wrap {
+            align-items: end;
+            p {
+                font-size: .7rem;
+            }
+            h2 {
+                span {
+                    font-weight: 300;
+                }
+            }
+        }
+        .btns-wrap {
+            gap: 10px;
+            button {
+                width: 150px;
+                height: 40px;
+                border: 1px solid;
+                background: transparent;
+                color: inherit;
+                font-size: .8rem;
+                cursor: pointer;
+            }
+            button:last-child {
+                background: #333;
+                color: white;
+                border: 1px solid transparent
+                ;
+            }
+            button:hover {
+                animation: best 300ms linear;
+            }
+            @keyframes best {
+                25%{transform: translateY(10px);}
+                75%{transform: translateY(-10px);}
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+function switchToDarkMode() {
+  document.documentElement.style.setProperty(
+    "--background-color",
+    "var(--background-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--text-color",
+    "var(--text-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--primary-color",
+    "var(--primary-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--secondary-color",
+    "var(--secondary-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--accent-color",
+    "var(--accent-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--muted-color",
+    "var(--muted-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--border-color",
+    "var(--border-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--link-color",
+    "var(--link-color-dark)"
+  );
+  document.documentElement.style.setProperty(
+    "--shadow-color",
+    "var(--shadow-color-dark)"
+  );
+}
+
+function switchToLightMode() {
+  document.documentElement.style.setProperty(
+    "--background-color",
+    "var(--background-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--text-color",
+    "var(--text-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--primary-color",
+    "var(--primary-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--secondary-color",
+    "var(--secondary-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--accent-color",
+    "var(--accent-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--muted-color",
+    "var(--muted-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--border-color",
+    "var(--border-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--link-color",
+    "var(--link-color)"
+  );
+  document.documentElement.style.setProperty(
+    "--shadow-color",
+    "var(--shadow-color)"
+  );
+}
+
+export { switchToDarkMode, switchToLightMode };

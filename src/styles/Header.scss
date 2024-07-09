@@ -1,0 +1,84 @@
+.header-wrap {
+  width: calc(100% - 200px);
+  height: 12vh;
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: space-between;
+  position: fixed;
+  background: inherit;
+  transition: .3s;
+  z-index: 10;
+  .logo {
+    cursor: pointer;
+    img {
+      width: 40px;
+    }
+  }
+  .search-bar {
+    width: 250px;
+    height: 35px;
+    input {
+      width: 200px;
+      height: 100%;
+      background: transparent;
+      border: none;
+      color: inherit;
+      padding-left: 10px;
+      outline: none;
+      font-size: .7rem;
+    }
+  }
+  .navs {
+    gap: 20px;
+    ul {
+      gap: 20px;
+      #active {
+        position: relative;
+      }
+      #active::after {
+        content: "";
+        width: 25px;
+        border: 1px solid;
+        position: absolute;
+        top: 20px;
+        left: calc(50% - 12.5px);
+      }
+      li {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        list-style: none;
+        font-weight: 400;
+        cursor: pointer;
+        .transform {
+          transform: rotate(90deg);
+        }
+      }
+    }
+    .menu {
+      cursor: pointer;
+      gap: 2px;
+      margin-bottom: 5px;
+      .line {
+        width: 20px;
+        height: 1.5px;
+      }
+    }
+    button {
+      width: 100px;
+      height: 35px;
+      font-size: 0.7rem;
+      color: inherit;
+      border: 1px solid;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+}
+
+.header--hidden {
+  transform: translateY(-100%);
+}
+
+.header--visible {
+  transform: translateY(0);
+}
