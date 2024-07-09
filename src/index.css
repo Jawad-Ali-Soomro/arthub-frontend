@@ -22,6 +22,8 @@
   --shadow-color-dark: rgba(0, 0, 0, 0.4);
 }
 
+
+
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -55,4 +57,8 @@ div , button  {
 
 p::selection , h1::selection, h2::selection ,h3::selection {
   background: transparent;
+}
+
+* {
+  transition: .3s;
 }
