@@ -10,7 +10,7 @@ const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = window.location.pathname;
   const navigate = useNavigate()
-  const walletId = window.localStorage.getItem("token")
+  const walletId = window.sessionStorage.getItem("token")
   console.log(walletId);
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(

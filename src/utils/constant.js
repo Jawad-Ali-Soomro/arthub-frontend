@@ -13,7 +13,7 @@ const connectMetamask = async () => {
         const web3 = new Web3(window.ethereum);
         const accounts = await web3.eth.getAccounts();
         console.log(web3.eth.Contract);
-        window.localStorage.setItem("token" , accounts[0])
+        window.sessionStorage.setItem("token" , accounts[0])
         window.location.reload()
       } catch (error) {
         toast.error('Error connecting to Metamask:', error);
