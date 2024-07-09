@@ -10,6 +10,7 @@ import { FaDiscord, FaHeadset } from "react-icons/fa";
 import { BsDiscord } from "react-icons/bs";
 import { FcCustomerSupport } from "react-icons/fc";
 import Spotlight from "../components/Spotlight";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -58,6 +59,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };  
