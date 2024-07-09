@@ -3,10 +3,12 @@ import { switchToDarkMode, switchToLightMode } from "../utils/toggler";
 import "../styles/Header.scss";
 import { BiSearch } from "react-icons/bi";
 import { FaAdjust } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = window.location.pathname;
+  const navigate = useNavigate()
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(
       "(prefers-color-scheme: light)"
@@ -74,7 +76,11 @@ const Header = () => {
     >
       <div className="logo flex">
         <img
-          src={isDarkMode == true ? "./logo-white.png" : "./logo-black.png"}
+          src={
+            isDarkMode == true
+              ? "../public/logo-white.png"
+              : "../public/logo-black.png"
+          }
           alt=""
         />
       </div>
@@ -84,14 +90,24 @@ const Header = () => {
       </div>
       <div className="navs flex">
         <ul className="flex">
-          <li className="icon" id={location == "/" ? "active" : ""}>
+          <li
+            className="icon"
+            id={location == "/" ? "active" : ""}
+            onClick={() => navigate("/")}
+          >
             HOme
           </li>
-          <li className="icon">ART</li>
+          <li
+            className="icon"
+            id={location == "/explore/art" ? "active" : ""}
+            onClick={() => navigate("/explore/art")}
+          >
+            art
+          </li>
           <li className="icon">Series</li>
           <li className="icon">Auction</li>
           <li onClick={() => toggleTheme()}>
-            {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust  />}
+            {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
           </li>
         </ul>
         <div className="menu border flex col">

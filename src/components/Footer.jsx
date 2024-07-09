@@ -1,13 +1,12 @@
 import React from "react";
 import "../styles/Footer.scss";
-import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import {
   BiLogoDiscord,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
+  BiLogoYoutube,
 } from "react-icons/bi";
 
 const Footer = () => {
@@ -32,7 +31,6 @@ const Footer = () => {
           <ul className="flex col">
             <li>Help Centre</li>
             <li>Community Guidelines</li>
-            <li>Help Centre</li>
             <div className="links flex">
               <ul className="flex" style={{gap:'10px'}}>
                 <li>
@@ -55,6 +53,11 @@ const Footer = () => {
                     <BiLogoDiscord style={{fontSize: "1.2rem"}} />
                   </a>
                 </li>
+                <li>
+                  <a href="">
+                    <BiLogoYoutube style={{fontSize: "1.2rem"}} />
+                  </a>
+                </li>
               </ul>
             </div>
           </ul>
@@ -65,7 +68,6 @@ const Footer = () => {
             <li>Terms of service</li>
             <li>Report content</li>
             <li>Cookie preferences</li>
-            <li>Privacy notice</li>
             <li>2024 &copy; arthub.com</li>
           </ul>
         </div>
