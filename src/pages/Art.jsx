@@ -35,7 +35,10 @@ const Art = () => {
                   <h3>{card_item?.title}</h3>
                   <div className="owner flex">
                     <img src={card_item?.owner?.avatar} alt="" />
-                    <h2>{card_item?.owner?.username}</h2>
+                   <div className="wrap flex col">
+                    <p>ARTIST</p>
+                   <h2>{card_item?.owner?.username}</h2>
+                   </div>
                   </div>
                   <div className="price flex col">
                     <p>price</p>
