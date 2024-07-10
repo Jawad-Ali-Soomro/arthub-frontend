@@ -44,7 +44,7 @@ const MainArt = () => {
           )}
         </div>
         {main_data == undefined ? (
-          <Skeleton style={{marginTop:'35vh'}} width={600} height={400} />
+          <Skeleton style={{ marginTop: "35vh" }} width={600} height={400} />
         ) : (
           <div className="main-art-right flex col">
             <div className="top flex col">
@@ -104,6 +104,28 @@ const MainArt = () => {
                 {show_desc == true ? <FaArrowUp /> : <FaArrowDown />}
               </button>
             </div>
+          </div>
+        )}
+      </div>
+      <div className="more-by-artist flex col">
+        <h1>
+          More By {main_data?.owner?.username} <button>Profile</button>
+        </h1>
+        {more_data == undefined ? (
+          <div className="wrapper flex">
+            <Skeleton width={350} height={380} />
+            <Skeleton width={350} height={380} />
+            <Skeleton width={350} height={380} />
+          </div>
+        ) : (
+          <div className="wrapper flex">
+            {
+              more_data.map((card_item) => {
+                return <div className="card flex">
+                  <img src={card_item?.image} alt="" />
+                </div>
+              })
+            }
           </div>
         )}
       </div>
