@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { baseArtUrl, baseUserUrl, ethToUsd } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 const Spotlight = () => {
   const [main_data, set_data] = useState();
@@ -32,37 +33,45 @@ const Spotlight = () => {
   }, []);
   return (
     <div>
-      <div className="featuerd-wrap flex col" style={{marginTop:'0px'}}>
-      <h1 style={{width:'100%' , justifyContent:'space-between'}}>
-        Artist Spotlight : Botto <button>See all</button>
-      </h1>
-      <p style={{ fontSize: ".8rem" }}>
-        Through his animations, Botto explores the impact of contemporary
-        culture on our everyday lives, offering a unique and fresh perspective
-        on the world around us.
-      </p>
-        <div className="wrapper flex">
-          {main_data?.map((card_item) => {
-            return (
-              <div className="card flex col">
-                <div className="img-sect flex">
-                  <img className="border" src={card_item?.image} alt="" />
-                </div>
-                <div className="info flex col">
-                  <h2>{card_item?.title}</h2>
-                  <div className="border"></div>
-                  <div className="price flex">
-                    <h2>
-                      {card_item?.price} ≈{" "}
-                      <span>${card_item?.price * ethToUsd}</span>
-                    </h2>
-                    <button className="flex">Buy</button>
+      <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
+        <h1 style={{ width: "100%", justifyContent: "space-between" }}>
+          Artist Spotlight : Botto <button>See all</button>
+        </h1>
+        <p style={{ fontSize: ".8rem" }}>
+          Through his animations, Botto explores the impact of contemporary
+          culture on our everyday lives, offering a unique and fresh perspective
+          on the world around us.
+        </p>
+        {main_data == undefined ? (
+          <div className="wrapper flex">
+            <Skeleton width={360} height={410} />
+            <Skeleton width={360} height={410} />
+            <Skeleton width={360} height={410} />
+          </div>
+        ) : (
+          <div className="wrapper flex">
+            {main_data?.map((card_item) => {
+              return (
+                <div className="card flex col">
+                  <div className="img-sect flex">
+                    <img className="border" src={card_item?.image} alt="" />
+                  </div>
+                  <div className="info flex col">
+                    <h2>{card_item?.title}</h2>
+                    <div className="border"></div>
+                    <div className="price flex">
+                      <h2>
+                        {card_item?.price} ≈{" "}
+                        <span>${card_item?.price * ethToUsd}</span>
+                      </h2>
+                      <button className="flex">Buy</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

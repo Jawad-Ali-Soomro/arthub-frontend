@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Featured.scss";
 import axios from "axios";
-import { baseSeriesUrl} from "../utils/constant";
+import { baseSeriesUrl } from "../utils/constant";
+import Skeleton from "react-loading-skeleton";
 
 const FeaturedSeries = () => {
   const [main_data, set_data] = useState();
@@ -33,42 +34,50 @@ const FeaturedSeries = () => {
       <p>
         Explore the boundless creativity and inspiration of featured series.
       </p>
-      <div className="wrapper flex">
-        {main_data?.map((card_item) => {
-          return (
-            <div className="card flex col">
-              <div className="img-sect flex">
-                <img className="border" src={card_item?.image} alt="" />
-              </div>
-              <div className="info flex col">
-                <h2>{card_item?.title}</h2>
-                <div className="owner flex">
-                  <div className="left flex">
-                    <img
-                      className="border"
-                      src={card_item?.owner?.avatar}
-                      alt=""
-                    />
-                    <h3>{card_item?.owner?.username}</h3>
+      {main_data == undefined ? (
+        <div className="wrapper flex">
+          <Skeleton width={360} height={410} />
+          <Skeleton width={360} height={410} />
+          <Skeleton width={360} height={410} />
+        </div>
+      ) : (
+        <div className="wrapper flex">
+          {main_data?.map((card_item) => {
+            return (
+              <div className="card flex col">
+                <div className="img-sect flex">
+                  <img className="border" src={card_item?.image} alt="" />
+                </div>
+                <div className="info flex col">
+                  <h2>{card_item?.title}</h2>
+                  <div className="owner flex">
+                    <div className="left flex">
+                      <img
+                        className="border"
+                        src={card_item?.owner?.avatar}
+                        alt=""
+                      />
+                      <h3>{card_item?.owner?.username}</h3>
+                    </div>
+                    <div className="more border flex col">
+                      <div className="dot"></div>
+                      <div className="dot"></div>
+                      <div className="dot"></div>
+                    </div>
                   </div>
-                  <div className="more border flex col">
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
+                  <div className="border"></div>
+                  <div className="price flex">
+                    <h2 style={{ textTransform: "capitalize" }}>
+                      {card_item?.art?.length} artworks
+                    </h2>
+                    <button className="flex">view</button>
                   </div>
                 </div>
-                <div className="border"></div>
-                <div className="price flex">
-                  <h2 style={{ textTransform: "capitalize" }}>
-                    {card_item?.art?.length} artworks
-                  </h2>
-                  <button className="flex">view</button>
-                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

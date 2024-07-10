@@ -3,6 +3,7 @@ import axios from "axios";
 import { baseArtUrl, ethToUsd } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
 import "../styles/Top.scss";
+import Skeleton from "react-loading-skeleton";
 
 const Top = () => {
   const navigate = useNavigate();
@@ -32,28 +33,38 @@ const Top = () => {
   return (
     <div className="top-wrap flex">
       <div className="left">
-        <img src={main_data?.image} alt="" />
+        {main_data == undefined ? (
+          <Skeleton width={500} height={550} />
+        ) : (
+          <img src={main_data?.image} alt="" />
+        )}
       </div>
-      <div className="right flex col">
-        <h1>{main_data?.title}</h1>
-        <div className="tags flex">
-          {main_data?.tags?.map((tag) => {
-            return <p>{tag}</p>;
-          })}
-        </div>
-        <div className="profile-wrap flex">
-          <img src={main_data?.owner?.avatar} alt="" />
-          <h2>{main_data?.owner?.username}</h2>
-        </div>
-        <div className="price-wrap flex col">
-          <p>PRICE</p>
-          <h2>{main_data?.price} ≈ <span>${main_data?.price * ethToUsd}</span></h2>
-        </div>
-        <div className="btns-wrap flex">
+      {main_data == undefined ? (
+        <Skeleton width={500} height={300} />
+      ) : (
+        <div className="right flex col">
+          <h1>{main_data?.title}</h1>
+          <div className="tags flex">
+            {main_data?.tags?.map((tag) => {
+              return <p>{tag}</p>;
+            })}
+          </div>
+          <div className="profile-wrap flex">
+            <img src={main_data?.owner?.avatar} alt="" />
+            <h2>{main_data?.owner?.username}</h2>
+          </div>
+          <div className="price-wrap flex col">
+            <p>PRICE</p>
+            <h2>
+              {main_data?.price} ≈ <span>${main_data?.price * ethToUsd}</span>
+            </h2>
+          </div>
+          <div className="btns-wrap flex">
             <button>BUY</button>
             <button>DEAL</button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
