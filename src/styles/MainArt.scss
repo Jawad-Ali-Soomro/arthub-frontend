@@ -132,7 +132,7 @@
       background: #333;
       color: white;
       border: none;
-      font-size: .7rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       cursor: pointer;
     }
@@ -148,9 +148,90 @@
       height: 380px;
       border-radius: 5px;
       overflow: hidden;
+      position: relative;
+      cursor: pointer;
       img {
         width: 100%;
         height: 100%;
+      }
+      .info {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), black);
+        max-height: 0;
+        overflow: hidden;
+        bottom: 0;
+        backdrop-filter: blur(2px);
+        color: white;
+        justify-content: end;
+        align-items: start;
+        padding-left: 50px;
+        gap: 10px;
+        h3 {
+          font-weight: 600;
+        }
+        .owner {
+          gap: 10px;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba($color: #fff, $alpha: 0.8);
+          }
+          .wrap {
+            align-items: start;
+            p {
+              font-size: 0.6rem;
+            }
+            h2 {
+              font-weight: 400;
+              text-transform: capitalize;
+              font-size: 1.2rem;
+            }
+          }
+        }
+        .price {
+          align-items: end;
+          justify-content: end;
+          width: 300px;
+          justify-content: space-between;
+          p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+          }
+          h2 {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+        }
+        .btns {
+          gap: 10px;
+          button {
+            width: 150px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            background: rgba($color: #eee, $alpha: 0.3);
+            border: 1px solid transparent;
+            margin-left: 150px;
+            text-transform: uppercase;
+          }
+          button:hover {
+            background: transparent;
+            border: 1px solid rgba($color: #eee, $alpha: 0.3);
+          }
+        }
+      }
+    }
+    .card:hover {
+      .info {
+        max-height: 100%;
+        padding-bottom: 20px;
       }
     }
   }

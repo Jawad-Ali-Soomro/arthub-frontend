@@ -8,6 +8,7 @@ import { BiHeart, BiLike, BiScan } from "react-icons/bi";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Footer from "../components/Footer";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -119,16 +120,34 @@ const MainArt = () => {
           </div>
         ) : (
           <div className="wrapper flex">
-            {
-              more_data.map((card_item) => {
-                return <div className="card flex">
+            {more_data.map((card_item) => {
+              return (
+                <div className="card flex">
                   <img src={card_item?.image} alt="" />
+                  <div className="info flex col">
+                    <h3>{card_item?.title}</h3>
+                    <div className="price flex col">
+                      <p>price</p>
+                      <h2>
+                        {card_item?.price} ≈{" "}
+                        <span>${card_item?.price * ethToUsd}</span>
+                      </h2>
+                    </div>
+                    <div className="btns flex">
+                      <button
+                        onClick={() => navigate(`/art/${card_item?._id}`) + window.location.reload()}
+                      >
+                        Buy
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              })
-            }
+              );
+            })}
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
