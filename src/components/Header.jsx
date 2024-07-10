@@ -11,7 +11,6 @@ const Header = () => {
   const location = window.location.pathname;
   const navigate = useNavigate()
   const walletId = window.sessionStorage.getItem("token")
-  console.log(walletId);
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(
       "(prefers-color-scheme: light)"

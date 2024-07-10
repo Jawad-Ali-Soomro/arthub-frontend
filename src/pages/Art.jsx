@@ -35,10 +35,10 @@ const Art = () => {
                   <h3>{card_item?.title}</h3>
                   <div className="owner flex">
                     <img src={card_item?.owner?.avatar} alt="" />
-                   <div className="wrap flex col">
-                    <p>ARTIST</p>
-                   <h2>{card_item?.owner?.username}</h2>
-                   </div>
+                    <div className="wrap flex col">
+                      <p>ARTIST</p>
+                      <h2>{card_item?.owner?.username}</h2>
+                    </div>
                   </div>
                   <div className="price flex col">
                     <p>price</p>
@@ -47,9 +47,11 @@ const Art = () => {
                       <span>${card_item?.price * ethToUsd}</span>
                     </h2>
                   </div>
-                <div className="btns flex">
-                  <button>Buy</button>
-                </div>
+                  <div className="btns flex">
+                    <button onClick={() => navigate(`/art/${card_item?._id}`)}>
+                      Buy
+                    </button>
+                  </div>
                 </div>
               </div>
             );
