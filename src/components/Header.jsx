@@ -20,7 +20,10 @@ const Header = () => {
   const navigate = useNavigate();
   const walletId = window.sessionStorage.getItem("token");
   const [show_menu, set_show_menu] = useState(false);
-  const theme = window.localStorage.setItem("themeMode", `${isDarkMode ? "dark" : "light"}`)
+  const theme = window.localStorage.setItem(
+    "themeMode",
+    `${isDarkMode ? "dark" : "light"}`
+  );
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(
       `(prefers-color-scheme: ${theme})`
