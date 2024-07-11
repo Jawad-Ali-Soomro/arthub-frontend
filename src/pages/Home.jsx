@@ -11,8 +11,10 @@ import { BsDiscord } from "react-icons/bs";
 import { FcCustomerSupport } from "react-icons/fc";
 import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate =  useNavigate()
   return (
     <div>
       <Header />
@@ -23,7 +25,7 @@ const Home = () => {
             Dicover the most outstanding digital art in all aspect of life ,
             create your own art and sell it here.
           </p>
-          <button>Explore</button>
+          <button onClick={() => navigate('/explore/art')}>Explore</button>
         </div>
         <div className="right flex">
           <img src="./hero.png" alt="" />
@@ -59,6 +61,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+   
       <Footer />
     </div>
   );

@@ -3,8 +3,10 @@ import "../styles/Featured.scss";
 import axios from "axios";
 import { baseArtUrl, ethToUsd } from "../utils/constant";
 import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
 
 const Featured = () => {
+  const navigate = useNavigate()
   const [main_data, set_data] = useState();
   const fetch_data = async () => {
     try {
@@ -44,7 +46,7 @@ const Featured = () => {
             return (
               <div className="card flex col">
                 <div className="img-sect flex">
-                  <img className="border" src={card_item?.image} alt="" />
+                  <img className="border" src={card_item?.image} alt="" onClick={() => navigate(`/art/${card_item?._id}`)} />
                 </div>
                 <div className="info flex col">
                   <h2>{card_item?.title}</h2>
@@ -69,7 +71,7 @@ const Featured = () => {
                       {card_item?.price} ≈{" "}
                       <span>${card_item?.price * ethToUsd}</span>
                     </h2>
-                    <button className="flex">Buy</button>
+                    <button className="flex" onClick={() => navigate(`/art/${card_item?._id}`)}>Buy</button>
                   </div>
                 </div>
               </div>

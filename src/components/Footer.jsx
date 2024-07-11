@@ -20,7 +20,11 @@ const Footer = () => {
             <input type="text" placeholder="EMAIL ADDRESS" />
             <button>Subscribe</button>
           </div>
-          <a href="" className="link flex">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeZhVNtTyuI9WqQf2Cj5vwx5geP0oQOOKvaEzU5jO5pkALDzA/viewform?usp=sf_link"
+            target="_blank"
+            className="link flex"
+          >
             Submit Artist Application <FaArrowRightLong />
           </a>
         </div>
@@ -32,30 +36,30 @@ const Footer = () => {
             <li>Help Centre</li>
             <li>Community Guidelines</li>
             <div className="links flex">
-              <ul className="flex" style={{gap:'10px'}}>
+              <ul className="flex" style={{ gap: "10px" }}>
                 <li>
                   <a href="">
-                    <BiLogoFacebook style={{fontSize: "1.2rem"}} />
+                    <BiLogoFacebook style={{ fontSize: "1.2rem" }} />
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <BiLogoInstagram style={{fontSize: "1.2rem"}} />
+                    <BiLogoInstagram style={{ fontSize: "1.2rem" }} />
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <BiLogoTwitter style={{fontSize: "1.2rem"}} />
+                    <BiLogoTwitter style={{ fontSize: "1.2rem" }} />
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <BiLogoDiscord style={{fontSize: "1.2rem"}} />
+                    <BiLogoDiscord style={{ fontSize: "1.2rem" }} />
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <BiLogoYoutube style={{fontSize: "1.2rem"}} />
+                    <BiLogoYoutube style={{ fontSize: "1.2rem" }} />
                   </a>
                 </li>
               </ul>
@@ -64,7 +68,7 @@ const Footer = () => {
         </div>
         <div className="community flex col">
           <p>LEGAL</p>
-          <ul className="flex col" style={{gap:'10px'}}>
+          <ul className="flex col" style={{ gap: "10px" }}>
             <li>Terms of service</li>
             <li>Report content</li>
             <li>Cookie preferences</li>

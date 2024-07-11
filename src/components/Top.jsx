@@ -60,7 +60,7 @@ const Top = () => {
             </h2>
           </div>
           <div className="btns-wrap flex">
-            <button>BUY</button>
+            <button onClick={() => navigate(`/art/${main_data?._id}`)}>BUY</button>
             <button>DEAL</button>
           </div>
         </div>

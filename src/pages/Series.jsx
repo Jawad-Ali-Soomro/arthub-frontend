@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
-import { baseArtUrl, ethToUsd } from "../utils/constant";
+import { baseArtUrl, baseSeriesUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
 
-const Art = () => {
+const Series = () => {
   const navigate = useNavigate();
   const [main_data, set_data] = useState();
   const fetch_data = async () => {
-    await axios.get(`${baseArtUrl}/get/all`).then((res) => {
+    await axios.get(`${baseSeriesUrl}/get/all`).then((res) => {
       set_data(res.data.data);
     });
   };
@@ -53,17 +53,16 @@ const Art = () => {
                       </div>
                     </div>
                     <div className="price flex col">
-                      <p>price</p>
-                      <h2>
-                        {card_item?.price} ≈{" "}
-                        <span>${card_item?.price * ethToUsd}</span>
+                      <p>total</p>
+                      <h2 style={{textTransform:'capitalize' , fontWeight:400}}>
+                        {main_data?.length} artworks
                       </h2>
                     </div>
                     <div className="btns flex">
                       <button
                         onClick={() => navigate(`/art/${card_item?._id}`)}
                       >
-                        Buy
+                        view
                       </button>
                     </div>
                   </div>
@@ -78,4 +77,4 @@ const Art = () => {
   );
 };
 
-export default Art;
+export default Series;

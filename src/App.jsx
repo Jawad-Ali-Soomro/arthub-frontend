@@ -7,6 +7,8 @@ import Art from "./pages/Art";
 import { Toaster } from "react-hot-toast";
 import MainArt from "./pages/MainArt";
 import ScrollToTop from "./components/ScrollToTop";
+import Series from "./pages/Series";
+import './utils/theme'
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/explore/art" element={<Art />}></Route>
+          <Route path="/explore/series" element={<Series />}></Route>
           <Route path="/art/:artId" element={<MainArt />}></Route>
         </Routes>
       </BrowserRouter>
