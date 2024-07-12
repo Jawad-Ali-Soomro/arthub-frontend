@@ -72,7 +72,7 @@ const MainArt = () => {
                 <h2>{main_data?.owner?.username}</h2>
               </div>
               {main_data?.series[0] !== undefined ? (
-                <div className="owner flex">
+                <div className="owner flex" onClick={() => navigate(`/series/${main_data?.series[0]._id}`)}>
                   <img
                     className="border"
                     src={main_data?.series[0]?.image}

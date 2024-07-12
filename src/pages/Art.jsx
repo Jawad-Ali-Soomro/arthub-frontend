@@ -46,7 +46,7 @@ const Art = () => {
                   <img src={card_item?.image} alt="" />
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>
-                    <div className="owner flex">
+                    <div className="owner flex" onClick={() => navigate(`/user/${card_item?.owner?._id}`)}>
                       <img src={card_item?.owner?.avatar} alt="" />
                       <div className="wrap flex col">
                         <p>ARTIST</p>

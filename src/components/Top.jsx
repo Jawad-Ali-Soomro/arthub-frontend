@@ -49,7 +49,7 @@ const Top = () => {
               return <p>{tag}</p>;
             })}
           </div>
-          <div className="profile-wrap flex">
+          <div className="profile-wrap flex" onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
             <img src={main_data?.owner?.avatar} alt="" />
             <h2>{main_data?.owner?.username}</h2>
           </div>
