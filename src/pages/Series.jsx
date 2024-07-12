@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
-import { baseArtUrl, baseSeriesUrl, ethToUsd } from "../utils/constant";
+import { baseSeriesUrl } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -26,9 +26,15 @@ const Series = () => {
           <h1 className="flex col">
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
-          <button><img src="../public/filter.svg" alt="" /></button>
+          <button>
+            <img src="../public/filter.svg" alt="" />
+          </button>
           <div className="length lex">
-            <p>{main_data == undefined ? "Fetching..." : main_data?.length+" Results Found!"}</p>
+            <p>
+              {main_data == undefined
+                ? "Fetching..."
+                : main_data?.length + " Results Found!"}
+            </p>
           </div>
         </section>
         {main_data == undefined ? (
@@ -45,7 +51,10 @@ const Series = () => {
                   <img src={card_item?.image} alt="" />
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>
-                    <div className="owner flex">
+                    <div
+                      className="owner flex"
+                      onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                    >
                       <img src={card_item?.owner?.avatar} alt="" />
                       <div className="wrap flex col">
                         <p>ARTIST</p>
@@ -54,7 +63,9 @@ const Series = () => {
                     </div>
                     <div className="price flex col">
                       <p>total</p>
-                      <h2 style={{textTransform:'capitalize' , fontWeight:400}}>
+                      <h2
+                        style={{ textTransform: "capitalize", fontWeight: 400 }}
+                      >
                         {card_item?.art?.length} artworks
                       </h2>
                     </div>

@@ -67,7 +67,7 @@ const MainArt = () => {
                 }`,
               }}
             >
-              <div className="owner flex">
+              <div className="owner flex" onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
                 <img className="border" src={main_data?.owner?.avatar} alt="" />
                 <h2>{main_data?.owner?.username}</h2>
               </div>

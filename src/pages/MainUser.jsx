@@ -16,7 +16,7 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 const MainUser = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const [tag_item, set_tag] = useState(true);
   const [main_data, set_data] = useState();
   const id = useParams().userId;
@@ -68,9 +68,7 @@ const MainUser = () => {
                 <p>Followers</p>
                 {main_data?.followers?.length <= 0 ? (
                   <div className="wrap flex">
-                    <Skeleton borderRadius={20} width={40} height={40} />
-                    <Skeleton borderRadius={20} width={40} height={40} />
-                    <Skeleton borderRadius={20} width={40} height={40} />
+                    <h2>0</h2>
                   </div>
                 ) : (
                   <div className="wrap flex">
@@ -85,9 +83,7 @@ const MainUser = () => {
                 <p>Following</p>
                 {main_data?.following?.length <= 0 ? (
                   <div className="wrap flex">
-                    <Skeleton borderRadius={20} width={40} height={40} />
-                    <Skeleton borderRadius={20} width={40} height={40} />
-                    <Skeleton borderRadius={20} width={40} height={40} />
+                    <h2>0</h2>
                   </div>
                 ) : (
                   <div className="wrap flex">
@@ -210,10 +206,15 @@ const MainUser = () => {
                       <div className="info flex col">
                         <h3>{card_item?.title}</h3>
                         <div className="price flex col">
-                        <p>total</p>
-                      <h2 style={{textTransform:'capitalize' , fontWeight:400}}>
-                        {card_item?.art?.length} artworks
-                      </h2>
+                          <p>total</p>
+                          <h2
+                            style={{
+                              textTransform: "capitalize",
+                              fontWeight: 400,
+                            }}
+                          >
+                            {card_item?.art?.length} artworks
+                          </h2>
                         </div>
                         <div className="btns flex">
                           <button
@@ -222,7 +223,7 @@ const MainUser = () => {
                               window.location.reload()
                             }
                           >
-                            view    
+                            view
                           </button>
                         </div>
                       </div>
