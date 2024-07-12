@@ -1,0 +1,40 @@
+.top-series {
+  padding-top: 5vh;
+  min-height: 100vh;
+  width: calc(100% - 200px);
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: space-between;
+  .left-image {
+    width: 600px;
+    height: 600px;
+    background: black;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .right-content {
+    align-items: end;
+    height: 500px;
+    gap: 20px;
+    justify-content: end;
+    h1 {
+      font-weight: 300;
+      font-size: 1.5rem;
+    }
+    .owner {
+      gap: 10px;
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      h2 {
+        font-weight: 300;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

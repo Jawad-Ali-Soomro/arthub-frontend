@@ -32,6 +32,18 @@ const MainSeries = () => {
   return (
     <div>
       <Header />
+      <div className="top-series flex">
+        <div className="left-image flex">
+          <img src={main_data?.image} alt="" />
+        </div>
+        <div className="right-content flex col">
+          <h1>{main_data?.title}</h1>
+          <div className="owner flex">
+            <img src={main_data?.owner?.avatar  } alt="" />
+            <h2>{main_data?.owner?.username}</h2>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
