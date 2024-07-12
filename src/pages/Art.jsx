@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
 
 const Art = () => {
+  document.title = "Explore Art"
   const navigate = useNavigate();
   const [main_data, set_data] = useState();
   const fetch_data = async () => {

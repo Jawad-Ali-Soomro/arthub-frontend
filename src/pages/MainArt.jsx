@@ -18,21 +18,21 @@ const MainArt = () => {
   const { artId } = useParams();
   const fetch_data = async () => {
     await axios
-      .get(`${baseArtUrl}/get/art/${artId}`)
-      .then((res) => set_data(res.data.data));
+    .get(`${baseArtUrl}/get/art/${artId}`)
+    .then((res) => set_data(res.data.data));
   };
   const fetch_more = async () => {
     await axios
-      .get(`${baseUserUrl}/get/${main_data?.owner?._id}`)
-      .then((res) => {
-        set_more(res.data.data.art.splice(0, 3));
-      });
+    .get(`${baseUserUrl}/get/${main_data?.owner?._id}`)
+    .then((res) => {
+      set_more(res.data.data.art.splice(0, 3));
+    });
   };
   useEffect(() => {
     fetch_data();
     fetch_more();
   });
-  console.log(main_data);
+  document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
   return (
     <div>
       <Header />
@@ -122,7 +122,7 @@ const MainArt = () => {
           <div className="wrapper flex">
             {more_data.map((card_item) => {
               return (
-                <div className="card flex">
+                <div className="card flex" key={card_item?._id}>
                   <img src={card_item?.image} alt="" />
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>

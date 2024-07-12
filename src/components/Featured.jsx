@@ -32,6 +32,7 @@ const Featured = () => {
   }, []);
   return (
     <div className="featuerd-wrap flex col">
+      
       <h1>Featured Art</h1>
       <p>Explore the boundless creativity and inspiration of featured art.</p>
       {main_data == undefined ? (

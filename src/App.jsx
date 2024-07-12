@@ -9,6 +9,7 @@ import MainArt from "./pages/MainArt";
 import ScrollToTop from "./components/ScrollToTop";
 import Series from "./pages/Series";
 import './utils/theme'
+import MainSeries from "./pages/MainSeries";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/explore/art" element={<Art />}></Route>
           <Route path="/explore/series" element={<Series />}></Route>
           <Route path="/art/:artId" element={<MainArt />}></Route>
+          <Route path="/series/:seriesId" element={<MainSeries />}></Route>
         </Routes>
       </BrowserRouter>
     </>

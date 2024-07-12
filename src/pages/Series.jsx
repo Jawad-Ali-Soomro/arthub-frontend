@@ -55,12 +55,12 @@ const Series = () => {
                     <div className="price flex col">
                       <p>total</p>
                       <h2 style={{textTransform:'capitalize' , fontWeight:400}}>
-                        {main_data?.length} artworks
+                        {card_item?.art?.length} artworks
                       </h2>
                     </div>
                     <div className="btns flex">
                       <button
-                        onClick={() => navigate(`/art/${card_item?._id}`)}
+                        onClick={() => navigate(`/series/${card_item?._id}`)}
                       >
                         view
                       </button>

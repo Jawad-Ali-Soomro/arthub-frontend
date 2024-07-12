@@ -4,16 +4,15 @@ import Header from "../components/Header";
 import Top from "../components/Top";
 import Featured from "../components/Featured";
 import FeaturedSeries from "../components/feturedSeries";
-import { BiLogoDiscord, BiLogoDiscordAlt, BiLogoTwitter, BiPaperPlane } from "react-icons/bi";
-import { FiFileText } from "react-icons/fi";
-import { FaDiscord, FaHeadset } from "react-icons/fa";
+import {  BiLogoTwitter } from "react-icons/bi";
+import { FaHeadset } from "react-icons/fa";
 import { BsDiscord } from "react-icons/bs";
-import { FcCustomerSupport } from "react-icons/fc";
 import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  document.title = "Artchain"
   const navigate =  useNavigate()
   return (
     <div>
@@ -35,7 +34,7 @@ const Home = () => {
       <Featured />
       <FeaturedSeries />
       <Spotlight />
-      <div className="outro flex col">
+      {/* <div className="outro flex col">
         <h1>Transparent, secure art market.</h1>
         <div className="wrapper flex">
           <div className="card border flex col">
@@ -60,7 +59,7 @@ const Home = () => {
             <p>Product News, Twitter Spaces & More.</p>
           </div>
         </div>
-      </div>
+      </div> */}
    
       <Footer />
     </div>
