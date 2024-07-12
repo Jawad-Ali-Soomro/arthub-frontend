@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 const Featured = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [main_data, set_data] = useState();
   const fetch_data = async () => {
     try {
@@ -32,7 +32,6 @@ const Featured = () => {
   }, []);
   return (
     <div className="featuerd-wrap flex col">
-      
       <h1>Featured Art</h1>
       <p>Explore the boundless creativity and inspiration of featured art.</p>
       {main_data == undefined ? (
@@ -47,11 +46,20 @@ const Featured = () => {
             return (
               <div className="card flex col">
                 <div className="img-sect flex">
-                  <img className="border" src={card_item?.image} alt="" onClick={() => navigate(`/art/${card_item?._id}`)} />
+                  <img
+                    className="border"
+                    src={card_item?.image}
+                    alt=""
+                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                  />
                 </div>
                 <div className="info flex col">
                   <h2>{card_item?.title}</h2>
-                  <div className="owner flex">
+                  <div
+                    className="owner flex"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                  >
                     <div className="left flex">
                       <img
                         className="border"
@@ -72,7 +80,12 @@ const Featured = () => {
                       {card_item?.price} ≈{" "}
                       <span>${card_item?.price * ethToUsd}</span>
                     </h2>
-                    <button className="flex" onClick={() => navigate(`/art/${card_item?._id}`)}>Buy</button>
+                    <button
+                      className="flex"
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                    >
+                      Buy
+                    </button>
                   </div>
                 </div>
               </div>

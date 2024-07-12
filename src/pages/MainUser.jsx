@@ -16,6 +16,7 @@ import {
 import Skeleton from "react-loading-skeleton";
 
 const MainUser = () => {
+    const navigate = useNavigate()
   const [tag_item, set_tag] = useState(true);
   const [main_data, set_data] = useState();
   const id = useParams().userId;
@@ -178,14 +179,55 @@ const MainUser = () => {
                   return (
                     <div className="card flex">
                       <img src={card_item?.image} alt="" />
+                      <div className="info flex col">
+                        <h3>{card_item?.title}</h3>
+                        <div className="price flex col">
+                          <p>price</p>
+                          <h2>
+                            {card_item?.price} ≈{" "}
+                            <span>${card_item?.price * ethToUsd}</span>
+                          </h2>
+                        </div>
+                        <div className="btns flex">
+                          <button
+                            onClick={() =>
+                              navigate(`/art/${card_item?._id}`) +
+                              window.location.reload()
+                            }
+                          >
+                            Buy
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   );
                 })
               : tag_item == false
               ? main_data?.series?.map((card_item) => {
-                  return <div className="card flex">
-                     <img src={card_item?.image} alt="" />
-                  </div>;
+                  return (
+                    <div className="card flex">
+                      <img src={card_item?.image} alt="" />
+                      <div className="info flex col">
+                        <h3>{card_item?.title}</h3>
+                        <div className="price flex col">
+                        <p>total</p>
+                      <h2 style={{textTransform:'capitalize' , fontWeight:400}}>
+                        {card_item?.art?.length} artworks
+                      </h2>
+                        </div>
+                        <div className="btns flex">
+                          <button
+                            onClick={() =>
+                              navigate(`/series/${card_item?._id}`) +
+                              window.location.reload()
+                            }
+                          >
+                            view    
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
                 })
               : this}
           </div>
