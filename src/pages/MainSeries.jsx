@@ -48,7 +48,7 @@ const MainSeries = () => {
           <div className="right-content flex col">
             <h1>{main_data?.title}</h1>
 
-            <div className="owner flex">
+            <div className="owner flex" onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
               <img src={main_data?.owner?.avatar} alt="" />
               <h2>{main_data?.owner?.username}</h2>
             </div>
@@ -83,7 +83,7 @@ const MainSeries = () => {
                   <img src={card_item?.image} alt="" />
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>
-                    <div className="owner flex" onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
+                    <div className="owner flex" onClick={() => navigate(`/user/${main_data?.owner?._id  }`)}>
                       <img src={main_data?.owner?.avatar} alt="" />
                       <h2>{main_data?.owner?.username}</h2>
                     </div>
