@@ -42,6 +42,13 @@ const MainUser = () => {
         {main_data == undefined ? (
           <Skeleton width={400} height={400} />
         ) : (
+          <div className="right-art flex">
+            <img src={main_data?.art[0]?.image} alt="" />
+          </div>
+        )}
+        {main_data == undefined ? (
+          <Skeleton width={600} height={600} />
+        ) : (
           <div className="left-profile flex col">
             <div className="owner flex">
               <img src={main_data?.avatar} alt="" />
@@ -136,13 +143,6 @@ const MainUser = () => {
                 this
               )}
             </div>
-          </div>
-        )}
-        {main_data == undefined ? (
-          <Skeleton width={600} height={600} />
-        ) : (
-          <div className="right-art flex">
-            <img src={main_data?.art[0]?.image} alt="" />
           </div>
         )}
       </div>

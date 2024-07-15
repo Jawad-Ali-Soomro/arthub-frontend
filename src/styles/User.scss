@@ -1,5 +1,5 @@
 .top-profile {
-  padding-top: 12vh;
+  padding-top: 15vh;
   padding-bottom: 10vh;
   width: calc(100% - 200px);
   padding-left: 100px;
@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: end;
   .left-profile {
-    align-items: start;
+    align-items: end;
     justify-content: end;
     gap: 20px;
     .icons {
@@ -101,8 +101,8 @@
     }
   }
   .right-art {
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 580px;
     img {
       width: 100%;
       height: 100%;
