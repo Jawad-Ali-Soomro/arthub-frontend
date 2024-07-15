@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Top from "../components/Top";
 import Featured from "../components/Featured";
 import FeaturedSeries from "../components/feturedSeries";
-import {  BiLogoTwitter } from "react-icons/bi";
+import { BiLogoTwitter } from "react-icons/bi";
 import { FaHeadset } from "react-icons/fa";
 import { BsDiscord } from "react-icons/bs";
 import Spotlight from "../components/Spotlight";
@@ -12,8 +12,8 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  document.title = "Artchain"
-  const navigate =  useNavigate()
+  document.title = "Artchain";
+  const navigate = useNavigate();
   return (
     <div>
       <Header />
@@ -24,7 +24,7 @@ const Home = () => {
             Dicover the most outstanding digital art in all aspect of life ,
             create your own art and sell it here.
           </p>
-          <button onClick={() => navigate('/explore/art')}>Explore</button>
+          <button onClick={() => navigate("/explore/art")}>Explore</button>
         </div>
         <div className="right flex">
           <img src="./hero.png" alt="" />
@@ -60,10 +60,10 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-   
+
       <Footer />
     </div>
   );
-};  
+};
 
 export default Home;

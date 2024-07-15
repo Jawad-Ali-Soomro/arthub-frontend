@@ -24,19 +24,19 @@
       font-weight: 300;
       font-size: 1.5rem;
     }
-   .description {
-    align-items: end;
-    max-width: 400px;
-    gap: 10px;
-    p {
-        font-size: .8rem;
-    }
-    h2 {
-        font-size: .9rem;
+    .description {
+      align-items: end;
+      max-width: 400px;
+      gap: 10px;
+      p {
+        font-size: 0.8rem;
+      }
+      h2 {
+        font-size: 0.9rem;
         font-weight: 300;
         text-align: end;
+      }
     }
-   }
     .owner {
       gap: 10px;
       cursor: pointer;
@@ -51,39 +51,39 @@
       }
     }
     .total-worth {
-        align-items: end;
-        gap: 5px;
-        p {
-            font-size: .8rem;
-            text-transform: uppercase;
-        }
-        h2 {
-            font-weight: 400;
-            font-size: 1.2rem;
-        }
+      align-items: end;
+      gap: 5px;
+      p {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: 400;
+        font-size: 1.2rem;
+      }
     }
     button {
-        width: 150px;
-        height: 40px;
-        background: #333;
-        color: white;
-        border: none;
-        text-transform: uppercase;
-        font-size: .8rem;
-        cursor: pointer;
+      width: 150px;
+      height: 40px;
+      background: #333;
+      color: white;
+      border: none;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      cursor: pointer;
     }
   }
 }
 
-.more-by-artist  {
-    h1 {
-        position: relative;
+.more-by-artist {
+  h1 {
+    position: relative;
+  }
+  .owner {
+    gap: 5px;
+    h2 {
+      font-weight: 400;
+      text-transform: capitalize;
     }
-    .owner {
-        gap: 5px;
-        h2 {
-            font-weight: 400;
-            text-transform: capitalize;
-        }
-    }
+  }
 }

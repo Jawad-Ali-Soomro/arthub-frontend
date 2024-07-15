@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
 
 const Art = () => {
-  document.title = "Explore Art"
+  document.title = "Explore Art";
   const navigate = useNavigate();
   const [main_data, set_data] = useState();
   const fetch_data = async () => {
@@ -27,9 +27,15 @@ const Art = () => {
           <h1 className="flex col">
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
-          <button><img src="../public/filter.svg" alt="" /></button>
+          <button>
+            <img src="../public/filter.svg" alt="" />
+          </button>
           <div className="length lex">
-            <p>{main_data == undefined ? "Fetching..." : main_data?.length+" Results Found!"}</p>
+            <p>
+              {main_data == undefined
+                ? "Fetching..."
+                : main_data?.length + " Results Found!"}
+            </p>
           </div>
         </section>
         {main_data == undefined ? (
@@ -46,7 +52,10 @@ const Art = () => {
                   <img src={card_item?.image} alt="" />
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>
-                    <div className="owner flex" onClick={() => navigate(`/user/${card_item?.owner?._id}`)}>
+                    <div
+                      className="owner flex"
+                      onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                    >
                       <img src={card_item?.owner?.avatar} alt="" />
                       <div className="wrap flex col">
                         <p>ARTIST</p>

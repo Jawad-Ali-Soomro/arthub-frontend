@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 const FeaturedSeries = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [main_data, set_data] = useState();
   const fetch_data = async () => {
     try {
@@ -48,11 +48,20 @@ const FeaturedSeries = () => {
             return (
               <div className="card flex col">
                 <div className="img-sect flex">
-                  <img className="border" src={card_item?.image} alt="" onClick={() => navigate(`/series/${card_item?._id}`)} />
+                  <img
+                    className="border"
+                    src={card_item?.image}
+                    alt=""
+                    onClick={() => navigate(`/series/${card_item?._id}`)}
+                  />
                 </div>
                 <div className="info flex col">
                   <h2>{card_item?.title}</h2>
-                  <div className="owner flex" style={{cursor:'pointer'}} onClick={() => navigate(`/user/${card_item?.owner?._id}`)}>
+                  <div
+                    className="owner flex"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                  >
                     <div className="left flex">
                       <img
                         className="border"
@@ -72,7 +81,12 @@ const FeaturedSeries = () => {
                     <h2 style={{ textTransform: "capitalize" }}>
                       {card_item?.art?.length} artworks
                     </h2>
-                    <button className="flex" onClick={() => navigate(`/series/${card_item?._id}`)}>view</button>
+                    <button
+                      className="flex"
+                      onClick={() => navigate(`/series/${card_item?._id}`)}
+                    >
+                      view
+                    </button>
                   </div>
                 </div>
               </div>

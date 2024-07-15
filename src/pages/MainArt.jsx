@@ -18,15 +18,15 @@ const MainArt = () => {
   const { artId } = useParams();
   const fetch_data = async () => {
     await axios
-    .get(`${baseArtUrl}/get/art/${artId}`)
-    .then((res) => set_data(res.data.data));
+      .get(`${baseArtUrl}/get/art/${artId}`)
+      .then((res) => set_data(res.data.data));
   };
   const fetch_more = async () => {
     await axios
-    .get(`${baseUserUrl}/get/${main_data?.owner?._id}`)
-    .then((res) => {
-      set_more(res.data.data.art.splice(0, 3));
-    });
+      .get(`${baseUserUrl}/get/${main_data?.owner?._id}`)
+      .then((res) => {
+        set_more(res.data.data.art.splice(0, 3));
+      });
   };
   useEffect(() => {
     fetch_data();
@@ -67,12 +67,20 @@ const MainArt = () => {
                 }`,
               }}
             >
-              <div className="owner flex" onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
+              <div
+                className="owner flex"
+                onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+              >
                 <img className="border" src={main_data?.owner?.avatar} alt="" />
                 <h2>{main_data?.owner?.username}</h2>
               </div>
               {main_data?.series[0] !== undefined ? (
-                <div className="owner flex" onClick={() => navigate(`/series/${main_data?.series[0]._id}`)}>
+                <div
+                  className="owner flex"
+                  onClick={() =>
+                    navigate(`/series/${main_data?.series[0]._id}`)
+                  }
+                >
                   <img
                     className="border"
                     src={main_data?.series[0]?.image}
@@ -135,7 +143,10 @@ const MainArt = () => {
                     </div>
                     <div className="btns flex">
                       <button
-                        onClick={() => navigate(`/art/${card_item?._id}`) + window.location.reload()}
+                        onClick={() =>
+                          navigate(`/art/${card_item?._id}`) +
+                          window.location.reload()
+                        }
                       >
                         Buy
                       </button>

@@ -22,8 +22,6 @@
   --shadow-color-dark: rgba(0, 0, 0, 0.4);
 }
 
-
-
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -50,15 +48,18 @@ button.accent {
   border: 1px solid #80808070;
 }
 
-
-div , button  {
+div,
+button {
   border-radius: 5px;
 }
 
-p::selection , h1::selection, h2::selection ,h3::selection {
+p::selection,
+h1::selection,
+h2::selection,
+h3::selection {
   background: transparent;
 }
 
 * {
-  transition: .3s;
+  transition: 0.3s;
 }

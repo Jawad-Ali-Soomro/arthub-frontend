@@ -54,7 +54,12 @@ const Spotlight = () => {
               return (
                 <div className="card flex col">
                   <div className="img-sect flex">
-                    <img className="border" src={card_item?.image} alt="" onClick={() => navigate(`/art/${card_item?._id}`)} />
+                    <img
+                      className="border"
+                      src={card_item?.image}
+                      alt=""
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                    />
                   </div>
                   <div className="info flex col">
                     <h2>{card_item?.title}</h2>
@@ -64,7 +69,12 @@ const Spotlight = () => {
                         {card_item?.price} ≈{" "}
                         <span>${card_item?.price * ethToUsd}</span>
                       </h2>
-                      <button className="flex" onClick={() => navigate(`/art/${card_item?._id}`)}>Buy</button>
+                      <button
+                        className="flex"
+                        onClick={() => navigate(`/art/${card_item?._id}`)}
+                      >
+                        Buy
+                      </button>
                     </div>
                   </div>
                 </div>

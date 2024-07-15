@@ -34,7 +34,7 @@ const MainUser = () => {
     date.getMonth() + 1,
     date.getDate(),
   ];
-  document.title = `${main_data?.username}'s Profile`
+  document.title = `${main_data?.username}'s Profile`;
   return (
     <div>
       <Header />

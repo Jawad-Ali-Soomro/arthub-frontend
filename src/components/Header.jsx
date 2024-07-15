@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { switchToDarkMode, switchToLightMode } from "../utils/toggler";
 import "../styles/Header.scss";
 import {
+  BiChat,
   BiLogoDribbble,
   BiLogoFacebook,
   BiLogoGithub,
   BiLogoInstagram,
   BiLogoTwitter,
+  BiMessage,
   BiSearch,
 } from "react-icons/bi";
 import { FaAdjust } from "react-icons/fa";
@@ -125,6 +127,9 @@ const Header = () => {
           <li className="icon">Auction</li>
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
+          </li>
+          <li className="icon flex">
+            <BiChat style={{ fontSize: "1.1rem" }} />{" "}
           </li>
         </ul>
         <div
