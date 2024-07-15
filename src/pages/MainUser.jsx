@@ -6,14 +6,19 @@ import Footer from "../components/Footer";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
+  BiCircleThreeQuarter,
   BiCopy,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
   BiScan,
+  BiShare,
+  BiShareAlt,
   BiUserPlus,
 } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
+import { FaEthereum } from "react-icons/fa";
+import { SiEthereum } from "react-icons/si";
 
 const MainUser = () => {
   const navigate = useNavigate();
@@ -35,116 +40,81 @@ const MainUser = () => {
     date.getDate(),
   ];
   document.title = `${main_data?.username}'s Profile`;
+  const colors = ["blue", "black", "orange", "indigo", "violet"];
+
+  function getRandomColor(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  const [randomColor, setRandomColor] = useState();
+  window.onload = () => [setRandomColor(getRandomColor(colors))];
+
+  function getMonthName(monthNumber) {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return monthNames[monthNumber - 1];
+  }
+
+  const monthInText = getMonthName(month);
+
   return (
     <div>
       <Header />
-      <div className="top-profile flex">
-        {main_data == undefined ? (
-          <Skeleton width={400} height={400} />
-        ) : (
-          <div className="right-art flex">
-            <img src={main_data?.art[0]?.image} alt="" />
-          </div>
-        )}
-        {main_data == undefined ? (
-          <Skeleton width={600} height={600} />
-        ) : (
-          <div className="left-profile flex col">
-            <div className="owner flex">
-              <img src={main_data?.avatar} alt="" />
-              <div className="info-user flex col">
-                <h2>{main_data?.username}</h2>
-                <h4>
-                  @{main_data?.handle}{" "}
-                  <span>
-                    {main_data?.wallet_address.substring(0, 5)}...
-                    {main_data?.wallet_address?.substring(10, 5)}
-                  </span>
-                </h4>
-              </div>
-            </div>
-            <div className="icons flex">
-              <div className="icon flex">
-                <BiScan />
-              </div>
-              <div className="icon flex">
-                <BiUserPlus />
-              </div>
-            </div>
-            <div className="follower-wrapper flex">
-              <div className="followers flex">
-                <p>Followers</p>
-                {main_data?.followers?.length <= 0 ? (
-                  <div className="wrap flex">
-                    <h2>0</h2>
-                  </div>
-                ) : (
-                  <div className="wrap flex">
-                    {main_data?.followers?.map((card_item) => {
-                      return <img src={card_item?.avatar} alt="" />;
-                    })}
-                  </div>
-                )}
-              </div>
-              <div className="line"></div>
-              <div className="followers flex">
-                <p>Following</p>
-                {main_data?.following?.length <= 0 ? (
-                  <div className="wrap flex">
-                    <h2>0</h2>
-                  </div>
-                ) : (
-                  <div className="wrap flex">
-                    {main_data?.following?.map((card_item) => {
-                      return <img src={card_item?.avatar} alt="" />;
-                    })}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="joined flex col">
+      <div className="top-profile flex col">
+        <div
+          className="bg-image"
+          style={{
+            background: `${
+              main_data?.bg_image == undefined
+                ? randomColor == undefined
+                  ? "#111"
+                  : randomColor
+                : main_data?.bg_image
+            }`,
+          }}
+        >
+          <div className="profile flex col">
+            <img src={main_data?.avatar} alt="" />
+            <h2>{main_data?.username}</h2>
+            <div className="flex" style={{ gap: "5px" }}>
+              <p>@{main_data?.handle}</p>
               <p className="flex">
-                <img src="../public/logo.png" alt="" />
-                Joined &nbsp; {day}-{month}-{year}
+                <SiEthereum />
+                {main_data?.wallet_address.substring(0, 5)}...
+                {main_data?.wallet_address?.substring(5, 10)}
               </p>
             </div>
-            <div className="links flex">
-              {main_data?.links[0]?.facebook !== "" ? (
-                <Link
-                  to={main_data?.links[0]?.facebook}
-                  target="_blank"
-                  className="link flex"
-                >
-                  <BiLogoFacebook />
-                </Link>
-              ) : (
-                this
-              )}
-              {main_data?.links[0]?.twitter !== "" ? (
-                <Link
-                  to={main_data?.links[0]?.twitter}
-                  target="_blank"
-                  className="link flex"
-                >
-                  <BiLogoTwitter />
-                </Link>
-              ) : (
-                this
-              )}
-              {main_data?.links[0]?.instagram !== "" ? (
-                <Link
-                  to={main_data?.links[0]?.instagram}
-                  target="_blank"
-                  className="link flex"
-                >
-                  <BiLogoInstagram />
-                </Link>
-              ) : (
-                this
-              )}
+          </div>
+          <div
+            className="icons flex"
+            style={{
+              background: `${randomColor == undefined ? "#222" : randomColor}`,
+            }}
+          >
+            <div className="icon flex">
+              <BiShareAlt />
+            </div>
+            <div className="icon flex">
+              <BiUserPlus />
+            </div>
+            <div className="icon flex">
+              <BiScan />
             </div>
           </div>
-        )}
+        </div>
       </div>
       <div className="tag-menu flex">
         <p

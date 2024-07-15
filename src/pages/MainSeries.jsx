@@ -6,6 +6,7 @@ import { baseSeriesUrl, ethToUsd } from "../utils/constant";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
+import { BiHeart, BiScan } from "react-icons/bi";
 
 const MainSeries = () => {
   const [main_data, set_data] = React.useState();
@@ -39,22 +40,31 @@ const MainSeries = () => {
           {main_data == undefined ? (
             <Skeleton width={600} height={600} />
           ) : (
-            <img src={main_data?.image} alt="" />
+            <div className="wrap flex">
+              <img src={main_data?.image} alt="" />
+              <div
+                className="owner flex"
+                onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+              >
+                <img src={main_data?.owner?.avatar} alt="" />
+                <h2>{main_data?.owner?.username}</h2>
+              </div>
+            </div>
           )}
         </div>
         {main_data == undefined ? (
           <Skeleton width={400} height={400} style={{ marginTop: "200px" }} />
         ) : (
           <div className="right-content flex col">
-            <h1>{main_data?.title}</h1>
-
-            <div
-              className="owner flex"
-              onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
-            >
-              <img src={main_data?.owner?.avatar} alt="" />
-              <h2>{main_data?.owner?.username}</h2>
+            <div className="icons flex">
+              <div className="icon flex border">
+                <BiHeart />
+              </div>
+              <div className="icon flex border">
+                <BiScan />
+              </div>
             </div>
+            <h1>{main_data?.title}</h1>
             <div className="total-worth flex col">
               <p>Total Price</p>
               <h2>
