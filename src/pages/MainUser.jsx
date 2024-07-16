@@ -70,13 +70,13 @@ const MainUser = () => {
   }
 
   const monthInText = getMonthName(month);
-
+  // console.log(main_data?.links);
   return (
     <div>
       <Header />
       <div className="top-profile flex col">
         <div
-          className="bg-image flex border"
+          className="bg-image flex border col"
           style={{
             background: `${
               main_data?.bg_image == undefined
@@ -99,7 +99,33 @@ const MainUser = () => {
               </p>
             </div>
           </div>
-          <h1>{main_data?.username}</h1>
+          <h1 style={{ marginTop: "30px" }}>{main_data?.username}</h1>
+          {/* <h2>
+            Joined {day} {monthInText} {year}
+          </h2> */}
+          <div className="links flex">
+            {main_data?.links[0]?.facebook !== "" ? (
+              <Link className="link flex" to={main_data?.links[0]?.facebook}>
+                <BiLogoFacebook />
+              </Link>
+            ) : (
+              this
+            )}
+            {main_data?.links[0]?.twitter !== "" ? (
+              <Link className="link flex" to={main_data?.links[0]?.twitter}>
+                <BiLogoTwitter />
+              </Link>
+            ) : (
+              this
+            )}
+            {main_data?.links[0]?.instagram !== "" ? (
+              <Link className="link flex" to={main_data?.links[0]?.instagram}>
+                <BiLogoInstagram />
+              </Link>
+            ) : (
+              this
+            )}
+          </div>
           <div
             className="icons flex"
             style={{

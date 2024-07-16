@@ -79,6 +79,7 @@ const MainSeries = () => {
               </p>
             </div>
           </div>
+          <img src={main_data?.image} alt="" />
           <h1>{main_data?.title}</h1>
           <div
             className="icons flex"
