@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/mainSeries.scss";
 import Header from "../components/Header";
 import axios from "axios";
@@ -6,7 +6,13 @@ import { baseSeriesUrl, ethToUsd } from "../utils/constant";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
-import { BiHeart, BiScan } from "react-icons/bi";
+import {
+  BiShareAlt,
+  BiUserPlus,
+  BiChat,
+  BiPurchaseTagAlt,
+} from "react-icons/bi";
+import { SiEthereum } from "react-icons/si";
 
 const MainSeries = () => {
   const [main_data, set_data] = React.useState();
@@ -32,51 +38,65 @@ const MainSeries = () => {
   };
   const totalPricesSum = sumArtPrices(main_data?.art);
   document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
+  const colors = ["blue", "black", "orange", "indigo", "violet"];
+
+  function getRandomColor(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  const [randomColor, setRandomColor] = useState();
+  window.onload = () => [setRandomColor(getRandomColor(colors))];
   return (
     <div>
       <Header />
-      <div className="top-series flex">
-        <div className="left-image flex">
-          {main_data == undefined ? (
-            <Skeleton width={600} height={600} />
-          ) : (
-            <div className="wrap flex">
-              <img src={main_data?.image} alt="" />
-              <div
-                className="owner flex"
-                onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
-              >
-                <img src={main_data?.owner?.avatar} alt="" />
-                <h2>{main_data?.owner?.username}</h2>
-              </div>
+      <div className="top-profile flex col">
+        <div
+          className="bg-image flex border"
+          style={{
+            background: `${
+              main_data?.bg_image == undefined
+                ? randomColor == undefined
+                  ? "#111"
+                  : randomColor
+                : main_data?.bg_image
+            }`,
+          }}
+        >
+          <div className="profile flex col">
+            <img src={main_data?.owner?.avatar} alt="" />
+            <h2>{main_data?.owner?.username}</h2>
+            <div className="flex" style={{ gap: "5px" }}>
+              <p style={{ textTransform: "capitalize" }}>
+                Total creations : {main_data?.art?.length}
+              </p>{" "}
+              &nbsp;
+              <p className="flex">
+                ${totalPricesSum}{" "}
+                <span>
+                  <BiPurchaseTagAlt />
+                </span>
+              </p>
             </div>
-          )}
-        </div>
-        {main_data == undefined ? (
-          <Skeleton width={400} height={400} style={{ marginTop: "200px" }} />
-        ) : (
-          <div className="right-content flex col">
-            <div className="icons flex">
-              <div className="icon flex border">
-                <BiHeart />
-              </div>
-              <div className="icon flex border">
-                <BiScan />
-              </div>
-            </div>
-            <h1>{main_data?.title}</h1>
-            <div className="total-worth flex col">
-              <p>Total Price</p>
-              <h2>
-                {totalPricesSum} ≈ ${totalPricesSum * ethToUsd}
-              </h2>
-            </div>
-            <div className="description flex col">
-              <h2>{main_data?.description}</h2>
-            </div>
-            <button>Buy All</button>
           </div>
-        )}
+          <h1>{main_data?.title}</h1>
+          <div
+            className="icons flex"
+            style={{
+              background: `${randomColor == undefined ? "#222" : randomColor}`,
+            }}
+          >
+            <div className="icon flex">
+              <BiShareAlt />
+            </div>
+            <div className="icon flex">
+              <BiPurchaseTagAlt />
+            </div>
+            <div className="icon flex">
+              <BiChat />
+            </div>
+          </div>
+        </div>
       </div>
       <div className="more-by-artist flex col">
         <h1>

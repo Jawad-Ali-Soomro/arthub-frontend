@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
+  BiChat,
   BiCircleThreeQuarter,
   BiCopy,
   BiLogoFacebook,
@@ -75,7 +76,7 @@ const MainUser = () => {
       <Header />
       <div className="top-profile flex col">
         <div
-          className="bg-image"
+          className="bg-image flex border"
           style={{
             background: `${
               main_data?.bg_image == undefined
@@ -98,6 +99,7 @@ const MainUser = () => {
               </p>
             </div>
           </div>
+          <h1>{main_data?.username}</h1>
           <div
             className="icons flex"
             style={{
@@ -111,7 +113,7 @@ const MainUser = () => {
               <BiUserPlus />
             </div>
             <div className="icon flex">
-              <BiScan />
+              <BiChat />
             </div>
           </div>
         </div>
@@ -148,6 +150,16 @@ const MainUser = () => {
                       <img src={card_item?.image} alt="" />
                       <div className="info flex col">
                         <h3>{card_item?.title}</h3>
+                        <div
+                          className="owner flex"
+                          onClick={() => navigate(`/user/${main_data?._id}`)}
+                        >
+                          <img src={main_data?.avatar} alt="" />
+                          <div className="wrap">
+                            <p>OWNER</p>
+                            <h2>{main_data?.username}</h2>
+                          </div>
+                        </div>
                         <div className="price flex col">
                           <p>price</p>
                           <h2>
@@ -176,6 +188,16 @@ const MainUser = () => {
                       <img src={card_item?.image} alt="" />
                       <div className="info flex col">
                         <h3>{card_item?.title}</h3>
+                        <div
+                          className="owner flex"
+                          onClick={() => navigate(`/user/${main_data?._id}`)}
+                        >
+                          <img src={main_data?.avatar} alt="" />
+                          <div className="wrap">
+                            <p>OWNER</p>
+                            <h2>{main_data?.username}</h2>
+                          </div>
+                        </div>
                         <div className="price flex col">
                           <p>total</p>
                           <h2
