@@ -6,20 +6,12 @@ import Footer from "../components/Footer";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  BiChat,
-  BiCircleThreeQuarter,
   BiCopy,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
-  BiScan,
-  BiShare,
-  BiShareAlt,
-  BiUserPlus,
 } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
-import { FaEthereum } from "react-icons/fa";
-import { SiEthereum } from "react-icons/si";
 
 const MainUser = () => {
   const navigate = useNavigate();
@@ -41,15 +33,6 @@ const MainUser = () => {
     date.getDate(),
   ];
   document.title = `${main_data?.username}'s Profile`;
-  const colors = ["blue", "black", "orange", "indigo", "violet"];
-
-  function getRandomColor(arr) {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
-  }
-
-  const [randomColor, setRandomColor] = useState();
-  window.onload = () => [setRandomColor(getRandomColor(colors))];
 
   function getMonthName(monthNumber) {
     const monthNames = [
@@ -70,76 +53,82 @@ const MainUser = () => {
   }
 
   const monthInText = getMonthName(month);
-  // console.log(main_data?.links);
   return (
     <div>
       <Header />
-      <div className="top-profile flex col">
-        <div
-          className="bg-image flex border col"
-          style={{
-            background: `${
-              main_data?.bg_image == undefined
-                ? randomColor == undefined
-                  ? "#111"
-                  : randomColor
-                : main_data?.bg_image
-            }`,
-          }}
-        >
-          <div className="profile flex col">
-            <img src={main_data?.avatar} alt="" />
-            <h2>{main_data?.username}</h2>
-            <div className="flex" style={{ gap: "5px" }}>
+      <div className="top-profile flex">
+        <div className="left flex">
+          <img src={main_data?.avatar} alt="" />
+          <div className="info flex col">
+            <h1>{main_data?.username}</h1>
+            <div className="handle flex">
               <p>@{main_data?.handle}</p>
-              <p className="flex">
-                <SiEthereum />
+              <p>
                 {main_data?.wallet_address.substring(0, 5)}...
-                {main_data?.wallet_address?.substring(5, 10)}
+                {main_data?.wallet_address.substring(10, 5)}
+                <span>
+                  <BiCopy />
+                </span>
               </p>
             </div>
-          </div>
-          <h1 style={{ marginTop: "30px" }}>{main_data?.username}</h1>
-          {/* <h2>
-            Joined {day} {monthInText} {year}
-          </h2> */}
-          <div className="links flex">
-            {main_data?.links[0]?.facebook !== "" ? (
-              <Link className="link flex" to={main_data?.links[0]?.facebook}>
-                <BiLogoFacebook />
-              </Link>
-            ) : (
-              this
-            )}
-            {main_data?.links[0]?.twitter !== "" ? (
-              <Link className="link flex" to={main_data?.links[0]?.twitter}>
-                <BiLogoTwitter />
-              </Link>
-            ) : (
-              this
-            )}
-            {main_data?.links[0]?.instagram !== "" ? (
-              <Link className="link flex" to={main_data?.links[0]?.instagram}>
-                <BiLogoInstagram />
-              </Link>
-            ) : (
-              this
-            )}
-          </div>
-          <div
-            className="icons flex"
-            style={{
-              background: `${randomColor == undefined ? "#222" : randomColor}`,
-            }}
-          >
-            <div className="icon flex">
-              <BiShareAlt />
+            <div className="links flex">
+              {main_data?.links[0]?.facebook == "" ? (
+                ""
+              ) : (
+                <Link
+                  className="link flex border"
+                  to={main_data?.links[0]?.facebook}
+                >
+                  <BiLogoFacebook />
+                </Link>
+              )}
+              {main_data?.links[0]?.twitter == "" ? (
+                ""
+              ) : (
+                <Link
+                  className="link flex border"
+                  to={main_data?.links[0]?.twitter}
+                >
+                  <BiLogoTwitter />
+                </Link>
+              )}
+              {main_data?.links[0]?.instagram == "" ? (
+                ""
+              ) : (
+                <Link
+                  className="link flex border"
+                  to={main_data?.links[0]?.instagram}
+                >
+                  <BiLogoInstagram />
+                </Link>
+              )}
             </div>
-            <div className="icon flex">
-              <BiUserPlus />
+          </div>
+        </div>
+        <div className="right flex col">
+          <div className="card flex col">
+            <div className="img-sect flex">
+              <img
+                className="border"
+                src={main_data?.art[0]?.image}
+                alt=""
+                onClick={() => navigate(`/art/${main_data[0]?._id}`)}
+              />
             </div>
-            <div className="icon flex">
-              <BiChat />
+            <div className="info flex col">
+              <h2>{main_data?.art[0]?.title}</h2>
+              <div className="price flex">
+                <h2>
+                  {main_data?.art[0]?.price} ≈{" "}
+                  <span>${main_data?.art[0]?.price * ethToUsd}</span>
+                </h2>
+                <button
+                  className="flex"
+                  onClick={() => navigate(`/art/${main_data[0]?._id}`)}
+                >
+                  Buy
+                </button>
+              </div>
             </div>
           </div>
         </div>
