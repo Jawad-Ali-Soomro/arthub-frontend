@@ -57,52 +57,68 @@ const MainUser = () => {
     <div>
       <Header />
       <div className="top-profile flex">
-        <div className="left flex">
-          <img src={main_data?.avatar} alt="" />
-          <div className="info flex col">
-            <h1>{main_data?.username}</h1>
-            <div className="handle flex">
-              <p>@{main_data?.handle}</p>
-              <p>
-                {main_data?.wallet_address.substring(0, 5)}...
-                {main_data?.wallet_address.substring(10, 5)}
-                <span>
-                  <BiCopy />
-                </span>
-              </p>
+        <div className="left flex col">
+          <div className="wrap flex">
+            <img src={main_data?.avatar} alt="" />
+            <div className="info flex col">
+              <h1>{main_data?.username}</h1>
+              <div className="handle flex">
+                <p>@{main_data?.handle}</p>
+                <p>
+                  {main_data?.wallet_address.substring(0, 5)}...
+                  {main_data?.wallet_address.substring(10, 5)}
+                  <span>
+                    <BiCopy />
+                  </span>
+                </p>
+              </div>
+              <div className="links flex">
+                {main_data?.links[0]?.facebook == "" ? (
+                  ""
+                ) : (
+                  <Link
+                    className="link flex border"
+                    to={main_data?.links[0]?.facebook}
+                  >
+                    <BiLogoFacebook />
+                  </Link>
+                )}
+                {main_data?.links[0]?.twitter == "" ? (
+                  ""
+                ) : (
+                  <Link
+                    className="link flex border"
+                    to={main_data?.links[0]?.twitter}
+                  >
+                    <BiLogoTwitter />
+                  </Link>
+                )}
+                {main_data?.links[0]?.instagram == "" ? (
+                  ""
+                ) : (
+                  <Link
+                    className="link flex border"
+                    to={main_data?.links[0]?.instagram}
+                  >
+                    <BiLogoInstagram />
+                  </Link>
+                )}
+              </div>
             </div>
-            <div className="links flex">
-              {main_data?.links[0]?.facebook == "" ? (
-                ""
-              ) : (
-                <Link
-                  className="link flex border"
-                  to={main_data?.links[0]?.facebook}
-                >
-                  <BiLogoFacebook />
-                </Link>
-              )}
-              {main_data?.links[0]?.twitter == "" ? (
-                ""
-              ) : (
-                <Link
-                  className="link flex border"
-                  to={main_data?.links[0]?.twitter}
-                >
-                  <BiLogoTwitter />
-                </Link>
-              )}
-              {main_data?.links[0]?.instagram == "" ? (
-                ""
-              ) : (
-                <Link
-                  className="link flex border"
-                  to={main_data?.links[0]?.instagram}
-                >
-                  <BiLogoInstagram />
-                </Link>
-              )}
+          </div>
+          <div className="btns flex">
+            <div className="sect flex border">
+              <p>Followers</p>
+              <h2>{main_data?.followers?.length}</h2>
             </div>
+            <div className="sect flex border">
+              <p>following</p>
+              <h2>{main_data?.following?.length}</h2>
+            </div>
+          </div>
+          <div className="btns flex">
+            <button>FOLLOW</button>
+            <button>MESSAGE</button>
           </div>
         </div>
         <div className="right flex col">
@@ -112,7 +128,7 @@ const MainUser = () => {
                 className="border"
                 src={main_data?.art[0]?.image}
                 alt=""
-                onClick={() => navigate(`/art/${main_data[0]?._id}`)}
+                onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
               />
             </div>
             <div className="info flex col">
