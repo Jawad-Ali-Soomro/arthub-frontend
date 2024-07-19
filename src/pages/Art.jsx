@@ -10,15 +10,21 @@ import Skeleton from "react-loading-skeleton";
 const Art = () => {
   document.title = "Explore Art";
   const navigate = useNavigate();
-  const [main_data, set_data] = useState();
-  const fetch_data = async () => {
-    await axios.get(`${baseArtUrl}/get/all`).then((res) => {
-      set_data(res.data.data);
-    });
+  const [mainData, setMainData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${baseArtUrl}/get/all`);
+      setMainData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching art data:", error);
+    }
   };
+
   useEffect(() => {
-    fetch_data();
-  });
+    fetchData();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   return (
     <div>
       <Header />
@@ -28,17 +34,17 @@ const Art = () => {
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
           <button>
-            <img src="../public/filter.svg" alt="" />
+            <img src="../public/filter.svg" alt="Filter" />
           </button>
-          <div className="length lex">
+          <div className="length flex">
             <p>
-              {main_data == undefined
+              {mainData.length === 0
                 ? "Fetching..."
-                : main_data?.length + " Results Found!"}
+                : `${mainData.length} Results Found!`}
             </p>
           </div>
         </section>
-        {main_data == undefined ? (
+        {mainData.length === 0 ? (
           <div className="main-data flex">
             <Skeleton width={350} height={380} />
             <Skeleton width={350} height={380} />
@@ -46,40 +52,39 @@ const Art = () => {
           </div>
         ) : (
           <div className="main-data flex">
-            {main_data?.map((card_item) => {
-              return (
-                <div className="card flex">
-                  <img src={card_item?.image} alt="" />
-                  <div className="info flex col">
-                    <h3>{card_item?.title}</h3>
-                    <div
-                      className="owner flex"
-                      onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
-                    >
-                      <img src={card_item?.owner?.avatar} alt="" />
-                      <div className="wrap flex col">
-                        <p>ARTIST</p>
-                        <h2>{card_item?.owner?.username}</h2>
-                      </div>
-                    </div>
-                    <div className="price flex col">
-                      <p>price</p>
-                      <h2>
-                        {card_item?.price} ≈{" "}
-                        <span>${card_item?.price * ethToUsd}</span>
-                      </h2>
-                    </div>
-                    <div className="btns flex">
-                      <button
-                        onClick={() => navigate(`/art/${card_item?._id}`)}
-                      >
-                        Buy
-                      </button>
+            {mainData.map((cardItem) => (
+              <div className="card flex" key={cardItem._id}>
+                <img src={cardItem.image} alt={cardItem.title} />
+                <div className="info flex col">
+                  <h3>{cardItem.title}</h3>
+                  <div
+                    className="owner flex"
+                    onClick={() => navigate(`/user/${cardItem.owner?._id}`)}
+                  >
+                    <img
+                      src={cardItem.owner?.avatar}
+                      alt={cardItem.owner?.username}
+                    />
+                    <div className="wrap flex col">
+                      <p>ARTIST</p>
+                      <h2>{cardItem.owner?.username}</h2>
                     </div>
                   </div>
+                  <div className="price flex col">
+                    <p>Price</p>
+                    <h2>
+                      {cardItem.price} ≈{" "}
+                      <span>${cardItem.price * ethToUsd}</span>
+                    </h2>
+                  </div>
+                  <div className="btns flex">
+                    <button onClick={() => navigate(`/art/${cardItem._id}`)}>
+                      Buy
+                    </button>
+                  </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         )}
       </div>

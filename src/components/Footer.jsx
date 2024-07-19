@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div className="footer-wrap">
       <div className="left flex col">
-        <img src="../public/logo.png" alt="" style={{ width: "50px" }} />
+        <img src="../public/logo.png" alt="Logo" style={{ width: "50px" }} />
         <div className="news-box flex col">
           <p>ARTWORK & NEWS TO YOUR BOX</p>
           <div className="input-box border">
@@ -23,6 +23,7 @@ const Footer = () => {
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeZhVNtTyuI9WqQf2Cj5vwx5geP0oQOOKvaEzU5jO5pkALDzA/viewform?usp=sf_link"
             target="_blank"
+            rel="noopener noreferrer"
             className="link flex"
           >
             Submit Artist Application <FaArrowRightLong />
@@ -69,9 +70,9 @@ const Footer = () => {
         <div className="community flex col">
           <p>LEGAL</p>
           <ul className="flex col" style={{ gap: "10px" }}>
-            <li>Terms of service</li>
-            <li>Report content</li>
-            <li>Cookie preferences</li>
+            <li>Terms of Service</li>
+            <li>Report Content</li>
+            <li>Cookie Preferences</li>
             <li>2024 &copy; arthub.com</li>
           </ul>
         </div>

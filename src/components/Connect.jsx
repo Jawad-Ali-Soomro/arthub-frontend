@@ -17,15 +17,21 @@ const WalletSection = ({ onClose }) => {
     );
   }, []);
 
-  useEffect(() => {
-    console.log("Installed Wallets:", installedWallets);
-    console.log("Recommended Wallets:", recommendedWallets);
-  }, [installedWallets, recommendedWallets]);
-
   const walletImages = {
     MetaMask: "../public/metamask.png",
     TrustWallet: "../public/twt.png",
     Coinbase: "../public/coinbase.png",
+  };
+
+  const handleWalletClick = (wallet) => {
+    if (wallet === "MetaMask") {
+      connectMetaMask();
+    } else if (wallet === "TrustWallet") {
+      window.location.href =
+        "https://chromewebstore.google.com/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph";
+    } else if (wallet === "Coinbase") {
+      toast.error("Service Unavailable");
+    }
   };
 
   return ReactDOM.createPortal(
@@ -47,9 +53,7 @@ const WalletSection = ({ onClose }) => {
               <div
                 key={wallet}
                 className="wrap flex"
-                onClick={() =>
-                  wallet == "MetaMask" ? connectMetaMask() : this
-                }
+                onClick={() => handleWalletClick(wallet)}
               >
                 <img src={walletImages[wallet]} alt={wallet} />
                 <h2>{wallet}</h2>
@@ -64,6 +68,7 @@ const WalletSection = ({ onClose }) => {
             </div>
           )}
         </div>
+
         <div
           className="recommended-wallets main-wrapper flex col"
           style={{ marginTop: "20px" }}
@@ -74,17 +79,7 @@ const WalletSection = ({ onClose }) => {
               <div
                 key={wallet}
                 className="wrap flex"
-                onClick={() =>
-                  wallet == "MetaMask"
-                    ? (window.location.href =
-                        "https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn")
-                    : wallet == "TrustWallet"
-                    ? (window.location.href =
-                        "https://chromewebstore.google.com/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph")
-                    : wallet == "Coinbase"
-                    ? toast.error("Service Unavailabale")
-                    : this
-                }
+                onClick={() => handleWalletClick(wallet)}
               >
                 <img src={walletImages[wallet]} alt={wallet} />
                 <h2>{wallet}</h2>

@@ -7,6 +7,7 @@ import Skeleton from "react-loading-skeleton";
 const Spotlight = () => {
   const [main_data, set_data] = useState();
   const navigate = useNavigate();
+
   const fetch_data = async () => {
     try {
       const response = await axios.get(
@@ -20,6 +21,7 @@ const Spotlight = () => {
       console.error("Error fetching featured images:", error);
     }
   };
+
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -31,6 +33,7 @@ const Spotlight = () => {
   useEffect(() => {
     fetch_data();
   }, []);
+
   return (
     <div>
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
@@ -42,7 +45,7 @@ const Spotlight = () => {
           culture on our everyday lives, offering a unique and fresh perspective
           on the world around us.
         </p>
-        {main_data == undefined ? (
+        {main_data === undefined ? (
           <div className="wrapper flex">
             <Skeleton width={360} height={410} />
             <Skeleton width={360} height={410} />
@@ -50,36 +53,34 @@ const Spotlight = () => {
           </div>
         ) : (
           <div className="wrapper flex">
-            {main_data?.map((card_item) => {
-              return (
-                <div className="card flex col">
-                  <div className="img-sect flex">
-                    <img
-                      className="border"
-                      src={card_item?.image}
-                      alt=""
+            {main_data.map((card_item) => (
+              <div className="card flex col" key={card_item._id}>
+                <div className="img-sect flex">
+                  <img
+                    className="border"
+                    src={card_item?.image}
+                    alt={card_item?.title}
+                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                  />
+                </div>
+                <div className="info flex col">
+                  <h2>{card_item?.title}</h2>
+                  <div className="border"></div>
+                  <div className="price flex">
+                    <h2>
+                      {card_item?.price} ≈{" "}
+                      <span>${card_item?.price * ethToUsd}</span>
+                    </h2>
+                    <button
+                      className="flex"
                       onClick={() => navigate(`/art/${card_item?._id}`)}
-                    />
-                  </div>
-                  <div className="info flex col">
-                    <h2>{card_item?.title}</h2>
-                    <div className="border"></div>
-                    <div className="price flex">
-                      <h2>
-                        {card_item?.price} ≈{" "}
-                        <span>${card_item?.price * ethToUsd}</span>
-                      </h2>
-                      <button
-                        className="flex"
-                        onClick={() => navigate(`/art/${card_item?._id}`)}
-                      >
-                        Buy
-                      </button>
-                    </div>
+                    >
+                      Buy
+                    </button>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         )}
       </div>

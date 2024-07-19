@@ -12,8 +12,7 @@ import {
   BiSearch,
 } from "react-icons/bi";
 import { FaAdjust } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
 
@@ -24,7 +23,7 @@ const Header = () => {
   const location = window.location.pathname;
   const navigate = useNavigate();
   const walletId = window.sessionStorage.getItem("token");
-  const [show_menu, set_show_menu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     const theme = localStorage.getItem("themeMode");
@@ -48,11 +47,9 @@ const Header = () => {
 
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolling(true);
       if (window.scrollY > lastScrollY) {
         setIsVisible(false);
       } else {
@@ -61,38 +58,19 @@ const Header = () => {
       setLastScrollY(window.scrollY);
     };
 
-    const handleStopScroll = () => {
-      setIsScrolling(false);
-    };
-
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", () => {
-      setIsScrolling(true);
-      clearTimeout(handleStopScroll);
-      setTimeout(handleStopScroll, 150);
-    });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", handleStopScroll);
     };
   }, [lastScrollY]);
-  const [show_login, set_login] = useState(false);
-  const openLogin = () => {
-    set_login(true);
-  };
-  const closeLogin = () => {
-    set_login(false);
-  };
 
-  // wallet section
+  const [showLogin, setShowLogin] = useState(false);
+  const openLogin = () => setShowLogin(true);
+  const closeLogin = () => setShowLogin(false);
 
-  const [show_wallets, set_show_wallets] = useState(false);
-  const showWallets = () => {
-    set_show_wallets(true);
-  };
-  const closeWallets = () => {
-    set_show_wallets(false);
-  };
+  const [showWallets, setShowWallets] = useState(false);
+  const openWallets = () => setShowWallets(true);
+  const closeWallets = () => setShowWallets(false);
 
   return (
     <div
@@ -145,10 +123,7 @@ const Header = () => {
             <BiChat style={{ fontSize: "1.1rem" }} />
           </li>
         </ul>
-        <div
-          className="menu flex col"
-          onClick={() => set_show_menu(!show_menu)}
-        >
+        <div className="menu flex col" onClick={() => setShowMenu(!showMenu)}>
           <div
             className="line"
             style={{ background: `${isDarkMode ? "#fff" : "#111"}` }}
@@ -163,10 +138,10 @@ const Header = () => {
           ></div>
           <div
             className={
-              show_menu ? "main-menu-active flex col" : "main-menu flex col"
+              showMenu ? "main-menu-active flex col" : "main-menu flex col"
             }
             style={{
-              background: `${isDarkMode ? "rgba(255,2552,255,.1)" : "#333"}`,
+              background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
             }}
           >
             <p>Spaces</p>
@@ -197,13 +172,13 @@ const Header = () => {
         </div>
         <button
           className="border"
-          onClick={() => (walletId ? openLogin() : showWallets())}
+          onClick={() => (walletId ? openLogin() : openWallets())}
         >
           {walletId ? "LOGIN" : "CONNECT"}
         </button>
       </div>
-      {show_login === true && <Login onClose={closeLogin} />}
-      {show_wallets === true && <WalletSection onClose={closeWallets} />}
+      {showLogin && <Login onClose={closeLogin} />}
+      {showWallets && <WalletSection onClose={closeWallets} />}
     </div>
   );
 };

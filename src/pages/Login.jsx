@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "../styles/Login.scss";
-import { FaArrowLeftLong, FaArrowRightLong, FaAsterisk } from "react-icons/fa6";
+import { FaAsterisk } from "react-icons/fa6";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const loginPortal = document.getElementById("loginPortal");
 
 const Login = ({ onClose }) => {
-  const [show_pass, set_show_pass] = useState(false);
-  const [login_step, set_login_step] = useState(true);
+  const [showPass, setShowPass] = useState(false);
+  const [loginStep, setLoginStep] = useState(true);
   const navigate = useNavigate();
+
   return ReactDOM.createPortal(
     <div className="login-portal flex" onClick={onClose}>
       <div
         className="login-wrap flex col"
         style={{
-          transform: `${
-            login_step == false ? "translateX(400%)" : "translateX(0%)"
-          }`,
+          transform: loginStep ? "translateX(0%)" : "translateX(400%)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src="../public/logo-black.png" alt="" />
+        <img src="../public/logo-black.png" alt="Logo" />
         <h1>Welcome Back!</h1>
         <div className="form flex col">
           <div className="input-wrap flex col">
@@ -35,23 +33,23 @@ const Login = ({ onClose }) => {
           </div>
           <div className="input-wrap flex">
             <input
-              type={show_pass == true ? "text" : "password"}
+              type={showPass ? "text" : "password"}
               placeholder="Enter Password..."
             />
             <div className="icon flex">
-              {show_pass == false ? (
-                <BsEye onClick={() => set_show_pass(true)} />
+              {showPass ? (
+                <BsEyeSlash onClick={() => setShowPass(false)} />
               ) : (
-                <BsEyeSlash onClick={() => set_show_pass(false)} />
+                <BsEye onClick={() => setShowPass(true)} />
               )}
             </div>
           </div>
           <Link className="link">Forgot Password?</Link>
-          <button className="flex">Login </button>
+          <button className="flex">Login</button>
           <p
             style={{ cursor: "pointer" }}
             className="link"
-            onClick={() => set_login_step(false)}
+            onClick={() => setLoginStep(false)}
           >
             Don't Have An Account?
           </p>
@@ -61,12 +59,10 @@ const Login = ({ onClose }) => {
         className="register-wrap flex col"
         onClick={(e) => e.stopPropagation()}
         style={{
-          transform: `${
-            login_step == false ? "translateX(0%)" : "translateX(600%)"
-          }`,
+          transform: loginStep ? "translateX(600%)" : "translateX(0%)",
         }}
       >
-        <img src="../public/logo-black.png" alt="" />
+        <img src="../public/logo-black.png" alt="Logo" />
         <h1>Create An Account!</h1>
         <div className="wrap flex">
           <div className="form flex col">
@@ -84,33 +80,32 @@ const Login = ({ onClose }) => {
             </div>
             <div className="input-wrap flex">
               <input
-                type={show_pass == true ? "text" : "password"}
+                type={showPass ? "text" : "password"}
                 placeholder="Enter Password..."
               />
               <div className="icon flex">
-                {show_pass == false ? (
-                  <BsEye onClick={() => set_show_pass(true)} />
+                {showPass ? (
+                  <BsEyeSlash onClick={() => setShowPass(false)} />
                 ) : (
-                  <BsEyeSlash onClick={() => set_show_pass(false)} />
+                  <BsEye onClick={() => setShowPass(true)} />
                 )}
               </div>
             </div>
-
             <div className="input-wrap">
-              <input type="text" placeholder="Enter Facebook Url" />
+              <input type="text" placeholder="Enter Facebook URL" />
             </div>
           </div>
           <div className="form flex col">
             <div className="input-wrap">
-              <input type="text" placeholder="Enter Twitter Url" />
+              <input type="text" placeholder="Enter Twitter URL" />
             </div>
             <div className="input-wrap">
-              <input type="text" placeholder="Enter Instgram Url" />
+              <input type="text" placeholder="Enter Instagram URL" />
             </div>
             <div className="input-wrap text">
-              <input type="file" name="" id="" placeholder="Upload" />
+              <input type="file" name="avatar" id="avatar" />
               <p className="flex col">
-                Uplaod Avatar <span>Drag & Drop File To Upload!</span>
+                Upload Avatar <span>Drag & Drop File To Upload!</span>
               </p>
             </div>
           </div>
@@ -118,7 +113,7 @@ const Login = ({ onClose }) => {
         <div className="btns flex">
           <button>Register</button>
         </div>
-        <p className="link" onClick={() => set_login_step(true)}>
+        <p className="link" onClick={() => setLoginStep(true)}>
           Already Have An Account?
         </p>
       </div>
