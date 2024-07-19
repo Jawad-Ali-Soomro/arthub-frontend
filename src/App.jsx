@@ -12,7 +12,6 @@ import "./utils/theme";
 import MainSeries from "./pages/MainSeries";
 import MainUser from "./pages/MainUser";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 
 function App() {
   return (

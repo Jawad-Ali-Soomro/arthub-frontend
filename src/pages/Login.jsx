@@ -58,7 +58,7 @@ const Login = ({ onClose }) => {
             <FaArrowLeftLong />
           </div>
           <img src="../public/logo-black.png" alt="" />
-          <h1>Create an account!</h1>
+          <h1>Create An Account!</h1>
           <div className="wrap flex">
             <div className="form flex col">
               <div className="input-wrap">
