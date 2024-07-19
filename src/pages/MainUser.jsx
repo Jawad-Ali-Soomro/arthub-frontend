@@ -118,7 +118,7 @@ const MainUser = () => {
           </div>
           <div className="btns flex">
             <button>FOLLOW</button>
-            <button>MESSAGE</button>
+            {/* <button>MESSAGE</button> */}
           </div>
         </div>
         <div className="right flex col">

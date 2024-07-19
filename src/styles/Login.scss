@@ -6,8 +6,12 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  overflow: hidden;
+  justify-content: center !important;
   .login-wrap {
-    padding: 50px 40px;
+    width: 380px;
+    height: 420px;
+    position: absolute;
     background: white;
     color: #111;
     gap: 10px;
@@ -42,6 +46,11 @@
           outline: none;
           font-size: 0.8rem;
           border-radius: 5px;
+          border: 1px solid transparent;
+        }
+        input:focus-within {
+          border: 1px solid #111;
+          background: transparent;
         }
       }
       button {
@@ -128,6 +137,11 @@
             outline: none;
             font-size: 0.8rem;
             border-radius: 5px;
+            border: 1px solid transparent;
+          }
+          input:focus-within {
+            border: 1px solid #111;
+            background: white;
           }
         }
         .text {
