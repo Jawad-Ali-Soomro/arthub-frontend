@@ -11,6 +11,8 @@ import Series from "./pages/Series";
 import "./utils/theme";
 import MainSeries from "./pages/MainSeries";
 import MainUser from "./pages/MainUser";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="/art/:artId" element={<MainArt />}></Route>
           <Route path="/series/:seriesId" element={<MainSeries />}></Route>
           <Route path="/user/:userId" element={<MainUser />}></Route>
+          <Route path="/login" element={<Login />}></Route>
         </Routes>
       </BrowserRouter>
     </>

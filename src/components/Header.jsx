@@ -15,6 +15,7 @@ import { FaAdjust } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { connectMetamask } from "../utils/constant";
 import { Link } from "react-router-dom";
+import Login from "../pages/Login";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -75,6 +76,13 @@ const Header = () => {
       window.removeEventListener("scroll", handleStopScroll);
     };
   }, [lastScrollY]);
+  const [show_login, set_login] = useState(false);
+  const openLogin = () => {
+    set_login(true);
+  };
+  const closeLogin = () => {
+    set_login(false);
+  };
 
   return (
     <div
@@ -177,10 +185,14 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <button className="border" onClick={() => connectMetamask()}>
-          {walletId ? "CONNECTED" : "CONNECT"}
+        <button
+          className="border"
+          onClick={() => (walletId ? openLogin() : connectMetamask())}
+        >
+          {walletId ? "LOGIN" : "CONNECT"}
         </button>
       </div>
+      {show_login === true && <Login onClose={closeLogin} />}
     </div>
   );
 };
