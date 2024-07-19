@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "../styles/Login.scss";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaArrowRightLong, FaAsterisk } from "react-icons/fa6";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const loginPortal = document.getElementById("loginPortal");
 
@@ -28,6 +29,9 @@ const Login = ({ onClose }) => {
         <div className="form flex col">
           <div className="input-wrap flex col">
             <input type="text" placeholder="Enter Email..." />
+            <div className="icon flex">
+              <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
+            </div>
           </div>
           <div className="input-wrap flex">
             <input
@@ -62,15 +66,21 @@ const Login = ({ onClose }) => {
           }`,
         }}
       >
-        <div className="btn-back flex" onClick={() => set_login_step(true)}>
-          <FaArrowLeftLong />
-        </div>
         <img src="../public/logo-black.png" alt="" />
         <h1>Create An Account!</h1>
         <div className="wrap flex">
           <div className="form flex col">
             <div className="input-wrap">
+              <input type="text" placeholder="Enter Username" />
+              <div className="icon flex">
+                <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
+              </div>
+            </div>
+            <div className="input-wrap">
               <input type="text" placeholder="Enter Email" />
+              <div className="icon flex">
+                <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
+              </div>
             </div>
             <div className="input-wrap flex">
               <input
@@ -85,9 +95,7 @@ const Login = ({ onClose }) => {
                 )}
               </div>
             </div>
-            <div className="input-wrap">
-              <input type="text" placeholder="Enter Handle" />
-            </div>
+
             <div className="input-wrap">
               <input type="text" placeholder="Enter Facebook Url" />
             </div>
