@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "../styles/Connect.scss";
 import { checkWalletExtensions } from "../utils/constant";
 import { connectMetaMask } from "../utils/wallet_connect";
+import toast from "react-hot-toast";
 
 const WalletSection = ({ onClose }) => {
   const [installedWallets, setInstalledWallets] = useState([]);
@@ -55,7 +56,12 @@ const WalletSection = ({ onClose }) => {
               </div>
             ))
           ) : (
-            <p>No wallet extensions are installed</p>
+            <div
+              className="wrap flex"
+              style={{ border: "2px solid red", background: "#eee" }}
+            >
+              <p>No wallet extensions are installed</p>
+            </div>
           )}
         </div>
         <div
@@ -65,13 +71,32 @@ const WalletSection = ({ onClose }) => {
           <h2>Recommended Wallets</h2>
           {recommendedWallets.length > 0 ? (
             recommendedWallets.map((wallet) => (
-              <div key={wallet} className="wrap flex">
+              <div
+                key={wallet}
+                className="wrap flex"
+                onClick={() =>
+                  wallet == "MetaMask"
+                    ? (window.location.href =
+                        "https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn")
+                    : wallet == "TrustWallet"
+                    ? (window.location.href =
+                        "https://chromewebstore.google.com/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph")
+                    : wallet == "Coinbase"
+                    ? toast.error("Service Unavailabale")
+                    : this
+                }
+              >
                 <img src={walletImages[wallet]} alt={wallet} />
                 <h2>{wallet}</h2>
               </div>
             ))
           ) : (
-            <p>All recommended wallets are installed</p>
+            <div
+              className="wrap flex"
+              style={{ border: "2px solid green", background: "#eee" }}
+            >
+              <p>All recommended wallets are installed</p>
+            </div>
           )}
         </div>
       </div>
