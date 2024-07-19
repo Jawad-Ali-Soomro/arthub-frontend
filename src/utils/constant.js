@@ -5,22 +5,32 @@ const baseArtUrl = "http://localhost:8080/api/v1/art";
 const baseSeriesUrl = "http://localhost:8080/api/v1/series";
 const ethToUsd = 3800;
 
-const connectMetamask = async () => {
-  if (window.ethereum) {
-    try {
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-      console.log("Connected to Metamask!");
-      const web3 = new Web3(window.ethereum);
-      const accounts = await web3.eth.getAccounts();
-      console.log(web3.eth.Contract);
-      window.sessionStorage.setItem("token", accounts[0]);
-      window.location.reload();
-    } catch (error) {
-      toast.error("Error connecting to Metamask:", error);
-    }
-  } else {
-    toast.error("Please Install Metamask Extension");
+const checkWalletExtensions = () => {
+  const installedWallets = [];
+  const recommendedWallets = ["MetaMask", "TrustWallet", "Coinbase"];
+
+  // Check for MetaMask
+  if (typeof window.ethereum !== "undefined" && window.ethereum.isMetaMask) {
+    installedWallets.push("MetaMask");
   }
+
+  // Check for Trust Wallet
+  if (typeof window.ethereum !== "undefined" && window.ethereum.isTrust) {
+    installedWallets.push("TrustWallet");
+  }
+
+  // Check for Coinbase Wallet
+  if (typeof window.coinbaseWalletExtension !== "undefined") {
+    installedWallets.push("Coinbase");
+  }
+
+  return { installedWallets, recommendedWallets };
 };
 
-export { baseArtUrl, baseUserUrl, baseSeriesUrl, ethToUsd, connectMetamask };
+export {
+  baseArtUrl,
+  baseUserUrl,
+  baseSeriesUrl,
+  ethToUsd,
+  checkWalletExtensions,
+};

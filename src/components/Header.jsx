@@ -13,9 +13,9 @@ import {
 } from "react-icons/bi";
 import { FaAdjust } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { connectMetamask } from "../utils/constant";
 import { Link } from "react-router-dom";
 import Login from "../pages/Login";
+import WalletSection from "./Connect";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -82,6 +82,16 @@ const Header = () => {
   };
   const closeLogin = () => {
     set_login(false);
+  };
+
+  // wallet section
+
+  const [show_wallets, set_show_wallets] = useState(false);
+  const showWallets = () => {
+    set_show_wallets(true);
+  };
+  const closeWallets = () => {
+    set_show_wallets(false);
   };
 
   return (
@@ -187,12 +197,13 @@ const Header = () => {
         </div>
         <button
           className="border"
-          onClick={() => (walletId ? openLogin() : connectMetamask())}
+          onClick={() => (walletId ? openLogin() : showWallets())}
         >
           {walletId ? "LOGIN" : "CONNECT"}
         </button>
       </div>
       {show_login === true && <Login onClose={closeLogin} />}
+      {show_wallets === true && <WalletSection onClose={closeWallets} />}
     </div>
   );
 };
