@@ -1,13 +1,15 @@
 .footer-wrap {
   width: calc(100% - 200px);
-  padding: 100px;
-  background: #80808045;
+  margin: 100px;
+  padding-top: 100px;
+  background: inherit;
   justify-content: space-between;
   display: flex;
+  border-top: 1px solid #888;
   .left {
     align-items: start;
     h1 {
-      font-weight: 600;
+      font-weight: 400;
       position: relative;
       z-index: 10;
       cursor: pointer;

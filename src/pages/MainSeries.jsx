@@ -11,6 +11,7 @@ import {
   BiUserPlus,
   BiChat,
   BiPurchaseTagAlt,
+  BiLayer,
 } from "react-icons/bi";
 import { SiEthereum } from "react-icons/si";
 
@@ -50,51 +51,59 @@ const MainSeries = () => {
   return (
     <div>
       <Header />
-      <div className="top-profile flex col">
-        <div
-          className="bg-image flex border"
-          style={{
-            background: `${
-              main_data?.bg_image == undefined
-                ? randomColor == undefined
-                  ? "#111"
-                  : randomColor
-                : main_data?.bg_image
-            }`,
-          }}
-        >
-          <div className="profile flex col">
-            <img src={main_data?.owner?.avatar} alt="" />
-            <h2>{main_data?.owner?.username}</h2>
-            <div className="flex" style={{ gap: "5px" }}>
-              <p style={{ textTransform: "capitalize" }}>
-                Total creations : {main_data?.art?.length}
-              </p>{" "}
-              &nbsp;
+      <div className="top-profile flex">
+        <div className="left flex col">
+          <div className="wrap flex">
+            <img src={main_data?.image} alt="" />
+            <div className="info flex col">
               <p className="flex">
-                ${totalPricesSum}{" "}
-                <span>
-                  <BiPurchaseTagAlt />
-                </span>
+                <BiLayer /> SERIES
               </p>
+              <h1 style={{ marginBottom: "20px" }}>{main_data?.title}</h1>
             </div>
           </div>
-          <img src={main_data?.image} alt="" />
-          <h1>{main_data?.title}</h1>
-          <div
-            className="icons flex"
-            style={{
-              background: `${randomColor == undefined ? "#222" : randomColor}`,
-            }}
-          >
-            <div className="icon flex">
-              <BiShareAlt />
+          <div className="btns flex">
+            <div className="sect flex border">
+              <p>creations</p>
+              <h2>{main_data?.art?.length}</h2>
             </div>
-            <div className="icon flex">
-              <BiPurchaseTagAlt />
+            <div className="sect flex border">
+              <p>worth</p>
+              <h2>
+                {totalPricesSum}
+                <span style={{ fontSize: ".6rem" }}>ETH</span>
+              </h2>
             </div>
-            <div className="icon flex">
-              <BiChat />
+          </div>
+          <div className="btns flex">
+            <button>BUY ALL</button>
+            <button className="border">DEAL</button>
+          </div>
+        </div>
+        <div className="right flex col">
+          <div className="card flex col">
+            <div className="img-sect flex">
+              <img
+                className="border"
+                src={main_data?.art[0]?.image}
+                alt=""
+                onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
+              />
+            </div>
+            <div className="info flex col">
+              <h2>{main_data?.art[0]?.title}</h2>
+              <div className="price flex">
+                <h2>
+                  {main_data?.art[0]?.price} ≈{" "}
+                  <span>${main_data?.art[0]?.price * ethToUsd}</span>
+                </h2>
+                <button
+                  className="flex"
+                  onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
+                >
+                  Buy
+                </button>
+              </div>
             </div>
           </div>
         </div>

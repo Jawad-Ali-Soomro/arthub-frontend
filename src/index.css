@@ -1,6 +1,6 @@
 :root {
   /* Light mode variables */
-  --background-color: #ffffff;
+  --background-color: rgb(240, 240, 240);
   --text-color: #000000;
   --primary-color: #6200ee;
   --secondary-color: #03dac6;

@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div className="footer-wrap">
       <div className="left flex col">
-        <h1>arthub.com</h1>
+        <img src="../public/logo.png" alt="" style={{ width: "50px" }} />
         <div className="news-box flex col">
           <p>ARTWORK & NEWS TO YOUR BOX</p>
           <div className="input-box border">

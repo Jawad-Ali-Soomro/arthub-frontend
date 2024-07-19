@@ -17,36 +17,34 @@ import { connectMetamask } from "../utils/constant";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("themeMode") === "dark"
+  );
   const location = window.location.pathname;
   const navigate = useNavigate();
   const walletId = window.sessionStorage.getItem("token");
   const [show_menu, set_show_menu] = useState(false);
-  const theme = window.localStorage.setItem(
-    "themeMode",
-    `${isDarkMode ? "dark" : "light"}`
-  );
+
   useEffect(() => {
-    const prefersDarkScheme = window.matchMedia(
-      `(prefers-color-scheme: ${theme})`
-    ).matches;
-    if (prefersDarkScheme) {
+    const theme = localStorage.getItem("themeMode");
+    if (theme === "dark") {
       switchToDarkMode();
-      setIsDarkMode(true);
     } else {
       switchToLightMode();
-      setIsDarkMode(false);
     }
   }, []);
 
   const toggleTheme = () => {
     if (isDarkMode) {
       switchToLightMode();
+      localStorage.setItem("themeMode", "light");
     } else {
       switchToDarkMode();
+      localStorage.setItem("themeMode", "dark");
     }
     setIsDarkMode(!isDarkMode);
   };
+
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -54,7 +52,6 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolling(true);
-
       if (window.scrollY > lastScrollY) {
         setIsVisible(false);
       } else {
@@ -89,9 +86,7 @@ const Header = () => {
       <div className="logo flex">
         <img
           src={
-            isDarkMode == true
-              ? "../public/logo-white.png"
-              : "../public/logo-black.png"
+            isDarkMode ? "../public/logo-white.png" : "../public/logo-black.png"
           }
           onClick={() => navigate("/")}
           alt=""
@@ -105,31 +100,31 @@ const Header = () => {
         <ul className="flex">
           <li
             className="icon"
-            id={location == "/" ? "active" : ""}
+            id={location === "/" ? "active" : ""}
             onClick={() => navigate("/")}
           >
-            HOme
+            Home
           </li>
           <li
             className="icon"
-            id={location == "/explore/art" ? "active" : ""}
+            id={location === "/explore/art" ? "active" : ""}
             onClick={() => navigate("/explore/art")}
           >
-            art
+            Art
           </li>
           <li
             className="icon"
-            id={location == "/explore/series" ? "active" : ""}
+            id={location === "/explore/series" ? "active" : ""}
             onClick={() => navigate("/explore/series")}
           >
-            series
+            Series
           </li>
           <li className="icon">Auction</li>
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
           </li>
           <li className="icon flex">
-            <BiChat style={{ fontSize: "1.1rem" }} />{" "}
+            <BiChat style={{ fontSize: "1.1rem" }} />
           </li>
         </ul>
         <div
@@ -150,16 +145,14 @@ const Header = () => {
           ></div>
           <div
             className={
-              show_menu == true
-                ? "main-menu-active flex col"
-                : "main-menu flex col"
+              show_menu ? "main-menu-active flex col" : "main-menu flex col"
             }
             style={{
               background: `${isDarkMode ? "rgba(255,2552,255,.1)" : "#333"}`,
             }}
           >
-            <p>spaces</p>
-            <p>view profile</p>
+            <p>Spaces</p>
+            <p>View Profile</p>
             <div className="line"></div>
             <p>Trending Art</p>
             <p>Rare Auctions</p>
@@ -185,7 +178,7 @@ const Header = () => {
           </div>
         </div>
         <button className="border" onClick={() => connectMetamask()}>
-          {walletId !== null || undefined ? "CONNECTED" : "CONNECT"}
+          {walletId ? "CONNECTED" : "CONNECT"}
         </button>
       </div>
     </div>

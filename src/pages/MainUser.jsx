@@ -140,7 +140,7 @@ const MainUser = () => {
                 </h2>
                 <button
                   className="flex"
-                  onClick={() => navigate(`/art/${main_data[0]?._id}`)}
+                  onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
                 >
                   Buy
                 </button>
@@ -200,10 +200,7 @@ const MainUser = () => {
                         </div>
                         <div className="btns flex">
                           <button
-                            onClick={() =>
-                              navigate(`/art/${card_item?._id}`) +
-                              window.location.reload()
-                            }
+                            onClick={() => navigate(`/art/${card_item?._id}`)}
                           >
                             Buy
                           </button>

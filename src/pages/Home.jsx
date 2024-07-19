@@ -30,7 +30,7 @@ const Home = () => {
           <img src="./hero.png" alt="" />
         </div>
       </div>
-      <Top />
+      {/* <Top /> */}
       <Featured />
       <FeaturedSeries />
       <Spotlight />
