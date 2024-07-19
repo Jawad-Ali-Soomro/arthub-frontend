@@ -240,8 +240,7 @@ const MainUser = () => {
                         <div className="btns flex">
                           <button
                             onClick={() =>
-                              navigate(`/series/${card_item?._id}`) +
-                              window.location.reload()
+                              navigate(`/series/${card_item?._id}`)
                             }
                           >
                             view
