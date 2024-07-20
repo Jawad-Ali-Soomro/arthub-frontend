@@ -104,14 +104,12 @@ const MainUser = () => {
               </div>
             </div>
           </div>
-          <div className="line border"></div>
-          <div className="join flex">
+          <div className="join border flex">
             <p>Joined</p>
             <p>
               {day} - {monthInText} - {year}
             </p>
           </div>
-          <div className="line border"></div>
           <div className="btns flex">
             <div className="sect flex border">
               <p>Followers</p>

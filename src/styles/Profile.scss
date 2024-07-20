@@ -1,0 +1,101 @@
+.profile-main {
+  gap: 10px;
+  height: calc(88vh - 115px);
+  width: calc(100% - 200px);
+  padding: 100px;
+  .left-wrap {
+    position: absolute;
+    gap: 15px;
+    margin-top: 100px;
+    .profile {
+      gap: 20px;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      h1 {
+        text-transform: capitalize;
+        font-weight: 600;
+      }
+      .info {
+        position: relative;
+        align-items: start;
+        .btn-edit {
+          width: 40px;
+          height: 40px;
+          outline: none;
+          background: #333;
+          color: white;
+          cursor: pointer;
+          //   background: transparent;
+          position: absolute;
+          top: -40px;
+          right: -40px;
+        }
+      }
+    }
+    .wrap {
+      gap: 10px;
+      .small-card {
+        width: 140px;
+        height: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+        justify-content: space-between;
+        cursor: pointer;
+        p {
+          text-transform: uppercase;
+          font-size: 0.7rem;
+        }
+        p:last-child {
+          font-weight: 600;
+          font-size: 0.8rem;
+        }
+      }
+    }
+    button {
+      width: 180px;
+      height: 40px;
+      background: #333;
+      color: white;
+      border: none;
+      margin-left: 190px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+
+  .right-wrap {
+    position: absolute;
+    right: 100px;
+    margin-top: 100px;
+    .form {
+      overflow: hidden;
+      gap: 10px;
+      .input-wrap {
+        align-items: start;
+        gap: 10px;
+        input {
+          width: 310px;
+          height: 40px;
+          color: inherit;
+          padding-left: 20px;
+          outline: none;
+          border-radius: 5px;
+          background: transparent;
+        }
+      }
+      .btn-update {
+        width: 200px;
+        height: 40px;
+        margin-left: 130px;
+        background: #333;
+        border: none;
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+  }
+}

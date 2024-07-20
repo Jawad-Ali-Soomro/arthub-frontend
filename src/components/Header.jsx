@@ -90,13 +90,11 @@ const Header = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
     window.sessionStorage.removeItem("token");
-    setUserData(null); // Update local state to reflect logout
+    navigate("/");
   };
 
   const openLogin = () => setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
-  const openWallets = () => setShowWallets(true);
-  const closeWallets = () => setShowWallets(false);
 
   return (
     <div
@@ -170,10 +168,10 @@ const Header = () => {
               background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
             }}
           >
-            <p>Spaces</p>
             <p onClick={() => (tokenId ? navigate("/profile") : openLogin())}>
               View Profile
             </p>
+            <p onClick={() => handleLogout()}>Logout</p>
             <div className="line"></div>
             <p>Trending Art</p>
             <p>Rare Auctions</p>

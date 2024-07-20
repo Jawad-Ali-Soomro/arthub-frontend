@@ -12,8 +12,12 @@ import "./utils/theme";
 import MainSeries from "./pages/MainSeries";
 import MainUser from "./pages/MainUser";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import toast from "react-hot-toast";
+import NotFound from "./pages/NotFound";
 
 function App() {
+  const tokenId = window.localStorage.getItem("authToken");
   return (
     <>
       <Toaster position="bottom-right" />
@@ -26,7 +30,12 @@ function App() {
           <Route path="/art/:artId" element={<MainArt />}></Route>
           <Route path="/series/:seriesId" element={<MainSeries />}></Route>
           <Route path="/user/:userId" element={<MainUser />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route
+            path={tokenId ? "/profile" : "/"}
+            element={<Profile />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>

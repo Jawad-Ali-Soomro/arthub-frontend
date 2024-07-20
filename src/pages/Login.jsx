@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import { baseUserUrl } from "../utils/constant";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const loginPortal = document.getElementById("loginPortal");
 
 const Login = ({ onClose }) => {
+  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [loginStep, setLoginStep] = useState(true);
 
@@ -61,8 +63,9 @@ const Login = ({ onClose }) => {
             JSON.stringify(loginResponse?.data?.data)
           ) +
           toast.success("Success!") +
-          window.location.reload()
-        : toast.error(message);
+          navigate("/profile")
+        : // window.location.reload()
+          toast.error(message);
     }
   };
 
