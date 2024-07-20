@@ -104,6 +104,14 @@ const MainUser = () => {
               </div>
             </div>
           </div>
+          <div className="line"></div>
+          <div className="join flex">
+            <p>Joined</p>
+            <p>
+              {day} - {monthInText} - {year}
+            </p>
+          </div>
+          <div className="line"></div>
           <div className="btns flex">
             <div className="sect flex border">
               <p>Followers</p>
@@ -116,7 +124,6 @@ const MainUser = () => {
           </div>
           <div className="btns flex">
             <button>FOLLOW</button>
-            {/* <button>MESSAGE</button> */}
           </div>
         </div>
         <div className="right flex col">
