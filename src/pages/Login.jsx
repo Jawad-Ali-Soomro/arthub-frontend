@@ -4,14 +4,51 @@ import "../styles/Login.scss";
 import { FaAsterisk } from "react-icons/fa6";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { baseUserUrl } from "../utils/constant";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const loginPortal = document.getElementById("loginPortal");
 
 const Login = ({ onClose }) => {
   const [showPass, setShowPass] = useState(false);
   const [loginStep, setLoginStep] = useState(true);
-  const navigate = useNavigate();
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLoginChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData({
+      ...loginData,
+      [name]: value,
+    });
+  };
+
+  const handleLoginSubmit = async () => {
+    if (loginData.email | (loginData.password == "")) {
+      toast.error("Please Fill All The Fields");
+    } else {
+      const loginResponse = await axios.post(`${baseUserUrl}/login`, {
+        email: loginData.email,
+        password: loginData.password,
+      });
+      const message = loginResponse?.data?.message;
+      const token = loginResponse?.data?.token;
+
+      message == "Logged In!"
+        ? window.localStorage.setItem("authToken", token) +
+          window.localStorage.setItem(
+            "userId",
+            JSON.stringify(loginResponse?.data?.data)
+          ) +
+          toast.success("Success!") +
+          window.location.reload()
+        : toast.error(message);
+    }
+  };
 
   return ReactDOM.createPortal(
     <div className="login-portal flex" onClick={onClose}>
@@ -26,7 +63,13 @@ const Login = ({ onClose }) => {
         <h1>Welcome Back!</h1>
         <div className="form flex col">
           <div className="input-wrap flex col">
-            <input type="text" placeholder="Enter Email..." />
+            <input
+              type="text"
+              placeholder="Enter Email..."
+              name="email"
+              value={loginData.email}
+              onChange={handleLoginChange}
+            />
             <div className="icon flex">
               <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
             </div>
@@ -35,6 +78,9 @@ const Login = ({ onClose }) => {
             <input
               type={showPass ? "text" : "password"}
               placeholder="Enter Password..."
+              value={loginData.password}
+              onChange={handleLoginChange}
+              name="password"
             />
             <div className="icon flex">
               {showPass ? (
@@ -45,7 +91,9 @@ const Login = ({ onClose }) => {
             </div>
           </div>
           <Link className="link">Forgot Password?</Link>
-          <button className="flex">Login</button>
+          <button className="flex" onClick={() => handleLoginSubmit()}>
+            Login
+          </button>
           <p
             style={{ cursor: "pointer" }}
             className="link"

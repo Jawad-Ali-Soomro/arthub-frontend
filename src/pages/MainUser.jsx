@@ -104,14 +104,14 @@ const MainUser = () => {
               </div>
             </div>
           </div>
-          <div className="line"></div>
+          <div className="line border"></div>
           <div className="join flex">
             <p>Joined</p>
             <p>
               {day} - {monthInText} - {year}
             </p>
           </div>
-          <div className="line"></div>
+          <div className="line border"></div>
           <div className="btns flex">
             <div className="sect flex border">
               <p>Followers</p>
@@ -191,7 +191,6 @@ const MainUser = () => {
                       >
                         <img src={main_data?.avatar} alt="" />
                         <div className="wrap">
-                          <p>OWNER</p>
                           <h2>{main_data?.username}</h2>
                         </div>
                       </div>
@@ -223,7 +222,6 @@ const MainUser = () => {
                       >
                         <img src={main_data?.avatar} alt="" />
                         <div className="wrap">
-                          <p>OWNER</p>
                           <h2>{main_data?.username}</h2>
                         </div>
                       </div>

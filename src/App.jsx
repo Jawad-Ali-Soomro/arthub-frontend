@@ -16,7 +16,7 @@ import Login from "./pages/Login";
 function App() {
   return (
     <>
-      <Toaster />
+      <Toaster position="bottom-right" />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

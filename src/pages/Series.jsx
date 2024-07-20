@@ -62,7 +62,6 @@ const Series = () => {
                       alt={card_item?.owner?.username}
                     />
                     <div className="wrap flex col">
-                      <p>ARTIST</p>
                       <h2>{card_item?.owner?.username}</h2>
                     </div>
                   </div>

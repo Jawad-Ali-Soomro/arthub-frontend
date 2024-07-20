@@ -142,6 +142,48 @@
       background: transparent;
       cursor: pointer;
     }
+    .profile {
+      position: relative;
+      gap: 5px;
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 40px;
+        border: 1px solid;
+        border-radius: 50%;
+      }
+      h2 {
+        font-size: 1rem;
+        font-weight: 400;
+        text-transform: capitalize;
+      }
+      .menu {
+        max-width: 0;
+        max-height: 0;
+        overflow: hidden !important;
+        position: absolute;
+      }
+      .menu-active {
+        width: 50px;
+        height: 110px;
+        position: absolute;
+        background: white;
+        top: 50px;
+        right: -5px;
+        gap: 10px;
+        backdrop-filter: blur(100px);
+        p {
+          text-transform: uppercase;
+          color: inherit;
+          font-size: 0.9rem;
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+
+          border-radius: 5px;
+        }
+      }
+    }
   }
   .search-section {
     width: 100%;

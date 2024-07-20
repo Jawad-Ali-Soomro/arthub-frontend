@@ -8,22 +8,35 @@ import {
   BiLogoGithub,
   BiLogoInstagram,
   BiLogoTwitter,
-  BiMessage,
+  BiLogOut,
   BiSearch,
 } from "react-icons/bi";
 import { FaAdjust } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
+import { IoInformation } from "react-icons/io5";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("themeMode") === "dark"
   );
-  const location = window.location.pathname;
-  const navigate = useNavigate();
-  const walletId = window.sessionStorage.getItem("token");
   const [showMenu, setShowMenu] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showWallets, setShowWallets] = useState(false);
+  const [userData, setUserData] = useState(
+    JSON.parse(window.localStorage.getItem("userId"))
+  );
+
+  // State for scroll visibility
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const navigate = useNavigate();
+  const location = window.location.pathname;
+  const walletId = window.sessionStorage.getItem("token");
+  const tokenId = window.localStorage.getItem("authToken");
 
   useEffect(() => {
     const theme = localStorage.getItem("themeMode");
@@ -33,20 +46,6 @@ const Header = () => {
       switchToLightMode();
     }
   }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      switchToLightMode();
-      localStorage.setItem("themeMode", "light");
-    } else {
-      switchToDarkMode();
-      localStorage.setItem("themeMode", "dark");
-    }
-    setIsDarkMode(!isDarkMode);
-  };
-
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,11 +63,26 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
-  const [showLogin, setShowLogin] = useState(false);
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      switchToLightMode();
+      localStorage.setItem("themeMode", "light");
+    } else {
+      switchToDarkMode();
+      localStorage.setItem("themeMode", "dark");
+    }
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("authToken");
+    window.localStorage.removeItem("userId");
+    window.sessionStorage.removeItem("token");
+    setUserData(null); // Update local state to reflect logout
+  };
+
   const openLogin = () => setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
-
-  const [showWallets, setShowWallets] = useState(false);
   const openWallets = () => setShowWallets(true);
   const closeWallets = () => setShowWallets(false);
 
@@ -170,12 +184,41 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <button
-          className="border"
-          onClick={() => (walletId ? openLogin() : openWallets())}
-        >
-          {walletId ? "LOGIN" : "CONNECT"}
-        </button>
+        {tokenId ? (
+          <div className="profile flex">
+            <h2 onClick={() => setProfileMenu(!profileMenu)}>
+              {userData?.username}
+            </h2>
+            <img
+              src={userData?.avatar}
+              alt=""
+              onClick={() => setProfileMenu(!profileMenu)}
+            />
+            <div
+              className={profileMenu ? "menu-active flex col" : "menu flex col"}
+              style={{
+                background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
+                color: `${isDarkMode ? "rgba(255,255,255,1)" : "white"}`,
+              }}
+            >
+              <p className="border flex">
+                <IoInformation />
+              </p>
+              <p className="border flex" onClick={() => handleLogout()}>
+                <BiLogOut />
+              </p>
+            </div>
+          </div>
+        ) : (
+          <button
+            className="border"
+            onClick={() =>
+              tokenId ? null : walletId ? openLogin() : openWallets()
+            }
+          >
+            {tokenId ? "PROFILE" : walletId ? "LOGIN" : "CONNECT"}
+          </button>
+        )}
       </div>
       {showLogin && <Login onClose={closeLogin} />}
       {showWallets && <WalletSection onClose={closeWallets} />}

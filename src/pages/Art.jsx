@@ -66,7 +66,6 @@ const Art = () => {
                       alt={cardItem.owner?.username}
                     />
                     <div className="wrap flex col">
-                      <p>ARTIST</p>
                       <h2>{cardItem.owner?.username}</h2>
                     </div>
                   </div>
