@@ -14,6 +14,7 @@ const Login = ({ onClose }) => {
   const [showPass, setShowPass] = useState(false);
   const [loginStep, setLoginStep] = useState(true);
 
+  const themeMode = window.localStorage.getItem("themeMode");
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",

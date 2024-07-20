@@ -11,11 +11,13 @@ import {
   BiLogOut,
   BiSearch,
 } from "react-icons/bi";
-import { FaAdjust } from "react-icons/fa";
+import { FaAdjust, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
 import { IoInformation } from "react-icons/io5";
+import { HiInformationCircle } from "react-icons/hi";
+import { PiSignOutBold, PiSignOutThin } from "react-icons/pi";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -202,10 +204,10 @@ const Header = () => {
               }}
             >
               <p className="border flex">
-                <IoInformation />
+                <HiInformationCircle />
               </p>
               <p className="border flex" onClick={() => handleLogout()}>
-                <BiLogOut />
+                <PiSignOutBold />
               </p>
             </div>
           </div>

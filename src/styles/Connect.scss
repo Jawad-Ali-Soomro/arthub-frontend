@@ -6,11 +6,13 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  backdrop-filter: blur(10px);
   .main-connect {
     padding: 50px;
     background: white;
     color: black;
     gap: 10px;
+    border: 1px solid;
     img {
       width: 50px;
     }
@@ -29,7 +31,7 @@
         width: 260px;
         justify-content: space-between;
         padding: 10px 20px;
-        border: 1px solid;
+        // border: 1px solid;
         cursor: pointer;
         img {
           width: 30px;
@@ -39,6 +41,19 @@
           font-size: 1rem;
           font-weight: 400;
         }
+      }
+      .wrap:hover {
+        scale: 1.1;
+      }
+    }
+    .new-text {
+      width: 300px;
+      justify-content: space-between;
+      margin-top: 50px;
+      .link {
+        text-decoration: none;
+        font-weight: 600;
+        color: blueviolet;
       }
     }
   }

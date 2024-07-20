@@ -164,7 +164,7 @@
         position: absolute;
       }
       .menu-active {
-        width: 50px;
+        width: 55px;
         height: 110px;
         position: absolute;
         background: white;
@@ -178,9 +178,10 @@
           font-size: 0.9rem;
           cursor: pointer;
           width: 40px;
+          border: 1px solid rgba($color: white, $alpha: 0.5);
           height: 40px;
-
           border-radius: 5px;
+          font-size: 1rem;
         }
       }
     }

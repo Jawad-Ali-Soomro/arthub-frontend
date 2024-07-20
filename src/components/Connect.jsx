@@ -4,11 +4,12 @@ import "../styles/Connect.scss";
 import { checkWalletExtensions } from "../utils/constant";
 import { connectMetaMask } from "../utils/wallet_connect";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const WalletSection = ({ onClose }) => {
   const [installedWallets, setInstalledWallets] = useState([]);
   const [recommendedWallets, setRecommendedWallets] = useState([]);
-
+  const themeMode = window.localStorage.getItem("themeMode");
   useEffect(() => {
     const { installedWallets, recommendedWallets } = checkWalletExtensions();
     setInstalledWallets(installedWallets);
@@ -40,7 +41,7 @@ const WalletSection = ({ onClose }) => {
         className="main-connect flex col"
         onClick={(e) => e.stopPropagation()}
       >
-        <img src="../public/logo-black.png" alt="Logo" />
+        <img src={"../public/logo-black.png"} alt="Logo" />
         <h1>Connect Wallet!</h1>
 
         <div
@@ -52,7 +53,7 @@ const WalletSection = ({ onClose }) => {
             installedWallets.map((wallet) => (
               <div
                 key={wallet}
-                className="wrap flex"
+                className="wrap border flex"
                 onClick={() => handleWalletClick(wallet)}
               >
                 <img src={walletImages[wallet]} alt={wallet} />
@@ -78,7 +79,7 @@ const WalletSection = ({ onClose }) => {
             recommendedWallets.map((wallet) => (
               <div
                 key={wallet}
-                className="wrap flex"
+                className="wrap border flex"
                 onClick={() => handleWalletClick(wallet)}
               >
                 <img src={walletImages[wallet]} alt={wallet} />
@@ -93,6 +94,17 @@ const WalletSection = ({ onClose }) => {
               <p>All recommended wallets are installed</p>
             </div>
           )}
+        </div>
+
+        <div className="new-text flex">
+          <p>New To Wallets</p>
+          <Link
+            className="link"
+            to={"https://portal.thirdweb.com/connect/in-app-wallet/overview"}
+            target="_blank"
+          >
+            Get Started!
+          </Link>
         </div>
       </div>
     </div>,
