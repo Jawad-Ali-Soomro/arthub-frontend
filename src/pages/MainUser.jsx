@@ -17,15 +17,18 @@ const MainUser = () => {
   const navigate = useNavigate();
   const [tag_item, set_tag] = useState(true);
   const [main_data, set_data] = useState();
-  const id = useParams().userId;
+  const { userId } = useParams();
+
   const fetch_data = async () => {
-    await axios.get(`${baseUserUrl}/get/${id}`).then((res) => {
+    await axios.get(`${baseUserUrl}/get/${userId}`).then((res) => {
       set_data(res.data.data);
     });
   };
+
   useEffect(() => {
     fetch_data();
-  });
+  }, [userId]);
+
   const date = new Date(main_data?.created_at);
   const [year, month, day] = [
     date.getFullYear(),
@@ -53,6 +56,7 @@ const MainUser = () => {
   }
 
   const monthInText = getMonthName(month);
+
   return (
     <div>
       <Header />
@@ -73,36 +77,30 @@ const MainUser = () => {
                 </p>
               </div>
               <div className="links flex">
-                {main_data?.links[0]?.facebook == "" ? (
-                  ""
-                ) : (
+                {main_data?.links[0]?.facebook ? (
                   <Link
                     className="link flex border"
                     to={main_data?.links[0]?.facebook}
                   >
                     <BiLogoFacebook />
                   </Link>
-                )}
-                {main_data?.links[0]?.twitter == "" ? (
-                  ""
-                ) : (
+                ) : null}
+                {main_data?.links[0]?.twitter ? (
                   <Link
                     className="link flex border"
                     to={main_data?.links[0]?.twitter}
                   >
                     <BiLogoTwitter />
                   </Link>
-                )}
-                {main_data?.links[0]?.instagram == "" ? (
-                  ""
-                ) : (
+                ) : null}
+                {main_data?.links[0]?.instagram ? (
                   <Link
                     className="link flex border"
                     to={main_data?.links[0]?.instagram}
                   >
                     <BiLogoInstagram />
                   </Link>
-                )}
+                ) : null}
               </div>
             </div>
           </div>
@@ -151,14 +149,14 @@ const MainUser = () => {
       </div>
       <div className="tag-menu flex">
         <p
-          style={{ borderBottom: `${tag_item == true ? "1px solid" : "none"}` }}
+          style={{ borderBottom: `${tag_item ? "1px solid" : "none"}` }}
           onClick={() => set_tag(true)}
         >
           Creations ({main_data?.art?.length})
         </p>
         <p
           style={{
-            borderBottom: `${tag_item == false ? "1px solid" : "none"}`,
+            borderBottom: `${!tag_item ? "1px solid" : "none"}`,
           }}
           onClick={() => set_tag(false)}
         >
@@ -166,7 +164,7 @@ const MainUser = () => {
         </p>
       </div>
       <div className="art-series flex">
-        {main_data == undefined ? (
+        {!main_data ? (
           <div className="main-art-wrap flex">
             <Skeleton width={350} height={380} />
             <Skeleton width={350} height={380} />
@@ -174,83 +172,75 @@ const MainUser = () => {
           </div>
         ) : (
           <div className="main-art-wrap flex">
-            {tag_item == true
-              ? main_data?.art?.map((card_item) => {
-                  return (
-                    <div className="card flex">
-                      <img src={card_item?.image} alt="" />
-                      <div className="info flex col">
-                        <h3>{card_item?.title}</h3>
-                        <div
-                          className="owner flex"
-                          onClick={() => navigate(`/user/${main_data?._id}`)}
-                        >
-                          <img src={main_data?.avatar} alt="" />
-                          <div className="wrap">
-                            <p>OWNER</p>
-                            <h2>{main_data?.username}</h2>
-                          </div>
-                        </div>
-                        <div className="price flex col">
-                          <p>price</p>
-                          <h2>
-                            {card_item?.price} ≈{" "}
-                            <span>${card_item?.price * ethToUsd}</span>
-                          </h2>
-                        </div>
-                        <div className="btns flex">
-                          <button
-                            onClick={() => navigate(`/art/${card_item?._id}`)}
-                          >
-                            Buy
-                          </button>
+            {tag_item
+              ? main_data?.art?.map((card_item) => (
+                  <div className="card flex" key={card_item?._id}>
+                    <img src={card_item?.image} alt="" />
+                    <div className="info flex col">
+                      <h3>{card_item?.title}</h3>
+                      <div
+                        className="owner flex"
+                        onClick={() => navigate(`/user/${main_data?._id}`)}
+                      >
+                        <img src={main_data?.avatar} alt="" />
+                        <div className="wrap">
+                          <p>OWNER</p>
+                          <h2>{main_data?.username}</h2>
                         </div>
                       </div>
-                    </div>
-                  );
-                })
-              : tag_item == false
-              ? main_data?.series?.map((card_item) => {
-                  return (
-                    <div className="card flex">
-                      <img src={card_item?.image} alt="" />
-                      <div className="info flex col">
-                        <h3>{card_item?.title}</h3>
-                        <div
-                          className="owner flex"
-                          onClick={() => navigate(`/user/${main_data?._id}`)}
+                      <div className="price flex col">
+                        <p>price</p>
+                        <h2>
+                          {card_item?.price} ≈{" "}
+                          <span>${card_item?.price * ethToUsd}</span>
+                        </h2>
+                      </div>
+                      <div className="btns flex">
+                        <button
+                          onClick={() => navigate(`/art/${card_item?._id}`)}
                         >
-                          <img src={main_data?.avatar} alt="" />
-                          <div className="wrap">
-                            <p>OWNER</p>
-                            <h2>{main_data?.username}</h2>
-                          </div>
-                        </div>
-                        <div className="price flex col">
-                          <p>total</p>
-                          <h2
-                            style={{
-                              textTransform: "capitalize",
-                              fontWeight: 400,
-                            }}
-                          >
-                            {card_item?.art?.length} artworks
-                          </h2>
-                        </div>
-                        <div className="btns flex">
-                          <button
-                            onClick={() =>
-                              navigate(`/series/${card_item?._id}`)
-                            }
-                          >
-                            view
-                          </button>
-                        </div>
+                          Buy
+                        </button>
                       </div>
                     </div>
-                  );
-                })
-              : this}
+                  </div>
+                ))
+              : main_data?.series?.map((card_item) => (
+                  <div className="card flex" key={card_item?._id}>
+                    <img src={card_item?.image} alt="" />
+                    <div className="info flex col">
+                      <h3>{card_item?.title}</h3>
+                      <div
+                        className="owner flex"
+                        onClick={() => navigate(`/user/${main_data?._id}`)}
+                      >
+                        <img src={main_data?.avatar} alt="" />
+                        <div className="wrap">
+                          <p>OWNER</p>
+                          <h2>{main_data?.username}</h2>
+                        </div>
+                      </div>
+                      <div className="price flex col">
+                        <p>total</p>
+                        <h2
+                          style={{
+                            textTransform: "capitalize",
+                            fontWeight: 400,
+                          }}
+                        >
+                          {card_item?.art?.length} artworks
+                        </h2>
+                      </div>
+                      <div className="btns flex">
+                        <button
+                          onClick={() => navigate(`/series/${card_item?._id}`)}
+                        >
+                          view
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
           </div>
         )}
       </div>

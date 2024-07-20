@@ -23,7 +23,7 @@ const Art = () => {
 
   useEffect(() => {
     fetchData();
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
   return (
     <div>

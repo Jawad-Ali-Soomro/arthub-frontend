@@ -16,38 +16,33 @@ import {
 import { SiEthereum } from "react-icons/si";
 
 const MainSeries = () => {
-  const [main_data, set_data] = React.useState();
+  const [main_data, set_data] = useState();
   const navigate = useNavigate();
-  const id = useParams().seriesId;
+  const { seriesId } = useParams();
+
   const fetch_data = async () => {
-    await axios.get(`${baseSeriesUrl}/get/${id}`).then((res) => {
+    await axios.get(`${baseSeriesUrl}/get/${seriesId}`).then((res) => {
       set_data(res.data.data);
     });
   };
+
   useEffect(() => {
     fetch_data();
-  });
+  }, [seriesId]);
 
   const sumArtPrices = (artArray) => {
     let totalPrice = 0;
     artArray?.forEach((artObject) => {
       if (artObject?.price) {
-        totalPrice += artObject?.price;
+        totalPrice += artObject.price;
       }
     });
     return totalPrice;
   };
+
   const totalPricesSum = sumArtPrices(main_data?.art);
   document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
-  const colors = ["blue", "black", "orange", "indigo", "violet"];
 
-  function getRandomColor(arr) {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
-  }
-
-  const [randomColor, setRandomColor] = useState();
-  window.onload = () => [setRandomColor(getRandomColor(colors))];
   return (
     <div>
       <Header />
