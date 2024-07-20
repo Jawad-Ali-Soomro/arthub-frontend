@@ -14,10 +14,22 @@ import {
 import { FaAdjust } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
-import WalletSection from "./Connect";
 import { IoInformation } from "react-icons/io5";
+import { ThirdwebProvider, ConnectButton } from "thirdweb/react";
+import { createWallet, walletConnect, inAppWallet } from "thirdweb/wallets";
+import { createThirdwebClient } from "thirdweb";
 
 const Header = () => {
+  const client = createThirdwebClient({
+    clientId: "61c00744ecc2ef2d947a4a893bd8a7e3",
+  });
+  const wallets = [
+    createWallet("io.metamask"),
+    createWallet("com.coinbase.wallet"),
+    walletConnect(),
+    createWallet("com.trustwallet.app"),
+  ];
+
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("themeMode") === "dark"
   );
@@ -159,7 +171,9 @@ const Header = () => {
             }}
           >
             <p>Spaces</p>
-            <p>View Profile</p>
+            <p onClick={() => (tokenId ? navigate("/profile") : openLogin())}>
+              View Profile
+            </p>
             <div className="line"></div>
             <p>Trending Art</p>
             <p>Rare Auctions</p>
@@ -184,44 +198,20 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {tokenId ? (
-          <div className="profile flex">
-            <h2 onClick={() => setProfileMenu(!profileMenu)}>
-              {userData?.username}
-            </h2>
-            <img
-              src={userData?.avatar}
-              alt=""
-              onClick={() => setProfileMenu(!profileMenu)}
-            />
-            <div
-              className={profileMenu ? "menu-active flex col" : "menu flex col"}
-              style={{
-                background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
-                color: `${isDarkMode ? "rgba(255,255,255,1)" : "white"}`,
-              }}
-            >
-              <p className="border flex">
-                <IoInformation />
-              </p>
-              <p className="border flex" onClick={() => handleLogout()}>
-                <BiLogOut />
-              </p>
-            </div>
-          </div>
-        ) : (
-          <button
-            className="border"
-            onClick={() =>
-              tokenId ? null : walletId ? openLogin() : openWallets()
-            }
-          >
-            {tokenId ? "PROFILE" : walletId ? "LOGIN" : "CONNECT"}
-          </button>
-        )}
+        <ConnectButton
+          client={client}
+          wallets={wallets}
+          theme={isDarkMode ? "dark" : "light"}
+          connectButton={{ label: "CONNECT", className: "btn" }}
+          connectModal={{
+            size: "compact",
+            title: "Connect Wallet",
+            titleIcon: "../public/logo.png",
+            showThirdwebBranding: false,
+          }}
+        />
       </div>
       {showLogin && <Login onClose={closeLogin} />}
-      {showWallets && <WalletSection onClose={closeWallets} />}
     </div>
   );
 };

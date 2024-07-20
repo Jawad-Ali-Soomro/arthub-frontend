@@ -137,7 +137,6 @@ const MainArt = () => {
                     <div className="owner flex">
                       <img src={main_data?.owner?.avatar} alt="" />
                       <div className="wrap flex col">
-                        <p>owner</p>
                         <h2>{main_data?.owner?.username}</h2>
                       </div>
                     </div>

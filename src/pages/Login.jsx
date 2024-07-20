@@ -18,6 +18,16 @@ const Login = ({ onClose }) => {
     email: "",
     password: "",
   });
+  const [avatarFile, setAvatar] = useState();
+  const [registerData, setRegisterData] = useState({
+    email: "",
+    password: "",
+    username: "",
+    wallet_address: "",
+    handle: "",
+    facebook: "",
+    twitter: "",
+  });
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +35,12 @@ const Login = ({ onClose }) => {
       ...loginData,
       [name]: value,
     });
+  };
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setAvatar(e.target.files[0]);
+    }
   };
 
   const handleLoginSubmit = async () => {
@@ -49,6 +65,8 @@ const Login = ({ onClose }) => {
         : toast.error(message);
     }
   };
+
+  const handleRegisterSubmit = async () => {};
 
   return ReactDOM.createPortal(
     <div className="login-portal flex" onClick={onClose}>
@@ -151,7 +169,12 @@ const Login = ({ onClose }) => {
               <input type="text" placeholder="Enter Instagram URL" />
             </div>
             <div className="input-wrap text">
-              <input type="file" name="avatar" id="avatar" />
+              <input
+                type="file"
+                name="avatar"
+                id="avatar"
+                onChange={handleFileChange}
+              />
               <p className="flex col">
                 Upload Avatar <span>Drag & Drop File To Upload!</span>
               </p>
@@ -159,7 +182,7 @@ const Login = ({ onClose }) => {
           </div>
         </div>
         <div className="btns flex">
-          <button>Register</button>
+          <button onClick={() => handleRegisterSubmit()}>Register</button>
         </div>
         <p className="link" onClick={() => setLoginStep(true)}>
           Already Have An Account?
