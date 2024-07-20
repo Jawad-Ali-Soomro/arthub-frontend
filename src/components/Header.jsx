@@ -15,7 +15,11 @@ import { FaAdjust } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import { IoInformation } from "react-icons/io5";
-import { ThirdwebProvider, ConnectButton } from "thirdweb/react";
+import {
+  ThirdwebProvider,
+  ConnectButton,
+  useActiveWallet,
+} from "thirdweb/react";
 import { createWallet, walletConnect, inAppWallet } from "thirdweb/wallets";
 import { createThirdwebClient } from "thirdweb";
 
@@ -29,7 +33,8 @@ const Header = () => {
     walletConnect(),
     createWallet("com.trustwallet.app"),
   ];
-
+  const wallet = useActiveWallet()?.getAccount();
+  window.sessionStorage.setItem("token", wallet?.address);
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("themeMode") === "dark"
   );
