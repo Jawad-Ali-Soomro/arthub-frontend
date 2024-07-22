@@ -1,18 +1,22 @@
 import React from "react";
 import { MdDashboard, MdEmail, MdOutlineEmail } from "react-icons/md";
 import {
+  BiAt,
   BiCollection,
   BiDollar,
   BiEdit,
+  BiLogoFacebook,
   BiPaint,
+  BiUpload,
   BiUser,
 } from "react-icons/bi";
-import { BsBell } from "react-icons/bs";
+import { BsBell, BsInstagram, BsTwitter } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.scss";
 import { useState } from "react";
 import { GrConnect } from "react-icons/gr";
+import { FaAt, FaBeer } from "react-icons/fa";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -166,15 +170,40 @@ const Profile = () => {
           <div className="update-wrap flex col">
             <h1>Update Profile</h1>
             <div className="form flex col">
-              <div className="input-wrap flex">
+              <div className="input-wrap flex border">
                 <MdOutlineEmail />
-                <input type="text" />
+                <input type="text" placeholder={userData?.email} />
               </div>
-              <div className="input-wrap flex">
+              <div className="input-wrap flex border">
                 <BiUser />
-                <input type="text" />
+                <input type="text" placeholder={userData?.username} />
+              </div>
+              <div className="input-wrap flex border">
+                <BiAt />
+                <input type="text" placeholder={userData?.handle} />
+              </div>
+              <div className="input-wrap flex border">
+                <BiLogoFacebook />
+                <input type="text" placeholder={userData?.links[0]?.facebook} />
+              </div>
+              <div className="input-wrap flex border">
+                <BsTwitter />
+                <input type="text" placeholder={userData?.links[0]?.twitter} />
+              </div>
+              <div className="input-wrap flex border">
+                <BsInstagram />
+                <input
+                  type="text"
+                  placeholder={userData?.links[0]?.instagram}
+                />
+              </div>
+              <div className="file flex col">
+                <input type="file" name="" id="" />
+                <BiUpload className="icon" />
+                <p>Upload Profile</p>
               </div>
             </div>
+            <button>Update</button>
           </div>
         ) : (
           this
