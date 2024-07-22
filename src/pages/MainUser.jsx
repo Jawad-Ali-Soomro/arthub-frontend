@@ -57,6 +57,8 @@ const MainUser = () => {
 
   const monthInText = getMonthName(month);
 
+  const dataToParse = window.localStorage.getItem("userId");
+  const userData = JSON.parse(dataToParse);
   return (
     <div>
       <Header />
@@ -120,9 +122,15 @@ const MainUser = () => {
               <h2>{main_data?.following?.length}</h2>
             </div>
           </div>
-          <div className="btns flex">
-            <button>FOLLOW</button>
-          </div>
+          {main_data?._id == userData?._id ? (
+            <div className="btns flex">
+              <button onClick={() => navigate("/profile")}>PROFILE</button>
+            </div>
+          ) : (
+            <div className="btns flex">
+              <button>FOLLOW</button>
+            </div>
+          )}
         </div>
         <div className="right flex col">
           <div className="card flex col">

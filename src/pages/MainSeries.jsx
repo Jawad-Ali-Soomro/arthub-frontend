@@ -104,7 +104,10 @@ const MainSeries = () => {
       </div>
       <div className="more-by-artist flex col">
         <h1>
-          Art In {main_data?.title} <button>Profile</button>
+          Art In {main_data?.title}{" "}
+          <button onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
+            Profile
+          </button>
         </h1>
         {main_data == undefined ? (
           <div className="wrapper flex">

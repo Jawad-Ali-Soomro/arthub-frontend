@@ -118,7 +118,10 @@ const MainArt = () => {
       </div>
       <div className="more-by-artist flex col">
         <h1>
-          More By {main_data?.owner?.username} <button>Profile</button>
+          More By {main_data?.owner?.username}{" "}
+          <button onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
+            Profile
+          </button>
         </h1>
         {more_data == undefined ? (
           <div className="wrapper flex">
