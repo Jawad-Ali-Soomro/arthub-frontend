@@ -245,3 +245,115 @@
     }
   }
 }
+
+.art-sect {
+  width: calc(100% - 250px);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: scroll !important;
+  position: absolute;
+  height: 100vh;
+  .main {
+    padding-top: 100px;
+    gap: 50px;
+    flex-wrap: wrap;
+    overflow: scroll;
+    padding-bottom: 100px;
+    justify-content: space-between;
+    .card {
+      position: relative;
+      width: 350px;
+      height: 380px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+      }
+      .info {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), black);
+        max-height: 0;
+        overflow: hidden;
+        bottom: 0;
+        backdrop-filter: blur(2px);
+        color: white;
+        justify-content: end;
+        align-items: start;
+        padding-left: 50px;
+        gap: 10px;
+        h3 {
+          font-weight: 600;
+        }
+
+        .price {
+          align-items: end;
+          justify-content: end;
+          width: 300px;
+          justify-content: space-between;
+          p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+          }
+          h2 {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+        }
+        .delete-btn {
+          width: 50px;
+          height: 50px;
+          background: red;
+          position: absolute;
+          top: 40px;
+          border: 1px solid transparent;
+          right: 40px;
+          cursor: pointer;
+          font-size: 1.2rem;
+        }
+        .delete-btn:hover {
+          color: red;
+          background: transparent;
+          border: 1px solid;
+        }
+        .btns {
+          gap: 10px;
+          margin-top: 10px;
+          button {
+            width: 150px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            background: rgba($color: #eee, $alpha: 0.3);
+            border: 1px solid transparent;
+            margin-left: 150px;
+            text-transform: uppercase;
+          }
+          button:hover {
+            background: transparent;
+            border: 1px solid rgba($color: #eee, $alpha: 0.3);
+          }
+        }
+      }
+    }
+    .card:hover {
+      .info {
+        max-height: 100%;
+        padding-bottom: 20px;
+      }
+    }
+  }
+  .main::-webkit-scrollbar {
+    max-width: 0;
+  }
+}
+
+.art-sect::-webkit-scrollbar {
+  width: 0px !important; /* Hide scrollbar for Webkit browsers */
+}

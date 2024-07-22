@@ -9,6 +9,7 @@ import {
   BiLogoInstagram,
   BiLogoTwitter,
   BiPaint,
+  BiTrash,
   BiUpload,
   BiUser,
 } from "react-icons/bi";
@@ -17,33 +18,26 @@ import { CgLogOut } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.scss";
 import { useState } from "react";
-import { GrConnect } from "react-icons/gr";
-import { FaAt, FaBeer } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  LineChart,
-  Line,
-  Area,
-  AreaChart,
-} from "recharts";
+import { XAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 import CustomTooltip from "../components/CustomTooltip";
+import axios from "axios";
+import { useEffect } from "react";
+import { baseUserUrl, ethToUsd } from "../utils/constant";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
-  const connectedWallet = window.sessionStorage.getItem("token");
   const userData = JSON.parse(dataToParse);
-  const themeMode = window.localStorage.getItem("themeMode");
+  const [profile_data, set_data] = useState();
+
+  const fetch_data = async () => {
+    await axios.get(`${baseUserUrl}/get/${userData?._id}`).then((res) => {
+      set_data(res.data.data);
+    });
+  };
+  useEffect(() => {
+    fetch_data();
+  }, [userData]);
   const handleLogout = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
@@ -53,7 +47,6 @@ const Profile = () => {
   };
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(1);
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   const data = [
     {
       name: "Followers",
@@ -368,6 +361,62 @@ const Profile = () => {
                   <p>Upload Profile</p>
                 </div>
               </div>
+            </div>
+          </div>
+        ) : (
+          this
+        )}
+        {tabIndex == 3 ? (
+          <div className="art-sect flex">
+            <div className="main flex">
+              {profile_data?.art?.map((card_item) => {
+                return (
+                  <div className="card flex">
+                    <img src={card_item?.image} alt="" />
+                    <div className="info flex col">
+                      <div className="delete-btn flex">
+                        <BiTrash />
+                      </div>
+                      <h3>{card_item?.title}</h3>
+                      <div className="price flex col">
+                        <p>Price</p>
+                        <h2>
+                          {card_item?.price} ≈ ${card_item?.price * ethToUsd}
+                        </h2>
+                        <div className="btns flex">
+                          <button>UPdate</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          this
+        )}
+        {tabIndex == 4 ? (
+          <div className="art-sect flex">
+            <div className="main flex">
+              {profile_data?.series?.map((card_item) => {
+                return (
+                  <div className="card flex">
+                    <img src={card_item?.image} alt="" />
+                    <div className="info flex col">
+                      <div className="delete-btn flex">
+                        <BiTrash />
+                      </div>
+                      <h3>{card_item?.title}</h3>
+                      <div className="price flex col">
+                        <div className="btns flex">
+                          <button>UPdate</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         ) : (

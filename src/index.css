@@ -27,6 +27,9 @@ body {
   color: var(--text-color);
   font-family: Raleway;
 }
+body::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar for Webkit browsers */
+}
 
 a {
   color: inherit;

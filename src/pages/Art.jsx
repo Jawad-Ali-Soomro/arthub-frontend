@@ -39,7 +39,7 @@ const Art = () => {
           <div className="length flex">
             <p>
               {mainData.length === 0
-                ? "Fetching..."
+                ? "..."
                 : `${mainData.length} Results Found!`}
             </p>
           </div>
