@@ -6,6 +6,8 @@ import {
   BiDollar,
   BiEdit,
   BiLogoFacebook,
+  BiLogoInstagram,
+  BiLogoTwitter,
   BiPaint,
   BiUpload,
   BiUser,
@@ -17,6 +19,7 @@ import "../styles/Profile.scss";
 import { useState } from "react";
 import { GrConnect } from "react-icons/gr";
 import { FaAt, FaBeer } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -65,7 +68,7 @@ const Profile = () => {
             }}
             onClick={() => setTabIndex(2)}
           >
-            <BiEdit />
+            <BiUser />
           </div>
           <div
             className="icon border flex"
@@ -167,43 +170,113 @@ const Profile = () => {
           this
         )}
         {tabIndex == 2 ? (
-          <div className="update-wrap flex col">
-            <h1>Update Profile</h1>
-            <div className="form flex col">
-              <div className="input-wrap flex border">
-                <MdOutlineEmail />
-                <input type="text" placeholder={userData?.email} />
+          <div className="update-wrap flex">
+            <div className="left flex col">
+              <div className="profile flex">
+                <img src={userData?.avatar} alt="" />
+                <h2>{userData?.username}</h2>
               </div>
-              <div className="input-wrap flex border">
-                <BiUser />
-                <input type="text" placeholder={userData?.username} />
+              <div className="flex" style={{ gap: "10px" }}>
+                <div className="wrap flex border">
+                  <p>FOLLOWERS</p>
+                  <h2>{userData?.followers?.length}</h2>
+                </div>
+                <div className="wrap flex border">
+                  <p>Followings</p>
+                  <h2>{userData?.following?.length}</h2>
+                </div>
               </div>
-              <div className="input-wrap flex border">
-                <BiAt />
-                <input type="text" placeholder={userData?.handle} />
+              <div className="flex" style={{ gap: "10px" }}>
+                <div className="wrap flex border">
+                  <p>Creations</p>
+                  <h2>{userData?.art?.length}</h2>
+                </div>
+                <div className="wrap flex border">
+                  <p>Series</p>
+                  <h2>{userData?.series?.length}</h2>
+                </div>
               </div>
-              <div className="input-wrap flex border">
-                <BiLogoFacebook />
-                <input type="text" placeholder={userData?.links[0]?.facebook} />
-              </div>
-              <div className="input-wrap flex border">
-                <BsTwitter />
-                <input type="text" placeholder={userData?.links[0]?.twitter} />
-              </div>
-              <div className="input-wrap flex border">
-                <BsInstagram />
-                <input
-                  type="text"
-                  placeholder={userData?.links[0]?.instagram}
-                />
-              </div>
-              <div className="file flex col">
-                <input type="file" name="" id="" />
-                <BiUpload className="icon" />
-                <p>Upload Profile</p>
+              {userData?.links?.length > 1 ? (
+                <div className="links flex">
+                  {userData?.links[0]?.facebook == "" ? (
+                    this
+                  ) : (
+                    <Link
+                      to={userData?.links[0]?.facebook}
+                      className="flex link border"
+                    >
+                      <BiLogoFacebook />
+                    </Link>
+                  )}
+                  {userData?.links[0]?.twitter == "" ? (
+                    this
+                  ) : (
+                    <Link
+                      to={userData?.links[0]?.twitter}
+                      className="flex link border"
+                    >
+                      <BiLogoTwitter />
+                    </Link>
+                  )}
+                  {userData?.links[0]?.instagram == "" ? (
+                    this
+                  ) : (
+                    <Link
+                      to={userData?.links[0]?.instagram}
+                      className="flex link border"
+                    >
+                      <BiLogoInstagram />
+                    </Link>
+                  )}
+                </div>
+              ) : (
+                this
+              )}
+              <button>Update</button>
+            </div>
+            <div className="right flex col">
+              <h1>Update Profile</h1>
+              <div className="form flex col">
+                <div className="input-wrap flex border">
+                  <MdOutlineEmail />
+                  <input type="text" placeholder={userData?.email} />
+                </div>
+                <div className="input-wrap flex border">
+                  <BiUser />
+                  <input type="text" placeholder={userData?.username} />
+                </div>
+                <div className="input-wrap flex border">
+                  <BiAt />
+                  <input type="text" placeholder={userData?.handle} />
+                </div>
+                <div className="input-wrap flex border">
+                  <BiLogoFacebook />
+                  <input
+                    type="text"
+                    placeholder={userData?.links[0]?.facebook}
+                  />
+                </div>
+                <div className="input-wrap flex border">
+                  <BsTwitter />
+                  <input
+                    type="text"
+                    placeholder={userData?.links[0]?.twitter}
+                  />
+                </div>
+                <div className="input-wrap flex border">
+                  <BsInstagram />
+                  <input
+                    type="text"
+                    placeholder={userData?.links[0]?.instagram}
+                  />
+                </div>
+                <div className="file flex col">
+                  <input type="file" name="" id="" />
+                  <BiUpload className="icon" />
+                  <p>Upload Profile</p>
+                </div>
               </div>
             </div>
-            <button>Update</button>
           </div>
         ) : (
           this
