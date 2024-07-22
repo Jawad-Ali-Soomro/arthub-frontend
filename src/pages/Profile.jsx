@@ -73,11 +73,11 @@ const Profile = () => {
     },
     {
       name: "Items Sold",
-      value: 15,
+      value: 10,
     },
     {
       name: "Items Bought",
-      value: 10,
+      value: 8,
     },
     {
       name: "Total Assets",
@@ -157,8 +157,8 @@ const Profile = () => {
         {tabIndex == 1 ? (
           <div className="welcome-wrap flex col">
             <div className="profile flex col">
-              {/* <h1>Dashboard</h1>
-              <p>Review your progress and manage your artworks and series.</p> */}
+              <h1>Dashboard</h1>
+              <p>Review your progress and manage your artworks and series.</p>
             </div>
             <div className="wrap flex">
               <div

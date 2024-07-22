@@ -15,11 +15,9 @@ import { FaAdjust, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
-import { IoInformation } from "react-icons/io5";
-import { HiInformationCircle } from "react-icons/hi";
-import { PiSignOutBold, PiSignOutThin } from "react-icons/pi";
 import { RiInformation2Line, RiInformationLine } from "react-icons/ri";
 import { CgLogOff, CgLogOut } from "react-icons/cg";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -164,7 +162,15 @@ const Header = () => {
             }}
           >
             <p>Events</p>
-            <p onClick={() => navigate("/profile")}>View Profile</p>
+            <p
+              onClick={() =>
+                tokenId
+                  ? navigate("/profile")
+                  : toast.error("Please Login To Access!")
+              }
+            >
+              View Profile
+            </p>
             <div className="line"></div>
             <p>Trending Art</p>
             <p>Rare Auctions</p>
