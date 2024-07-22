@@ -93,11 +93,7 @@ const Profile = () => {
     <div>
       <div className="sidebar flex col">
         <img
-          src={
-            themeMode === "dark"
-              ? "../public/logo-white.png"
-              : "../public/logo.png"
-          }
+          src={"../public/logo.png"}
           alt="logo"
           onClick={() => navigate("/")}
         />
