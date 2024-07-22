@@ -29,12 +29,14 @@
 }
 
 .main-profile {
-  width: calc(100% - 300px);
+  width: calc(100% - 250px);
   padding-left: 150px;
-  padding-right: 150px;
+  padding-right: 100px;
   height: 100vh;
+  background: inherit;
+  color: inherit;
   .welcome-wrap {
-    gap: 50px;
+    gap: 30px;
     align-items: start;
     .profile {
       gap: 10px;
@@ -71,12 +73,12 @@
         height: 200px;
         position: relative;
         cursor: pointer;
-        color: white;
+        background: #333;
         .icon {
           width: 40px;
           height: 40px;
-          background: inherit;
-          border: 1px solid #333;
+          background: #333;
+          color: white;
           position: absolute;
           top: -20px;
           right: 20px;
@@ -86,6 +88,7 @@
           h1 {
             font-size: 5rem;
             font-weight: 900;
+            color: inherit;
             color: white;
           }
         }
@@ -93,49 +96,54 @@
       .card:hover {
         transform: translateY(-20px);
       }
-      .card:first-child {
-        background: orange;
-      }
-      .card:nth-child(2) {
-        background: rgb(201, 11, 113);
-        color: white;
-        .icon {
-          background: inherit;
-        }
-      }
-      .card:nth-child(3) {
-        background: rgb(7, 129, 228);
-        color: white;
-      }
+      // .card:first-child {
+      //   background: orange;
+      // }
+      // .card:nth-child(2) {
+      //   background: rgb(201, 11, 113);
+      //   color: white;
+      //   .icon {
+      //     background: inherit;
+      //   }
+      // }
+      // .card:nth-child(3) {
+      //   background: rgb(7, 129, 228);
+      //   color: white;
+      // }
     }
-    .connected {
-      align-items: end;
+    .chart {
       width: 100%;
-      gap: 20px;
-      .wrap {
-        align-items: end;
-        gap: 5px;
-        p {
-          font-size: 0.8rem;
-          gap: 5px;
-          text-transform: uppercase;
-        }
-        h2 {
-          font-size: 1rem;
-          font-weight: 400;
-        }
-      }
-      button {
-        width: 160px;
-        height: 40px;
-        background: #333;
-        color: white;
-        border: none;
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        cursor: pointer;
-      }
+      margin-top: 50px;
+      align-items: start;
     }
+    // .connected {
+    //   align-items: end;
+    //   width: 100%;
+    //   gap: 20px;
+    //   .wrap {
+    //     align-items: end;
+    //     gap: 5px;
+    //     p {
+    //       font-size: 0.8rem;
+    //       gap: 5px;
+    //       text-transform: uppercase;
+    //     }
+    //     h2 {
+    //       font-size: 1rem;
+    //       font-weight: 400;
+    //     }
+    //   }
+    //   button {
+    //     width: 160px;
+    //     height: 40px;
+    //     background: #333;
+    //     color: white;
+    //     border: none;
+    //     text-transform: uppercase;
+    //     font-size: 0.7rem;
+    //     cursor: pointer;
+    //   }
+    // }
   }
 }
 
@@ -174,7 +182,6 @@
     }
     .links {
       width: 190px;
-      height: 40px;
       gap: 10px;
       margin-left: 202px;
       justify-content: end;

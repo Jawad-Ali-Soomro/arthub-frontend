@@ -18,7 +18,8 @@ import WalletSection from "./Connect";
 import { IoInformation } from "react-icons/io5";
 import { HiInformationCircle } from "react-icons/hi";
 import { PiSignOutBold, PiSignOutThin } from "react-icons/pi";
-import { CgLogOut } from "react-icons/cg";
+import { RiInformation2Line, RiInformationLine } from "react-icons/ri";
+import { CgLogOff, CgLogOut } from "react-icons/cg";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -82,6 +83,7 @@ const Header = () => {
     window.localStorage.removeItem("userId");
     window.sessionStorage.removeItem("token");
     setUserData(null);
+    window.location.reload();
   };
 
   const openLogin = () => setShowLogin(true);
@@ -189,9 +191,6 @@ const Header = () => {
         </div>
         {tokenId ? (
           <div className="profile flex">
-            <h2 onClick={() => setProfileMenu(!profileMenu)}>
-              {userData?.username}
-            </h2>
             <img
               src={userData?.avatar}
               alt=""
@@ -205,7 +204,7 @@ const Header = () => {
               }}
             >
               <p className="border flex" onClick={() => navigate("/profile")}>
-                <IoInformation />
+                <RiInformationLine />
               </p>
               <p className="border flex" onClick={() => handleLogout()}>
                 <CgLogOut />

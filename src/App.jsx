@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
+  window.localStorage.setItem("themeMode", "dark");
   return (
     <>
       <Toaster position="bottom-right" />

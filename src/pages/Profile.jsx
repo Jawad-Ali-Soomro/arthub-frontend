@@ -20,6 +20,24 @@ import { useState } from "react";
 import { GrConnect } from "react-icons/gr";
 import { FaAt, FaBeer } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  LineChart,
+  Line,
+  Area,
+  AreaChart,
+} from "recharts";
+import CustomTooltip from "../components/CustomTooltip";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -35,14 +53,48 @@ const Profile = () => {
   };
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(1);
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const data = [
+    {
+      name: "Followers",
+      value: userData?.followers?.length,
+    },
+    {
+      name: "Following",
+      value: userData?.following?.length,
+    },
+    {
+      name: "Creations",
+      value: userData?.art?.length,
+    },
+    {
+      name: "Series",
+      value: userData?.series?.length,
+    },
+    {
+      name: "Items Sold",
+      value: 15,
+    },
+    {
+      name: "Items Bought",
+      value: 10,
+    },
+    {
+      name: "Total Assets",
+      value: 5,
+    },
+
+    {
+      name: "Total Sale",
+      value: 4,
+    },
+  ];
   return (
     <div>
       <div className="sidebar flex col">
         <img
           src={
-            themeMode == "light"
-              ? "../public/logo-black.png"
-              : themeMode == "dark"
+            themeMode === "dark"
               ? "../public/logo-white.png"
               : "../public/logo.png"
           }
@@ -109,12 +161,8 @@ const Profile = () => {
         {tabIndex == 1 ? (
           <div className="welcome-wrap flex col">
             <div className="profile flex col">
-              <div className="wrap flex">
-                <img src={userData?.avatar} alt="" />
-                <span>{userData?.username}</span>
-              </div>
-              <h1>Dashboard</h1>
-              <p>Review your progress and manage your artworks and series.</p>
+              {/* <h1>Dashboard</h1>
+              <p>Review your progress and manage your artworks and series.</p> */}
             </div>
             <div className="wrap flex">
               <div
@@ -156,7 +204,55 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="connected flex col">
+            <div className="chart flex">
+              <ResponsiveContainer width="100%" height={350}>
+                <AreaChart
+                  width={500}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    bottom: 0,
+                  }}
+                >
+                  <XAxis dataKey="name" tick={false} />
+                  {/* <YAxis /> */}
+                  <Tooltip content={<CustomTooltip />} />
+                  {/* <Legend /> */}
+                  <Area
+                    fill="#333"
+                    type="monotone"
+                    dataKey="value"
+                    stroke="#666"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+              {/* <ResponsiveContainer width="60%" height={300}>
+                <PieChart width={500}>
+                  <Pie
+                    data={data}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="76%"
+                    cy="50%"
+                    outerRadius={140}
+                    fill="#8884d8"
+                    label
+                  >
+                    {data.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer> */}
+            </div>
+            {/* <div className="connected flex col">
               <div className="wrap flex col">
                 <p className="flex">
                   <GrConnect /> Connected Wallet
@@ -164,7 +260,7 @@ const Profile = () => {
                 <h2>{connectedWallet}</h2>
               </div>
               <button>Disconnect</button>
-            </div>
+            </div> */}
           </div>
         ) : (
           this
@@ -196,7 +292,7 @@ const Profile = () => {
                   <h2>{userData?.series?.length}</h2>
                 </div>
               </div>
-              {userData?.links?.length > 1 ? (
+              {userData?.links?.length == 1 ? (
                 <div className="links flex">
                   {userData?.links[0]?.facebook == "" ? (
                     this
