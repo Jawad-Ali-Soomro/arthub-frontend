@@ -38,7 +38,10 @@ const Spotlight = () => {
     <div>
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
         <h1 style={{ width: "100%", justifyContent: "space-between" }}>
-          Artist Spotlight : Botto <button>See all</button>
+          Artist Spotlight : Botto{" "}
+          <button onClick={() => navigate("/user/665ee1083d4db96d5541f387")}>
+            See all
+          </button>
         </h1>
         <p style={{ fontSize: ".8rem" }}>
           Through his animations, Botto explores the impact of contemporary

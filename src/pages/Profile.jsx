@@ -9,6 +9,7 @@ import {
   BiLogoInstagram,
   BiLogoTwitter,
   BiPaint,
+  BiPlus,
   BiTrash,
   BiUpload,
   BiUser,
@@ -139,7 +140,7 @@ const Profile = () => {
             }}
             onClick={() => setTabIndex(5)}
           >
-            <BsBell />
+            <BiPlus />
           </div>
         </div>
         <div className="btn-logout border flex" onClick={() => handleLogout()}>
@@ -149,10 +150,6 @@ const Profile = () => {
       <div className="main-profile flex">
         {tabIndex == 1 ? (
           <div className="welcome-wrap flex col">
-            <div className="profile flex col">
-              <h1>Dashboard</h1>
-              <p>Review your progress and manage your artworks and series.</p>
-            </div>
             <div className="wrap flex">
               <div
                 className="card flex border col  "
@@ -241,6 +238,7 @@ const Profile = () => {
                 </PieChart>
               </ResponsiveContainer> */}
             </div>
+            <button onClick={() => setTabIndex(2)}>Manage</button>
             {/* <div className="connected flex col">
               <div className="wrap flex col">
                 <p className="flex">
@@ -318,6 +316,7 @@ const Profile = () => {
                 this
               )}
               <button>Update</button>
+              <button style={{ background: "red" }}>DELETe account</button>
             </div>
             <div className="right flex col">
               <h1>Update Profile</h1>
@@ -367,7 +366,8 @@ const Profile = () => {
           this
         )}
         {tabIndex == 3 ? (
-          <div className="art-sect flex">
+          <div className="art-sect flex col">
+            <h1>Manage Art</h1>
             <div className="main flex">
               {profile_data?.art?.map((card_item) => {
                 return (
@@ -397,7 +397,8 @@ const Profile = () => {
           this
         )}
         {tabIndex == 4 ? (
-          <div className="art-sect flex">
+          <div className="art-sect flex col">
+            <h1>Manage Series</h1>
             <div className="main flex">
               {profile_data?.series?.map((card_item) => {
                 return (
