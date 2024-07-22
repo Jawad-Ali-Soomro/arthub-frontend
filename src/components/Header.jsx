@@ -18,6 +18,7 @@ import WalletSection from "./Connect";
 import { IoInformation } from "react-icons/io5";
 import { HiInformationCircle } from "react-icons/hi";
 import { PiSignOutBold, PiSignOutThin } from "react-icons/pi";
+import { CgLogOut } from "react-icons/cg";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -80,7 +81,7 @@ const Header = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
     window.sessionStorage.removeItem("token");
-    setUserData(null); // Update local state to reflect logout
+    setUserData(null);
   };
 
   const openLogin = () => setShowLogin(true);
@@ -160,8 +161,8 @@ const Header = () => {
               background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
             }}
           >
-            <p>Spaces</p>
-            <p>View Profile</p>
+            <p>Events</p>
+            <p onClick={() => navigate("/profile")}>View Profile</p>
             <div className="line"></div>
             <p>Trending Art</p>
             <p>Rare Auctions</p>
@@ -203,11 +204,11 @@ const Header = () => {
                 color: `${isDarkMode ? "rgba(255,255,255,1)" : "white"}`,
               }}
             >
-              <p className="border flex">
-                <HiInformationCircle />
+              <p className="border flex" onClick={() => navigate("/profile")}>
+                <IoInformation />
               </p>
               <p className="border flex" onClick={() => handleLogout()}>
-                <PiSignOutBold />
+                <CgLogOut />
               </p>
             </div>
           </div>
