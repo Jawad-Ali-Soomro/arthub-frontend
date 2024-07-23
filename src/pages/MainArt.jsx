@@ -10,6 +10,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Footer from "../components/Footer";
 import ImageModal from "../components/ImageModal";
+import Popup from "../components/DeletePopup";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -38,6 +39,16 @@ const MainArt = () => {
   });
   document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
   const closeModal = () => setShowImage(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleDelete = () => {
+    console.log("Item deleted");
+    setShowPopup(false);
+  };
+
+  const handleCancel = () => {
+    setShowPopup(false);
+  };
   return (
     <div>
       <Header />
@@ -114,7 +125,11 @@ const MainArt = () => {
                 <button className="border">BUY</button>
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
-                <button className="border" style={{ background: "red" }}>
+                <button
+                  className="border"
+                  style={{ background: "red" }}
+                  onClick={() => setShowPopup(true)}
+                >
                   DELETE
                 </button>
               ) : (
@@ -189,6 +204,13 @@ const MainArt = () => {
         <ImageModal imageUrl={main_data?.image} onClose={closeModal} />
       ) : (
         this
+      )}
+      {showPopup && (
+        <Popup
+          message="This action cannot be undone all information associated with this art will be deleted!"
+          onConfirm={handleDelete}
+          onCancel={handleCancel}
+        />
       )}
       <Footer />
     </div>
