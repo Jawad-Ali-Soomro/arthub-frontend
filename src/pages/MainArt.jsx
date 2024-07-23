@@ -9,11 +9,13 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Footer from "../components/Footer";
+import ImageModal from "../components/ImageModal";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
   const [more_data, set_more] = useState();
   const [show_desc, set_desc] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const navigate = useNavigate();
   const { artId } = useParams();
   const loggedInUser = localStorage.getItem("userId");
@@ -35,6 +37,7 @@ const MainArt = () => {
     fetch_more();
   });
   document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
+  const closeModal = () => setShowImage(false);
   return (
     <div>
       <Header />
@@ -43,7 +46,11 @@ const MainArt = () => {
           {main_data == undefined ? (
             <Skeleton containerClassName="flex-1" width={600} height={600} />
           ) : (
-            <img src={main_data?.image} alt="" />
+            <img
+              src={main_data?.image}
+              alt=""
+              onClick={() => setShowImage(true)}
+            />
           )}
         </div>
         {main_data == undefined ? (
@@ -177,6 +184,12 @@ const MainArt = () => {
           </div>
         )}
       </div>
+
+      {showImage == true ? (
+        <ImageModal imageUrl={main_data?.image} onClose={closeModal} />
+      ) : (
+        this
+      )}
       <Footer />
     </div>
   );

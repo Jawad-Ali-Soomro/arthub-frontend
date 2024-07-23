@@ -54,6 +54,7 @@ button.accent {
 div,
 button {
   border-radius: 20px;
+  transition: 0.3s;
 }
 .icon {
   border-radius: 20px;
