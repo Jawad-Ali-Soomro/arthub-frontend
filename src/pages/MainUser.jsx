@@ -149,6 +149,7 @@ const MainUser = () => {
             {main_data?.links[0]?.facebook ? (
               <Link
                 className="link flex border"
+                target="_blank"
                 to={main_data?.links[0]?.facebook}
               >
                 <BiLogoFacebook />
@@ -157,6 +158,7 @@ const MainUser = () => {
             {main_data?.links[0]?.twitter ? (
               <Link
                 className="link flex border"
+                target="_blank"
                 to={main_data?.links[0]?.twitter}
               >
                 <BiLogoTwitter />
@@ -165,6 +167,7 @@ const MainUser = () => {
             {main_data?.links[0]?.instagram ? (
               <Link
                 className="link flex border"
+                target="_blank"
                 to={main_data?.links[0]?.instagram}
               >
                 <BiLogoInstagram />
