@@ -80,7 +80,7 @@ const Featured = () => {
                 <div className="price flex">
                   <h2>
                     {card_item?.price} ≈{" "}
-                    <span>${card_item?.price * ethToUsd}</span>
+                    <span>${Math.round(card_item?.price * ethToUsd)}</span>
                   </h2>
                   <button
                     className="flex"
