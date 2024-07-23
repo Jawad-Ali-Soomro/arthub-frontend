@@ -262,11 +262,11 @@ const Profile = () => {
               <div className="flex" style={{ gap: "10px" }}>
                 <div className="wrap flex border">
                   <p>FOLLOWERS</p>
-                  <h2>{userData?.followers?.length}</h2>
+                  <h2>{profile_data?.followers?.length}</h2>
                 </div>
                 <div className="wrap flex border">
                   <p>Followings</p>
-                  <h2>{userData?.following?.length}</h2>
+                  <h2>{profile_data?.following?.length}</h2>
                 </div>
               </div>
               <div className="flex" style={{ gap: "10px" }}>
