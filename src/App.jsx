@@ -13,6 +13,7 @@ import MainSeries from "./pages/MainSeries";
 import MainUser from "./pages/MainUser";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -30,6 +31,7 @@ function App() {
           <Route path="/series/:seriesId" element={<MainSeries />}></Route>
           <Route path="/user/:userId" element={<MainUser />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
           <Route
             path={userToken ? "/profile" : "/"}
             element={<Profile />}
