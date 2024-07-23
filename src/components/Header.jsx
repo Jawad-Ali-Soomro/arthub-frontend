@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { switchToDarkMode, switchToLightMode } from "../utils/toggler";
 import "../styles/Header.scss";
 import {
+  BiCart,
   BiChat,
   BiLogoDribbble,
   BiLogoFacebook,
@@ -137,7 +138,7 @@ const Header = () => {
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
           </li>
           <li className="icon flex">
-            <BiChat style={{ fontSize: "1.1rem" }} />
+            <BiCart style={{ fontSize: "1.1rem" }} />
           </li>
         </ul>
         <div className="menu flex col" onClick={() => setShowMenu(!showMenu)}>
