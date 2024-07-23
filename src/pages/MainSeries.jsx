@@ -43,6 +43,9 @@ const MainSeries = () => {
   const totalPricesSum = sumArtPrices(main_data?.art);
   document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
 
+  const loggedInUser = localStorage.getItem("userId");
+  const loggedInUserId = JSON.parse(loggedInUser);
+
   return (
     <div>
       <Header />
@@ -71,8 +74,31 @@ const MainSeries = () => {
             </div>
           </div>
           <div className="btns flex col">
-            <button style={{ border: "none" }}>BUY ALL</button>
-            <button className="border">DEAL</button>
+            {main_data?.owner?._id == loggedInUserId?._id ? (
+              <button
+                style={{ background: "transparent", color: "inherit" }}
+                className="border"
+              >
+                UPDATE
+              </button>
+            ) : (
+              <button
+                style={{ background: "transparent", color: "inherit" }}
+                className="border"
+              >
+                BUY ALL
+              </button>
+            )}
+            {main_data?.owner?._id == loggedInUserId?._id ? (
+              <button
+                className="border"
+                style={{ background: "red", color: "white" }}
+              >
+                DELETE
+              </button>
+            ) : (
+              <button className="border">DEAL</button>
+            )}
           </div>
         </div>
         <div className="right flex col">

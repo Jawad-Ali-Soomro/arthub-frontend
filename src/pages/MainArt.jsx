@@ -16,6 +16,8 @@ const MainArt = () => {
   const [show_desc, set_desc] = useState(false);
   const navigate = useNavigate();
   const { artId } = useParams();
+  const loggedInUser = localStorage.getItem("userId");
+  const loggedInUserId = JSON.parse(loggedInUser);
   const fetch_data = async () => {
     await axios
       .get(`${baseArtUrl}/get/art/${artId}`)
@@ -98,8 +100,18 @@ const MainArt = () => {
               {main_data?.price} ≈ <span>${main_data?.price * ethToUsd}</span>
             </div>
             <div className="btns flex">
-              <button className="border">BUY</button>
-              <button className="border">Make a deal</button>
+              {main_data?.owner?._id == loggedInUserId?._id ? (
+                <button className="border">Update</button>
+              ) : (
+                <button className="border">BUY</button>
+              )}
+              {main_data?.owner?._id == loggedInUserId?._id ? (
+                <button className="border" style={{ background: "red" }}>
+                  DELETE
+                </button>
+              ) : (
+                <button className="border">DEAl</button>
+              )}
             </div>
             <div className="desciption flex">
               {show_desc == true ? (

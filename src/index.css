@@ -69,3 +69,16 @@ h3::selection {
 * {
   transition: 0.3s;
 }
+
+button:hover {
+  animation: best 300ms linear;
+}
+
+@keyframes identifier {
+  25% {
+    transform: translateY(-5px);
+  }
+  75% {
+    transform: translateY(5px);
+  }
+}
