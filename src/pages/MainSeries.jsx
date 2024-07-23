@@ -6,14 +6,7 @@ import { baseSeriesUrl, ethToUsd } from "../utils/constant";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
-import {
-  BiShareAlt,
-  BiUserPlus,
-  BiChat,
-  BiPurchaseTagAlt,
-  BiLayer,
-} from "react-icons/bi";
-import { SiEthereum } from "react-icons/si";
+import { BiLayer } from "react-icons/bi";
 
 const MainSeries = () => {
   const [main_data, set_data] = useState();

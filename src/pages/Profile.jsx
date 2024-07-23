@@ -59,11 +59,11 @@ const Profile = () => {
     },
     {
       name: "Creations",
-      value: userData?.art?.length,
+      value: profile_data?.art?.length,
     },
     {
       name: "Series",
-      value: userData?.series?.length,
+      value: profile_data?.series?.length,
     },
     {
       name: "Items Sold",
@@ -160,9 +160,9 @@ const Profile = () => {
                 </div>
                 <div className="main flex">
                   <h1>
-                    {userData?.art?.length <= 9
-                      ? "0" + userData?.art?.length
-                      : userData?.art?.length}
+                    {profile_data?.art?.length <= 9
+                      ? "0" + profile_data?.art?.length
+                      : profile_data?.art?.length}
                   </h1>
                 </div>
               </div>

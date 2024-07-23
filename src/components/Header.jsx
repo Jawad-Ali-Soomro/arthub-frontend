@@ -89,13 +89,12 @@ const Header = () => {
   const closeLogin = () => setShowLogin(false);
   const openWallets = () => setShowWallets(true);
   const closeWallets = () => setShowWallets(false);
-
   return (
     <div
       className={`header-wrap flex ${
         isVisible ? "header--visible" : "header--hidden"
       }`}
-      style={{ background: `${isDarkMode ? "#111" : "white"}` }}
+      // style={{ background: `${isDarkMode ? "#111" : "white"}` }}
     >
       <div className="logo flex">
         <img

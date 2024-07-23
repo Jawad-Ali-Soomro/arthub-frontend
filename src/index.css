@@ -67,10 +67,10 @@ h3::selection {
   background: transparent;
 }
 
-* {
+/* * {
   transition: 0.3s;
-}
-
+} */
+/* 
 button:hover {
   animation: best 300ms linear;
 }
@@ -82,4 +82,4 @@ button:hover {
   75% {
     transform: translateY(5px);
   }
-}
+} */
