@@ -27,7 +27,7 @@ const Series = () => {
       <div className="explore-wrapper flex col">
         <section className="flex">
           <h1 className="flex col">
-            Explore <span>Discover & Collect Crypto Art.</span>
+            Series <span>Discover & Collect Crypto Series.</span>
           </h1>
           <button>
             <img src="../public/filter.svg" alt="Filter" />

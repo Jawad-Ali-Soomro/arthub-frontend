@@ -12,6 +12,7 @@ import {
   BiLogoTwitter,
 } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
+import toast from "react-hot-toast";
 
 const MainUser = () => {
   const navigate = useNavigate();
@@ -59,6 +60,53 @@ const MainUser = () => {
 
   const dataToParse = window.localStorage.getItem("userId");
   const userData = JSON.parse(dataToParse);
+
+  const [btnText, setBtnText] = useState("FOLLOW");
+
+  const loggedInToken = window.localStorage.getItem("authToken");
+
+  useEffect(() => {
+    if (main_data?.followers?.some((item) => item._id === userData?._id)) {
+      setBtnText("UNFOLLOW");
+    } else {
+      setBtnText("FOLLOW");
+    }
+  }, [main_data, userData]);
+
+  const toggleFollow = async () => {
+    if (loggedInToken) {
+      try {
+        const res = await axios.patch(`${baseUserUrl}/toggle/follow`, {
+          userId: main_data?._id,
+          loggedInId: loggedInToken,
+        });
+        const message = res.data.message;
+        if (message === "User followed!") {
+          setBtnText("UNFOLLOW");
+          toast.success("Following!");
+          set_data((prevData) => ({
+            ...prevData,
+            followers: [...prevData.followers, { _id: userData?._id }],
+          }));
+        } else if (message === "User unfollowed!") {
+          setBtnText("FOLLOW");
+          toast.success("Unfollowing!");
+          set_data((prevData) => ({
+            ...prevData,
+            followers: prevData.followers.filter(
+              (follower) => follower._id !== userData?._id
+            ),
+          }));
+        }
+      } catch (error) {
+        console.error("Error following/unfollowing user:", error);
+        toast.error("An error occurred. Please try again!");
+      }
+    } else {
+      toast.error("Please Login First!");
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -123,7 +171,7 @@ const MainUser = () => {
               </Link>
             ) : null}
           </div>
-          {main_data?._id == userData?._id ? (
+          {main_data?._id === userData?._id ? (
             <div className="btns flex">
               <button
                 onClick={() => navigate("/profile")}
@@ -135,7 +183,9 @@ const MainUser = () => {
           ) : (
             <div className="btns flex col">
               <button style={{ border: "none" }}>MESSAGE</button>
-              <button className="border"> FOLLOW</button>
+              <button className="border" onClick={() => toggleFollow()}>
+                {btnText}
+              </button>
             </div>
           )}
         </div>

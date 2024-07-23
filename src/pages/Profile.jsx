@@ -51,11 +51,11 @@ const Profile = () => {
   const data = [
     {
       name: "Followers",
-      value: userData?.followers?.length,
+      value: profile_data?.followers?.length,
     },
     {
       name: "Following",
-      value: userData?.following?.length,
+      value: profile_data?.following?.length,
     },
     {
       name: "Creations",
