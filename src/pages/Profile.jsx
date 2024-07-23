@@ -85,7 +85,7 @@ const Profile = () => {
   ];
   return (
     <div>
-      <div className="sidebar flex col">
+      <div className="sidebar flex col border">
         <img
           src={"../public/logo.png"}
           alt="logo"
@@ -367,7 +367,6 @@ const Profile = () => {
         )}
         {tabIndex == 3 ? (
           <div className="art-sect flex col">
-            <h1>Manage Art</h1>
             <div className="main flex">
               {profile_data?.art?.map((card_item) => {
                 return (
@@ -398,7 +397,6 @@ const Profile = () => {
         )}
         {tabIndex == 4 ? (
           <div className="art-sect flex col">
-            <h1>Manage Series</h1>
             <div className="main flex">
               {profile_data?.series?.map((card_item) => {
                 return (

@@ -13,7 +13,11 @@ const loginPortal = document.getElementById("loginPortal");
 const Login = ({ onClose }) => {
   const [showPass, setShowPass] = useState(false);
   const [loginStep, setLoginStep] = useState(true);
-
+  loginStep == true
+    ? (document.title = "Login")
+    : loginStep == false
+    ? (document.title = "Register")
+    : (document.title = "Artchain");
   const themeMode = window.localStorage.getItem("themeMode");
   const [loginData, setLoginData] = useState({
     email: "",

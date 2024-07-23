@@ -78,32 +78,17 @@ const MainUser = () => {
                   </span>
                 </p>
               </div>
-              <div className="links flex">
-                {main_data?.links[0]?.facebook ? (
-                  <Link
-                    className="link flex border"
-                    to={main_data?.links[0]?.facebook}
-                  >
-                    <BiLogoFacebook />
-                  </Link>
-                ) : null}
-                {main_data?.links[0]?.twitter ? (
-                  <Link
-                    className="link flex border"
-                    to={main_data?.links[0]?.twitter}
-                  >
-                    <BiLogoTwitter />
-                  </Link>
-                ) : null}
-                {main_data?.links[0]?.instagram ? (
-                  <Link
-                    className="link flex border"
-                    to={main_data?.links[0]?.instagram}
-                  >
-                    <BiLogoInstagram />
-                  </Link>
-                ) : null}
-              </div>
+            </div>
+          </div>
+
+          <div className="btns flex">
+            <div className="sect flex border">
+              <h2>{main_data?.followers?.length}</h2>
+              <p>Followers</p>
+            </div>
+            <div className="sect flex border">
+              <h2>{main_data?.following?.length}</h2>
+              <p>following</p>
             </div>
           </div>
           <div className="join border flex">
@@ -112,23 +97,45 @@ const MainUser = () => {
               {day} - {monthInText} - {year}
             </p>
           </div>
-          <div className="btns flex">
-            <div className="sect flex border">
-              <p>Followers</p>
-              <h2>{main_data?.followers?.length}</h2>
-            </div>
-            <div className="sect flex border">
-              <p>following</p>
-              <h2>{main_data?.following?.length}</h2>
-            </div>
+          <div className="links flex">
+            {main_data?.links[0]?.facebook ? (
+              <Link
+                className="link flex border"
+                to={main_data?.links[0]?.facebook}
+              >
+                <BiLogoFacebook />
+              </Link>
+            ) : null}
+            {main_data?.links[0]?.twitter ? (
+              <Link
+                className="link flex border"
+                to={main_data?.links[0]?.twitter}
+              >
+                <BiLogoTwitter />
+              </Link>
+            ) : null}
+            {main_data?.links[0]?.instagram ? (
+              <Link
+                className="link flex border"
+                to={main_data?.links[0]?.instagram}
+              >
+                <BiLogoInstagram />
+              </Link>
+            ) : null}
           </div>
           {main_data?._id == userData?._id ? (
             <div className="btns flex">
-              <button onClick={() => navigate("/profile")}>PROFILE</button>
+              <button
+                onClick={() => navigate("/profile")}
+                style={{ background: "#333", color: "white", border: "none" }}
+              >
+                PROFILE
+              </button>
             </div>
           ) : (
-            <div className="btns flex">
-              <button>FOLLOW</button>
+            <div className="btns flex col">
+              <button style={{ border: "none" }}>MESSAGE</button>
+              <button className="border"> FOLLOW</button>
             </div>
           )}
         </div>

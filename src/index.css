@@ -53,7 +53,10 @@ button.accent {
 
 div,
 button {
-  border-radius: 5px;
+  border-radius: 20px;
+}
+.icon {
+  border-radius: 20px;
 }
 
 p::selection,

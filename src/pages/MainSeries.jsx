@@ -70,8 +70,9 @@ const MainSeries = () => {
               </h2>
             </div>
           </div>
-          <div className="btns flex">
-            <button>BUY ALL</button>
+          <div className="btns flex col">
+            <button style={{ border: "none" }}>BUY ALL</button>
+            <button className="border">DEAL</button>
           </div>
         </div>
         <div className="right flex col">

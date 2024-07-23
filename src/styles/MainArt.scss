@@ -11,7 +11,7 @@
     img {
       width: 550px;
       height: 580px;
-      border-radius: 5px;
+      border-radius: 20px;
     }
   }
   .main-art-right {
@@ -40,6 +40,7 @@
     .owner-series {
       width: 400px;
       justify-content: space-between;
+      border-radius: 20px;
       .owner {
         cursor: pointer;
         gap: 5px;
@@ -129,7 +130,7 @@
     align-items: center;
     button {
       width: 120px;
-      height: 35px;
+      height: 40px;
       background: #333;
       color: white;
       border: none;
@@ -147,7 +148,7 @@
     .card {
       width: 350px;
       height: 380px;
-      border-radius: 5px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
       cursor: pointer;
@@ -215,7 +216,7 @@
             background: transparent;
             border: 1px solid;
             color: white;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
             background: rgba($color: #eee, $alpha: 0.3);
             border: 1px solid transparent;
@@ -224,7 +225,7 @@
           }
           button:hover {
             background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.3);
+            border: 1px solid rgba($color: #eee, $alpha: 0.5);
           }
         }
       }

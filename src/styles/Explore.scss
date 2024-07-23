@@ -26,15 +26,16 @@
       height: 50px;
       border: none;
       display: flex;
+      border-radius: 10px;
       justify-content: center;
       align-items: center;
       cursor: pointer;
     }
     .length {
       position: absolute;
-      bottom: -20px;
+      bottom: -25px;
       width: 200px;
-      height: 40px;
+      height: 50px;
       background: #333;
       color: white;
       display: flex;
@@ -57,6 +58,7 @@
       border-radius: 5px;
       overflow: hidden;
       cursor: pointer;
+      border-radius: 20px;
       img {
         width: 350px;
         height: 380px;
@@ -120,8 +122,8 @@
             height: 40px;
             background: transparent;
             border: 1px solid;
+            border-radius: 20px;
             color: white;
-            border-radius: 5px;
             cursor: pointer;
             background: rgba($color: #eee, $alpha: 0.3);
             border: 1px solid transparent;
@@ -130,7 +132,7 @@
           }
           button:hover {
             background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.3);
+            border: 1px solid rgba($color: #eee, $alpha: 0.5);
           }
         }
       }

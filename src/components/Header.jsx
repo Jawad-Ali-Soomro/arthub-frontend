@@ -48,7 +48,7 @@ const Header = () => {
       switchToLightMode();
     }
   }, []);
-
+  showLogin == true ? (document.title = "Login") : this;
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {

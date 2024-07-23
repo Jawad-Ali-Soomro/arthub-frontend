@@ -170,7 +170,7 @@
       .link {
         width: 40px;
         height: 40px;
-        border-radius: 5px;
+        border-radius: 20px;
       }
     }
     button {
@@ -198,7 +198,7 @@
         padding-right: 10px;
         input {
           width: 370px;
-          height: 35px;
+          height: 40px;
           border: none;
           background: transparent;
           outline: none;
@@ -235,12 +235,10 @@
   position: absolute;
   height: 100vh;
   align-items: start;
-  h1 {
-    margin-top: 50px;
-  }
+
   .main {
-    margin-top: 50px;
     gap: 50px;
+    padding-top: 50px;
     flex-wrap: wrap;
     overflow: scroll;
     padding-bottom: 100px;
@@ -298,6 +296,7 @@
           right: 40px;
           cursor: pointer;
           font-size: 1.2rem;
+          border-radius: 25px;
         }
         .delete-btn:hover {
           color: red;
@@ -313,7 +312,7 @@
             background: transparent;
             border: 1px solid;
             color: white;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
             background: rgba($color: #eee, $alpha: 0.3);
             border: 1px solid transparent;
@@ -322,7 +321,7 @@
           }
           button:hover {
             background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.3);
+            border: 1px solid rgba($color: #eee, $alpha: 0.5);
           }
         }
       }
