@@ -97,7 +97,8 @@ const MainArt = () => {
             <div className="line"></div>
             <div className="price flex">
               <p>PRICE</p> &nbsp; : &nbsp;
-              {main_data?.price} ≈ <span>${main_data?.price * ethToUsd}</span>
+              {main_data?.price} ≈{" "}
+              <span>${Math.round(main_data?.price * ethToUsd)}</span>
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (
@@ -159,7 +160,7 @@ const MainArt = () => {
                       <p>price</p>
                       <h2>
                         {card_item?.price} ≈{" "}
-                        <span>${card_item?.price * ethToUsd}</span>
+                        <span>${Math.round(card_item?.price * ethToUsd)}</span>
                       </h2>
                     </div>
                     <div className="btns flex">
