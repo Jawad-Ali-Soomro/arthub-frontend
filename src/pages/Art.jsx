@@ -6,16 +6,40 @@ import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
+import { BiCross } from "react-icons/bi";
+import { CgClose } from "react-icons/cg";
 
 const Art = () => {
   document.title = "Explore Art";
   const navigate = useNavigate();
   const [mainData, setMainData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [filterCriteria, setFilterCriteria] = useState({
+    price: null,
+    tags: [],
+  });
+  const themeMode = window.localStorage.getItem("themeMode");
+  const predefinedTags = [
+    "Surreal",
+    "Abstract",
+    "Illusion",
+    "Illustration",
+    "Surrealism",
+    "AI",
+    "Painting",
+    "Photography",
+    "Digital",
+    "Crypto Art",
+    "Vision",
+    "Portrait",
+  ];
 
   const fetchData = async () => {
     try {
       const response = await axios.get(`${baseArtUrl}/get/all`);
       setMainData(response.data.data);
+      setFilteredData(response.data.data);
     } catch (error) {
       console.error("Error fetching art data:", error);
     }
@@ -25,6 +49,38 @@ const Art = () => {
     fetchData();
   }, []);
 
+  const applyFilter = () => {
+    const { price, tags } = filterCriteria;
+    const filtered = mainData.filter((item) => {
+      let matches = true;
+      if (price !== null) {
+        matches = matches && item.price <= price;
+      }
+      if (tags.length > 0) {
+        matches = matches && tags.every((tag) => item.tags.includes(tag));
+      }
+      return matches;
+    });
+    setFilteredData(filtered);
+  };
+
+  const removeFilter = () => {
+    setFilterCriteria({
+      price: null,
+      tags: [],
+    });
+    setFilteredData(mainData); // Reset filtered data to show all items
+  };
+
+  const handleTagChange = (tag) => {
+    setFilterCriteria((prevCriteria) => ({
+      ...prevCriteria,
+      tags: prevCriteria.tags.includes(tag)
+        ? prevCriteria.tags.filter((t) => t !== tag)
+        : [...prevCriteria.tags, tag],
+    }));
+  };
+
   return (
     <div>
       <Header />
@@ -33,18 +89,66 @@ const Art = () => {
           <h1 className="flex col">
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
-          <button>
+          <button onClick={() => setIsFilterVisible(!isFilterVisible)}>
             <img src="../public/filter.svg" alt="Filter" />
           </button>
           <div className="length flex">
             <p>
-              {mainData.length === 0
-                ? "..."
-                : `${mainData.length} Results Found!`}
+              {filteredData.length === 0
+                ? "0 Results!"
+                : `${filteredData.length} Results!`}
             </p>
           </div>
         </section>
-        {mainData.length === 0 ? (
+        {isFilterVisible && (
+          <div className="filter-div" onClick={() => setIsFilterVisible(false)}>
+            <div
+              className="filter-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="btn-close flex"
+                onClick={() => setIsFilterVisible(false)}
+              >
+                <CgClose />
+              </button>
+              <div className="filter-section">
+                <label>Tags</label>
+                <div className="tags">
+                  {predefinedTags.map((tag) => (
+                    <div
+                      key={tag}
+                      style={{ color: "inherit" }}
+                      className={`tag border ${
+                        filterCriteria.tags.includes(tag) ? "selected" : ""
+                      }`}
+                      onClick={() => handleTagChange(tag)}
+                    >
+                      {tag}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="filter-section">
+                <label>Max Price</label>
+                <input
+                  type="number"
+                  value={filterCriteria.price || ""}
+                  className="border"
+                  onChange={(e) =>
+                    setFilterCriteria({
+                      ...filterCriteria,
+                      price: e.target.value ? Number(e.target.value) : null,
+                    })
+                  }
+                />
+              </div>
+              <button onClick={applyFilter}>Apply</button>
+              <button onClick={removeFilter}>Remove</button>
+            </div>
+          </div>
+        )}
+        {filteredData.length === 0 ? (
           <div className="main-data flex">
             <Skeleton width={350} height={380} />
             <Skeleton width={350} height={380} />
@@ -52,7 +156,7 @@ const Art = () => {
           </div>
         ) : (
           <div className="main-data flex">
-            {mainData.map((cardItem) => (
+            {filteredData.map((cardItem) => (
               <div className="card flex" key={cardItem._id}>
                 <img src={cardItem.image} alt={cardItem.title} />
                 <div className="info flex col">

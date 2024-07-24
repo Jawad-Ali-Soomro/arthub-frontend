@@ -43,85 +43,92 @@ const MainSeries = () => {
     <div>
       <Header />
       <div className="top-profile flex">
-        <div className="left flex col">
-          <div className="wrap flex">
-            <img src={main_data?.image} alt="" />
-            <div className="info flex col">
-              <p className="flex">
-                <BiLayer /> SERIES
-              </p>
-              <h1 style={{ marginBottom: "20px" }}>{main_data?.title}</h1>
-            </div>
-          </div>
-          <div className="btns flex">
-            <div className="sect flex border">
-              <p>creations</p>
-              <h2>{main_data?.art?.length}</h2>
-            </div>
-            <div className="sect flex border">
-              <p>worth</p>
-              <h2>
-                {totalPricesSum}
-                <span style={{ fontSize: ".6rem" }}>ETH</span>
-              </h2>
-            </div>
-          </div>
-          <div className="btns flex col">
-            {main_data?.owner?._id == loggedInUserId?._id ? (
-              <button
-                style={{ background: "transparent", color: "inherit" }}
-                className="border"
-              >
-                UPDATE
-              </button>
-            ) : (
-              <button
-                style={{ background: "transparent", color: "inherit" }}
-                className="border"
-              >
-                BUY ALL
-              </button>
-            )}
-            {main_data?.owner?._id == loggedInUserId?._id ? (
-              <button
-                className="border"
-                style={{ background: "red", color: "white" }}
-              >
-                DELETE
-              </button>
-            ) : (
-              <button className="border">DEAL</button>
-            )}
-          </div>
-        </div>
-        <div className="right flex col">
-          <div className="card flex col">
-            <div className="img-sect flex">
-              <img
-                className="border"
-                src={main_data?.art[0]?.image}
-                alt=""
-                onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
-              />
-            </div>
-            <div className="info flex col">
-              <h2>{main_data?.art[0]?.title}</h2>
-              <div className="price flex">
-                <h2>
-                  {main_data?.art[0]?.price} ≈{" "}
-                  <span>
-                    ${Math.round(main_data?.art[0]?.price * ethToUsd)}
-                  </span>
-                </h2>
-                <button
-                  className="flex"
-                  onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
-                >
-                  Buy
-                </button>
+        {!main_data ? (
+          <Skeleton width={400} height={500} />
+        ) : (
+          <div className="left flex col">
+            <div className="wrap flex">
+              <img src={main_data?.image} alt="" />
+              <div className="info flex col">
+                <p className="flex">
+                  <BiLayer /> SERIES
+                </p>
+                <h1 style={{ marginBottom: "20px" }}>{main_data?.title}</h1>
               </div>
             </div>
+            <div className="btns flex">
+              <div className="sect flex border">
+                <p>creations</p>
+                <h2>{main_data?.art?.length}</h2>
+              </div>
+              <div className="sect flex border">
+                <p>worth</p>
+                <h2>
+                  {totalPricesSum}
+                  <span style={{ fontSize: ".6rem" }}>ETH</span>
+                </h2>
+              </div>
+            </div>
+            <div className="btns flex col">
+              {main_data?.owner?._id == loggedInUserId?._id ? (
+                <button
+                  style={{ background: "transparent", color: "inherit" }}
+                  className="border"
+                >
+                  UPDATE
+                </button>
+              ) : (
+                <button
+                  style={{ background: "#333", color: "white", border: "none" }}
+                >
+                  BUY ALL
+                </button>
+              )}
+              {main_data?.owner?._id == loggedInUserId?._id ? (
+                <button
+                  className="border"
+                  style={{ background: "red", color: "white" }}
+                >
+                  DELETE
+                </button>
+              ) : (
+                <button className="border">DEAL</button>
+              )}
+            </div>
           </div>
+        )}
+        <div className="right flex col">
+          {!main_data ? (
+            <Skeleton width={400} height={500} />
+          ) : (
+            <div className="card flex col">
+              <div className="img-sect flex">
+                <img
+                  className="border"
+                  src={main_data?.art[0]?.image}
+                  alt=""
+                  onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
+                />
+              </div>
+              <div className="info flex col">
+                <h2>{main_data?.art[0]?.title}</h2>
+                <div className="price flex">
+                  <h2>
+                    {main_data?.art[0]?.price} ≈{" "}
+                    <span>
+                      ${Math.round(main_data?.art[0]?.price * ethToUsd)}
+                    </span>
+                  </h2>
+                  <button
+                    className="flex"
+                    onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
+                  >
+                    Buy
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="more-by-artist flex col">

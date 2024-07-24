@@ -72,11 +72,6 @@ const FeaturedSeries = () => {
                     />
                     <h3>{card_item?.owner?.username}</h3>
                   </div>
-                  <div className="more border flex col">
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                  </div>
                 </div>
                 <div className="border"></div>
                 <div className="price flex">

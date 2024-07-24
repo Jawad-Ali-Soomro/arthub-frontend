@@ -5,26 +5,32 @@
   padding-right: 100px;
   justify-content: space-between;
   padding-top: 10vh;
+
   .right {
     img {
-      width: 500px;
-      height: 550px;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
     }
   }
+
   .left {
     align-items: start;
     gap: 20px;
+
     h1 {
       font-size: 5rem;
       max-width: 500px;
       font-weight: 900;
       line-height: 90px;
     }
+
     p {
       max-width: 450px;
       font-weight: 300;
       font-size: 0.9rem;
     }
+
     button {
       width: 250px;
       height: 50px;
@@ -44,38 +50,170 @@
   align-items: start;
   justify-content: start;
   gap: 20px;
+
   h1 {
     font-size: 4rem;
     text-transform: capitalize;
     font-weight: 400;
   }
+
   p {
     font-weight: 300;
   }
+
   .wrapper {
     width: 100%;
     justify-content: space-between;
     margin-top: 50px;
+
     .card {
       transition: 0.3s;
-      width: 380px;
+      width: 100%;
+      max-width: 380px;
       height: 180px;
       gap: 20px;
+
       .top {
         gap: 10px;
+
         .icon {
           font-size: 2rem;
         }
+
         p {
           font-size: 1.5rem;
           font-weight: 400;
         }
       }
+
+      &:hover {
+        background: #333;
+        color: white;
+        cursor: pointer;
+      }
     }
-    .card:hover {
-      background: #333;
-      color: white;
-      cursor: pointer;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .banner {
+    width: calc(100% - 100px);
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .right {
+      img {
+        width: 80%;
+      }
+    }
+
+    .left {
+      h1 {
+        font-size: 4rem;
+        line-height: 70px;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      button {
+        width: 200px;
+      }
+    }
+  }
+
+  .outro {
+    width: calc(100% - 100px);
+    padding: 50px;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .wrapper {
+      .card {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding-top: 5vh;
+
+    .left {
+      h1 {
+        font-size: 2.5rem;
+        line-height: 50px;
+      }
+
+      p {
+        font-size: 0.7rem;
+      }
+
+      button {
+        width: 150px;
+      }
+    }
+  }
+
+  .outro {
+    padding: 30px;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .wrapper {
+      .card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .left {
+      h1 {
+        font-size: 1.5rem;
+        line-height: 40px;
+      }
+
+      p {
+        font-size: 0.6rem;
+      }
+
+      button {
+        width: 120px;
+        height: 40px;
+      }
+    }
+  }
+
+  .outro {
+    padding: 20px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .wrapper {
+      .card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
 }
