@@ -27,7 +27,7 @@ const MainSeries = () => {
     let totalPrice = 0;
     artArray?.forEach((artObject) => {
       if (artObject?.price) {
-        totalPrice += artObject.price;
+        Math.round((totalPrice += artObject.price));
       }
     });
     return totalPrice;
@@ -64,7 +64,7 @@ const MainSeries = () => {
               <div className="sect flex border">
                 <p>worth</p>
                 <h2>
-                  {totalPricesSum}
+                  {Math.round(totalPricesSum)}
                   <span style={{ fontSize: ".6rem" }}>ETH</span>
                 </h2>
               </div>

@@ -6,7 +6,7 @@ const NotFound = () => {
       style={{ minHeight: "100vh", background: "inherit" }}
       className="flex col"
     >
-      <img src="../public/notFound.png" alt="" />
+      <img src="/notFound.png" alt="image" />
       <p style={{ textTransform: "uppercase", fontSize: "1.2rem" }}>
         Oops! The Page You Are Looking for Have Been Moved Or Deleted!
       </p>
