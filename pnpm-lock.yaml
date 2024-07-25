@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@openzeppelin/contracts':
-        specifier: ^5.0.2
-        version: 5.0.2
-      '@walletconnect/web3-provider':
-        specifier: ^1.8.0
-        version: 1.8.0(@babel/core@7.24.7)
       axios:
         specifier: ^1.7.2
         version: 1.7.2
@@ -57,34 +51,7 @@ importers:
         specifier: ^4.10.0
         version: 4.10.0(typescript@5.5.3)(zod@3.23.8)
     devDependencies:
-      '@nomicfoundation/hardhat-chai-matchers':
-        specifier: ^2.0.0
-        version: 2.0.7(@nomicfoundation/hardhat-ethers@3.0.6(ethers@6.13.1)(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3)))(chai@4.4.1)(ethers@6.13.1)(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      '@nomicfoundation/hardhat-ethers':
-        specifier: ^3.0.0
-        version: 3.0.6(ethers@6.13.1)(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      '@nomicfoundation/hardhat-ignition':
-        specifier: ^0.15.0
-        version: 0.15.5(@nomicfoundation/hardhat-verify@2.0.8(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3)))(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      '@nomicfoundation/hardhat-ignition-ethers':
-        specifier: ^0.15.0
-        version: 0.15.5(@nomicfoundation/hardhat-ethers@3.0.6(ethers@6.13.1)(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3)))(@nomicfoundation/hardhat-ignition@0.15.5(@nomicfoundation/hardhat-verify@2.0.8(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3)))(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3)))(@nomicfoundation/ignition-core@0.15.5)(ethers@6.13.1)(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      '@nomicfoundation/hardhat-network-helpers':
-        specifier: ^1.0.0
-        version: 1.0.11(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      '@nomicfoundation/hardhat-toolbox':
-        specifier: ^5.0.0
-        version: 5.0.0(etqfsi5ti3rxztc2fz6wevt6iy)
-      '@nomicfoundation/hardhat-verify':
-        specifier: ^2.0.0
-        version: 2.0.8(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      '@typechain/ethers-v6':
-        specifier: ^0.5.0
-        version: 0.5.1(ethers@6.13.1)(typechain@8.3.2(typescript@5.5.3))(typescript@5.5.3)
-      '@typechain/hardhat':
-        specifier: ^9.0.0
-        version: 9.1.0(@typechain/ethers-v6@0.5.1(ethers@6.13.1)(typechain@8.3.2(typescript@5.5.3))(typescript@5.5.3))(ethers@6.13.1)(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))(typechain@8.3.2(typescript@5.5.3))
-      '@types/react':
+       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
       '@types/react-dom':
@@ -94,8 +61,6 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1(vite@5.3.3(@types/node@20.14.10)(sass@1.77.6))
       chai:
-        specifier: ^4.2.0
-        version: 4.4.1
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -108,21 +73,6 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.7
         version: 0.4.7(eslint@8.57.0)
-      ethers:
-        specifier: ^6.13.1
-        version: 6.13.1
-      hardhat:
-        specifier: ^2.14.0
-        version: 2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3)
-      hardhat-gas-reporter:
-        specifier: ^1.0.8
-        version: 1.0.10(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      solidity-coverage:
-        specifier: ^0.8.0
-        version: 0.8.12(hardhat@2.22.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))(typescript@5.5.3))
-      typechain:
-        specifier: ^8.3.0
-        version: 8.3.2(typescript@5.5.3)
       vite:
         specifier: ^5.3.1
         version: 5.3.3(@types/node@20.14.10)(sass@1.77.6)
