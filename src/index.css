@@ -26,6 +26,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: Raleway;
+  cursor: url("../public/cursor.cur"), auto;
 }
 body::-webkit-scrollbar {
   width: 0; /* Hide scrollbar for Webkit browsers */
