@@ -19,9 +19,9 @@ const WalletSection = ({ onClose }) => {
   }, []);
 
   const walletImages = {
-    MetaMask: "../public/metamask.png",
-    TrustWallet: "../public/twt.png",
-    Coinbase: "../public/coinbase.png",
+    MetaMask: "/metamask.png",
+    TrustWallet: "/twt.png",
+    Coinbase: "/coinbase.png",
   };
 
   const handleWalletClick = (wallet) => {
@@ -41,7 +41,7 @@ const WalletSection = ({ onClose }) => {
         className="main-connect flex col"
         onClick={(e) => e.stopPropagation()}
       >
-        <img src={"../public/logo-black.png"} alt="Logo" />
+        <img src={"/logo-black.png"} alt="Logo" />
         <h1>Connect Wallet!</h1>
 
         <div

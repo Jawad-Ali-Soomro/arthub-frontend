@@ -90,7 +90,7 @@ const Art = () => {
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
           <button onClick={() => setIsFilterVisible(!isFilterVisible)}>
-            <img src="../public/filter.svg" alt="Filter" />
+            <img src="/filter.svg" alt="Filter" />
           </button>
           <div className="length flex">
             <p>

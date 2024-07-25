@@ -86,11 +86,7 @@ const Profile = () => {
   return (
     <div>
       <div className="sidebar flex col border">
-        <img
-          src={"../public/logo.png"}
-          alt="logo"
-          onClick={() => navigate("/")}
-        />
+        <img src={"/logo.png"} alt="logo" onClick={() => navigate("/")} />
         <div className="nav-icons flex col">
           <div
             className="icon border flex"

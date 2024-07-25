@@ -64,7 +64,7 @@ const Login = ({ onClose }) => {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src="../public/logo-black.png" alt="Logo" />
+        <img src="/logo-black.png" alt="Logo" />
         <h1>Welcome Back!</h1>
         <div className="form flex col">
           <div className="input-wrap flex col">
@@ -115,7 +115,7 @@ const Login = ({ onClose }) => {
           transform: loginStep ? "translateX(600%)" : "translateX(0%)",
         }}
       >
-        <img src="../public/logo-black.png" alt="Logo" />
+        <img src="/logo-black.png" alt="Logo" />
         <h1>Create An Account!</h1>
         <div className="wrap flex">
           <div className="form flex col">

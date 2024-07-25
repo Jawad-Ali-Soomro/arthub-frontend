@@ -30,7 +30,7 @@ const Series = () => {
             Series <span>Discover & Collect Crypto Series.</span>
           </h1>
           <button>
-            <img src="../public/filter.svg" alt="Filter" />
+            <img src="/filter.svg" alt="Filter" />
           </button>
           <div className="length flex">
             <p>
