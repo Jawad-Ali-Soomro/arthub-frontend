@@ -4,7 +4,6 @@ import {
   BiAt,
   BiCollection,
   BiDollar,
-  BiEdit,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
