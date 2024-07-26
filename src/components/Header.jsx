@@ -94,7 +94,9 @@ const Header = () => {
       className={`header-wrap flex ${
         isVisible ? "header--visible" : "header--hidden"
       }`}
-      style={{ background: `${isDarkMode ? "#111" : "white"}` }}
+      style={{
+        background: `${isDarkMode ? "rgb(23, 20, 32)" : "rgb(210,210,210)"}`,
+      }}
     >
       <div className="logo flex">
         <img

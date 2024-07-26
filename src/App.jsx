@@ -17,7 +17,6 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
-  // window.localStorage.setItem("themeMode", "light");
   return (
     <>
       <Toaster position="bottom-right" />

@@ -1,6 +1,6 @@
 :root {
   /* Light mode variables */
-  --background-color: rgb(240, 240, 240);
+  --background-color: rgb(0, 0, 0);
   --text-color: #000000;
   --primary-color: #6200ee;
   --secondary-color: #03dac6;
@@ -11,7 +11,7 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
 
   /* Dark mode variables */
-  --background-color-dark: #111;
+  --background-color-dark: rgb(23, 20, 32);
   --text-color-dark: #ffffff;
   --primary-color-dark: #bb86fc;
   --secondary-color-dark: #03dac6;
@@ -28,6 +28,7 @@ body {
   font-family: Raleway;
   cursor: url("../public/cursor.cur"), auto;
 }
+
 body::-webkit-scrollbar {
   width: 0; /* Hide scrollbar for Webkit browsers */
 }
