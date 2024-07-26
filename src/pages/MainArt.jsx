@@ -92,7 +92,14 @@ const MainArt = () => {
                 onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
               >
                 <img className="border" src={main_data?.owner?.avatar} alt="" />
-                <h2>{main_data?.owner?.username}</h2>
+                <div className="flex col" style={{ alignItems: "start" }}>
+                  <p style={{ fontSize: ".5rem", textTransform: "uppercase" }}>
+                    Artist
+                  </p>
+                  <h2 style={{ fontWeight: "400" }}>
+                    {main_data?.owner?.username}
+                  </h2>
+                </div>
               </div>
               {main_data?.series[0] !== undefined ? (
                 <div
@@ -106,7 +113,15 @@ const MainArt = () => {
                     src={main_data?.series[0]?.image}
                     alt=""
                   />
-                  <h2>{main_data?.series[0]?.title}</h2>
+                  <div className="flex col" style={{ alignItems: "start" }}>
+                    <p
+                      style={{ fontSize: ".5rem", textTransform: "uppercase" }}
+                    >
+                      Series
+                    </p>
+
+                    <h2>{main_data?.series[0]?.title}</h2>
+                  </div>
                 </div>
               ) : (
                 this
@@ -115,8 +130,7 @@ const MainArt = () => {
             <div className="line"></div>
             <div className="price flex">
               <p>PRICE</p> &nbsp; : &nbsp;
-              {main_data?.price} ≈{" "}
-              <span>${Math.round(main_data?.price * ethToUsd)}</span>
+              {main_data?.price} ≈ ${Math.round(main_data?.price * ethToUsd)}
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (

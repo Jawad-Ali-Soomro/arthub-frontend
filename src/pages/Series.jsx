@@ -32,11 +32,11 @@ const Series = () => {
           <button>
             <img src="/filter.svg" alt="Filter" />
           </button>
-          <div className="length flex">
+          <div className="length flex" style={{ borderRadius: "25px" }}>
             <p>
               {main_data == undefined
                 ? "Fetching..."
-                : main_data?.length + " Results Found!"}
+                : main_data?.length + " Results!"}
             </p>
           </div>
         </section>

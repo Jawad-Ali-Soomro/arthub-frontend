@@ -191,6 +191,7 @@
   .right {
     gap: 30px;
     align-items: start;
+    transition: 0s;
     .form {
       gap: 10px;
       justify-content: start;
@@ -227,6 +228,38 @@
           margin-top: 10px;
         }
       }
+      .btns {
+        width: 100%;
+        align-items: end;
+        gap: 10px;
+        button {
+          width: 200px;
+          height: 40px;
+          background: #333;
+          color: white;
+          border: 1px solid #333;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+        button:last-child {
+          background: transparent;
+          color: inherit;
+        }
+      }
+    }
+  }
+  .wallet {
+    position: absolute;
+    bottom: 50px;
+    right: 120px;
+    gap: 10px;
+    button {
+      width: 40px;
+      height: 40px;
+      background: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
   }
 }

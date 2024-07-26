@@ -80,7 +80,6 @@ const Header = () => {
   const handleLogout = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
-    window.sessionStorage.removeItem("token");
     setUserData(null);
     window.location.reload();
   };

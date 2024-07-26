@@ -1,5 +1,5 @@
 import React from "react";
-import { MdDashboard, MdEmail, MdOutlineEmail } from "react-icons/md";
+import { MdDashboard, MdEmail, MdEvent, MdOutlineEmail } from "react-icons/md";
 import {
   BiAt,
   BiCollection,
@@ -24,6 +24,7 @@ import CustomTooltip from "../components/CustomTooltip";
 import axios from "axios";
 import { useEffect } from "react";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
+import { AiOutlineDisconnect } from "react-icons/ai";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -42,12 +43,11 @@ const Profile = () => {
   const handleLogout = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
-    window.sessionStorage.removeItem("token");
     navigate("/");
     window.location.reload();
   };
   const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = useState(1);
+  const [tabIndex, setTabIndex] = useState(2);
   const data = [
     {
       name: "Followers",
@@ -83,6 +83,8 @@ const Profile = () => {
       value: 4,
     },
   ];
+
+  const [updateTab, setUpdateTab] = useState(false);
   return (
     <div>
       <div className="sidebar flex col">
@@ -92,16 +94,6 @@ const Profile = () => {
           onClick={() => navigate("/")}
         />
         <div className="nav-icons flex col">
-          <div
-            className="icon border flex"
-            style={{
-              background: `${tabIndex == 1 ? "#333" : ""}`,
-              color: `${tabIndex == 1 ? "white" : ""}`,
-            }}
-            onClick={() => setTabIndex(1)}
-          >
-            <MdDashboard />
-          </div>
           <div
             className="icon border flex"
             style={{
@@ -140,6 +132,16 @@ const Profile = () => {
             }}
             onClick={() => setTabIndex(5)}
           >
+            <MdEvent />
+          </div>
+          <div
+            className="icon border flex"
+            style={{
+              background: `${tabIndex == 6 ? "#333" : ""}`,
+              color: `${tabIndex == 6 ? "white" : ""}`,
+            }}
+            onClick={() => setTabIndex(6)}
+          >
             <BiPlus />
           </div>
         </div>
@@ -148,121 +150,25 @@ const Profile = () => {
         </div>
       </div>
       <div className="main-profile flex">
-        {tabIndex == 1 ? (
-          <div className="welcome-wrap flex col">
-            <div className="wrap flex">
-              <div
-                className="card flex border col  "
-                onClick={() => setTabIndex(3)}
-              >
-                <div className="icon flex border">
-                  <BiPaint />
-                </div>
-                <div className="main flex">
-                  <h1>
-                    {profile_data?.art?.length <= 9
-                      ? "0" + profile_data?.art?.length
-                      : profile_data?.art?.length}
-                  </h1>
-                </div>
-              </div>
-              <div
-                className="card flex border col  "
-                onClick={() => setTabIndex(4)}
-              >
-                <div className="icon flex border">
-                  <BiCollection />
-                </div>
-                <div className="main flex">
-                  <h1>
-                    {userData?.series?.length <= 9
-                      ? "0" + userData?.series?.length
-                      : userData?.series?.length}
-                  </h1>
-                </div>
-              </div>
-              <div className="card flex border col  ">
-                <div className="icon flex border">
-                  <BiDollar />
-                </div>
-                <div className="main flex">
-                  <h1>$100</h1>
-                </div>
-              </div>
-            </div>
-            <div className="chart flex">
-              <ResponsiveContainer width="100%" height={350}>
-                <AreaChart
-                  width={500}
-                  height={300}
-                  data={data}
-                  margin={{
-                    top: 0,
-                    right: 0,
-                    left: 0,
-                    bottom: 0,
-                  }}
-                >
-                  <XAxis dataKey="name" tick={false} />
-                  {/* <YAxis /> */}
-                  <Tooltip content={<CustomTooltip />} />
-                  {/* <Legend /> */}
-                  <Area
-                    fill="#333"
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#666"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-              {/* <ResponsiveContainer width="60%" height={300}>
-                <PieChart width={500}>
-                  <Pie
-                    data={data}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="76%"
-                    cy="50%"
-                    outerRadius={140}
-                    fill="#8884d8"
-                    label
-                  >
-                    {data.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer> */}
-            </div>
-            <button onClick={() => setTabIndex(2)}>Manage</button>
-            {/* <div className="connected flex col">
-              <div className="wrap flex col">
-                <p className="flex">
-                  <GrConnect /> Connected Wallet
-                </p>
-                <h2>{connectedWallet}</h2>
-              </div>
-              <button>Disconnect</button>
-            </div> */}
-          </div>
-        ) : (
-          this
-        )}
         {tabIndex == 2 ? (
-          <div className="update-wrap flex">
+          <div
+            className="update-wrap flex"
+            style={{
+              alignItems: "center",
+              justifyContent: `${
+                updateTab == true ? "space-between" : "center"
+              }`,
+            }}
+          >
             <div className="left flex col">
               <div className="profile flex">
                 <img src={userData?.avatar} alt="" />
-                <h2>{userData?.username}</h2>
+                <h2 style={{ fontWeight: 900 }}>{userData?.username}</h2>
               </div>
               <div className="flex" style={{ gap: "10px" }}>
                 <div className="wrap flex border">
                   <p>FOLLOWERS</p>
-                  <h2>{profile_data?.followers?.length}</h2>
+                  <h2>{profile_data?.followers.length}</h2>
                 </div>
                 <div className="wrap flex border">
                   <p>Followings</p>
@@ -315,11 +221,18 @@ const Profile = () => {
               ) : (
                 this
               )}
-              <button>Update</button>
+              <button onClick={() => setUpdateTab(true)}>Update</button>
               <button style={{ background: "red" }}>DELETe account</button>
             </div>
-            <div className="right flex col">
-              <h1>Update Profile</h1>
+            <div
+              className="right flex col"
+              style={{
+                position: `${updateTab == true ? "relative" : "absolute"}`,
+                maxWidth: `${updateTab == true ? "470px" : "000px"}`,
+                overflow: "hidden",
+              }}
+            >
+              <h1 style={{ fontWeight: "900" }}>Update Profile</h1>
               <div className="form flex col">
                 <div className="input-wrap flex border">
                   <MdOutlineEmail />
@@ -359,8 +272,27 @@ const Profile = () => {
                   <BiUpload className="icon" />
                   <p>Upload Profile</p>
                 </div>
+                <div className="btns flex col">
+                  <button>Update</button>
+                  <button
+                    className="border"
+                    onClick={() => setUpdateTab(false)}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
+            {updateTab == false ? (
+              <div className="wallet flex">
+                <p>{profile_data?.wallet_address}</p>
+                <button className="flex">
+                  <AiOutlineDisconnect />
+                </button>
+              </div>
+            ) : (
+              this
+            )}
           </div>
         ) : (
           this
