@@ -7,18 +7,16 @@ import { Link } from "react-router-dom";
 import { baseUserUrl } from "../utils/constant";
 import axios from "axios";
 import toast from "react-hot-toast";
+import uploadToPinata from "../utils/upload";
 
 const loginPortal = document.getElementById("loginPortal");
 
 const Login = ({ onClose }) => {
   const [showPass, setShowPass] = useState(false);
   const [loginStep, setLoginStep] = useState(true);
-  loginStep == true
-    ? (document.title = "Login")
-    : loginStep == false
-    ? (document.title = "Register")
-    : (document.title = "Artchain");
-  const themeMode = window.localStorage.getItem("themeMode");
+
+  document.title = loginStep ? "Login" : "Register";
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -33,25 +31,112 @@ const Login = ({ onClose }) => {
   };
 
   const handleLoginSubmit = async () => {
-    if (loginData.email | (loginData.password == "")) {
+    if (!loginData.email || !loginData.password) {
       toast.error("Please Fill All The Fields");
     } else {
-      const loginResponse = await axios.post(`${baseUserUrl}/login`, {
-        email: loginData.email,
-        password: loginData.password,
-      });
-      const message = loginResponse?.data?.message;
-      const token = loginResponse?.data?.token;
+      try {
+        const loginResponse = await axios.post(`${baseUserUrl}/login`, {
+          email: loginData.email,
+          password: loginData.password,
+        });
+        const { message, token, data } = loginResponse?.data;
 
-      message == "Logged In!"
-        ? window.localStorage.setItem("authToken", token) +
-          window.localStorage.setItem(
-            "userId",
-            JSON.stringify(loginResponse?.data?.data)
-          ) +
-          toast.success("Success!") +
-          window.location.reload()
-        : toast.error(message);
+        if (message === "Logged In!") {
+          window.localStorage.setItem("authToken", token);
+          window.localStorage.setItem("userId", JSON.stringify(data));
+          toast.success("Success!");
+          window.location.reload();
+        } else {
+          toast.error(message);
+        }
+      } catch (error) {
+        toast.error("An error occurred during login.");
+      }
+    }
+  };
+
+  const wallet_address = window.sessionStorage.getItem("token");
+
+  const [avatar, setAvatar] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+  const [registerData, setRegisterData] = useState({
+    email: "",
+    password: "",
+    username: "",
+    facebook: "https://www.facebook.com",
+    twitter: "https://twitter.com",
+    instagram: "https://www.instagram.com",
+  });
+
+  const handleRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setRegisterData({
+      ...registerData,
+      [name]: value,
+    });
+  };
+
+  const handleRegisterSubmit = async () => {
+    if (
+      !registerData.email ||
+      !registerData.password ||
+      !registerData.username
+    ) {
+      toast.error("Please fill all the fields!");
+    } else if (!avatar) {
+      toast.error("Please upload an avatar!");
+    } else {
+      try {
+        const registerResponse = await axios.post(`${baseUserUrl}/create`, {
+          username: registerData.username,
+          email: registerData.email,
+          password: registerData.password,
+          handle: registerData.username.toLowerCase(),
+          avatar: imageUrl,
+          links: [
+            {
+              facebook: registerData.facebook,
+              twitter: registerData.twitter,
+              instagram: registerData.instagram,
+            },
+          ],
+          wallet_address,
+        });
+
+        if (registerResponse.data.message === "User exists already!") {
+          toast.error("Email exists already!");
+        } else {
+          toast.success("Account created!");
+          setRegisterData({
+            email: "",
+            password: "",
+            username: "",
+            facebook: "",
+            twitter: "",
+            instagram: "",
+          });
+          setAvatar(null);
+          setImageUrl("");
+          setLoginStep(true);
+        }
+      } catch (error) {
+        toast.error("An error occurred during registration.");
+      }
+    }
+  };
+
+  const handleAvatarChange = async (e) => {
+    const file = e.target.files[0];
+    setAvatar(file);
+    try {
+      const uploadResult = await uploadToPinata(file);
+      setImageUrl(
+        "https://orange-large-reindeer-667.mypinata.cloud/ipfs/" +
+          uploadResult.IpfsHash
+      );
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to upload avatar.");
     }
   };
 
@@ -96,7 +181,7 @@ const Login = ({ onClose }) => {
             </div>
           </div>
           <Link className="link">Forgot Password?</Link>
-          <button className="flex" onClick={() => handleLoginSubmit()}>
+          <button className="flex" onClick={handleLoginSubmit}>
             Login
           </button>
           <p
@@ -120,13 +205,25 @@ const Login = ({ onClose }) => {
         <div className="wrap flex">
           <div className="form flex col">
             <div className="input-wrap">
-              <input type="text" placeholder="Enter Username" />
+              <input
+                type="text"
+                placeholder="Enter Username"
+                name="username"
+                value={registerData.username}
+                onChange={handleRegisterChange}
+              />
               <div className="icon flex">
                 <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
               </div>
             </div>
             <div className="input-wrap">
-              <input type="text" placeholder="Enter Email" />
+              <input
+                type="text"
+                placeholder="Enter Email"
+                value={registerData.email}
+                name="email"
+                onChange={handleRegisterChange}
+              />
               <div className="icon flex">
                 <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
               </div>
@@ -135,6 +232,9 @@ const Login = ({ onClose }) => {
               <input
                 type={showPass ? "text" : "password"}
                 placeholder="Enter Password..."
+                value={registerData.password}
+                name="password"
+                onChange={handleRegisterChange}
               />
               <div className="icon flex">
                 {showPass ? (
@@ -144,31 +244,27 @@ const Login = ({ onClose }) => {
                 )}
               </div>
             </div>
-            <div className="input-wrap">
-              <input type="text" placeholder="Enter Facebook URL" />
-            </div>
-          </div>
-          <div className="form flex col">
-            <div className="input-wrap">
-              <input type="text" placeholder="Enter Twitter URL" />
-            </div>
-            <div className="input-wrap">
-              <input type="text" placeholder="Enter Instagram URL" />
-            </div>
             <div className="input-wrap text">
-              <input type="file" name="avatar" id="avatar" />
+              <input
+                type="file"
+                name="avatar"
+                id="avatar"
+                onChange={handleAvatarChange}
+              />
               <p className="flex col">
                 Upload Avatar <span>Drag & Drop File To Upload!</span>
               </p>
             </div>
+            <div className="btns flex">
+              <button onClick={imageUrl == "" ? this : handleRegisterSubmit}>
+                Register
+              </button>
+            </div>
+            <p className="link" onClick={() => setLoginStep(true)}>
+              Already Have An Account?
+            </p>
           </div>
         </div>
-        <div className="btns flex">
-          <button>Register</button>
-        </div>
-        <p className="link" onClick={() => setLoginStep(true)}>
-          Already Have An Account?
-        </p>
       </div>
     </div>,
     loginPortal

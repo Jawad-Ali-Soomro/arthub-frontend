@@ -40,7 +40,7 @@ function switchToDarkMode() {
 function switchToLightMode() {
   document.documentElement.style.setProperty(
     "--background-color",
-    "rgb(210, 210, 210)"
+    "rgb(250, 250, 250)"
   );
   document.documentElement.style.setProperty(
     "--text-color",

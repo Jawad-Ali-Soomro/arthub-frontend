@@ -1,7 +1,7 @@
 .sidebar {
   width: 80px;
   height: calc(100% - 100px);
-  border-right: 1px solid;
+  border-right: 1px solid rgba($color: #333, $alpha: 0.3);
   position: fixed;
   left: 0;
   justify-content: space-between;
@@ -49,6 +49,7 @@
         img {
           width: 50px;
           height: 50px;
+          border: 1px solid;
           border-radius: 50%;
         }
         span {
@@ -140,6 +141,7 @@
       img {
         width: 80px;
         height: 80px;
+        border: 1px solid;
         border-radius: 50%;
       }
       h2 {

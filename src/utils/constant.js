@@ -5,6 +5,10 @@ const baseArtUrl = "https://arthub-backend-psi.vercel.app/api/v1/art";
 const baseSeriesUrl = "https://arthub-backend-psi.vercel.app/api/v1/series";
 const ethToUsd = 3800;
 
+// https://arthub-backend-psi.vercel.app
+
+// https://arthub-backend-psi.vercel.app
+
 const checkWalletExtensions = () => {
   const installedWallets = [];
   const recommendedWallets = ["MetaMask", "TrustWallet", "Coinbase"];

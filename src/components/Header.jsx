@@ -95,7 +95,7 @@ const Header = () => {
         isVisible ? "header--visible" : "header--hidden"
       }`}
       style={{
-        background: `${isDarkMode ? "rgb(23, 20, 32)" : "rgb(210,210,210)"}`,
+        background: `${isDarkMode ? "rgb(23, 20, 32)" : "rgb(250,250,250)"}`,
       }}
     >
       <div className="logo flex">
@@ -166,7 +166,7 @@ const Header = () => {
               onClick={() =>
                 tokenId
                   ? navigate("/profile")
-                  : toast.error("Please Login To Access!")
+                  : toast.error("Please login to access!")
               }
             >
               View Profile

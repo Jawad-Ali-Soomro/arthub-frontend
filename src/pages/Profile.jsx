@@ -29,6 +29,7 @@ const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
   const userData = JSON.parse(dataToParse);
   const [profile_data, set_data] = useState();
+  const themeMode = window.localStorage.getItem("themeMode");
 
   const fetch_data = async () => {
     await axios.get(`${baseUserUrl}/get/${userData?._id}`).then((res) => {
@@ -84,8 +85,12 @@ const Profile = () => {
   ];
   return (
     <div>
-      <div className="sidebar flex col border">
-        <img src={"/logo.png"} alt="logo" onClick={() => navigate("/")} />
+      <div className="sidebar flex col">
+        <img
+          src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
+          alt="logo"
+          onClick={() => navigate("/")}
+        />
         <div className="nav-icons flex col">
           <div
             className="icon border flex"
