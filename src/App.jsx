@@ -14,6 +14,11 @@ import MainUser from "./pages/MainUser";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import Auction from "./pages/Auction";
+import TrendingArt from "./pages/TrendingArt";
+import TrendingSeries from "./pages/TrendingSeries";
+import Events from "./pages/Events";
+import Cart from "./pages/Cart";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -35,6 +40,11 @@ function App() {
             path={userToken ? "/profile" : "/"}
             element={<Profile />}
           ></Route>
+          <Route path="/auction" element={<Auction />}></Route>
+          <Route path="/trending-art" element={<TrendingArt />}></Route>
+          <Route path="/trending-series" element={<TrendingSeries />}></Route>
+          <Route path="/events" element={<Events />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -13,6 +13,7 @@ import {
 } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 import toast from "react-hot-toast";
+import { MdVerified } from "react-icons/md";
 
 const MainUser = () => {
   const navigate = useNavigate();
@@ -103,7 +104,7 @@ const MainUser = () => {
         toast.error("An error occurred. Please try again!");
       }
     } else {
-      toast.error("Please Login First!");
+      toast.error("Please login first!");
     }
   };
 
@@ -120,7 +121,14 @@ const MainUser = () => {
               <div className="info flex col">
                 <h1>{main_data?.username}</h1>
                 <div className="handle flex">
-                  <p>@{main_data?.handle}</p>
+                  <p className="flex">
+                    @{main_data?.handle}{" "}
+                    {main_data?.isPrime == true ? (
+                      <MdVerified style={{ paddingLeft: "2px" }} />
+                    ) : (
+                      this
+                    )}{" "}
+                  </p>
                   <p>
                     {main_data?.wallet_address.substring(0, 5)}...
                     {main_data?.wallet_address.substring(10, 5)}

@@ -131,11 +131,17 @@ const Header = () => {
           >
             Series
           </li>
-          <li className="icon">Auction</li>
+          <li
+            className="icon"
+            onClick={() => navigate("/auction")}
+            id={location === "/auction" ? "active" : ""}
+          >
+            Auction
+          </li>
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
           </li>
-          <li className="icon flex">
+          <li className="icon flex" onClick={() => navigate("/cart")}>
             <BiCart style={{ fontSize: "1.1rem" }} />
           </li>
         </ul>
@@ -160,7 +166,7 @@ const Header = () => {
               background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
             }}
           >
-            <p>Events</p>
+            <p onClick={() => navigate("/events")}>Events</p>
             <p
               onClick={() =>
                 tokenId
@@ -171,9 +177,9 @@ const Header = () => {
               View Profile
             </p>
             <div className="line"></div>
-            <p>Trending Art</p>
+            <p onClick={() => navigate("/trending-art")}>Trending Art</p>
             <p>Rare Auctions</p>
-            <p>Trending Series</p>
+            <p onClick={() => navigate("/trending-series")}>Trending Series</p>
             <div className="line"></div>
             <div className="links flex">
               <Link className="link flex">
