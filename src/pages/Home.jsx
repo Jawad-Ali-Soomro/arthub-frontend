@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/Home.scss";
 import Header from "../components/Header";
-import Top from "../components/Top";
 import Featured from "../components/Featured";
 import FeaturedSeries from "../components/feturedSeries";
 import Spotlight from "../components/Spotlight";
@@ -27,7 +26,6 @@ const Home = () => {
           <img src="./hero.png" alt="" />
         </div>
       </div>
-      {/* <Top /> */}
       <Featured />
       <FeaturedSeries />
       <Spotlight />
