@@ -35,6 +35,8 @@ const MainArt = () => {
   };
   useEffect(() => {
     fetch_data();
+  }, [artId]);
+  useEffect(() => {
     fetch_more();
   });
   document.title = `${main_data?.owner?.username}'s ${main_data?.title}`;
