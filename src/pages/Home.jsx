@@ -5,6 +5,7 @@ import Featured from "../components/Featured";
 import FeaturedSeries from "../components/feturedSeries";
 import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
+import Top from "../components/Top";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
           <img src="./hero.png" alt="" />
         </div>
       </div>
+      <Top />
       <Featured />
       <FeaturedSeries />
       <Spotlight />

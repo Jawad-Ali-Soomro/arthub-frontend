@@ -103,14 +103,14 @@
       transition: 0s;
       cursor: auto;
       padding: 20px;
-      background: #eee;
+      background: #333;
       top: 30px;
       right: calc(100% - 20px);
       align-items: start;
       color: white;
       gap: 10px;
       overflow: hidden !important;
-      backdrop-filter: blur(100px);
+      // backdrop-filter: blur(100px);
       border-radius: 10px;
       p {
         text-transform: uppercase;
@@ -152,7 +152,7 @@
       img {
         width: 40px;
         height: 40px;
-        border: 1px solid;
+        background: rgb(32, 32, 32);
         border-radius: 50%;
       }
       h2 {

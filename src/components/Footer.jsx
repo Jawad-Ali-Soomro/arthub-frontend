@@ -32,6 +32,15 @@ const Footer = () => {
       </div>
       <div className="right flex">
         <div className="community flex col">
+          <p>LINKS</p>
+          <ul className="flex col" style={{ gap: "10px" }}>
+            <li>Events</li>
+            <li>login account</li>
+            <li>Manage account</li>
+            <li>create an account</li>
+          </ul>
+        </div>
+        <div className="community flex col">
           <p>COMMUNITY</p>
           <ul className="flex col">
             <li>Help Centre</li>

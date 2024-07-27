@@ -19,6 +19,8 @@ import WalletSection from "./Connect";
 import { RiInformation2Line, RiInformationLine } from "react-icons/ri";
 import { CgLogOff, CgLogOut } from "react-icons/cg";
 import toast from "react-hot-toast";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -88,6 +90,7 @@ const Header = () => {
   const closeLogin = () => setShowLogin(false);
   const openWallets = () => setShowWallets(true);
   const closeWallets = () => setShowWallets(false);
+
   return (
     <div
       className={`header-wrap flex ${
@@ -115,7 +118,10 @@ const Header = () => {
             id={location === "/" ? "active" : ""}
             onClick={() => navigate("/")}
           >
-            Home
+            <span>H</span>
+            <span>o</span>
+            <span>m</span>
+            <span>e</span>
           </li>
           <li
             className="icon"
@@ -160,10 +166,12 @@ const Header = () => {
           ></div>
           <div
             className={
-              showMenu ? "main-menu-active flex col" : "main-menu flex col"
+              showMenu
+                ? "main-menu-active border flex col"
+                : "main-menu flex col"
             }
             style={{
-              background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
+              background: `${isDarkMode ? "rgb(23, 20, 32)" : "#333"}`,
             }}
           >
             <p onClick={() => navigate("/events")}>Events</p>
@@ -205,9 +213,11 @@ const Header = () => {
             <img
               src={userData?.avatar}
               alt=""
-              onClick={() => setProfileMenu(!profileMenu)}
+              className="border"
+              // onClick={() => setProfileMenu(!profileMenu)}
+              onClick={() => navigate("/profile")}
             />
-            <div
+            {/* <div
               className={profileMenu ? "menu-active flex col" : "menu flex col"}
               style={{
                 background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
@@ -220,7 +230,7 @@ const Header = () => {
               <p className="border flex" onClick={() => handleLogout()}>
                 <CgLogOut />
               </p>
-            </div>
+            </div> */}
           </div>
         ) : (
           <button

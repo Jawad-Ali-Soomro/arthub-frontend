@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { baseArtUrl, baseUserUrl, ethToUsd } from "../utils/constant";
-import { BiHeart, BiLike, BiScan } from "react-icons/bi";
+import { BiCart, BiHeart, BiLike, BiScan } from "react-icons/bi";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -71,7 +71,7 @@ const MainArt = () => {
             <div className="top flex col">
               <div className="icons flex">
                 <div className="icon border flex">
-                  <BiHeart />
+                  <BiCart />
                 </div>{" "}
                 <div className="icon border flex">
                   <BiScan />

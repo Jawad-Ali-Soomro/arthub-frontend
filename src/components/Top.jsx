@@ -36,7 +36,7 @@ const Top = () => {
         {main_data == undefined ? (
           <Skeleton width={500} height={550} />
         ) : (
-          <img src={main_data?.image} alt="" />
+          <img src={main_data?.image} alt="" style={{ borderRadius: "20px" }} />
         )}
       </div>
       {main_data == undefined ? (
@@ -45,15 +45,19 @@ const Top = () => {
         <div className="right flex col">
           <h1>{main_data?.title}</h1>
           <div className="tags flex">
-            {main_data?.tags?.map((tag) => {
-              return <p>{tag}</p>;
+            {main_data?.tags?.slice(0, 2)?.map((tag) => {
+              return (
+                <p className="border" style={{ borderRadius: "25px" }}>
+                  {tag}
+                </p>
+              );
             })}
           </div>
           <div
             className="profile-wrap flex"
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
           >
-            <img src={main_data?.owner?.avatar} alt="" />
+            <img className="border" src={main_data?.owner?.avatar} alt="" />
             <h2>{main_data?.owner?.username}</h2>
           </div>
           <div className="price-wrap flex col">
@@ -63,7 +67,10 @@ const Top = () => {
             </h2>
           </div>
           <div className="btns-wrap flex">
-            <button onClick={() => navigate(`/art/${main_data?._id}`)}>
+            <button
+              className="border"
+              onClick={() => navigate(`/art/${main_data?._id}`)}
+            >
               BUY
             </button>
             <button>DEAL</button>

@@ -162,7 +162,7 @@ const Profile = () => {
           >
             <div className="left flex col">
               <div className="profile flex">
-                <img src={userData?.avatar} alt="" />
+                <img className="border" src={userData?.avatar} alt="" />
                 <h2 style={{ fontWeight: 900 }}>{userData?.username}</h2>
               </div>
               <div className="flex" style={{ gap: "10px" }}>
