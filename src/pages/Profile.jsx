@@ -312,7 +312,7 @@ const Profile = () => {
                       <div className="price flex col">
                         <p>Price</p>
                         <h2>
-                          {card_item?.price} ≈ ${" "}
+                          {card_item?.price} Ξ ${" "}
                           {Math.round(card_item?.price * ethToUsd)}
                         </h2>
                         <div className="btns flex">

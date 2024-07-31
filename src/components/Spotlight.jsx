@@ -71,7 +71,7 @@ const Spotlight = () => {
                   <div className="border"></div>
                   <div className="price flex">
                     <h2>
-                      {card_item?.price} ≈{" "}
+                      {card_item?.price} Ξ{" "}
                       <span>${card_item?.price * ethToUsd}</span>
                     </h2>
                     <button

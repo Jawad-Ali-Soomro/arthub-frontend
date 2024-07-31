@@ -132,7 +132,7 @@ const MainArt = () => {
             <div className="line"></div>
             <div className="price flex">
               <p>PRICE</p> &nbsp; : &nbsp;
-              {main_data?.price} ≈ ${Math.round(main_data?.price * ethToUsd)}
+              {main_data?.price} Ξ ${Math.round(main_data?.price * ethToUsd)}
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (
@@ -197,7 +197,7 @@ const MainArt = () => {
                     <div className="price flex col">
                       <p>price</p>
                       <h2>
-                        {card_item?.price} ≈{" "}
+                        {card_item?.price} Ξ{" "}
                         <span>${Math.round(card_item?.price * ethToUsd)}</span>
                       </h2>
                     </div>

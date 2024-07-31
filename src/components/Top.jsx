@@ -63,7 +63,7 @@ const Top = () => {
           <div className="price-wrap flex col">
             <p>PRICE</p>
             <h2>
-              {main_data?.price} ≈ <span>${main_data?.price * ethToUsd}</span>
+              {main_data?.price} Ξ <span>${main_data?.price * ethToUsd}</span>
             </h2>
           </div>
           <div className="btns-wrap flex">
