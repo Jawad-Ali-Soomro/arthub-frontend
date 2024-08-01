@@ -11,14 +11,18 @@
 }
 
 .more-by-artist {
-  h1 {
-    position: relative;
-  }
-  .owner {
-    gap: 5px;
-    h2 {
-      font-weight: 400;
-      text-transform: capitalize;
+  .wrapper {
+    flex-wrap: wrap;
+    gap: 20px;
+    h1 {
+      position: relative;
+    }
+    .owner {
+      gap: 5px;
+      h2 {
+        font-weight: 400;
+        text-transform: capitalize;
+      }
     }
   }
 }

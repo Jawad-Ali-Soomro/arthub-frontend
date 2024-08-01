@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { switchToDarkMode, switchToLightMode } from "../utils/toggler";
 import "../styles/Header.scss";
 import {
+  BiCalendar,
   BiCart,
   BiChat,
   BiCopy,
@@ -13,6 +14,7 @@ import {
   BiLogoTwitter,
   BiLogOut,
   BiSearch,
+  BiUser,
 } from "react-icons/bi";
 import { FaAdjust, FaArtstation, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
@@ -32,6 +34,7 @@ import { CiSettings } from "react-icons/ci";
 import { GoSignOut } from "react-icons/go";
 import { SiEventstore } from "react-icons/si";
 import { BsBrush } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -190,7 +193,7 @@ const Header = () => {
             }}
           >
             <p onClick={() => navigate("/events")}>
-              Events <SiEventstore />
+              Events <BiCalendar />
             </p>
             <p
               onClick={() =>
@@ -277,10 +280,10 @@ const Header = () => {
                     Dashboard <MdDashboard />
                   </li>
                   <li className="flex">
-                    PROFILE <CgProfile />
+                    PROFILE <BiUser />
                   </li>
                   <li className="flex">
-                    SETTINGS <CiSettings />
+                    SETTINGS <FiSettings />
                   </li>
                   <li className="flex" onClick={() => handleLogout()}>
                     sign out <BiLogOut />
