@@ -78,7 +78,7 @@
       overflow: hidden !important;
       p {
         text-transform: uppercase;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         cursor: pointer;
       }
       .links {
@@ -92,7 +92,7 @@
     }
     .main-menu-active {
       position: absolute;
-      width: 140px;
+      width: 150px;
       transition: 0s;
       cursor: auto;
       padding: 20px;
@@ -109,11 +109,13 @@
         font-size: 0.8rem;
         cursor: pointer;
         position: relative;
-        width: 140px;
+        width: 150px;
+        font-weight: 500;
         justify-content: space-between;
+        display: flex;
       }
       .line {
-        width: 140px;
+        width: 150px;
         height: 0.5px;
         padding-top: 10px;
         border-bottom: 1px solid;
@@ -179,8 +181,9 @@
           padding-right: 20px;
           background: rgba(245, 245, 245);
           .wallet {
+            width: 100%;
             p {
-              font-size: 0.7rem;
+              font-size: 0.9rem;
               color: black;
             }
           }
@@ -198,7 +201,7 @@
           }
         }
         .bottom {
-          padding-top: 10px;
+          padding-top: 20px;
           padding-bottom: 10px;
           align-items: start;
           width: 100%;
@@ -207,9 +210,12 @@
           ul {
             align-items: start;
             gap: 10px;
+            width: 160px;
             li {
               font-size: 0.8rem;
               font-weight: 500;
+              justify-content: space-between;
+              width: 100%;
             }
           }
         }

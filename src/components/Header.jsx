@@ -5,6 +5,7 @@ import {
   BiCart,
   BiChat,
   BiCopy,
+  BiLayer,
   BiLogoDribbble,
   BiLogoFacebook,
   BiLogoGithub,
@@ -13,15 +14,24 @@ import {
   BiLogOut,
   BiSearch,
 } from "react-icons/bi";
-import { FaAdjust, FaSignOutAlt } from "react-icons/fa";
+import { FaAdjust, FaArtstation, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
-import { RiInformation2Line, RiInformationLine } from "react-icons/ri";
-import { CgLogOff, CgLogOut } from "react-icons/cg";
+import {
+  RiAuctionFill,
+  RiInformation2Line,
+  RiInformationLine,
+} from "react-icons/ri";
+import { CgLogOff, CgLogOut, CgProfile, CgTrending } from "react-icons/cg";
 import toast from "react-hot-toast";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { MdDashboard } from "react-icons/md";
+import { CiSettings } from "react-icons/ci";
+import { GoSignOut } from "react-icons/go";
+import { SiEventstore } from "react-icons/si";
+import { BsBrush } from "react-icons/bs";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -179,7 +189,9 @@ const Header = () => {
               }`,
             }}
           >
-            <p onClick={() => navigate("/events")}>Events</p>
+            <p onClick={() => navigate("/events")}>
+              Events <SiEventstore />
+            </p>
             <p
               onClick={() =>
                 tokenId
@@ -188,11 +200,18 @@ const Header = () => {
               }
             >
               Dashboard
+              <MdDashboard />
             </p>
             <div className="line"></div>
-            <p onClick={() => navigate("/trending-art")}>Trending Art</p>
-            <p>Rare Auctions</p>
-            <p onClick={() => navigate("/trending-series")}>Trending Series</p>
+            <p onClick={() => navigate("/trending-art")}>
+              Trending Art <BsBrush />
+            </p>
+            <p>
+              Rare Auctions <RiAuctionFill />
+            </p>
+            <p onClick={() => navigate("/trending-series")}>
+              Trending Series <BiLayer />
+            </p>
             <div className="line"></div>
             <div className="links flex">
               <Link className="link flex">
@@ -233,10 +252,10 @@ const Header = () => {
             >
               <div className="top flex col">
                 <div className="wallet flex">
-                  <p>{userData?.wallet_address.substring(0, 5)}...</p>
+                  <p>{userData?.wallet_address.substring(0, 9)}...</p>
                   <p>
                     {userData?.wallet_address.substring(
-                      userData?.wallet_address.length - 5
+                      userData?.wallet_address.length - 8
                     )}
                     <span>
                       <BiCopy />
@@ -254,10 +273,18 @@ const Header = () => {
               </div>
               <div className="bottom flex col">
                 <ul className="flex col">
-                  <li onClick={() => navigate("/profile")}>Dashboard</li>
-                  <li>PROFILE</li>
-                  <li>SETTINGS</li>
-                  <li onClick={() => handleLogout()}>sign out</li>
+                  <li className="flex" onClick={() => navigate("/profile")}>
+                    Dashboard <MdDashboard />
+                  </li>
+                  <li className="flex">
+                    PROFILE <CgProfile />
+                  </li>
+                  <li className="flex">
+                    SETTINGS <CiSettings />
+                  </li>
+                  <li className="flex" onClick={() => handleLogout()}>
+                    sign out <BiLogOut />
+                  </li>
                 </ul>
               </div>
             </div>

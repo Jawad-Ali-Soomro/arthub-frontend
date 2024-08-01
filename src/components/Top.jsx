@@ -47,7 +47,7 @@ const Top = () => {
           <div className="tags flex">
             {main_data?.tags?.slice(0, 2)?.map((tag) => {
               return (
-                <p className="border" style={{ borderRadius: "25px" }}>
+                <p className="border" style={{ borderRadius: "10px" }}>
                   {tag}
                 </p>
               );
