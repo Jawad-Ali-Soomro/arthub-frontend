@@ -54,11 +54,11 @@ button.accent {
 
 div,
 button {
-  border-radius: 20px;
+  border-radius: 10px;
   transition: 0.3s;
 }
 .icon {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 p::selection,

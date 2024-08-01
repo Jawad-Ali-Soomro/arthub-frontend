@@ -92,7 +92,7 @@ const Art = () => {
           <button onClick={() => setIsFilterVisible(!isFilterVisible)}>
             <img src="/filter.svg" alt="Filter" />
           </button>
-          <div className="length flex" style={{ borderRadius: "25px" }}>
+          <div className="length flex" style={{ borderRadius: "10px" }}>
             <p>
               {filteredData.length === 0
                 ? "0 Results!"
