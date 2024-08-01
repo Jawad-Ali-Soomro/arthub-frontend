@@ -95,12 +95,15 @@ const MainArt = () => {
               >
                 <img className="border" src={main_data?.owner?.avatar} alt="" />
                 <div className="flex col" style={{ alignItems: "start" }}>
-                  <p style={{ fontSize: ".5rem", textTransform: "uppercase" }}>
+                  <p
+                    style={{
+                      fontSize: ".4rem",
+                      textTransform: "uppercase",
+                    }}
+                  >
                     Artist
                   </p>
-                  <h2 style={{ fontWeight: "400" }}>
-                    {main_data?.owner?.username}
-                  </h2>
+                  <h2>{main_data?.owner?.username}</h2>
                 </div>
               </div>
               {main_data?.series[0] !== undefined ? (
@@ -117,7 +120,7 @@ const MainArt = () => {
                   />
                   <div className="flex col" style={{ alignItems: "start" }}>
                     <p
-                      style={{ fontSize: ".5rem", textTransform: "uppercase" }}
+                      style={{ fontSize: ".4rem", textTransform: "uppercase" }}
                     >
                       Series
                     </p>

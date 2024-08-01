@@ -4,6 +4,7 @@ import "../styles/Header.scss";
 import {
   BiCart,
   BiChat,
+  BiCopy,
   BiLogoDribbble,
   BiLogoFacebook,
   BiLogoGithub,
@@ -151,7 +152,10 @@ const Header = () => {
             <BiCart style={{ fontSize: "1.1rem" }} />
           </li>
         </ul>
-        <div className="menu flex col" onClick={() => setShowMenu(!showMenu)}>
+        <div
+          className="menu flex col"
+          onClick={() => setShowMenu(!showMenu) + setProfileMenu(false)}
+        >
           <div
             className="line"
             style={{ background: `${isDarkMode ? "#fff" : "#111"}` }}
@@ -166,12 +170,13 @@ const Header = () => {
           ></div>
           <div
             className={
-              showMenu
-                ? "main-menu-active border flex col"
-                : "main-menu flex col"
+              showMenu ? "main-menu-active flex col" : "main-menu flex col"
             }
             style={{
-              background: `${isDarkMode ? "rgb(23, 20, 32)" : "#333"}`,
+              background: `${isDarkMode ? "rgb(23, 20, 32)" : "white"}`,
+              border: `${
+                isDarkMode ? "1px solid rgba(255,255,255,.3)  " : "none"
+              }`,
             }}
           >
             <p onClick={() => navigate("/events")}>Events</p>
@@ -182,7 +187,7 @@ const Header = () => {
                   : toast.error("Please login to access!")
               }
             >
-              View Profile
+              Dashboard
             </p>
             <div className="line"></div>
             <p onClick={() => navigate("/trending-art")}>Trending Art</p>
@@ -214,23 +219,48 @@ const Header = () => {
               src={userData?.avatar}
               alt=""
               className="border"
-              // onClick={() => setProfileMenu(!profileMenu)}
-              onClick={() => navigate("/profile")}
+              onClick={() => setProfileMenu(!profileMenu) + setShowMenu(false)}
             />
-            {/* <div
+            <div
               className={profileMenu ? "menu-active flex col" : "menu flex col"}
               style={{
-                background: `${isDarkMode ? "rgba(255,255,255,.1)" : "#333"}`,
-                color: `${isDarkMode ? "rgba(255,255,255,1)" : "white"}`,
+                color: `${isDarkMode ? "rgba(255,255,255,1)" : "black"}`,
+                background: `${isDarkMode ? "rgb(23, 20, 32)" : "white"}`,
+                border: `${
+                  isDarkMode ? "1px solid rgba(255,255,255,.3)  " : "none"
+                }`,
               }}
             >
-              <p className="border flex" onClick={() => navigate("/profile")}>
-                <RiInformationLine />
-              </p>
-              <p className="border flex" onClick={() => handleLogout()}>
-                <CgLogOut />
-              </p>
-            </div> */}
+              <div className="top flex col">
+                <div className="wallet flex">
+                  <p>{userData?.wallet_address.substring(0, 5)}...</p>
+                  <p>
+                    {userData?.wallet_address.substring(
+                      userData?.wallet_address.length - 5
+                    )}
+                    <span>
+                      <BiCopy />
+                    </span>
+                  </p>
+                </div>
+                <div className="balance flex">
+                  <p>
+                    0.0<span>ETH</span>
+                  </p>
+                  <p>
+                    0.0<span>$RARE</span>
+                  </p>
+                </div>
+              </div>
+              <div className="bottom flex col">
+                <ul className="flex col">
+                  <li onClick={() => navigate("/profile")}>Dashboard</li>
+                  <li>PROFILE</li>
+                  <li>SETTINGS</li>
+                  <li onClick={() => handleLogout()}>sign out</li>
+                </ul>
+              </div>
+            </div>
           </div>
         ) : (
           <button

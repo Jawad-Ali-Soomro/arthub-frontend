@@ -16,14 +16,15 @@
     }
   }
   .main-art-right {
-    width: 600px;
+    width: 400px;
     height: auto;
     align-items: end;
     justify-content: end;
     gap: 30px;
     height: 80vh;
     .top {
-      align-items: end;
+      width: 400px;
+      align-items: start;
       gap: 20px;
       .icons {
         gap: 10px;
@@ -34,13 +35,13 @@
         }
       }
       h1 {
-        font-weight: 600;
+        font-weight: 700;
         font-size: 1.5rem;
       }
     }
     .owner-series {
       width: 400px;
-      justify-content: space-between;
+      justify-content: space-between !important;
       border-radius: 20px;
       .owner {
         cursor: pointer;
@@ -51,7 +52,7 @@
           border-radius: 50%;
         }
         h2 {
-          font-weight: 400;
+          font-weight: 600;
           font-size: 1.2rem;
           text-transform: capitalize;
         }

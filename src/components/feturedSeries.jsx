@@ -32,7 +32,6 @@ const FeaturedSeries = () => {
   useEffect(() => {
     fetch_data();
   }, []);
-
   return (
     <div className="featuerd-wrap flex col">
       <h1>Featured Series</h1>

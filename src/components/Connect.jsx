@@ -89,9 +89,13 @@ const WalletSection = ({ onClose }) => {
           ) : (
             <div
               className="wrap flex"
-              style={{ border: "2px solid green", background: "#eee" }}
+              style={{
+                border: "2px solid green",
+                background: "#eee",
+                height: "35px",
+              }}
             >
-              <p>All recommended wallets are installed</p>
+              <p>All wallets are installed</p>
             </div>
           )}
         </div>

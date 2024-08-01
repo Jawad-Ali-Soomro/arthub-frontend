@@ -1,36 +1,35 @@
-.sidebar {
-  width: 80px;
-  height: calc(100% - 100px);
-  border-right: 1px solid rgba($color: #333, $alpha: 0.3);
-  position: fixed;
-  left: 0;
-  justify-content: space-between;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  border-radius: 0;
-  top: 0;
-  img {
-    width: 35px;
-    cursor: pointer;
-  }
-  .nav-icons {
-    gap: 10px;
-    .icon {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-    }
-  }
-  .btn-logout {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-}
+// .sidebar {
+//   width: calc(100% - 200px);
+//   padding-left: 100px;
+//   padding-right: 100px;
+//   height: 80px;
+//   position: fixed;
+//   left: 0;
+//   justify-content: space-between;
+//   border-radius: 0;
+//   top: 0;
+//   img {
+//     width: 35px;
+//     cursor: pointer;
+//   }
+//   .nav-icons {
+//     gap: 10px;
+//     .icon {
+//       width: 40px;
+//       height: 40px;
+//       cursor: pointer;
+//     }
+//   }
+//   .btn-logout {
+//     width: 40px;
+//     height: 40px;
+//     cursor: pointer;
+//   }
+// }
 
 .main-profile {
-  width: calc(100% - 250px);
-  padding-left: 150px;
+  width: calc(100% - 200px);
+  padding-left: 100px;
   padding-right: 100px;
   height: 100vh;
   background: inherit;
@@ -265,22 +264,17 @@
 }
 
 .art-sect {
-  width: calc(100% - 250px);
-  overflow: scroll !important;
-  position: absolute;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  flex-wrap: wrap;
   .main {
     width: 100%;
     gap: 30px;
-    padding-top: 100px;
     flex-wrap: wrap;
     overflow: scroll;
+    height: 90% !important;
     justify-content: space-between !important;
-    padding-bottom: 100px;
     .card {
       position: relative;
       width: 350px;
@@ -374,8 +368,113 @@
   .main::-webkit-scrollbar {
     max-width: 0;
   }
+  button {
+    width: 150px;
+    height: 40px;
+    background: transparent;
+    margin-left: calc(100% - 150px);
+    margin-top: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: inherit;
+  }
 }
 
 .art-sect::-webkit-scrollbar {
   width: 0px !important; /* Hide scrollbar for Webkit browsers */
+}
+
+.dashboard {
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  gap: 30px;
+  .heading {
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    button {
+      width: 100px;
+      height: 35px;
+      background: #555;
+      font-size: 0.6rem;
+      color: white;
+      font-weight: 600;
+    }
+  }
+  .wrapper {
+    width: 100%;
+    gap: 50px;
+    .wrap {
+      width: 100%;
+      justify-content: space-between;
+      h1 {
+        font-size: 3rem;
+        font-weight: 400;
+      }
+      .btns {
+        gap: 20px;
+        button {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: transparent;
+          font-size: 1.2rem;
+          cursor: pointer;
+          position: relative;
+          color: inherit;
+        }
+        button::after {
+          content: attr(data-text);
+          font-size: 0.6rem;
+          text-transform: uppercase;
+          position: absolute;
+          bottom: -20px;
+          font-weight: 600;
+        }
+      }
+      .card {
+        width: 320px;
+        height: 150px;
+        align-items: start;
+        padding-left: 20px;
+        cursor: pointer;
+        p {
+          font-size: 0.5rem;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+        h2 {
+          font-size: 3rem;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .btns-logout {
+    gap: 10px;
+    margin-left: calc(100% - 110px);
+    button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #111;
+      color: inherit;
+      background: transparent;
+      font-size: 1.1rem;
+      cursor: pointer;
+      position: relative;
+    }
+    button::after {
+      content: attr(data-text);
+      position: absolute;
+      bottom: -20px;
+      color: black;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: inherit;
+    }
+  }
 }

@@ -1,19 +1,25 @@
 import React from "react";
 import { MdDashboard, MdEmail, MdEvent, MdOutlineEmail } from "react-icons/md";
 import {
+  BiArrowToBottom,
+  BiArrowToTop,
   BiAt,
   BiCollection,
   BiDollar,
+  BiHome,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
+  BiLogOut,
   BiPaint,
   BiPlus,
+  BiSolidDashboard,
   BiTrash,
   BiUpload,
   BiUser,
 } from "react-icons/bi";
-import { BsBell, BsInstagram, BsTwitter } from "react-icons/bs";
+import Header from "../components/Header";
+import { BsArrowLeft, BsBell, BsInstagram, BsTwitter } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.scss";
@@ -25,6 +31,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
 import { AiOutlineDisconnect } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -47,7 +54,7 @@ const Profile = () => {
     window.location.reload();
   };
   const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = useState(2);
+  const [tabIndex, setTabIndex] = useState(1);
   const data = [
     {
       name: "Followers",
@@ -87,13 +94,24 @@ const Profile = () => {
   const [updateTab, setUpdateTab] = useState(false);
   return (
     <div>
-      <div className="sidebar flex col">
+      {/* <Header /> */}
+      {/* <div className="sidebar flex">
         <img
           src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
           alt="logo"
           onClick={() => navigate("/")}
         />
-        <div className="nav-icons flex col">
+        <div className="nav-icons flex ">
+          <div
+            className="icon border flex"
+            style={{
+              background: `${tabIndex == 1 ? "#333" : ""}`,
+              color: `${tabIndex == 1 ? "white" : ""}`,
+            }}
+            onClick={() => setTabIndex(1)}
+          >
+            <BiSolidDashboard />
+          </div>
           <div
             className="icon border flex"
             style={{
@@ -148,9 +166,89 @@ const Profile = () => {
         <div className="btn-logout border flex" onClick={() => handleLogout()}>
           <CgLogOut />
         </div>
-      </div>
+      </div> */}
       <div className="main-profile flex">
-        {tabIndex == 2 ? (
+        {tabIndex == 1 ? (
+          <div className="dashboard flex col">
+            {/* <h1 className="heading" style={{ textTransform: "capitalize" }}>
+              Welcome Mr {userData?.username}{" "}
+              <button className="border">LOGOUT</button>
+            </h1> */}
+            <div className="wrapper flex col">
+              <div className="wrap flex">
+                <h1>
+                  0 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
+                  <span style={{ fontSize: "1rem" }}>$0</span>
+                </h1>
+                <div className="btns flex">
+                  <button className="flex border" data-text="Send">
+                    <BiArrowToTop />
+                  </button>
+                  <button className="flex border" data-text="Receive">
+                    <BiArrowToBottom />
+                  </button>
+                </div>
+              </div>
+              <div className="wrap flex">
+                <h1>
+                  0 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
+                  <span style={{ fontSize: "1rem" }}>$RARE</span>
+                </h1>
+                <div className="btns flex">
+                  <button className="flex border" data-text="Send">
+                    <BiArrowToTop />
+                  </button>
+                  <button className="flex border" data-text="Receive">
+                    <BiArrowToBottom />
+                  </button>
+                </div>
+              </div>
+              <div className="wrap flex">
+                <div className="card flex border col">
+                  <p>Total # creations</p>
+                  <h2>{profile_data?.art?.length}</h2>
+                </div>
+                <div className="card flex border col">
+                  <p>total # sreies</p>
+                  <h2>{profile_data?.series?.length}</h2>
+                </div>
+                <div className="card flex border col">
+                  <p>Total # auctions</p>
+                  <h2>0</h2>
+                </div>
+              </div>
+              <div className="wrap flex">
+                <div className="card flex border col">
+                  <p>Total # events</p>
+                  <h2>0</h2>
+                </div>
+                <div className="card flex border col">
+                  <p>Total # followers</p>
+                  <h2>{profile_data?.followers?.length}</h2>
+                </div>
+                <div className="card flex border col">
+                  <p>Total # following</p>
+                  <h2>{profile_data?.following?.length}</h2>
+                </div>
+              </div>
+            </div>
+            <div className="btns-logout flex">
+              <button
+                data-text="Home"
+                className="flex border"
+                onClick={() => navigate("/")}
+              >
+                <BsArrowLeft />
+              </button>
+              <button data-text="logout" className="flex border">
+                <BiLogOut />
+              </button>
+            </div>
+          </div>
+        ) : (
+          this
+        )}
+        {/* {tabIndex == 2 ? (
           <div
             className="update-wrap flex"
             style={{
@@ -324,6 +422,9 @@ const Profile = () => {
                 );
               })}
             </div>
+            <button className="border" onClick={() => setTabIndex(1)}>
+              Back
+            </button>
           </div>
         ) : (
           this
@@ -353,7 +454,7 @@ const Profile = () => {
           </div>
         ) : (
           this
-        )}
+        )} */}
       </div>
     </div>
   );
