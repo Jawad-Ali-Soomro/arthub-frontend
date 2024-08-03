@@ -55,46 +55,11 @@ const Profile = () => {
   };
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(1);
-  const data = [
-    {
-      name: "Followers",
-      value: profile_data?.followers?.length,
-    },
-    {
-      name: "Following",
-      value: profile_data?.following?.length,
-    },
-    {
-      name: "Creations",
-      value: profile_data?.art?.length,
-    },
-    {
-      name: "Series",
-      value: profile_data?.series?.length,
-    },
-    {
-      name: "Items Sold",
-      value: 10,
-    },
-    {
-      name: "Items Bought",
-      value: 8,
-    },
-    {
-      name: "Total Assets",
-      value: 5,
-    },
-
-    {
-      name: "Total Sale",
-      value: 4,
-    },
-  ];
-
+  document.title = "Dashboard";
   const [updateTab, setUpdateTab] = useState(false);
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       {/* <div className="sidebar flex">
         <img
           src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
@@ -232,7 +197,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="btns-logout flex">
+            {/* <div className="btns-logout flex">
               <button
                 data-text="Home"
                 className="flex border"
@@ -243,7 +208,7 @@ const Profile = () => {
               <button data-text="logout" className="flex border">
                 <BiLogOut />
               </button>
-            </div>
+            </div> */}
           </div>
         ) : (
           this

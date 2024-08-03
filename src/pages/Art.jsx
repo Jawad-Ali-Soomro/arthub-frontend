@@ -6,8 +6,10 @@ import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
-import { BiCross } from "react-icons/bi";
+import { BiCross, BiFilter } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
+import { FiFilter } from "react-icons/fi";
+import { BsFilter } from "react-icons/bs";
 
 const Art = () => {
   document.title = "Explore Art";
@@ -90,7 +92,7 @@ const Art = () => {
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
           <button onClick={() => setIsFilterVisible(!isFilterVisible)}>
-            <img src="/filter.svg" alt="Filter" />
+            <BsFilter />
           </button>
           <div className="length flex" style={{ borderRadius: "10px" }}>
             <p>

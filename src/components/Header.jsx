@@ -255,7 +255,7 @@ const Header = () => {
             >
               <div className="top flex col">
                 <div className="wallet flex">
-                  <p>{userData?.wallet_address.substring(0, 9)}...</p>
+                  <p>{userData?.wallet_address.substring(0, 8)}...</p>
                   <p>
                     {userData?.wallet_address.substring(
                       userData?.wallet_address.length - 8
@@ -279,7 +279,10 @@ const Header = () => {
                   <li className="flex" onClick={() => navigate("/profile")}>
                     Dashboard <MdDashboard />
                   </li>
-                  <li className="flex">
+                  <li
+                    className="flex"
+                    onClick={() => navigate(`/user/${userData?._id}`)}
+                  >
                     PROFILE <BiUser />
                   </li>
                   <li className="flex">

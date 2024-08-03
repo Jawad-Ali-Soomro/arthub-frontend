@@ -7,6 +7,8 @@ import { baseUserUrl, ethToUsd } from "../utils/constant";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   BiCopy,
+  BiImage,
+  BiLayer,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
@@ -191,7 +193,7 @@ const MainUser = () => {
                   onClick={() => navigate("/profile")}
                   style={{ background: "#333", color: "white", border: "none" }}
                 >
-                  PROFILE
+                  EDIT PROFILE
                 </button>
               </div>
             ) : (
@@ -240,18 +242,18 @@ const MainUser = () => {
       </div>
       <div className="tag-menu flex">
         <p
-          style={{ borderBottom: `${tag_item ? "1px solid" : "none"}` }}
+          style={{ border: `${tag_item ? "1px solid #80808070" : "none"}` }}
           onClick={() => set_tag(true)}
         >
-          Creations ({main_data?.art?.length})
+          <BiImage />
         </p>
         <p
           style={{
-            borderBottom: `${!tag_item ? "1px solid" : "none"}`,
+            border: `${!tag_item ? "1px solid #80808070" : "none"}`,
           }}
           onClick={() => set_tag(false)}
         >
-          Series ({main_data?.series?.length})
+          <BiLayer />
         </p>
       </div>
       <div className="art-series flex">

@@ -115,12 +115,12 @@
       gap: 20px;
       padding-bottom: 30px;
       .img-sect {
-        width: 360px;
+        width: 380px;
         height: 410px;
         overflow: hidden;
         img {
           cursor: pointer;
-          width: 361px;
+          width: 381px;
           height: 411px;
           transition: 0.3s;
         }
@@ -138,7 +138,7 @@
           font-size: 1.2rem;
         }
         .owner {
-          width: 360px;
+          width: 380px;
           justify-content: space-between;
           .left {
             display: flex;
@@ -171,11 +171,11 @@
           }
         }
         .border {
-          width: 360px;
+          width: 380px;
           margin-top: 10px;
         }
         .price {
-          width: 360px;
+          width: 380px;
           justify-content: space-between;
 
           h2 {
@@ -209,17 +209,20 @@
   width: calc(100% - 200px);
   margin-left: 100px;
   margin-right: 100px;
-  border-bottom: 1px solid #8888883a;
   padding-bottom: 0;
   align-items: center;
   border-radius: 0;
   justify-content: start;
-  gap: 50px;
   p {
     text-transform: uppercase;
-    padding-bottom: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    border-radius: 10px;
   }
 }
 
@@ -236,8 +239,8 @@
     flex-wrap: wrap;
     gap: 50px;
     .card {
-      width: 350px;
-      height: 380px;
+      width: 380px;
+      height: 410px;
       overflow: hidden;
       position: relative;
       img {
@@ -247,8 +250,8 @@
 
       .info {
         position: absolute;
-        width: 350px;
-        height: 380px;
+        width: 380px;
+        height: 410px;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), black);
         max-height: 0;
         overflow: hidden;
@@ -285,7 +288,7 @@
         .price {
           align-items: end;
           justify-content: end;
-          width: 300px;
+          width: 330px;
           justify-content: space-between;
           p {
             font-size: 0.8rem;
@@ -309,7 +312,7 @@
             cursor: pointer;
             background: rgba($color: #eee, $alpha: 0.3);
             border: 1px solid transparent;
-            margin-left: 150px;
+            margin-left: 180px;
             text-transform: uppercase;
           }
           button:hover {

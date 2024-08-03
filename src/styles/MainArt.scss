@@ -148,8 +148,8 @@
     justify-content: space-between !important;
     margin-top: 50px;
     .card {
-      width: 350px;
-      height: 380px;
+      width: 380px;
+      height: 410px;
       border-radius: 10px;
       overflow: hidden;
       position: relative;
@@ -197,7 +197,7 @@
         .price {
           align-items: end;
           justify-content: end;
-          width: 300px;
+          width: 330px;
           justify-content: space-between;
           p {
             font-size: 0.8rem;
@@ -221,7 +221,7 @@
             cursor: pointer;
             background: rgba($color: #eee, $alpha: 0.3);
             border: 1px solid transparent;
-            margin-left: 150px;
+            margin-left: 180px;
             text-transform: uppercase;
           }
           button:hover {
