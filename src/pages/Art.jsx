@@ -94,13 +94,7 @@ const Art = () => {
           <button onClick={() => setIsFilterVisible(!isFilterVisible)}>
             <BsFilter />
           </button>
-          <div className="length flex" style={{ borderRadius: "10px" }}>
-            <p>
-              {filteredData.length === 0
-                ? "0 Results!"
-                : `${filteredData.length} Results!`}
-            </p>
-          </div>
+          {/* <div className="length flex" style={{ borderRadius: "10px" }}></div> */}
         </section>
         {isFilterVisible && (
           <div className="filter-div" onClick={() => setIsFilterVisible(false)}>

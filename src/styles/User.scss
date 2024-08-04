@@ -12,8 +12,8 @@
     .wrap {
       gap: 10px;
       img {
-        width: 130px;
-        height: 130px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         border: 1px solid;
       }
@@ -254,6 +254,7 @@
         height: 410px;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), black);
         max-height: 0;
+        transition: 0.3s;
         overflow: hidden;
         bottom: 0;
         color: white;

@@ -44,7 +44,7 @@ const Top = () => {
       ) : (
         <div className="right flex col">
           <h1>{main_data?.title}</h1>
-          <div className="tags flex">
+          {/* <div className="tags flex">
             {main_data?.tags?.slice(0, 2)?.map((tag) => {
               return (
                 <p className="border" style={{ borderRadius: "10px" }}>
@@ -52,15 +52,15 @@ const Top = () => {
                 </p>
               );
             })}
-          </div>
+          </div> */}
           <div
             className="profile-wrap flex"
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
           >
             <img className="border" src={main_data?.owner?.avatar} alt="" />
-            <h2>{main_data?.owner?.username}</h2>
+            <h2>{main_data?.owner?.handle}</h2>
           </div>
-          <div className="price-wrap flex col">
+          <div className="price-wrap flex col" style={{ alignItems: "start" }}>
             <p>PRICE</p>
             <h2>
               {main_data?.price} Ξ <span>${main_data?.price * ethToUsd}</span>

@@ -7,6 +7,7 @@ import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import Top from "../components/Top";
 import { useNavigate } from "react-router-dom";
+import { BiHeadphone, BiLogoDiscord, BiLogoTwitter } from "react-icons/bi";
 
 const Home = () => {
   document.title = "Artchain";
@@ -14,7 +15,9 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div className="banner flex">
+      <Top />
+
+      {/* <div className="banner flex">
         <div className="left flex col">
           <h1>Discover , Collect & Sell Art</h1>
           <p>
@@ -26,24 +29,23 @@ const Home = () => {
         <div className="right flex">
           <img src="./hero.png" alt="" />
         </div>
-      </div>
-      {/* <Top /> */}
+      </div> */}
       <Featured />
       <FeaturedSeries />
       <Spotlight />
       {/* <div className="outro flex col">
-        <h1>Transparent, secure art market.</h1>
+        <h1 style={{ fontWeight: "900" }}>Transparent, secure art market.</h1>
         <div className="wrapper flex">
           <div className="card border flex col">
             <div className="top flex">
-              <FaHeadset className="icon" />
+              <BiHeadphone className="icon" />
               <p>Help Center</p>
             </div>
             <p>Advice & Answers From Our Team.</p>
           </div>
           <div className="card border flex col">
             <div className="top flex">
-              <BsDiscord className="icon" />
+              <BiLogoDiscord className="icon" />
               <p>Join Discord</p>
             </div>
             <p>Over 30K Members & Counting.</p>
