@@ -53,7 +53,9 @@ button.accent {
 }
 
 div,
-button {
+button,
+img,
+input {
   border-radius: 10px;
   /* transition: 0.3s; */
 }

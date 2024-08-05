@@ -8,10 +8,14 @@
   align-items: end;
   justify-content: center;
   .left {
+    height: 550px;
+    justify-content: end;
+    align-items: end;
+    display: flex;
+
     img {
       width: 500px;
-      height: 550px;
-      border-radius: 10px;
+      max-height: 550px;
       transition: 0.3s;
       cursor: pointer;
     }
@@ -24,7 +28,7 @@
     align-items: start;
     gap: 20px;
     h1 {
-      font-weight: 900;
+      font-weight: 800;
       font-size: 2rem;
     }
     .tags {

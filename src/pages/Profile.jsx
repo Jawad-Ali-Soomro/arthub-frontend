@@ -37,7 +37,7 @@ const Profile = () => {
 
   const [show_series, set_show_series] = useState(false);
   const hideSeries = () => {
-    set_show_art(false);
+    set_show_series(false);
   };
   return (
     <div>
@@ -83,7 +83,10 @@ const Profile = () => {
                 <p>Total # creations</p>
                 <h2>{profile_data?.art?.length}</h2>
               </div>
-              <div className="card flex border col">
+              <div
+                className="card flex border col"
+                onClick={() => set_show_series(true)}
+              >
                 <p>total # sreies</p>
                 <h2>{profile_data?.series?.length}</h2>
               </div>
@@ -129,6 +132,23 @@ const Profile = () => {
                     src={art?.image}
                     alt=""
                     onClick={() => navigate(`/art/${art?._id}`)}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          this
+        )}
+        {show_series == true ? (
+          <div className="art-sect flex" onClick={() => hideSeries()}>
+            <div className="wrap flex" onClick={(e) => e.stopPropagation()}>
+              {profile_data?.series?.map((art) => {
+                return (
+                  <img
+                    src={art?.image}
+                    alt=""
+                    onClick={() => navigate(`/series/${art?._id}`)}
                   />
                 );
               })}
