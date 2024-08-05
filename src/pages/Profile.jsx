@@ -6,7 +6,7 @@ import "../styles/Profile.scss";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import { baseUserUrl } from "../utils/constant";
+import { baseUserUrl, ethToUsd } from "../utils/constant";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -18,6 +18,7 @@ const Profile = () => {
       set_data(res.data.data);
     });
   };
+
   useEffect(() => {
     fetch_data();
   }, [userData]);
@@ -33,6 +34,11 @@ const Profile = () => {
   const hideArt = () => {
     set_show_art(false);
   };
+
+  const [show_series, set_show_series] = useState(false);
+  const hideSeries = () => {
+    set_show_art(false);
+  };
   return (
     <div>
       <Header />
@@ -41,8 +47,10 @@ const Profile = () => {
           <div className="wrapper flex col">
             <div className="wrap flex">
               <h1>
-                0 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
-                <span style={{ fontSize: "1rem" }}>$0</span>
+                5.5 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
+                <span style={{ fontSize: "1rem" }}>
+                  ${Math.round(5.5 * ethToUsd)}
+                </span>
               </h1>
               <div className="btns flex">
                 <button className="flex border" data-text="Send">
@@ -55,7 +63,7 @@ const Profile = () => {
             </div>
             <div className="wrap flex">
               <h1>
-                0 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
+                10 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
                 <span style={{ fontSize: "1rem" }}>$RARE</span>
               </h1>
               <div className="btns flex">

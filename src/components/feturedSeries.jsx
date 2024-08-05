@@ -75,7 +75,7 @@ const FeaturedSeries = () => {
                 <div className="border"></div>
                 <div className="price flex">
                   <h2 style={{ textTransform: "capitalize" }}>
-                    {card_item?.art?.length} artworks
+                    {/* {card_item?.art?.length} artworks */}
                   </h2>
                   <button
                     className="flex"
