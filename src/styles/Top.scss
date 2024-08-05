@@ -46,24 +46,23 @@
       }
     }
     .price-wrap {
-      align-items: end;
-      p {
-        font-size: 0.7rem;
-      }
+      gap: 10px;
       h2 {
         font-weight: 400;
+        font-size: 1.2rem;
       }
-    }
-    .btns-wrap {
-      gap: 10px;
       button {
-        width: 150px;
-        height: 40px;
+        width: 100px;
+        height: 35px;
         background: transparent;
         color: inherit;
         font-size: 0.8rem;
         cursor: pointer;
       }
+    }
+    .btns-wrap {
+      gap: 10px;
+
       button:last-child {
         background: #333;
         color: white;

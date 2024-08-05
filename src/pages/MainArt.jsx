@@ -172,7 +172,7 @@ const MainArt = () => {
       </div>
       <div className="more-by-artist flex col">
         <h1>
-          More By {main_data?.owner?.username}{" "}
+          More From {main_data?.owner?.username}{" "}
           <button onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
             Profile
           </button>

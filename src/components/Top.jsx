@@ -44,15 +44,6 @@ const Top = () => {
       ) : (
         <div className="right flex col">
           <h1>{main_data?.title}</h1>
-          {/* <div className="tags flex">
-            {main_data?.tags?.slice(0, 2)?.map((tag) => {
-              return (
-                <p className="border" style={{ borderRadius: "10px" }}>
-                  {tag}
-                </p>
-              );
-            })}
-          </div> */}
           <div
             className="profile-wrap flex"
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
@@ -60,21 +51,22 @@ const Top = () => {
             <img className="border" src={main_data?.owner?.avatar} alt="" />
             <h2>{main_data?.owner?.handle}</h2>
           </div>
-          <div className="price-wrap flex col" style={{ alignItems: "start" }}>
-            <p>PRICE</p>
-            <h2>
-              {main_data?.price} Ξ <span>${main_data?.price * ethToUsd}</span>
-            </h2>
-          </div>
-          <div className="btns-wrap flex">
+          <div className="price-wrap flex">
             <button
               className="border"
               onClick={() => navigate(`/art/${main_data?._id}`)}
             >
               BUY
             </button>
-            <button>DEAL</button>
+            <h2>
+              {main_data?.price} Ξ{" "}
+              <span>${Math.round(main_data?.price * ethToUsd)}</span>
+            </h2>
           </div>
+          {/* <div className="btns-wrap flex">
+           
+            <button>DEAL</button>
+          </div> */}
         </div>
       )}
     </div>

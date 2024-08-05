@@ -11,7 +11,7 @@ const Spotlight = () => {
   const fetch_data = async () => {
     try {
       const response = await axios.get(
-        `${baseUserUrl}/get/665ee1083d4db96d5541f387`
+        `${baseUserUrl}/get/66b061bd9ddaf3bfd97d8608`
       );
       const featuredImages = response.data.data.art;
       const shuffledImages = shuffleArray(featuredImages);
@@ -39,7 +39,7 @@ const Spotlight = () => {
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
         <h1 style={{ width: "100%", justifyContent: "space-between" }}>
           Artist Spotlight : Botto{" "}
-          <button onClick={() => navigate("/user/665ee1083d4db96d5541f387")}>
+          <button onClick={() => navigate("/user/66b061bd9ddaf3bfd97d8608")}>
             See all
           </button>
         </h1>
@@ -72,7 +72,7 @@ const Spotlight = () => {
                   <div className="price flex">
                     <h2>
                       {card_item?.price} Ξ{" "}
-                      <span>${card_item?.price * ethToUsd}</span>
+                      <span>${Math.round(card_item?.price * ethToUsd)}</span>
                     </h2>
                     <button
                       className="flex"

@@ -35,6 +35,7 @@ import { GoSignOut } from "react-icons/go";
 import { SiEventstore } from "react-icons/si";
 import { BsBrush } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
+import MainUser from "../pages/MainUser";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -192,9 +193,7 @@ const Header = () => {
               }`,
             }}
           >
-            <p onClick={() => navigate("/events")}>
-              Events <BiCalendar />
-            </p>
+            <p onClick={() => navigate("/events")}>Events</p>
             <p
               onClick={() =>
                 tokenId
@@ -203,18 +202,11 @@ const Header = () => {
               }
             >
               Dashboard
-              <MdDashboard />
             </p>
             <div className="line"></div>
-            <p onClick={() => navigate("/trending-art")}>
-              Trending Art <BsBrush />
-            </p>
-            <p>
-              Rare Auctions <RiAuctionFill />
-            </p>
-            <p onClick={() => navigate("/trending-series")}>
-              Trending Series <BiLayer />
-            </p>
+            <p onClick={() => navigate("/trending-art")}>Trending Art</p>
+            <p>Rare Auctions</p>
+            <p onClick={() => navigate("/trending-series")}>Trending Series</p>
             <div className="line"></div>
             <div className="links flex">
               <Link className="link flex">
@@ -253,44 +245,30 @@ const Header = () => {
                 }`,
               }}
             >
-              <div className="top flex col">
-                <div className="wallet flex">
-                  <p>{userData?.wallet_address.substring(0, 8)}...</p>
-                  <p>
-                    {userData?.wallet_address.substring(
-                      userData?.wallet_address.length - 8
-                    )}
-                    <span>
-                      <BiCopy />
-                    </span>
-                  </p>
-                </div>
+              <div className="top flex">
                 <div className="balance flex">
-                  <p>
-                    0.0<span>ETH</span>
-                  </p>
-                  <p>
-                    0.0<span>$RARE</span>
-                  </p>
+                  <img src={userData?.avatar} className="border" alt="" />
+                  <p>{userData?.handle.substring(0, 8)}...</p>
+                </div>
+                <div
+                  className="logout-btn flex border"
+                  onClick={() => handleLogout()}
+                >
+                  <BiLogOut />
                 </div>
               </div>
               <div className="bottom flex col">
                 <ul className="flex col">
                   <li className="flex" onClick={() => navigate("/profile")}>
-                    Dashboard <MdDashboard />
+                    Dashboard
                   </li>
                   <li
                     className="flex"
                     onClick={() => navigate(`/user/${userData?._id}`)}
                   >
-                    PROFILE <BiUser />
+                    PROFILE
                   </li>
-                  <li className="flex">
-                    SETTINGS <FiSettings />
-                  </li>
-                  <li className="flex" onClick={() => handleLogout()}>
-                    sign out <BiLogOut />
-                  </li>
+                  <li className="flex">SETTINGS</li>
                 </ul>
               </div>
             </div>

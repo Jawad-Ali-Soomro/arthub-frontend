@@ -92,7 +92,7 @@
     }
     .main-menu-active {
       position: absolute;
-      width: 150px;
+      width: 130px;
       transition: 0s;
       cursor: auto;
       padding: 20px;
@@ -115,7 +115,7 @@
         display: flex;
       }
       .line {
-        width: 150px;
+        width: 130px;
         height: 0.5px;
         padding-top: 10px;
         border-bottom: 1px solid;
@@ -173,48 +173,46 @@
         cursor: auto;
         .top {
           width: calc(100% - 40px);
-          height: 100px;
-          align-items: start;
+          height: 80px;
           border-radius: 0;
           padding-left: 20px;
           padding-right: 20px;
-          background: rgba(245, 245, 245);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
           border-radius: 0px !important;
-          .wallet {
-            width: 100%;
+          justify-content: space-between;
+          gap: 10px;
+          .balance {
+            gap: 5px;
+            justify-content: start;
             p {
-              font-size: 0.9rem;
-              color: rgba(0, 0, 0, 0.5);
+              font-size: 1rem;
               font-weight: 600;
+              color: inherit;
+            }
+            img {
+              width: 30px;
+              height: 30px;
             }
           }
-          .balance {
-            width: 100%;
-            justify-content: space-between;
-            margin-top: 10px;
-            color: black !important;
-            p {
-              font-size: 1.2rem;
-              font-weight: 600;
-              color: rgba(0, 0, 0, 0.8);
-              span {
-                font-size: 0.6rem;
-              }
-            }
+          .logout-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            cursor: pointer;
           }
         }
         .bottom {
           padding-top: 20px;
           padding-bottom: 10px;
-          align-items: start;
+          align-items: center;
           width: 100%;
           padding-bottom: 30px;
           padding-left: 40px;
           ul {
-            align-items: start;
+            align-items: center;
             gap: 12px;
-            width: 160px;
+            width: 180px;
             li {
               font-size: 0.8rem;
               font-weight: 500;

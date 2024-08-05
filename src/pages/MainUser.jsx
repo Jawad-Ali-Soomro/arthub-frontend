@@ -22,6 +22,8 @@ const MainUser = () => {
   const [tag_item, set_tag] = useState(true);
   const [main_data, set_data] = useState();
   const { userId } = useParams();
+  const [show_followers, set_show_followers] = useState(false);
+  const [show_followings, set_show_followings] = useState(false);
 
   const fetch_data = async () => {
     await axios.get(`${baseUserUrl}/get/${userId}`).then((res) => {
@@ -110,6 +112,13 @@ const MainUser = () => {
     }
   };
 
+  const closeFollowers = () => {
+    set_show_followers(false);
+  };
+  const closeFollowing = () => {
+    set_show_followings(false);
+  };
+
   return (
     <div>
       <Header />
@@ -119,7 +128,7 @@ const MainUser = () => {
         ) : (
           <div className="left flex col">
             <div className="wrap flex">
-              <img src={main_data?.avatar} alt="" />
+              <img src={main_data?.avatar} className="border" alt="" />
               <div className="info flex col">
                 <h1>{main_data?.username}</h1>
                 <div className="handle flex">
@@ -143,11 +152,17 @@ const MainUser = () => {
             </div>
 
             <div className="btns flex">
-              <div className="sect flex border">
+              <div
+                className="sect flex border"
+                onClick={() => set_show_followers(true)}
+              >
                 <h2>{main_data?.followers?.length}</h2>
                 <p>Followers</p>
               </div>
-              <div className="sect flex border">
+              <div
+                className="sect flex border"
+                onClick={() => set_show_followings(true)}
+              >
                 <h2>{main_data?.following?.length}</h2>
                 <p>following</p>
               </div>
@@ -338,6 +353,61 @@ const MainUser = () => {
         )}
       </div>
       <Footer />
+      {show_followers == true ? (
+        <div className="followers flex col" onClick={() => closeFollowers()}>
+          <div
+            className="wrapper flex col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {main_data?.followers?.map((follower) => {
+              return (
+                <div className="follower-card flex">
+                  <div
+                    className="left flex"
+                    onClick={() =>
+                      navigate(`/user/${follower?._id}`) +
+                      window.location.reload()
+                    }
+                  >
+                    <img src={follower?.avatar} className="border" alt="" />
+                    <h2>{follower?.username}</h2>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        this
+      )}
+
+      {show_followings == true ? (
+        <div className="followers flex col" onClick={() => closeFollowing()}>
+          <div
+            className="wrapper flex col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {main_data?.following?.map((follower) => {
+              return (
+                <div className="follower-card flex">
+                  <div
+                    className="left flex"
+                    onClick={() =>
+                      navigate(`/user/${follower?._id}`) +
+                      window.location.reload()
+                    }
+                  >
+                    <img src={follower?.avatar} className="border" alt="" />
+                    <h2>{follower?.username}</h2>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        this
+      )}
     </div>
   );
 };
