@@ -19,6 +19,7 @@ import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
 import Events from "./pages/Events";
 import Cart from "./pages/Cart";
+import CreateArt from "./pages/CreateArt";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -39,6 +40,10 @@ function App() {
           <Route
             path={userToken ? "/profile" : "/"}
             element={<Profile />}
+          ></Route>
+          <Route
+            path={userToken ? "/create" : "/"}
+            element={<CreateArt />}
           ></Route>
           <Route path="/auction" element={<Auction />}></Route>
           <Route path="/trending-art" element={<TrendingArt />}></Route>

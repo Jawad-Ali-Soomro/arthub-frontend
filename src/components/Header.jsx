@@ -257,6 +257,7 @@ const Header = () => {
                   <BiLogOut />
                 </div>
               </div>
+              <div className="line border"></div>
               <div className="bottom flex col">
                 <ul className="flex col">
                   <li className="flex" onClick={() => navigate("/profile")}>

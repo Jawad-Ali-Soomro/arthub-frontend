@@ -126,8 +126,14 @@ const Login = ({ onClose }) => {
   };
 
   const handleAvatarChange = async (e) => {
-    const file = e.target.files[0];
-    setAvatar(file);
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatar(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
     try {
       const uploadResult = await uploadToPinata(file);
       setImageUrl(
@@ -244,6 +250,19 @@ const Login = ({ onClose }) => {
                 )}
               </div>
             </div>
+            {avatar && (
+              <div>
+                <img
+                  src={avatar}
+                  alt="Uploaded"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "20px",
+                  }}
+                />
+              </div>
+            )}
             <div className="input-wrap text">
               <input
                 type="file"

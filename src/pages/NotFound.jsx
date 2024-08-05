@@ -1,31 +1,17 @@
 import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const NotFound = () => {
   return (
-    <div
-      style={{ minHeight: "100vh", background: "inherit" }}
-      className="flex col"
-    >
-      <img src="/notFound.png" alt="image" />
-      <p style={{ textTransform: "uppercase", fontSize: "1.2rem" }}>
-        Oops! The Page You Are Looking for Have Been Moved Or Deleted!
-      </p>
-      <button
-        style={{
-          width: "300px",
-          height: "50px",
-          marginTop: "40px",
-          background: "#333",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-          borderRadius: "25px",
-          fontSize: "1.2rem",
-        }}
-        onClick={() => window.location.replace("/")}
-      >
-        BACK
-      </button>
+    <div>
+      <Header />
+      <div className="wrap flex" style={{ height: "calc(100vh - 410px)" }}>
+        <h1 style={{ marginTop: "20vh", fontWeight: "900", fontSize: "5rem" }}>
+          Page Not Found!
+        </h1>
+      </div>
+      <Footer />
     </div>
   );
 };

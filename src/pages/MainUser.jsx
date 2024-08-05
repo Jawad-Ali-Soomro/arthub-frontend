@@ -370,7 +370,7 @@ const MainUser = () => {
                     }
                   >
                     <img src={follower?.avatar} className="border" alt="" />
-                    <h2>{follower?.username}</h2>
+                    {/* <h2>{follower?.username}</h2> */}
                   </div>
                 </div>
               );
@@ -398,7 +398,7 @@ const MainUser = () => {
                     }
                   >
                     <img src={follower?.avatar} className="border" alt="" />
-                    <h2>{follower?.username}</h2>
+                    {/* <h2>{follower?.username}</h2> */}
                   </div>
                 </div>
               );

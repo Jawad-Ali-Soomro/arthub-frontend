@@ -147,7 +147,6 @@
       img {
         width: 40px;
         height: 40px;
-        background: rgb(32, 32, 32);
         border-radius: 50%;
       }
       h2 {
@@ -166,7 +165,6 @@
         position: absolute;
         top: 50px;
         right: -5px;
-        gap: 10px;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 25px;
         overflow: hidden;
@@ -177,7 +175,6 @@
           border-radius: 0;
           padding-left: 20px;
           padding-right: 20px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
           border-radius: 0px !important;
           justify-content: space-between;
           gap: 10px;
@@ -202,13 +199,15 @@
             cursor: pointer;
           }
         }
+        .line {
+          width: 160px;
+        }
         .bottom {
           padding-top: 20px;
-          padding-bottom: 10px;
           align-items: center;
           width: 100%;
           padding-bottom: 30px;
-          padding-left: 40px;
+          padding-left: 30px;
           ul {
             align-items: center;
             gap: 12px;

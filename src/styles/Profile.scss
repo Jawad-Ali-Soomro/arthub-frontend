@@ -130,261 +130,6 @@
   }
 }
 
-.update-wrap {
-  width: 100%;
-  justify-content: space-between;
-  .left {
-    align-items: start;
-    gap: 10px;
-    .profile {
-      gap: 10px;
-      img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-      }
-      h2 {
-        font-size: 2rem;
-        text-transform: capitalize;
-        font-weight: 400;
-      }
-    }
-    .wrap {
-      justify-content: space-between;
-      width: 150px;
-      padding: 10px 20px;
-      cursor: pointer;
-      p {
-        font-size: 0.6rem;
-        text-transform: uppercase;
-      }
-      h2 {
-        font-weight: 600;
-        font-size: 1.2rem;
-      }
-    }
-    .links {
-      width: 190px;
-      gap: 10px;
-      margin-left: 202px;
-      justify-content: end;
-      .link {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        color: inherit;
-      }
-    }
-    button {
-      width: 192px;
-      height: 40px;
-      background: #333;
-      color: white;
-      border: none;
-      margin-left: 200px;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-  }
-  .right {
-    gap: 30px;
-    align-items: start;
-    transition: 0s;
-    padding-left: 20px;
-    .form {
-      gap: 10px;
-      justify-content: start;
-      .input-wrap {
-        width: 400px;
-        justify-content: space-between;
-        padding-left: 10px;
-        padding-right: 10px;
-        input {
-          width: 370px;
-          height: 40px;
-          border: none;
-          background: transparent;
-          outline: none;
-          color: inherit;
-        }
-      }
-      .file {
-        width: 420px;
-        height: 150px;
-        border: 1px dashed;
-        position: relative;
-        cursor: pointer;
-        input {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          opacity: 0;
-        }
-        .icon {
-          font-size: 2.5rem;
-        }
-        p {
-          margin-top: 10px;
-        }
-      }
-      .btns {
-        width: 100%;
-        align-items: end;
-        gap: 10px;
-        button {
-          width: 200px;
-          height: 40px;
-          background: #333;
-          color: white;
-          border: 1px solid #333;
-          text-transform: uppercase;
-          cursor: pointer;
-        }
-        button:last-child {
-          background: transparent;
-          color: inherit;
-        }
-      }
-    }
-  }
-  .wallet {
-    position: absolute;
-    bottom: 50px;
-    right: 120px;
-    gap: 10px;
-    button {
-      width: 40px;
-      height: 40px;
-      background: #333;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  }
-}
-
-.art-sect {
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  .main {
-    width: 100%;
-    gap: 30px;
-    flex-wrap: wrap;
-    overflow: scroll;
-    height: 90% !important;
-    justify-content: space-between !important;
-    .card {
-      position: relative;
-      width: 350px;
-      height: 380px;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 5px;
-      }
-      .info {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        transition: 0.3s;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), black);
-        max-height: 0;
-        overflow: hidden;
-        bottom: 0;
-        color: white;
-        justify-content: end;
-        align-items: start;
-        padding-left: 50px;
-        gap: 10px;
-        h3 {
-          font-weight: 600;
-        }
-
-        .price {
-          align-items: end;
-          justify-content: end;
-          width: 300px;
-          justify-content: space-between;
-          p {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-          }
-          h2 {
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            font-weight: 600;
-          }
-        }
-        .delete-btn {
-          width: 50px;
-          height: 50px;
-          background: red;
-          position: absolute;
-          top: 40px;
-          border: 1px solid transparent;
-          right: 40px;
-          cursor: pointer;
-          font-size: 1.2rem;
-          border-radius: 25px;
-        }
-        .delete-btn:hover {
-          color: red;
-          background: transparent;
-          border: 1px solid;
-        }
-        .btns {
-          gap: 10px;
-          margin-top: 10px;
-          button {
-            width: 150px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            background: rgba($color: #eee, $alpha: 0.3);
-            border: 1px solid transparent;
-            margin-left: 150px;
-            text-transform: uppercase;
-          }
-          button:hover {
-            background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.5);
-          }
-        }
-      }
-    }
-    .card:hover {
-      .info {
-        max-height: 100%;
-        padding-bottom: 20px;
-      }
-    }
-  }
-  .main::-webkit-scrollbar {
-    max-width: 0;
-  }
-  button {
-    width: 150px;
-    height: 40px;
-    background: transparent;
-    margin-left: calc(100% - 150px);
-    margin-top: 10px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: inherit;
-  }
-}
-
-.art-sect::-webkit-scrollbar {
-  width: 0px !important; /* Hide scrollbar for Webkit browsers */
-}
-
 .dashboard {
   align-items: start;
   width: 100%;
@@ -449,8 +194,37 @@
         h2 {
           font-size: 3rem;
           font-weight: 600;
+          padding-left: 20px;
         }
       }
+    }
+  }
+}
+
+.art-sect {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: rgba($color: #000000, $alpha: 0.3);
+  z-index: 1000;
+  top: 0;
+  border-radius: 0;
+  .wrap {
+    padding: 30px 30px;
+    flex-wrap: wrap;
+    max-width: 600px;
+    background: white;
+    justify-content: space-between;
+    gap: 20px;
+    img {
+      width: 120px;
+      height: 150px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    img:hover {
+      scale: 1.1;
     }
   }
 }

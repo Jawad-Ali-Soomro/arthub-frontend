@@ -1,4 +1,3 @@
-import toast, { Toaster } from "react-hot-toast";
 import Web3 from "web3";
 const baseUserUrl = "http://localhost:8080/api/v1/user";
 const baseArtUrl = "http://localhost:8080/api/v1/art";
