@@ -236,7 +236,7 @@ const MainArt = () => {
       )}
       {showPopup && (
         <Popup
-          message="This action cannot be undone all information associated with this art will be deleted!"
+          message="this action cannot be undone all information associated with this art will be deleted!"
           onConfirm={handleDelete}
           onCancel={handleCancel}
         />

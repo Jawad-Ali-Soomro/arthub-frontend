@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@
   font-size: 25px;
   font-weight: 900;
   margin-top: 5px;
-  color: black;
+  color: inherit;
 }
 
 .popup-buttons {
@@ -52,7 +52,7 @@
 }
 
 .popup-content p {
-  color: #111;
+  color: inherit;
   margin-top: 10px;
 }
 
@@ -65,11 +65,12 @@
   animation: none;
   border-radius: 10px;
   animation: best linear;
+  color: inherit;
 }
 
 .confirm-button {
   background-color: #333; /* Red color for confirmation */
-  color: white;
+  color: white !important;
   border: none;
   border-radius: 5px;
 }

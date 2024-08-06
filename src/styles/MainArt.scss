@@ -149,7 +149,7 @@
     margin-top: 50px;
     .card {
       width: 380px;
-      height: 410px;
+      height: 430px;
       overflow: hidden;
       position: relative;
       cursor: pointer;
@@ -160,7 +160,7 @@
       .info {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: calc(100% + 1px);
         transition: 0.3s;
         background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 1));
         overflow: hidden;

@@ -14,7 +14,7 @@ const Deal = ({ onClose, image, title, price }) => {
         }}
       >
         <div className="top-deal flex">
-          <h1>Make A Deal!</h1>
+          <h1>Make a deal!</h1>
           <CgClose className="close-btn" onClick={onClose} />
         </div>
         <div className="wrap flex">

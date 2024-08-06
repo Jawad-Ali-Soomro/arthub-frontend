@@ -227,7 +227,7 @@
     gap: 50px;
     .card {
       width: 380px;
-      height: 410px;
+      height: 430px;
       overflow: hidden;
       position: relative;
       img {
@@ -238,7 +238,7 @@
       .info {
         position: absolute;
         width: 380px;
-        height: 410px;
+        height: 431px;
         background: linear-gradient(180deg, transparent, black);
         transform: translateY(100%);
         transition: 0.3s;

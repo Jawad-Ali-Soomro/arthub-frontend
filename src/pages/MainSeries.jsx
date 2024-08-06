@@ -95,8 +95,7 @@ const MainSeries = () => {
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
-                  className="border"
-                  style={{ background: "red", color: "white" }}
+                  style={{ background: "#333", color: "white", border: "none" }}
                 >
                   DELETE
                 </button>
