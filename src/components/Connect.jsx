@@ -39,9 +39,16 @@ const WalletSection = ({ onClose }) => {
     <div className="connect-portal flex col" onClick={onClose}>
       <div
         className="main-connect flex col"
+        style={{
+          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
+          color: `${themeMode == "dark" ? "white" : "black"}`,
+        }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src={"/logo-black.png"} alt="Logo" />
+        <img
+          src={themeMode == "dark" ? "/logo-white.png" : "/logo-blacck.png"}
+          alt="Logo"
+        />
         <h1>Connect Wallet!</h1>
 
         <div

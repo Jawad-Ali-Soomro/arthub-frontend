@@ -14,6 +14,7 @@ const loginPortal = document.getElementById("loginPortal");
 const Login = ({ onClose }) => {
   const [showPass, setShowPass] = useState(false);
   const [loginStep, setLoginStep] = useState(true);
+  const themeMode = window.localStorage.getItem("themeMode");
 
   document.title = loginStep ? "Login" : "Register";
 
@@ -152,10 +153,15 @@ const Login = ({ onClose }) => {
         className="login-wrap flex col"
         style={{
           transform: loginStep ? "translateX(0%)" : "translateX(400%)",
+          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
+          color: `${themeMode == "dark" ? "white" : "black"}`,
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src="/logo-black.png" alt="Logo" />
+        <img
+          src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
+          alt="Logo"
+        />
         <h1>Welcome Back!</h1>
         <div className="form flex col">
           <div className="input-wrap flex col">
@@ -204,9 +210,14 @@ const Login = ({ onClose }) => {
         onClick={(e) => e.stopPropagation()}
         style={{
           transform: loginStep ? "translateX(600%)" : "translateX(0%)",
+          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
+          color: `${themeMode == "dark" ? "white" : "black"}`,
         }}
       >
-        <img src="/logo-black.png" alt="Logo" />
+        <img
+          src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
+          alt="Logo"
+        />
         <h1>Create An Account!</h1>
         <div className="wrap flex">
           <div className="form flex col">
