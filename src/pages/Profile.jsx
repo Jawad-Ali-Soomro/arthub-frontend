@@ -47,7 +47,7 @@ const Profile = () => {
           <div className="wrapper flex col">
             <div className="wrap flex">
               <h1>
-                5.5 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
+                5.5 <span style={{ fontSize: "1rem" }}>~</span>{" "}
                 <span style={{ fontSize: "1rem" }}>
                   ${Math.round(5.5 * ethToUsd)}
                 </span>
@@ -63,7 +63,7 @@ const Profile = () => {
             </div>
             <div className="wrap flex">
               <h1>
-                10 <span style={{ fontSize: "1rem" }}>Ξ</span>{" "}
+                10 <span style={{ fontSize: "1rem" }}>~</span>{" "}
                 <span style={{ fontSize: "1rem" }}>$RARE</span>
               </h1>
               <div className="btns flex">

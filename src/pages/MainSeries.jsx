@@ -123,7 +123,7 @@ const MainSeries = () => {
                 <div className="line border"></div>
                 <div className="price flex">
                   <h2>
-                    {main_data?.art[0]?.price} Ξ{" "}
+                    {main_data?.art[0]?.price} ~{" "}
                     <span>
                       ${Math.round(main_data?.art[0]?.price * ethToUsd)}
                     </span>
@@ -171,7 +171,7 @@ const MainSeries = () => {
                     <div className="price flex col">
                       <p>price</p>
                       <h2>
-                        {card_item?.price} Ξ{" "}
+                        {card_item?.price} ~{" "}
                         <span>${Math.round(card_item?.price * ethToUsd)}</span>
                       </h2>
                     </div>

@@ -59,7 +59,7 @@ const Top = () => {
               BUY
             </button>
             <h2>
-              {main_data?.price} Ξ{" "}
+              {main_data?.price} ~{" "}
               <span>${Math.round(main_data?.price * ethToUsd)}</span>
             </h2>
           </div>

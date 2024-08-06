@@ -179,7 +179,7 @@ const Art = () => {
                   <div className="price flex col">
                     <p>Price</p>
                     <h2>
-                      {cardItem.price} Ξ{" "}
+                      {cardItem.price} ~{" "}
                       <span>${Math.round(cardItem.price * ethToUsd)}</span>
                     </h2>
                   </div>

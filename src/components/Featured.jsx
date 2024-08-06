@@ -74,7 +74,7 @@ const Featured = () => {
                 <div className="border"></div>
                 <div className="price flex">
                   <h2>
-                    {card_item?.price} Ξ{" "}
+                    {card_item?.price} ~{" "}
                     <span>${Math.round(card_item?.price * ethToUsd)}</span>
                   </h2>
                   <button
