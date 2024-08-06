@@ -91,23 +91,28 @@ const Art = () => {
           <h1 className="flex col">
             Explore <span>Discover & Collect Crypto Art.</span>
           </h1>
-          <button onClick={() => setIsFilterVisible(!isFilterVisible)}>
+          <button
+            className="border"
+            onClick={() => setIsFilterVisible(!isFilterVisible)}
+          >
             <BsFilter />
           </button>
-          {/* <div className="length flex" style={{ borderRadius: "10px" }}></div> */}
+          <div className="length flex" style={{ borderRadius: "10px" }}>
+            {filteredData?.length}
+          </div>
         </section>
         {isFilterVisible && (
           <div className="filter-div" onClick={() => setIsFilterVisible(false)}>
             <div
               className="filter-content"
+              style={{
+                background: `${
+                  themeMode == "dark" ? "rgb(23, 20, 32)" : "rgb(250, 250, 250)"
+                }`,
+                color: `${themeMode == "dark" ? "white" : "#111"}`,
+              }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                className="btn-close flex"
-                onClick={() => setIsFilterVisible(false)}
-              >
-                <CgClose />
-              </button>
               <div className="filter-section">
                 <label>Tags</label>
                 <div className="tags">
@@ -120,7 +125,7 @@ const Art = () => {
                       }`}
                       onClick={() => handleTagChange(tag)}
                     >
-                      {tag}
+                      {"#" + tag}
                     </div>
                   ))}
                 </div>
@@ -128,7 +133,7 @@ const Art = () => {
               <div className="filter-section">
                 <label>Max Price</label>
                 <input
-                  type="number"
+                  type="text"
                   value={filterCriteria.price || ""}
                   className="border"
                   onChange={(e) =>
@@ -140,7 +145,9 @@ const Art = () => {
                 />
               </div>
               <button onClick={applyFilter}>Apply</button>
-              <button onClick={removeFilter}>Remove</button>
+              <button className="border" onClick={removeFilter}>
+                Remove
+              </button>
             </div>
           </div>
         )}

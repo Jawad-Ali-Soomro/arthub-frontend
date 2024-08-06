@@ -22,7 +22,6 @@
     }
     button {
       background: transparent;
-      border: 1px solid #80808070;
       color: inherit;
       width: 50px;
       height: 50px;
@@ -31,18 +30,27 @@
       align-items: center;
       cursor: pointer;
       font-size: 1.2rem;
+      position: sticky;
+      bottom: -25px;
+      right: 0;
+      background: white;
+      color: black;
     }
     .length {
-      position: absolute;
-      bottom: -25px;
-      width: 200px;
-      height: 50px;
-      background: #333;
-      color: white;
+      color: inherit;
+      border: none;
+      width: 100px;
+      height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
-      left: 40px;
+      cursor: pointer;
+      font-size: 1rem;
+      position: absolute;
+      bottom: -20px;
+      left: 60px;
+      background: rgba(255, 255, 255, 1);
+      color: black;
     }
   }
   .main-data {
@@ -55,19 +63,19 @@
     .card {
       position: relative;
       width: 380px;
-      height: 410px;
+      height: 430px;
       border-radius: 5px;
       overflow: hidden;
       cursor: pointer;
       border-radius: 10px;
       img {
         width: 380px;
-        height: 410px;
+        height: 429px;
       }
       .info {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: calc(100% + 2px);
         transition: 0.3s;
         background: linear-gradient(180deg, transparent, black);
         overflow: hidden;
@@ -161,23 +169,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0;
+    border-radius: 10px;
     .filter-content {
-      .btn-close {
-        width: 50px;
-        height: 50px;
-        display: flex;
-        border-radius: 25px;
-        font-size: 1.2rem;
-        margin-left: 300px;
-        position: absolute;
-        top: 20px;
-      }
-      width: 400px;
-      padding: 20px;
-      height: 100%;
-      position: absolute;
-      height: 100vh;
+      position: relative;
+      width: 380px;
+      padding: 50px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -185,24 +181,25 @@
       background: white;
       color: black;
       right: 0;
-      border-radius: 0;
+      border-radius: 10px;
+      border: 1px solid #80809090;
       .filter-section {
         margin-bottom: 20px;
         justify-content: space-between;
-        gap: 10px;
+        gap: 20px;
         display: flex;
         flex-direction: column;
         label {
           display: block;
-          margin-bottom: 10px;
-          margin-top: 30px;
+          // margin-bottom: 10px;
+          // margin-top: 30px;
           color: inherit;
           text-transform: capitalize;
           font-size: 1.2rem;
           font-weight: 900;
         }
 
-        input[type="number"] {
+        input[type="text"] {
           width: 340px;
           height: 40px;
           padding-left: 10px;
@@ -239,22 +236,25 @@
 
       button {
         display: inline-block;
-        width: 200px;
+        width: 150px;
         height: 40px;
         margin-right: 10px;
-        border: none;
         background: #333;
-        margin-left: 150px;
+        margin-left: 210px;
         color: white;
         cursor: pointer;
         margin-top: 10px;
         font-size: 0.7rem;
         text-transform: uppercase;
+        border: none;
       }
       button:last-child {
-        border: 1px solid;
         background: transparent;
-        color: #111;
+        color: inherit;
+        border: 1px solid #80809090;
+      }
+      button:first-child {
+        border: none;
       }
     }
   }

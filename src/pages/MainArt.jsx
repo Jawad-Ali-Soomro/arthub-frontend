@@ -11,6 +11,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Footer from "../components/Footer";
 import ImageModal from "../components/ImageModal";
 import Popup from "../components/DeletePopup";
+import Deal from "../components/Deal";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -21,6 +22,8 @@ const MainArt = () => {
   const { artId } = useParams();
   const loggedInUser = localStorage.getItem("userId");
   const loggedInUserId = JSON.parse(loggedInUser);
+  const [deal_opt, set_deal] = useState(false);
+  const themeMode = window.localStorage.getItem("themeMode");
   const fetch_data = async () => {
     await axios
       .get(`${baseArtUrl}/get/art/${artId}`)
@@ -51,6 +54,8 @@ const MainArt = () => {
   const handleCancel = () => {
     setShowPopup(false);
   };
+
+  const onClose = () => set_deal(false);
   return (
     <div>
       <Header />
@@ -146,13 +151,15 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   className="border"
-                  style={{ background: "red" }}
+                  style={{ background: "#333" }}
                   onClick={() => setShowPopup(true)}
                 >
                   DELETE
                 </button>
               ) : (
-                <button className="border">DEAl</button>
+                <button className="border" onClick={() => set_deal(true)}>
+                  DEAl
+                </button>
               )}
             </div>
             <div className="desciption flex">
@@ -233,6 +240,17 @@ const MainArt = () => {
           onConfirm={handleDelete}
           onCancel={handleCancel}
         />
+      )}
+
+      {deal_opt == true ? (
+        <Deal
+          onClose={onClose}
+          image={main_data?.image}
+          title={main_data?.title}
+          price={main_data?.price}
+        />
+      ) : (
+        this
       )}
       <Footer />
     </div>

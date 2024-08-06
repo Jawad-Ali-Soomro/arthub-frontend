@@ -69,6 +69,15 @@ const MainSeries = () => {
                 </h2>
               </div>
             </div>
+            <div className="join flex border">
+              <p style={{ fontWeight: "600" }}>CREATOR</p>
+              <img
+                style={{ width: "30px", height: "30px", borderRadius: "50%" }}
+                src={main_data?.owner?.avatar}
+                alt=""
+                className="border"
+              />
+            </div>
             <div className="btns flex col">
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
@@ -112,6 +121,7 @@ const MainSeries = () => {
               </div>
               <div className="info flex col">
                 <h2>{main_data?.art[0]?.title}</h2>
+                <div className="line border"></div>
                 <div className="price flex">
                   <h2>
                     {main_data?.art[0]?.price} Ξ{" "}

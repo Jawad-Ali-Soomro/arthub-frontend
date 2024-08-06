@@ -1,6 +1,8 @@
 .header-wrap {
   width: calc(100% - 200px);
-  height: 12vh;
+  // height: 12vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
   padding-left: 100px;
   padding-right: 100px;
   justify-content: space-between;
@@ -178,12 +180,13 @@
           justify-content: space-between;
           gap: 10px;
           .balance {
-            gap: 5px;
+            gap: 2px;
             justify-content: start;
             p {
               font-size: 1rem;
               font-weight: 600;
               color: inherit;
+              text-transform: capitalize;
             }
             img {
               width: 30px;

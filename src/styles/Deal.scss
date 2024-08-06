@@ -1,0 +1,100 @@
+.main-deal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.3);
+  z-index: 1000;
+  top: 0;
+  .main-wrap {
+    gap: 20px;
+    border: 1px solid #808090;
+    padding: 30px;
+
+    .top-deal {
+      width: 700px;
+      justify-content: space-between;
+      border-bottom: 1px solid #808090;
+      border-radius: 0;
+      padding-bottom: 20px;
+      .close-btn {
+        font-size: 0.9rem;
+        background: #333;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      h1 {
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        font-weight: 900;
+      }
+    }
+    .wrap {
+      margin-top: 20px;
+      width: 100%;
+      justify-content: space-between !important;
+      img {
+        width: 300px;
+        height: 350px;
+      }
+      .right-info {
+        width: 350px;
+        align-items: start;
+        gap: 20px;
+        h1 {
+          font-size: 1.2rem;
+          text-transform: capitalize;
+        }
+        .price {
+          align-items: start;
+          p {
+            font-weight: 600;
+          }
+        }
+        .line {
+          width: 100%;
+        }
+        .input-wrap {
+          align-items: start;
+          position: relative;
+          gap: 5px;
+          p {
+            font-weight: 600;
+          }
+          input {
+            width: 340px;
+            height: 40px;
+            padding-left: 10px;
+            outline: none;
+            font-family: Raleway;
+            background: transparent;
+            color: inherit;
+          }
+        }
+        .input-wrap::after {
+          content: "ETH";
+          position: absolute;
+          font-weight: 600;
+          bottom: 12px;
+          right: 20px;
+          font-size: 0.7rem;
+        }
+        p {
+          font-size: 0.7rem;
+          margin-top: 20px;
+        }
+        button {
+          width: 100%;
+          height: 40px;
+          background: #333;
+          border: none;
+          color: white;
+          font-weight: 600;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

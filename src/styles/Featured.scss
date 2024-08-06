@@ -33,9 +33,9 @@
     .card {
       align-items: start;
       gap: 20px;
-      padding-bottom: 30px;
+      padding-top: 14px;
       .img-sect {
-        width: 380px;
+        width: 370px;
         height: 410px;
         overflow: hidden;
         img {
@@ -52,28 +52,28 @@
       }
       .info {
         align-items: start;
-        gap: 20px;
+        gap: 10px;
         h2 {
-          font-weight: 300;
-          font-size: 1.2rem;
+          font-weight: 600;
+          font-size: 1rem;
+          margin-left: 20px;
         }
         .owner {
-          width: 360px;
+          width: 340px;
           justify-content: space-between;
           .left {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             img {
-              width: 40px;
-              height: 40px;
+              width: 30px;
+              height: 30px;
               border-radius: 50%;
-              border: 1px solid;
             }
             h3 {
-              font-size: 1.2rem;
-              font-weight: 400;
+              font-size: 1rem;
+              font-weight: 500;
               padding-top: 8px;
               text-transform: capitalize;
             }
@@ -91,15 +91,16 @@
           }
         }
         .border {
-          width: 360px;
+          width: 330px;
           margin-top: 10px;
+          margin-left: 20px;
         }
         .price {
-          width: 360px;
+          width: 350px;
           justify-content: space-between;
-
           h2 {
-            font-size: 1.2rem;
+            font-size: 1rem;
+            font-weight: 300;
           }
           button {
             width: 100px;

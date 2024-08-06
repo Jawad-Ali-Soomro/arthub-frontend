@@ -1,0 +1,56 @@
+.users {
+  width: calc(100% - 200px);
+  padding: 100px;
+  align-items: start;
+  h1 {
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  p {
+    margin-top: 10px;
+  }
+  .wrapper {
+    width: 100%;
+    justify-content: space-between !important;
+    margin-top: 50px;
+    .card {
+      width: 180px;
+      img {
+        width: 180px;
+        height: 180px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .info {
+        margin-top: 20px;
+        width: 90%;
+        justify-content: space-between;
+        p {
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+        }
+      }
+      .line {
+        width: 90%;
+        margin-top: 20px;
+      }
+      button {
+        width: 80px;
+        height: 30px;
+        background: #333;
+        border: none;
+        color: white;
+        margin-left: 80px;
+        margin-top: 10px;
+        font-size: 0.7rem;
+      }
+      button:hover {
+        border: 1px solid #809090;
+        color: inherit;
+        background: transparent;
+        cursor: pointer;
+      }
+    }
+  }
+}

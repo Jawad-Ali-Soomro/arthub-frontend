@@ -248,7 +248,7 @@ const Header = () => {
               <div className="top flex">
                 <div className="balance flex">
                   <img src={userData?.avatar} className="border" alt="" />
-                  <p>{userData?.handle.substring(0, 8)}...</p>
+                  <p>{userData?.handle}</p>
                 </div>
                 <div
                   className="logout-btn flex border"

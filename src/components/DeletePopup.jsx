@@ -12,7 +12,7 @@ const Popup = ({ message, onConfirm, onCancel }) => {
     <div className="popup-overlay" onClick={onCancel}>
       <div className="popup-content" onClick={(e) => e.stopPropagation()}>
         <div className="popup-header">
-          <AiOutlineExclamationCircle className="popup-icon" />
+          {/* <AiOutlineExclamationCircle className="popup-icon" /> */}
           <h2>Are You Sure?</h2>
         </div>
         <p style={{ color: "black" }}>{message}</p>

@@ -33,7 +33,7 @@ const Spotlight = () => {
   useEffect(() => {
     fetch_data();
   }, []);
-
+  const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div>
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>

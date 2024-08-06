@@ -43,7 +43,7 @@ const Top = () => {
         <Skeleton width={500} height={300} />
       ) : (
         <div className="right flex col">
-          <h1>{main_data?.title.substring(0, 13)}...</h1>
+          <h1>{main_data?.title}</h1>
           <div
             className="profile-wrap flex"
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}

@@ -6,6 +6,7 @@ import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
+import { BsFilter } from "react-icons/bs";
 
 const Series = () => {
   const navigate = useNavigate();
@@ -29,15 +30,14 @@ const Series = () => {
           <h1 className="flex col">
             Series <span>Discover & Collect Crypto Series.</span>
           </h1>
-          <button>
-            <img src="/filter.svg" alt="Filter" />
+          <button
+            className="border"
+            onClick={() => setIsFilterVisible(!isFilterVisible)}
+          >
+            <BsFilter />
           </button>
           <div className="length flex" style={{ borderRadius: "10px" }}>
-            <p>
-              {main_data == undefined
-                ? "Fetching..."
-                : main_data?.length + " Results!"}
-            </p>
+            <p>{main_data == undefined ? "0" : main_data?.length}</p>
           </div>
         </section>
         {main_data == undefined ? (
