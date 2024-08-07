@@ -37,15 +37,15 @@
       }
       .right-info {
         width: 300px;
-        align-items: center;
+        align-items: start;
         gap: 20px;
         h1 {
           font-size: 1.2rem;
-          font-weight: 600;
+          font-weight: 700;
           text-transform: capitalize;
         }
         .price {
-          align-items: center;
+          align-items: start;
           p {
             font-weight: 600;
           }
@@ -82,7 +82,7 @@
           font-size: 0.7rem;
           margin-top: 20px;
 
-          text-align: center;
+          text-align: justify;
         }
         button {
           width: 100%;

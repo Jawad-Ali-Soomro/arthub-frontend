@@ -49,7 +49,7 @@ function App() {
           <Route path="/trending-art" element={<TrendingArt />}></Route>
           <Route path="/trending-series" element={<TrendingSeries />}></Route>
           <Route path="/events" element={<Events />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
+          {/* <Route path="/cart" element={<Cart />}></Route> */}
         </Routes>
       </BrowserRouter>
     </>

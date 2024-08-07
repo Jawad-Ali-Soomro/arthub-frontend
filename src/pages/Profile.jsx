@@ -39,6 +39,8 @@ const Profile = () => {
   const hideSeries = () => {
     set_show_series(false);
   };
+
+  const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div>
       <Header />
@@ -125,7 +127,15 @@ const Profile = () => {
         </div>
         {show_art == true ? (
           <div className="art-sect flex" onClick={() => hideArt()}>
-            <div className="wrap flex" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="wrap flex border"
+              style={{
+                background: `${
+                  themeMode == "dark" ? "rgb(23,20,32)" : "white"
+                }`,
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
               {profile_data?.art?.map((art) => {
                 return (
                   <img
@@ -142,7 +152,15 @@ const Profile = () => {
         )}
         {show_series == true ? (
           <div className="art-sect flex" onClick={() => hideSeries()}>
-            <div className="wrap flex" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="wrap flex border"
+              style={{
+                background: `${
+                  themeMode == "dark" ? "rgb(23,20,32)" : "white"
+                }`,
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
               {profile_data?.series?.map((art) => {
                 return (
                   <img

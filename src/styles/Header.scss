@@ -1,5 +1,5 @@
 .header-wrap {
-  width: calc(100% - 200px);
+  width: calc(100% - 200px) !important;
   // height: 12vh;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -98,6 +98,7 @@
       transition: 0s;
       cursor: auto;
       padding: 20px;
+      padding-left: 20px;
       background: #333;
       top: 30px;
       right: calc(100% - 20px);
@@ -162,7 +163,7 @@
         position: absolute;
       }
       .menu-active {
-        width: 200px;
+        width: 130px;
         position: absolute;
         top: 50px;
         right: -5px;
@@ -171,48 +172,34 @@
         cursor: auto;
         .top {
           width: calc(100% - 40px);
-          height: 80px;
+          height: 50px;
           border-radius: 0;
-          padding-left: 20px;
-          padding-right: 20px;
           border-radius: 0px !important;
           justify-content: space-between;
           gap: 10px;
-          .balance {
-            gap: 2px;
-            justify-content: start;
-            p {
-              font-size: 1rem;
-              font-weight: 600;
-              color: inherit;
-              text-transform: capitalize;
-            }
-            img {
-              width: 30px;
-              height: 30px;
-            }
-          }
+          width: 110px;
           .logout-btn {
-            width: 35px;
+            width: 130px;
             height: 35px;
-            border-radius: 50%;
             font-size: 0.9rem;
             cursor: pointer;
+            background: white;
+            color: black;
           }
         }
         .line {
-          width: 160px;
+          width: 110px;
         }
         .bottom {
           padding-top: 20px;
           align-items: center;
           width: 100%;
-          padding-bottom: 30px;
+          padding-bottom: 20px;
           padding-left: 30px;
           ul {
             align-items: center;
             gap: 12px;
-            width: 180px;
+            width: 130px;
             li {
               font-size: 0.8rem;
               font-weight: 500;

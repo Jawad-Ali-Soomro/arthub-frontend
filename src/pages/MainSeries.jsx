@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
 import { BiLayer } from "react-icons/bi";
+import Deal from "../components/Deal";
 
 const MainSeries = () => {
   const [main_data, set_data] = useState();
@@ -39,6 +40,10 @@ const MainSeries = () => {
   const loggedInUser = localStorage.getItem("userId");
   const loggedInUserId = JSON.parse(loggedInUser);
 
+  const [show_deal, setDeal] = useState(false);
+
+  const onClose = () => setDeal(false);
+
   return (
     <div>
       <Header />
@@ -62,36 +67,51 @@ const MainSeries = () => {
                 <h2>{main_data?.art?.length}</h2>
               </div>
               <div className="sect flex border">
-                <p>worth</p>
+                <p>worth </p>
                 <h2>
-                  {Math.round(totalPricesSum)}
-                  <span style={{ fontSize: ".6rem" }}>ETH</span>
+                  {Math.round(totalPricesSum)}{" "}
+                  <span style={{ fontSize: ".6rem", marginTop: "20px" }}>
+                    ETH
+                  </span>
                 </h2>
               </div>
             </div>
             <div className="join flex border">
-              <p style={{ fontWeight: "600" }}>CREATOR</p>
-              <img
-                style={{ width: "30px", height: "30px", borderRadius: "50%" }}
-                src={main_data?.owner?.avatar}
-                alt=""
-                className="border"
-              />
+              <p>CREATOR</p>
+              <div className="flex" style={{ gap: "2px" }}>
+                <p style={{ fontSize: ".6rem", textTransform: "capitalize" }}>
+                  {main_data?.owner?.username}
+                </p>
+                <img
+                  style={{ width: "25px", height: "25px", borderRadius: "50%" }}
+                  src={main_data?.owner?.avatar}
+                  alt=""
+                  className="border"
+                />
+              </div>
             </div>
             <div className="btns flex col">
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
-                  style={{ background: "transparent", color: "inherit" }}
-                  className="border"
+                  style={{ background: "#333", color: "white", border: "none" }}
                 >
                   UPDATE
                 </button>
               ) : (
-                <button style={{ border: "none" }}>DEAL</button>
+                <button
+                  style={{ border: "none" }}
+                  onClick={() => setDeal(true)}
+                >
+                  DEAL
+                </button>
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
-                  style={{ background: "#333", color: "white", border: "none" }}
+                  className="border"
+                  style={{
+                    background: "white",
+                    color: "black",
+                  }}
                 >
                   DELETE
                 </button>
@@ -167,7 +187,10 @@ const MainSeries = () => {
             {main_data?.art?.map((card_item) => {
               return (
                 <div className="card flex col" key={card_item?._id}>
-                  <div className="img-sect flex">
+                  <div
+                    className="img-sect flex"
+                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                  >
                     <img src={card_item?.image} alt="" />
                   </div>
                   <div className="info flex col">
@@ -199,6 +222,13 @@ const MainSeries = () => {
           </div>
         )}
       </div>
+      {show_deal && (
+        <Deal
+          onClose={onClose}
+          title={main_data?.title}
+          price={totalPricesSum}
+        />
+      )}
       <Footer />
     </div>
   );

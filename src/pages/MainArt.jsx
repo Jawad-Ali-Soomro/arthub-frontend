@@ -12,6 +12,9 @@ import Footer from "../components/Footer";
 import ImageModal from "../components/ImageModal";
 import Popup from "../components/DeletePopup";
 import Deal from "../components/Deal";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { addToCart } from "../redux/cartSlice";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -56,6 +59,7 @@ const MainArt = () => {
   };
 
   const onClose = () => set_deal(false);
+
   return (
     <div>
       <Header />
@@ -78,7 +82,7 @@ const MainArt = () => {
             <div className="top flex col">
               <div className="icons flex">
                 <div className="icon border flex">
-                  <BiCart />
+                  <BiHeart />
                 </div>{" "}
                 <div className="icon border flex">
                   <BiScan />
@@ -151,7 +155,7 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   className="border"
-                  style={{ background: "#333" }}
+                  style={{ background: "white" }}
                   onClick={() => setShowPopup(true)}
                 >
                   DELETE
@@ -195,7 +199,10 @@ const MainArt = () => {
             {more_data.map((card_item) => {
               return (
                 <div className="card flex col" key={card_item?._id}>
-                  <div className="img-sect flex">
+                  <div
+                    className="img-sect flex"
+                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                  >
                     <img src={card_item?.image} alt="" />
                   </div>
                   <div className="info flex col">

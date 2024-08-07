@@ -1,0 +1,32 @@
+.cart {
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+  .cart-card {
+    width: 600px;
+    justify-content: space-between;
+    border-bottom: 1px solid #808090;
+    border-radius: 0;
+    padding-bottom: 10px;
+    align-items: end;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    h3 {
+      font-weight: 400;
+    }
+    .flex {
+      gap: 10px;
+    }
+    button {
+      width: 100px;
+      height: 35px;
+      text-transform: uppercase;
+      background: white;
+      color: black;
+      border: 1px solid #808090;
+      font-size: 0.6rem;
+    }
+  }
+}

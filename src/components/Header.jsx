@@ -162,9 +162,9 @@ const Header = () => {
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
           </li>
-          <li className="icon flex" onClick={() => navigate("/cart")}>
+          {/* <li className="icon flex" onClick={() => navigate("/cart")}>
             <BiCart style={{ fontSize: "1.1rem" }} />
-          </li>
+          </li> */}
         </ul>
         <div
           className="menu flex col"

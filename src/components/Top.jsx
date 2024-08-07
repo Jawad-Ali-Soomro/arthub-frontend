@@ -36,7 +36,11 @@ const Top = () => {
         {main_data == undefined ? (
           <Skeleton width={500} height={550} />
         ) : (
-          <img src={main_data?.image} alt="" />
+          <img
+            src={main_data?.image}
+            onClick={() => navigate(`/art/${main_data?._id}`)}
+            alt=""
+          />
         )}
       </div>
       {main_data == undefined ? (

@@ -108,7 +108,7 @@ const MainUser = () => {
         toast.error("An error occurred. Please try again!");
       }
     } else {
-      toast.error("PLEASE LOGIN!");
+      toast.error("Please Login!");
     }
   };
 
@@ -206,7 +206,11 @@ const MainUser = () => {
               <div className="btns flex">
                 <button
                   onClick={() => navigate("/profile")}
-                  style={{ background: "#333", color: "white", border: "none" }}
+                  style={{
+                    background: "white",
+                    color: "black",
+                    border: "1px solid #808090",
+                  }}
                 >
                   EDIT PROFILE
                 </button>
@@ -288,7 +292,10 @@ const MainUser = () => {
             {tag_item
               ? main_data?.art?.map((card_item) => (
                   <div className="card flex col" key={card_item?._id}>
-                    <div className="img-sect flex">
+                    <div
+                      className="img-sect flex"
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                    >
                       <img src={card_item?.image} alt="" />
                     </div>
                     <div className="info flex col">
@@ -322,7 +329,10 @@ const MainUser = () => {
                 ))
               : main_data?.series?.map((card_item) => (
                   <div className="card flex col" key={card_item?._id}>
-                    <div className="img-sect flex">
+                    <div
+                      className="img-sect flex"
+                      onClick={() => navigate(`/series/${card_item?._id}`)}
+                    >
                       <img src={card_item?.image} alt="" />
                     </div>
                     <div className="info flex col">
