@@ -64,9 +64,9 @@ const Login = ({ onClose }) => {
     email: "",
     password: "",
     username: "",
-    facebook: "https://www.facebook.com",
-    twitter: "https://twitter.com",
-    instagram: "https://www.instagram.com",
+    facebook: "",
+    twitter: "",
+    instagram: "",
   });
 
   const handleRegisterChange = (e) => {
@@ -193,7 +193,7 @@ const Login = ({ onClose }) => {
             </div>
           </div>
           <Link className="link">Forgot Password?</Link>
-          <button className="flex" onClick={handleLoginSubmit}>
+          <button className="flex border" onClick={handleLoginSubmit}>
             Login
           </button>
           <p
@@ -286,7 +286,10 @@ const Login = ({ onClose }) => {
               </p>
             </div>
             <div className="btns flex">
-              <button onClick={imageUrl == "" ? this : handleRegisterSubmit}>
+              <button
+                className="border"
+                onClick={imageUrl == "" ? this : handleRegisterSubmit}
+              >
                 Register
               </button>
             </div>

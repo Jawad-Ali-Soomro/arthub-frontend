@@ -46,7 +46,7 @@ const WalletSection = ({ onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <img
-          src={themeMode == "dark" ? "/logo-white.png" : "/logo-blacck.png"}
+          src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
           alt="Logo"
         />
         <h1>Connect Wallet!</h1>

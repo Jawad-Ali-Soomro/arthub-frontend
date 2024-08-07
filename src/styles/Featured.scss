@@ -13,16 +13,13 @@
     button {
       width: 100px;
       height: 40px;
-      border: 1px solid;
-      color: inherit;
-      background: transparent;
+      background: white;
+      color: black;
+      font-weight: 600;
       font-size: 0.7rem;
       text-transform: uppercase;
       cursor: pointer;
     }
-  }
-  p {
-    font-size: 1.2rem;
   }
   .wrapper {
     flex-wrap: wrap;
@@ -111,14 +108,9 @@
             font-size: 0.7rem;
             color: inherit;
             cursor: pointer;
-            border: 1px solid transparent;
-            background: #333;
-            color: white;
-          }
-          button:hover {
-            border: 1px solid;
-            color: inherit;
-            background: transparent;
+            border: 1px solid #809090;
+            background: white;
+            color: black;
           }
         }
       }

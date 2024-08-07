@@ -49,108 +49,109 @@
       position: absolute;
       bottom: -20px;
       left: 60px;
-      background: rgba(255, 255, 255, 1);
+      background: white;
+      border: 1px solid #80809090;
       color: black;
     }
   }
   .main-data {
-    flex-wrap: wrap;
+    margin-top: 50px;
     justify-content: space-between;
-    margin-top: 20vh;
-    margin-bottom: 20vh;
     width: 100%;
-    gap: 20px;
+  }
+  .wrapper {
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
     .card {
-      position: relative;
-      width: 380px;
-      height: 430px;
-      border-radius: 5px;
-      overflow: hidden;
-      cursor: pointer;
-      border-radius: 10px;
-      img {
-        width: 380px;
-        height: 429px;
+      align-items: start;
+      gap: 20px;
+      padding-top: 14px;
+      margin-top: 100px;
+      .img-sect {
+        width: 370px;
+        height: 410px;
+        overflow: hidden;
+        img {
+          cursor: pointer;
+          width: 381px;
+          height: 411px;
+          transition: 0.3s;
+        }
+      }
+      .img-sect:hover {
+        img {
+          scale: 1.1;
+        }
       }
       .info {
-        position: absolute;
-        width: 100%;
-        height: calc(100% + 2px);
-        transition: 0.3s;
-        background: linear-gradient(180deg, transparent, black);
-        overflow: hidden;
-        bottom: 0;
-        color: white;
-        justify-content: end;
         align-items: start;
-        padding-left: 50px;
         gap: 10px;
-        transform: translateY(100%);
-        overflow: hidden;
-        padding-bottom: 20px;
-        h3 {
+        h2 {
           font-weight: 600;
+          font-size: 1rem;
+          margin-left: 20px;
         }
         .owner {
-          gap: 2px;
-          img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba($color: #fff, $alpha: 0.8);
-          }
-          .wrap {
-            align-items: start;
-            p {
-              font-size: 0.6rem;
+          width: 340px;
+          justify-content: space-between;
+          .left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            img {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
             }
-            h2 {
-              font-weight: 600;
-              text-transform: capitalize;
+            h3 {
               font-size: 1rem;
+              font-weight: 500;
+              padding-top: 8px;
+              text-transform: capitalize;
             }
           }
+          .more {
+            width: 30px;
+            height: 30px;
+            gap: 2px;
+            cursor: pointer;
+            .dot {
+              width: 4px;
+              height: 4px;
+              background: #666;
+            }
+          }
+        }
+        .border {
+          width: 330px;
+          margin-top: 10px;
+          margin-left: 20px;
         }
         .price {
-          align-items: end;
-          justify-content: end;
-          width: 330px;
+          width: 350px;
           justify-content: space-between;
-          p {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-          }
           h2 {
-            text-transform: uppercase;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 300;
           }
-        }
-        .btns {
-          gap: 10px;
           button {
             width: 100px;
             height: 35px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: white;
-            cursor: pointer;
-            background: rgba($color: #eee, $alpha: 0.3);
-            margin-left: 230px;
-            font-size: 0.7rem;
-            font-weight: 600;
             text-transform: uppercase;
-          }
-          button:hover {
+            border: 1px solid;
             background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.5);
+            font-size: 0.7rem;
+            color: inherit;
+            cursor: pointer;
+            border: 1px solid #809090;
+            background: white;
+            color: black;
           }
         }
-      }
-    }
-    .card:hover {
-      .info {
-        transform: translateY(0);
       }
     }
   }

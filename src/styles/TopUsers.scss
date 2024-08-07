@@ -20,6 +20,7 @@
         height: 180px;
         cursor: pointer;
         transition: 0.3s;
+        border-radius: 50%;
       }
       .info {
         margin-top: 20px;
@@ -36,14 +37,15 @@
         margin-top: 20px;
       }
       button {
-        width: 80px;
-        height: 30px;
+        width: 160px;
+        height: 40px;
         background: #333;
         border: none;
         color: white;
-        margin-left: 80px;
         margin-top: 10px;
         font-size: 0.7rem;
+        text-transform: uppercase;
+        font-weight: 600;
       }
       button:hover {
         border: 1px solid #809090;

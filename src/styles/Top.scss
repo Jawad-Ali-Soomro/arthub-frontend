@@ -54,10 +54,12 @@
       button {
         width: 100px;
         height: 35px;
-        background: transparent;
-        color: inherit;
+        background: white;
+        color: black;
+        font-weight: 600;
         font-size: 0.8rem;
         cursor: pointer;
+        border: 1px solid #809090;
       }
     }
     .btns-wrap {

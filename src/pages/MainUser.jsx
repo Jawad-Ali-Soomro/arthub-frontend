@@ -108,7 +108,7 @@ const MainUser = () => {
         toast.error("An error occurred. Please try again!");
       }
     } else {
-      toast.error("Please login first!");
+      toast.error("PLEASE LOGIN!");
     }
   };
 
@@ -214,7 +214,11 @@ const MainUser = () => {
             ) : (
               <div className="btns flex col">
                 <button style={{ border: "none" }}>MESSAGE</button>
-                <button className="border" onClick={() => toggleFollow()}>
+                <button
+                  className="border"
+                  style={{ background: "white", color: "black" }}
+                  onClick={() => toggleFollow()}
+                >
                   {btnText}
                 </button>
               </div>
@@ -283,8 +287,10 @@ const MainUser = () => {
           <div className="main-art-wrap flex">
             {tag_item
               ? main_data?.art?.map((card_item) => (
-                  <div className="card flex" key={card_item?._id}>
-                    <img src={card_item?.image} alt="" />
+                  <div className="card flex col" key={card_item?._id}>
+                    <div className="img-sect flex">
+                      <img src={card_item?.image} alt="" />
+                    </div>
                     <div className="info flex col">
                       <h3>{card_item?.title}</h3>
                       <div
@@ -292,32 +298,33 @@ const MainUser = () => {
                         onClick={() => navigate(`/user/${main_data?._id}`)}
                       >
                         <img src={main_data?.avatar} alt="" />
-                        <div className="wrap">
-                          <h2>{main_data?.username}</h2>
-                        </div>
+                        <h2 style={{ fontSize: "1rem", fontWeight: "500" }}>
+                          {main_data?.username}
+                        </h2>
                       </div>
-                      <div className="price flex col">
-                        <p>price</p>
+                      <div className="line border"></div>
+                      <div className="price flex">
                         <h2>
-                          {card_item?.price} ~
+                          {card_item?.price} ~{" "}
                           <span>
                             ${Math.round(card_item?.price * ethToUsd)}
                           </span>
                         </h2>
-                      </div>
-                      <div className="btns flex">
                         <button
                           onClick={() => navigate(`/art/${card_item?._id}`)}
                         >
                           Buy
                         </button>
                       </div>
+                      <div className="btns flex"></div>
                     </div>
                   </div>
                 ))
               : main_data?.series?.map((card_item) => (
-                  <div className="card flex" key={card_item?._id}>
-                    <img src={card_item?.image} alt="" />
+                  <div className="card flex col" key={card_item?._id}>
+                    <div className="img-sect flex">
+                      <img src={card_item?.image} alt="" />
+                    </div>
                     <div className="info flex col">
                       <h3>{card_item?.title}</h3>
                       <div
@@ -325,28 +332,20 @@ const MainUser = () => {
                         onClick={() => navigate(`/user/${main_data?._id}`)}
                       >
                         <img src={main_data?.avatar} alt="" />
-                        <div className="wrap">
-                          <h2>{main_data?.username}</h2>
-                        </div>
-                      </div>
-                      <div className="price flex col">
-                        <p>total</p>
-                        <h2
-                          style={{
-                            textTransform: "capitalize",
-                            fontWeight: 400,
-                          }}
-                        >
-                          {card_item?.art?.length} artworks
+                        <h2 style={{ fontSize: "1rem", fontWeight: "500" }}>
+                          {main_data?.username}
                         </h2>
                       </div>
-                      <div className="btns flex">
+                      <div className="line border"></div>
+                      <div className="price flex">
+                        <h2 style={{ fontSize: "1rem" }}>~</h2>
                         <button
                           onClick={() => navigate(`/series/${card_item?._id}`)}
                         >
                           view
                         </button>
                       </div>
+                      <div className="btns flex"></div>
                     </div>
                   </div>
                 ))}

@@ -31,6 +31,9 @@
           width: 40px;
           height: 40px;
           cursor: pointer;
+          background: white;
+          color: black;
+          border: 1px solid #808090;
         }
       }
       h1 {
@@ -75,11 +78,15 @@
         color: inherit;
         text-transform: uppercase;
         cursor: pointer;
+        font-weight: 600;
+        background: #333;
+        border: none;
+        color: white;
       }
       button:last-child {
-        background: #333;
-        color: white;
-        border: 1px solid transparent;
+        background: white;
+        color: black;
+        border: 1px solid #808090;
       }
     }
     .line-main {
@@ -105,9 +112,9 @@
         width: 40px;
         height: 40px;
         position: absolute;
-        background: #333;
-        color: white;
-        border: none;
+        background: white;
+        color: black;
+        border: 1px solid #808090;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -133,10 +140,11 @@
     button {
       width: 120px;
       height: 40px;
-      background: #333;
-      color: white;
-      border: none;
+      background: white;
+      color: black;
+      border: 1px solid #808090;
       font-size: 0.7rem;
+      font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
     }
@@ -149,24 +157,32 @@
     margin-top: 50px;
     .card {
       width: 380px;
-      height: 430px;
       overflow: hidden;
       position: relative;
       cursor: pointer;
-      img {
-        width: 100%;
-        height: 100%;
+      .img-sect {
+        width: 380px;
+        height: 410px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          transition: 0.3s;
+        }
+      }
+      .img-sect:hover {
+        img {
+          scale: 1.1;
+        }
       }
       .info {
-        position: absolute;
         width: 100%;
         height: calc(100% + 10px);
         transition: 0.3s;
-        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 1));
         overflow: hidden;
         bottom: 0;
-        color: white;
-        transform: translateY(100%);
+        color: inherit;
         justify-content: end;
         align-items: start;
         padding-left: 50px;
@@ -175,12 +191,15 @@
         gap: 10px;
         h3 {
           font-weight: 600;
+          font-size: 1rem;
+          margin-top: 20px;
         }
         .owner {
           gap: 2px;
+          margin-top: 10px;
           img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             border: 1px solid rgba($color: #fff, $alpha: 0.8);
           }
@@ -198,39 +217,25 @@
           }
         }
         .price {
-          align-items: end;
-          justify-content: end;
-          width: 330px;
+          width: 340px;
           justify-content: space-between;
-          p {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-          }
           h2 {
-            text-transform: uppercase;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 300;
           }
-        }
-        .btns {
-          gap: 10px;
           button {
             width: 100px;
             height: 35px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: white;
-            cursor: pointer;
-            background: rgba($color: #eee, $alpha: 0.3);
-            margin-left: 230px;
+            background: white;
+            border: 1px solid #808090;
             font-size: 0.7rem;
-            font-weight: 600;
             text-transform: uppercase;
+            font-weight: 600;
           }
-          button:hover {
-            background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.5);
-          }
+        }
+        .line {
+          width: 340px;
+          margin-top: 10px;
         }
       }
     }

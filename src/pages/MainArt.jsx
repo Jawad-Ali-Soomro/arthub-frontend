@@ -194,8 +194,10 @@ const MainArt = () => {
           <div className="wrapper flex">
             {more_data.map((card_item) => {
               return (
-                <div className="card flex" key={card_item?._id}>
-                  <img src={card_item?.image} alt="" />
+                <div className="card flex col" key={card_item?._id}>
+                  <div className="img-sect flex">
+                    <img src={card_item?.image} alt="" />
+                  </div>
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>
                     <div
@@ -207,20 +209,19 @@ const MainArt = () => {
                         <h2>{main_data?.owner?.username}</h2>
                       </div>
                     </div>
-                    <div className="price flex col">
-                      <p>price</p>
+                    <div className="line border"></div>
+                    <div className="price flex">
                       <h2>
                         {card_item?.price} ~{" "}
                         <span>${Math.round(card_item?.price * ethToUsd)}</span>
                       </h2>
-                    </div>
-                    <div className="btns flex">
                       <button
                         onClick={() => navigate(`/art/${card_item?._id}`)}
                       >
                         Buy
                       </button>
                     </div>
+                    <div className="btns flex"></div>
                   </div>
                 </div>
               );

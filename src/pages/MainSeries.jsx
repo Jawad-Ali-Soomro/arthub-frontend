@@ -87,11 +87,7 @@ const MainSeries = () => {
                   UPDATE
                 </button>
               ) : (
-                <button
-                  style={{ background: "#333", color: "white", border: "none" }}
-                >
-                  BUY ALL
-                </button>
+                <button style={{ border: "none" }}>DEAL</button>
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
@@ -100,7 +96,15 @@ const MainSeries = () => {
                   DELETE
                 </button>
               ) : (
-                <button className="border">DEAL</button>
+                <button
+                  style={{
+                    background: "white",
+                    color: "black",
+                    border: "1px solid #808090",
+                  }}
+                >
+                  BUY ALL
+                </button>
               )}
             </div>
           </div>
@@ -130,6 +134,11 @@ const MainSeries = () => {
                   </h2>
                   <button
                     className="flex"
+                    style={{
+                      background: "white",
+                      color: "black",
+                      border: "1px solid #808090",
+                    }}
                     onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
                   >
                     Buy
@@ -157,8 +166,10 @@ const MainSeries = () => {
           <div className="wrapper flex">
             {main_data?.art?.map((card_item) => {
               return (
-                <div className="card flex" key={card_item?._id}>
-                  <img src={card_item?.image} alt="" />
+                <div className="card flex col" key={card_item?._id}>
+                  <div className="img-sect flex">
+                    <img src={card_item?.image} alt="" />
+                  </div>
                   <div className="info flex col">
                     <h3>{card_item?.title}</h3>
                     <div
@@ -168,20 +179,19 @@ const MainSeries = () => {
                       <img src={main_data?.owner?.avatar} alt="" />
                       <h2>{main_data?.owner?.username}</h2>
                     </div>
-                    <div className="price flex col">
-                      <p>price</p>
+                    <div className="line border"></div>
+                    <div className="price flex">
                       <h2>
                         {card_item?.price} ~{" "}
                         <span>${Math.round(card_item?.price * ethToUsd)}</span>
                       </h2>
-                    </div>
-                    <div className="btns flex">
                       <button
                         onClick={() => navigate(`/art/${card_item?._id}`)}
                       >
                         Buy
                       </button>
                     </div>
+                    <div className="btns flex"></div>
                   </div>
                 </div>
               );

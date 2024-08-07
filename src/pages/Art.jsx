@@ -6,9 +6,6 @@ import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
-import { BiCross, BiFilter } from "react-icons/bi";
-import { CgClose } from "react-icons/cg";
-import { FiFilter } from "react-icons/fi";
 import { BsFilter } from "react-icons/bs";
 
 const Art = () => {
@@ -88,9 +85,7 @@ const Art = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          <h1 className="flex col">
-            Explore <span>Discover & Collect Crypto Art.</span>
-          </h1>
+          <h1 className="flex col">Digital Art</h1>
           <button
             className="border"
             onClick={() => setIsFilterVisible(!isFilterVisible)}
@@ -158,33 +153,43 @@ const Art = () => {
             <Skeleton width={350} height={380} />
           </div>
         ) : (
-          <div className="main-data flex">
-            {filteredData.map((cardItem) => (
-              <div className="card flex" key={cardItem._id}>
-                <img src={cardItem.image} alt={cardItem.title} />
+          <div className="main-data wrapper flex">
+            {filteredData?.map((card_item) => (
+              <div className="card flex col" key={card_item._id}>
+                <div className="img-sect flex">
+                  <img
+                    className="border"
+                    src={card_item?.image}
+                    alt={card_item?.title}
+                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                  />
+                </div>
                 <div className="info flex col">
-                  <h3>{cardItem.title}</h3>
+                  <h2>{card_item?.title}</h2>
                   <div
                     className="owner flex"
-                    onClick={() => navigate(`/user/${cardItem.owner?._id}`)}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
                   >
-                    <img
-                      src={cardItem.owner?.avatar}
-                      alt={cardItem.owner?.username}
-                    />
-                    <div className="wrap flex col">
-                      <h2>{cardItem.owner?.username}</h2>
+                    <div className="left flex">
+                      <img
+                        className="border"
+                        src={card_item?.owner?.avatar}
+                        alt={card_item?.owner?.username}
+                      />
+                      <h3>{card_item?.owner?.username}</h3>
                     </div>
                   </div>
-                  <div className="price flex col">
-                    <p>Price</p>
+                  <div className="border"></div>
+                  <div className="price flex">
                     <h2>
-                      {cardItem.price} ~{" "}
-                      <span>${Math.round(cardItem.price * ethToUsd)}</span>
+                      {card_item?.price} ~{" "}
+                      <span>${Math.round(card_item?.price * ethToUsd)}</span>
                     </h2>
-                  </div>
-                  <div className="btns flex">
-                    <button onClick={() => navigate(`/art/${cardItem._id}`)}>
+                    <button
+                      className="flex"
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                    >
                       Buy
                     </button>
                   </div>

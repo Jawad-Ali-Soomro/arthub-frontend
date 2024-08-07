@@ -25,7 +25,7 @@ function App() {
   const userToken = window.localStorage.getItem("authToken");
   return (
     <>
-      <Toaster position="bottom-right" />
+      <Toaster position="top-left" />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

@@ -173,13 +173,12 @@
             height: 35px;
             text-transform: uppercase;
             border: 1px solid;
-            background: transparent;
             font-size: 0.7rem;
             color: inherit;
             cursor: pointer;
-            border: 1px solid transparent;
-            background: #333;
-            color: white;
+            border: 1px solid #808090;
+            background: white;
+            color: black;
           }
           button:hover {
             border: 1px solid;
@@ -227,38 +226,49 @@
     gap: 50px;
     .card {
       width: 380px;
-      height: 430px;
       overflow: hidden;
       position: relative;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .info {
-        position: absolute;
+      cursor: pointer;
+      .img-sect {
         width: 380px;
-        height: 431px;
-        background: linear-gradient(180deg, transparent, black);
-        transform: translateY(100%);
+        height: 410px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          transition: 0.3s;
+        }
+      }
+      .img-sect:hover {
+        img {
+          scale: 1.1;
+        }
+      }
+      .info {
+        width: 100%;
+        height: calc(100% + 10px);
         transition: 0.3s;
         overflow: hidden;
         bottom: 0;
-        padding-bottom: 20px;
-        color: white;
+        color: inherit;
         justify-content: end;
         align-items: start;
         padding-left: 50px;
+        bottom: -1px;
+        padding-bottom: 20px;
         gap: 10px;
         h3 {
           font-weight: 600;
+          font-size: 1rem;
+          margin-top: 20px;
         }
         .owner {
-          cursor: pointer;
           gap: 2px;
+          margin-top: 10px;
           img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             border: 1px solid rgba($color: #fff, $alpha: 0.8);
           }
@@ -276,39 +286,25 @@
           }
         }
         .price {
-          align-items: end;
-          justify-content: end;
-          width: 330px;
+          width: 340px;
           justify-content: space-between;
-          p {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-          }
           h2 {
-            text-transform: uppercase;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 300;
           }
-        }
-        .btns {
-          gap: 10px;
           button {
             width: 100px;
             height: 35px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: white;
-            cursor: pointer;
-            background: rgba($color: #eee, $alpha: 0.3);
-            margin-left: 230px;
+            background: white;
+            border: 1px solid #808090;
             font-size: 0.7rem;
-            font-weight: 600;
             text-transform: uppercase;
+            font-weight: 600;
           }
-          button:hover {
-            background: transparent;
-            border: 1px solid rgba($color: #eee, $alpha: 0.3);
-          }
+        }
+        .line {
+          width: 340px;
+          margin-top: 10px;
         }
       }
     }

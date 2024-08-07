@@ -196,9 +196,7 @@ const Header = () => {
             <p onClick={() => navigate("/events")}>Events</p>
             <p
               onClick={() =>
-                tokenId
-                  ? navigate("/profile")
-                  : toast.error("Please login to access!")
+                tokenId ? navigate("/profile") : toast.error("PLEASE LOGIN!")
               }
             >
               Dashboard
@@ -276,6 +274,7 @@ const Header = () => {
           </div>
         ) : (
           <button
+            style={{ background: "white", color: "black", fontWeight: "600" }}
             className="border"
             onClick={() =>
               tokenId ? null : walletId ? openLogin() : openWallets()

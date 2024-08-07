@@ -13,12 +13,12 @@ const Deal = ({ onClose, image, title, price }) => {
           background: `${themeMode == "dark" ? "rgb(30,20,32)" : "white"}`,
         }}
       >
-        <div className="top-deal flex">
-          <h1>Make a deal!</h1>
+        {/* <div className="top-deal flex">
+          <De
           <CgClose className="close-btn" onClick={onClose} />
-        </div>
+        </div> */}
         <div className="wrap flex">
-          <img src={image} alt="" />
+          {/* <img src={image} alt="" /> */}
           <div className="right-info flex col">
             <h1>{title}</h1>
             <div className="price flex col">

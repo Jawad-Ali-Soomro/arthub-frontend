@@ -39,7 +39,10 @@ const Spotlight = () => {
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
         <h1 style={{ width: "100%", justifyContent: "space-between" }}>
           Artist Spotlight : Botto{" "}
-          <button onClick={() => navigate("/user/66b061bd9ddaf3bfd97d8608")}>
+          <button
+            className="border"
+            onClick={() => navigate("/user/66b061bd9ddaf3bfd97d8608")}
+          >
             See all
           </button>
         </h1>

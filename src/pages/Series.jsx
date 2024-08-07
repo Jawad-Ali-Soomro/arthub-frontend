@@ -27,9 +27,7 @@ const Series = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          <h1 className="flex col">
-            Series <span>Discover & Collect Crypto Series.</span>
-          </h1>
+          <h1 className="flex col">Collections</h1>
           <button
             className="border"
             onClick={() => setIsFilterVisible(!isFilterVisible)}
@@ -47,34 +45,38 @@ const Series = () => {
             <Skeleton width={350} height={380} />
           </div>
         ) : (
-          <div className="main-data flex">
+          <div className="main-data wrapper flex">
             {main_data?.map((card_item) => (
-              <div className="card flex" key={card_item?._id}>
-                <img src={card_item?.image} alt={card_item?.title} />
+              <div className="card flex col" key={card_item._id}>
+                <div className="img-sect flex">
+                  <img
+                    className="border"
+                    src={card_item?.image}
+                    alt={card_item?.title}
+                    onClick={() => navigate(`/series/${card_item?._id}`)}
+                  />
+                </div>
                 <div className="info flex col">
-                  <h3>{card_item?.title}</h3>
+                  <h2>{card_item?.title}</h2>
                   <div
                     className="owner flex"
+                    style={{ cursor: "pointer" }}
                     onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
                   >
-                    <img
-                      src={card_item?.owner?.avatar}
-                      alt={card_item?.owner?.username}
-                    />
-                    <div className="wrap flex col">
-                      <h2>{card_item?.owner?.username}</h2>
+                    <div className="left flex">
+                      <img
+                        className="border"
+                        src={card_item?.owner?.avatar}
+                        alt={card_item?.owner?.username}
+                      />
+                      <h3>{card_item?.owner?.username}</h3>
                     </div>
                   </div>
-                  <div className="price flex col">
-                    <p>total</p>
-                    <h2
-                      style={{ textTransform: "capitalize", fontWeight: 400 }}
-                    >
-                      {card_item?.art?.length} artworks
-                    </h2>
-                  </div>
-                  <div className="btns flex">
+                  <div className="border"></div>
+                  <div className="price flex">
+                    <h2> ~ </h2>
                     <button
+                      className="flex"
                       onClick={() => navigate(`/series/${card_item?._id}`)}
                     >
                       view

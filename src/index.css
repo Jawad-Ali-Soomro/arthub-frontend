@@ -57,6 +57,7 @@ button,
 img,
 input {
   border-radius: 10px;
+  font-weight: 600;
   /* transition: 0.3s; */
 }
 .icon {

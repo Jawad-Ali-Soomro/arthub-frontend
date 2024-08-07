@@ -9,6 +9,8 @@ import Top from "../components/Top";
 import { useNavigate } from "react-router-dom";
 import { BiHeadphone, BiLogoDiscord, BiLogoTwitter } from "react-icons/bi";
 import TopUsers from "../components/TopUsers";
+import CountdownTimer from "../components/Countdown";
+import FeaturedAuction from "../components/FeaturedAuction";
 
 const Home = () => {
   document.title = "Artchain";
@@ -33,7 +35,8 @@ const Home = () => {
       </div> */}
       <Featured />
       <FeaturedSeries />
-      <TopUsers />
+      {/* <TopUsers /> */}
+      <FeaturedAuction />
       <Spotlight />
       {/* <div className="outro flex col">
         <h1 style={{ fontWeight: "900" }}>Transparent, secure art market.</h1>
@@ -61,7 +64,6 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-
       <Footer />
     </div>
   );

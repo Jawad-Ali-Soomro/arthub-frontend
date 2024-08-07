@@ -39,7 +39,7 @@ const TopUsers = () => {
                 <p>$100</p>
               </div>
               <div className="line border"></div>
-              <button>VIEW</button>
+              <button>profile</button>
             </div>
           );
         })}
