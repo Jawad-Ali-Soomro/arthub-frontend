@@ -79,8 +79,8 @@ const MainSeries = () => {
             <div className="join flex border">
               <p>CREATOR</p>
               <div className="flex" style={{ gap: "2px" }}>
-                <p style={{ fontSize: ".6rem", textTransform: "capitalize" }}>
-                  {main_data?.owner?.username}
+                <p style={{ fontSize: ".6rem", textTransform: "lowercase" }}>
+                  @{main_data?.owner?.username.split(" ")}
                 </p>
                 <img
                   style={{ width: "25px", height: "25px", borderRadius: "50%" }}
@@ -200,7 +200,9 @@ const MainSeries = () => {
                       onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
                     >
                       <img src={main_data?.owner?.avatar} alt="" />
-                      <h2>{main_data?.owner?.username}</h2>
+                      <h2 style={{ textTransform: "lowercase" }}>
+                        @{main_data?.owner?.username.split(" ")}
+                      </h2>
                     </div>
                     <div className="line border"></div>
                     <div className="price flex">

@@ -8,14 +8,15 @@
   align-items: end;
   justify-content: center;
   .left {
+    width: 500px;
     overflow: hidden;
-    justify-content: end;
-    align-items: end;
+    justify-content: center;
+    align-items: center;
     display: flex;
-
+    height: 550px;
     img {
       width: 500px;
-      max-height: 550px;
+      height: 550px;
       transition: 0.3s;
       cursor: pointer;
     }

@@ -44,7 +44,7 @@ const Top = () => {
         )}
       </div>
       {main_data == undefined ? (
-        <Skeleton width={500} height={300} />
+        <Skeleton width={"auto"} height={"auto"} />
       ) : (
         <div className="right flex col">
           <h1>{main_data?.title}</h1>
@@ -53,7 +53,7 @@ const Top = () => {
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
           >
             <img className="border" src={main_data?.owner?.avatar} alt="" />
-            <h2>{main_data?.owner?.handle}</h2>
+            <h2>@{main_data?.owner?.handle.split(" ")}</h2>
           </div>
           <div className="price-wrap flex">
             <button

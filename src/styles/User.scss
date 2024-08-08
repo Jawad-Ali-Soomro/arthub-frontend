@@ -341,10 +341,10 @@
           border-radius: 50%;
         }
         h2 {
-          text-transform: capitalize;
+          text-transform: lowercase;
           font-weight: 600;
           font-size: 1rem;
-          color: #11111199;
+          color: inherit;
         }
       }
     }

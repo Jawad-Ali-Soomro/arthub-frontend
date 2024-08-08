@@ -18,7 +18,6 @@ import Auction from "./pages/Auction";
 import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
 import Events from "./pages/Events";
-import Cart from "./pages/Cart";
 import CreateArt from "./pages/CreateArt";
 
 function App() {

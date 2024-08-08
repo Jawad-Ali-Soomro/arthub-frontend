@@ -118,7 +118,7 @@ const MainUser = () => {
   const closeFollowing = () => {
     set_show_followings(false);
   };
-
+  const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div>
       <Header />
@@ -133,7 +133,7 @@ const MainUser = () => {
                 <h1>{main_data?.username}</h1>
                 <div className="handle flex">
                   <p className="flex">
-                    @{main_data?.handle}{" "}
+                    @{main_data?.handle.split(" ")}{" "}
                     {main_data?.isPrime == true ? (
                       <MdVerified style={{ paddingLeft: "2px" }} />
                     ) : (
@@ -305,8 +305,14 @@ const MainUser = () => {
                         onClick={() => navigate(`/user/${main_data?._id}`)}
                       >
                         <img src={main_data?.avatar} alt="" />
-                        <h2 style={{ fontSize: "1rem", fontWeight: "500" }}>
-                          {main_data?.username}
+                        <h2
+                          style={{
+                            fontSize: "1rem",
+                            fontWeight: "500",
+                            textTransform: "lowercase",
+                          }}
+                        >
+                          @{main_data?.username.split(" ")}
                         </h2>
                       </div>
                       <div className="line border"></div>
@@ -329,10 +335,7 @@ const MainUser = () => {
                 ))
               : main_data?.series?.map((card_item) => (
                   <div className="card flex col" key={card_item?._id}>
-                    <div
-                      className="img-sect flex"
-                      onClick={() => navigate(`/series/${card_item?._id}`)}
-                    >
+                    <div className="img-sect flex">
                       <img src={card_item?.image} alt="" />
                     </div>
                     <div className="info flex col">
@@ -342,8 +345,14 @@ const MainUser = () => {
                         onClick={() => navigate(`/user/${main_data?._id}`)}
                       >
                         <img src={main_data?.avatar} alt="" />
-                        <h2 style={{ fontSize: "1rem", fontWeight: "500" }}>
-                          {main_data?.username}
+                        <h2
+                          style={{
+                            fontSize: "1rem",
+                            fontWeight: "500",
+                            textTransform: "lowercase",
+                          }}
+                        >
+                          @{main_data?.username.split(" ")}
                         </h2>
                       </div>
                       <div className="line border"></div>
@@ -366,7 +375,10 @@ const MainUser = () => {
       {show_followers == true ? (
         <div className="followers flex col" onClick={() => closeFollowers()}>
           <div
-            className="wrapper flex col"
+            className="wrapper border flex col"
+            style={{
+              background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {main_data?.followers?.map((follower) => {
@@ -380,7 +392,7 @@ const MainUser = () => {
                     }
                   >
                     <img src={follower?.avatar} className="border" alt="" />
-                    {/* <h2>{follower?.username}</h2> */}
+                    <h2>@{follower?.username.split(" ")}</h2>
                   </div>
                 </div>
               );
@@ -394,7 +406,10 @@ const MainUser = () => {
       {show_followings == true ? (
         <div className="followers flex col" onClick={() => closeFollowing()}>
           <div
-            className="wrapper flex col"
+            className="wrapper flex border col"
+            style={{
+              background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {main_data?.following?.map((follower) => {
@@ -408,7 +423,7 @@ const MainUser = () => {
                     }
                   >
                     <img src={follower?.avatar} className="border" alt="" />
-                    {/* <h2>{follower?.username}</h2> */}
+                    <h2>@{follower?.username.split(" ")}</h2>
                   </div>
                 </div>
               );

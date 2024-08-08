@@ -196,7 +196,7 @@ const Header = () => {
             <p onClick={() => navigate("/events")}>Events</p>
             <p
               onClick={() =>
-                tokenId ? navigate("/profile") : toast.error("PLEASE LOGIN!")
+                tokenId ? navigate("/profile") : toast.error("Please Login!")
               }
             >
               Dashboard
@@ -243,19 +243,6 @@ const Header = () => {
                 }`,
               }}
             >
-              <div className="top flex">
-                <div className="balance flex">
-                  <img src={userData?.avatar} className="border" alt="" />
-                  <p>{userData?.handle}</p>
-                </div>
-                <div
-                  className="logout-btn flex border"
-                  onClick={() => handleLogout()}
-                >
-                  <BiLogOut />
-                </div>
-              </div>
-              <div className="line border"></div>
               <div className="bottom flex col">
                 <ul className="flex col">
                   <li className="flex" onClick={() => navigate("/profile")}>
@@ -269,6 +256,16 @@ const Header = () => {
                   </li>
                   <li className="flex">SETTINGS</li>
                 </ul>
+              </div>
+
+              <div className="line border"></div>
+              <div className="top flex">
+                <div
+                  className="logout-btn flex border"
+                  onClick={() => handleLogout()}
+                >
+                  <BiLogOut />
+                </div>
               </div>
             </div>
           </div>

@@ -66,9 +66,11 @@ const Featured = () => {
                     <img
                       className="border"
                       src={card_item?.owner?.avatar}
-                      alt={card_item?.owner?.username}
+                      alt={card_item?.owner?.username.split(" ")}
                     />
-                    <h3>{card_item?.owner?.username}</h3>
+                    <h3 style={{ textTransform: "lowercase" }}>
+                      @{card_item?.owner?.username.split(" ")}
+                    </h3>
                   </div>
                 </div>
                 <div className="border"></div>

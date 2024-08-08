@@ -213,7 +213,9 @@ const MainArt = () => {
                     >
                       <img src={main_data?.owner?.avatar} alt="" />
                       <div className="wrap flex col">
-                        <h2>{main_data?.owner?.username}</h2>
+                        <h2 style={{ textTransform: "lowercase" }}>
+                          @{main_data?.owner?.username.split(" ")}
+                        </h2>
                       </div>
                     </div>
                     <div className="line border"></div>
