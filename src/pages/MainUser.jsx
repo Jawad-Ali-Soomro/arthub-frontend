@@ -142,7 +142,9 @@ const MainUser = () => {
                   </p>
                   <p>
                     {main_data?.wallet_address.substring(0, 5)}...
-                    {main_data?.wallet_address.substring(10, 5)}
+                    {main_data?.wallet_address.substring(
+                      main_data?.wallet_address.length - 5
+                    )}
                     <span>
                       <BiCopy />
                     </span>

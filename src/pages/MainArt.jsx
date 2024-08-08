@@ -27,6 +27,7 @@ const MainArt = () => {
   const loggedInUserId = JSON.parse(loggedInUser);
   const [deal_opt, set_deal] = useState(false);
   const themeMode = window.localStorage.getItem("themeMode");
+  const [show_details, set_details] = useState(false);
   const fetch_data = async () => {
     await axios
       .get(`${baseArtUrl}/get/art/${artId}`)
@@ -42,6 +43,7 @@ const MainArt = () => {
   useEffect(() => {
     fetch_data();
   }, [artId]);
+
   useEffect(() => {
     fetch_more();
   });
@@ -59,7 +61,29 @@ const MainArt = () => {
   };
 
   const onClose = () => set_deal(false);
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = main_data?.image;
+
+    img.onload = () => {
+      setImageDimensions({
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+      });
+    };
+  }, [main_data?.image]);
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const date = formatDate(main_data?.uploaded_at);
   return (
     <div>
       <Header />
@@ -84,7 +108,10 @@ const MainArt = () => {
                 <div className="icon border flex">
                   <BiHeart />
                 </div>{" "}
-                <div className="icon border flex">
+                <div
+                  className="icon border flex"
+                  onClick={() => set_details(true)}
+                >
                   <BiScan />
                 </div>
               </div>
@@ -259,6 +286,102 @@ const MainArt = () => {
           title={main_data?.title}
           price={main_data?.price}
         />
+      ) : (
+        this
+      )}
+      {show_details == true ? (
+        <div className="details-wrap flex" onClick={() => set_details(false)}>
+          <div
+            className="information border flex col"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+              color: `${themeMode == "dark" ? "white" : "black"}`,
+            }}
+          >
+            <h1>Details</h1>
+            <div className="card flex">
+              <p>Title</p>
+              <p>{main_data?.title}</p>
+            </div>
+            <div className="card flex">
+              <p>Medium</p>
+              <p>Image(png)</p>
+            </div>
+            <div className="card flex">
+              <p>Price</p>
+              <p>{main_data?.price}</p>
+            </div>
+            <div className="card flex">
+              <p>contract address</p>
+              <p>
+                {main_data?.owner?.wallet_address.substring(0, 5)}...
+                {main_data?.owner?.wallet_address.substring(
+                  main_data?.owner?.wallet_address.length - 5
+                )}
+              </p>
+            </div>
+            <div className="card flex">
+              <p>dimension</p>
+              <p style={{ textTransform: "lowercase" }}>
+                {imageDimensions.width}px{" "}
+                <span style={{ fontSize: ".4rem" }}>x</span>{" "}
+                {imageDimensions.height}px
+              </p>
+            </div>
+            <div className="tags flex">
+              {main_data?.tags?.map((tag) => {
+                return (
+                  <div className="tag flex">
+                    <p>#{tag}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="line border"></div>
+            <div className="previous-owners flex col">
+              <h3>Previous Owners</h3>
+              {main_data?.previous_owners?.map((owner) => {
+                return (
+                  <div className="card flex">
+                    <img src={owner?.avatar} alt="" />
+                    {owner?._id == main_data?.owner?._id ? (
+                      <div className="flex col" style={{ alignItems: "start" }}>
+                        <p>
+                          currently owned By{" "}
+                          <span
+                            style={{
+                              textTransform: "lowercase",
+                              fontWeight: 600,
+                            }}
+                          >
+                            @{owner?.username.split(" ")}
+                          </span>
+                        </p>
+                        <p style={{ textTransform: "capitalize" }}>{date}</p>
+                      </div>
+                    ) : (
+                      <div className="flex col" style={{ alignItems: "start" }}>
+                        <p>
+                          sold by{" "}
+                          <span
+                            style={{
+                              textTransform: "lowercase",
+                              fontWeight: 600,
+                            }}
+                          >
+                            @{owner?.username.split(" ")}
+                          </span>
+                        </p>
+                        <p style={{ textTransform: "capitalize" }}>{date}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       ) : (
         this
       )}
