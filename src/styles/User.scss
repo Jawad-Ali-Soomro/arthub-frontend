@@ -68,8 +68,9 @@
       height: 40px;
       justify-content: space-between;
       p {
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-size: 0.8rem;
+        font-weight: 600;
       }
       p:last-child {
         font-weight: 600;
@@ -97,7 +98,8 @@
         cursor: pointer;
         p {
           font-size: 0.7rem;
-          text-transform: uppercase;
+          font-weight: 600;
+          text-transform: capitalize;
         }
         h2 {
           font-weight: 600;

@@ -13,6 +13,7 @@ const Art = () => {
   const navigate = useNavigate();
   const [mainData, setMainData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // New loading state
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filterCriteria, setFilterCriteria] = useState({
     price: null,
@@ -41,6 +42,8 @@ const Art = () => {
       setFilteredData(response.data.data);
     } catch (error) {
       console.error("Error fetching art data:", error);
+    } finally {
+      setIsLoading(false); // Stop loading once data is fetched
     }
   };
 
@@ -146,11 +149,14 @@ const Art = () => {
             </div>
           </div>
         )}
-        {filteredData.length === 0 ? (
-          <div className="main-data flex">
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
+        {isLoading ? (
+          <div
+            className="loader flex"
+            style={{ marginTop: "150px", justifyContent: "space-around" }}
+          >
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
           </div>
         ) : (
           <div className="main-data wrapper flex">

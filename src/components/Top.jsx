@@ -34,7 +34,9 @@ const Top = () => {
     <div className="top-wrap flex">
       <div className="left">
         {main_data == undefined ? (
-          <Skeleton width={500} height={550} />
+          <div style={{ height: "550px" }}>
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          </div>
         ) : (
           <img
             src={main_data?.image}
@@ -44,7 +46,9 @@ const Top = () => {
         )}
       </div>
       {main_data == undefined ? (
-        <Skeleton width={"auto"} height={"auto"} />
+        <div>
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+        </div>
       ) : (
         <div className="right flex col">
           <h1>{main_data?.title}</h1>
@@ -67,10 +71,6 @@ const Top = () => {
               <span>${Math.round(main_data?.price * ethToUsd)}</span>
             </h2>
           </div>
-          {/* <div className="btns-wrap flex">
-           
-            <button>DEAL</button>
-          </div> */}
         </div>
       )}
     </div>

@@ -124,7 +124,12 @@ const MainUser = () => {
       <Header />
       <div className="top-profile flex">
         {!main_data ? (
-          <Skeleton width={400} height={500} />
+          <div
+            className="wrap flex"
+            style={{ width: "400px", height: "500px" }}
+          >
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          </div>
         ) : (
           <div className="left flex col">
             <div className="wrap flex">
@@ -233,7 +238,12 @@ const MainUser = () => {
         )}
         <div className="right flex col">
           {!main_data ? (
-            <Skeleton width={400} height={500} />
+            <div
+              className="wrap flex"
+              style={{ width: "400px", height: "500px" }}
+            >
+              <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            </div>
           ) : (
             <div className="card flex col">
               <div className="img-sect flex">
@@ -284,10 +294,10 @@ const MainUser = () => {
       </div>
       <div className="art-series flex">
         {!main_data ? (
-          <div className="main-art-wrap flex">
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
+          <div className="main-art-wrap flex" style={{ height: "400px" }}>
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
           </div>
         ) : (
           <div className="main-art-wrap flex">

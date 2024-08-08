@@ -39,10 +39,16 @@ const Series = () => {
           </div>
         </section>
         {main_data == undefined ? (
-          <div className="main-data flex">
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
+          <div
+            className="loader flex"
+            style={{
+              marginTop: "150px",
+              justifyContent: "space-around",
+            }}
+          >
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
           </div>
         ) : (
           <div className="main-data wrapper flex">

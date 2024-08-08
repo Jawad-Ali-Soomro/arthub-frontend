@@ -152,10 +152,13 @@ const Auction = () => {
           </div>
         )}
         {filteredData.length === 0 ? (
-          <div className="main-data flex">
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
+          <div
+            className="main-data flex"
+            style={{ marginTop: "150px", justifyContent: "space-around" }}
+          >
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
           </div>
         ) : (
           <div

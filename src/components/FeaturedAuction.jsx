@@ -42,10 +42,17 @@ const FeaturedAuction = () => {
       <h1>Live Auctions</h1>
       <p>Explore the boundless creativity and inspiration of live auctions.</p>
       {main_data == undefined ? (
-        <div className="wrapper flex">
-          <Skeleton width={360} height={410} />
-          <Skeleton width={360} height={410} />
-          <Skeleton width={360} height={410} />
+        <div
+          className="wrapper flex"
+          style={{
+            height: "500px",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
         </div>
       ) : (
         <div className="wrapper flex">
@@ -107,7 +114,7 @@ const FeaturedAuction = () => {
                         color: "white",
                       }}
                     />
-                    <CountdownTimer endBidDate={"2024-08-08T12:00:00Z"} />
+                    <CountdownTimer endBidDate={"2025-01-01T12:00:00Z"} />
                   </button>
                 </div>
               </div>

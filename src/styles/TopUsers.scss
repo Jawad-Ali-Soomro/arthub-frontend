@@ -16,15 +16,15 @@
     .card {
       width: 180px;
       img {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
         cursor: pointer;
         transition: 0.3s;
         border-radius: 50%;
       }
       .info {
         margin-top: 20px;
-        width: 90%;
+        width: 80%;
         justify-content: space-between;
         p {
           font-weight: 600;

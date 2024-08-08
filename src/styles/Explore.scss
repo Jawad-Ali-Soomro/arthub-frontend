@@ -54,6 +54,12 @@
       color: black;
     }
   }
+  .loader {
+    // background: black;
+    width: 100%;
+    justify-content: space-between;
+    align-items: start !important;
+  }
   .main-data {
     margin-top: 50px;
     justify-content: space-between;

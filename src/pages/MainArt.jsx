@@ -90,7 +90,9 @@ const MainArt = () => {
       <div className="main-art flex">
         <div className="main-art-left">
           {main_data == undefined ? (
-            <Skeleton containerClassName="flex-1" width={600} height={600} />
+            <div className="wrap flex">
+              <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            </div>
           ) : (
             <img
               src={main_data?.image}
@@ -100,7 +102,9 @@ const MainArt = () => {
           )}
         </div>
         {main_data == undefined ? (
-          <Skeleton style={{ marginTop: "35vh" }} width={600} height={400} />
+          <div className="wrap flex" style={{ width: "400px" }}>
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          </div>
         ) : (
           <div className="main-art-right flex col">
             <div className="top flex col">
@@ -216,10 +220,17 @@ const MainArt = () => {
           </button>
         </h1>
         {more_data == undefined ? (
-          <div className="wrapper flex">
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
-            <Skeleton width={350} height={380} />
+          <div
+            className="wrapper flex"
+            style={{
+              height: "400px",
+              alignItems: "center",
+              justifyContent: "space-around",
+            }}
+          >
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
           </div>
         ) : (
           <div className="wrapper flex">

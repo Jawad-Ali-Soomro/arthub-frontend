@@ -39,10 +39,17 @@ const FeaturedSeries = () => {
         Explore the boundless creativity and inspiration of featured series.
       </p>
       {main_data == undefined ? (
-        <div className="wrapper flex">
-          <Skeleton width={360} height={410} />
-          <Skeleton width={360} height={410} />
-          <Skeleton width={360} height={410} />
+        <div
+          className="wrapper flex"
+          style={{
+            height: "500px",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
         </div>
       ) : (
         <div className="wrapper flex">
