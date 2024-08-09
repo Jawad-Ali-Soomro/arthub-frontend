@@ -36,6 +36,7 @@ import { SiEventstore } from "react-icons/si";
 import { BsBrush } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import MainUser from "../pages/MainUser";
+import { connectMetaMask } from "../utils/wallet_connect";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -106,6 +107,8 @@ const Header = () => {
   const openWallets = () => setShowWallets(true);
   const closeWallets = () => setShowWallets(false);
 
+  const themeMode = window.localStorage.getItem("themeMode");
+
   return (
     <div
       className={`header-wrap flex ${
@@ -133,10 +136,7 @@ const Header = () => {
             id={location === "/" ? "active" : ""}
             onClick={() => navigate("/")}
           >
-            <span>H</span>
-            <span>o</span>
-            <span>m</span>
-            <span>e</span>
+            Home
           </li>
           <li
             className="icon"
@@ -154,17 +154,14 @@ const Header = () => {
           </li>
           <li
             className="icon"
-            onClick={() => navigate("/auction")}
-            id={location === "/auction" ? "active" : ""}
+            onClick={() => navigate("/rare")}
+            id={location === "/rare" ? "active" : ""}
           >
-            Auction
+            rare
           </li>
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
           </li>
-          {/* <li className="icon flex" onClick={() => navigate("/cart")}>
-            <BiCart style={{ fontSize: "1.1rem" }} />
-          </li> */}
         </ul>
         <div
           className="menu flex col"
@@ -193,7 +190,7 @@ const Header = () => {
               }`,
             }}
           >
-            <p onClick={() => navigate("/events")}>Events</p>
+            <p>Profile</p>
             <p
               onClick={() =>
                 tokenId ? navigate("/profile") : toast.error("Please Login!")
@@ -202,9 +199,9 @@ const Header = () => {
               Dashboard
             </p>
             <div className="line"></div>
-            <p onClick={() => navigate("/trending-art")}>Trending Art</p>
-            <p>Rare Auctions</p>
-            <p onClick={() => navigate("/trending-series")}>Trending Series</p>
+            <p onClick={() => navigate("/rare")}>Rare Items</p>
+            <p onClick={() => navigate("/trending-art")}>Featured Art</p>
+            <p onClick={() => navigate("/trending-series")}>Featured Series</p>
             <div className="line"></div>
             <div className="links flex">
               <Link className="link flex">
@@ -262,6 +259,10 @@ const Header = () => {
               <div className="top flex">
                 <div
                   className="logout-btn flex border"
+                  style={{
+                    background: `${themeMode == "dark" ? "white" : "black"}`,
+                    color: `${themeMode == "dark" ? "black" : "white"}`,
+                  }}
                   onClick={() => handleLogout()}
                 >
                   <BiLogOut />
@@ -274,7 +275,11 @@ const Header = () => {
             style={{ background: "white", color: "black", fontWeight: "600" }}
             className="border"
             onClick={() =>
-              tokenId ? null : walletId ? openLogin() : openWallets()
+              tokenId
+                ? null
+                : walletId
+                ? openLogin()
+                : openWallets() + connectMetaMask()
             }
           >
             {tokenId ? "PROFILE" : walletId ? "LOGIN" : "CONNECT"}

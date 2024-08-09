@@ -22,12 +22,7 @@ const Profile = () => {
   useEffect(() => {
     fetch_data();
   }, [userData]);
-  const handleLogout = () => {
-    window.localStorage.removeItem("authToken");
-    window.localStorage.removeItem("userId");
-    navigate("/");
-    window.location.reload();
-  };
+
   const navigate = useNavigate();
   document.title = "Dashboard";
   const [show_art, set_show_art] = useState(false);
@@ -83,32 +78,80 @@ const Profile = () => {
                 onClick={() => set_show_art(true)}
               >
                 <p>Total # creations</p>
-                <h2>{profile_data?.art?.length}</h2>
+                {profile_data == undefined ? (
+                  <img
+                    src="/loader.svg"
+                    style={{ width: "50px", marginTop: "10px" }}
+                    alt=""
+                  />
+                ) : (
+                  <h2>{profile_data?.art?.length}</h2>
+                )}
               </div>
               <div
                 className="card flex border col"
                 onClick={() => set_show_series(true)}
               >
-                <p>total # sreies</p>
-                <h2>{profile_data?.series?.length}</h2>
+                <p>total # sreies</p>{" "}
+                {profile_data == undefined ? (
+                  <img
+                    src="/loader.svg"
+                    style={{ width: "50px", marginTop: "10px" }}
+                    alt=""
+                  />
+                ) : (
+                  <h2>{profile_data?.series?.length}</h2>
+                )}
               </div>
               <div className="card flex border col">
                 <p>Total # auctions</p>
-                <h2>0</h2>
+                {profile_data?.auctions == undefined ? (
+                  <img
+                    src="/loader.svg"
+                    style={{ width: "50px", marginTop: "10px" }}
+                    alt=""
+                  />
+                ) : (
+                  <h2>{profile_data?.auctions?.length}</h2>
+                )}
               </div>
             </div>
             <div className="wrap flex">
               <div className="card flex border col">
                 <p>Total # events</p>
-                <h2>0</h2>
+                {profile_data?.events == undefined ? (
+                  <img
+                    src="/loader.svg"
+                    style={{ width: "50px", marginTop: "10px" }}
+                    alt=""
+                  />
+                ) : (
+                  <h2>{profile_data?.events?.length}</h2>
+                )}
               </div>
               <div className="card flex border col">
                 <p>Total # followers</p>
-                <h2>{profile_data?.followers?.length}</h2>
+                {profile_data?.followers == undefined ? (
+                  <img
+                    src="/loader.svg"
+                    style={{ width: "50px", marginTop: "10px" }}
+                    alt=""
+                  />
+                ) : (
+                  <h2>{profile_data?.followers?.length}</h2>
+                )}
               </div>
               <div className="card flex border col">
                 <p>Total # following</p>
-                <h2>{profile_data?.following?.length}</h2>
+                {profile_data?.following == undefined ? (
+                  <img
+                    src="/loader.svg"
+                    style={{ width: "50px", marginTop: "10px" }}
+                    alt=""
+                  />
+                ) : (
+                  <h2>{profile_data?.following?.length}</h2>
+                )}
               </div>
             </div>
           </div>

@@ -36,7 +36,11 @@ const WalletSection = ({ onClose }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className="connect-portal flex col" onClick={onClose}>
+    <div
+      className="connect-portal flex col"
+      style={{ borderRadius: "0" }}
+      onClick={onClose}
+    >
       <div
         className="main-connect flex col"
         style={{
@@ -45,78 +49,20 @@ const WalletSection = ({ onClose }) => {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={themeMode == "dark" ? "/logo-white.png" : "/logo-black.png"}
-          alt="Logo"
-        />
-        <h1>Connect Wallet!</h1>
-
-        <div
-          className="installed-wallets main-wrapper flex col"
-          style={{ marginTop: "20px" }}
+        <img src="/metamask.png" alt="" />
+        <h1 style={{ fontWeight: "800", fontSize: "1.2rem" }}>
+          Opening Metamask...
+        </h1>
+        <p
+          style={{
+            maxWidth: "300px",
+            textAlign: "center",
+            fontSize: ".9rem",
+          }}
         >
-          <h2>Installed Wallets</h2>
-          {installedWallets.length > 0 ? (
-            installedWallets.map((wallet) => (
-              <div
-                key={wallet}
-                className="wrap border flex"
-                onClick={() => handleWalletClick(wallet)}
-              >
-                <img src={walletImages[wallet]} alt={wallet} />
-                <h2>{wallet}</h2>
-              </div>
-            ))
-          ) : (
-            <div
-              className="wrap flex"
-              style={{ border: "2px solid red", background: "#eee" }}
-            >
-              <p>No wallet extensions are installed</p>
-            </div>
-          )}
-        </div>
-
-        <div
-          className="recommended-wallets main-wrapper flex col"
-          style={{ marginTop: "20px" }}
-        >
-          <h2>Recommended Wallets</h2>
-          {recommendedWallets.length > 0 ? (
-            recommendedWallets.map((wallet) => (
-              <div
-                key={wallet}
-                className="wrap border flex"
-                onClick={() => handleWalletClick(wallet)}
-              >
-                <img src={walletImages[wallet]} alt={wallet} />
-                <h2>{wallet}</h2>
-              </div>
-            ))
-          ) : (
-            <div
-              className="wrap flex"
-              style={{
-                border: "2px solid green",
-                background: "#eee",
-                height: "35px",
-              }}
-            >
-              <p>All wallets are installed</p>
-            </div>
-          )}
-        </div>
-
-        <div className="new-text flex">
-          <p>New To Wallets</p>
-          <Link
-            className="link"
-            to={"https://portal.thirdweb.com/connect/in-app-wallet/overview"}
-            target="_blank"
-          >
-            Get Started!
-          </Link>
-        </div>
+          confirm action in metamask extension.
+        </p>
+        <img src="/loader.svg" alt="" />
       </div>
     </div>,
     document.getElementById("walletSection")

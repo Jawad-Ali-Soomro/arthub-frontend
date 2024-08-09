@@ -2,6 +2,7 @@ import Web3 from "web3";
 const baseUserUrl = "http://localhost:8080/api/v1/user";
 const baseArtUrl = "http://localhost:8080/api/v1/art";
 const baseSeriesUrl = "http://localhost:8080/api/v1/series";
+const baseBidUrl = "http://localhost:8080/api/v1/bid";
 const ethToUsd = 3800;
 
 // https://arthub-backend-psi.vercel.app
@@ -35,5 +36,6 @@ export {
   baseUserUrl,
   baseSeriesUrl,
   ethToUsd,
+  baseBidUrl,
   checkWalletExtensions,
 };

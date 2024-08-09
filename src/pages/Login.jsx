@@ -193,7 +193,17 @@ const Login = ({ onClose }) => {
             </div>
           </div>
           <Link className="link">Forgot Password?</Link>
-          <button className="flex border" onClick={handleLoginSubmit}>
+          <button
+            className="flex border"
+            style={{
+              background: `${themeMode == "dark" ? "white" : "#333"}`,
+              color: `${themeMode == "dark" ? "black" : "white"}`,
+              height: "35px",
+              width: "120px",
+              marginLeft: "190px",
+            }}
+            onClick={handleLoginSubmit}
+          >
             Login
           </button>
           <p
@@ -288,6 +298,13 @@ const Login = ({ onClose }) => {
             <div className="btns flex">
               <button
                 className="border"
+                style={{
+                  background: `${themeMode == "dark" ? "white" : "#333"}`,
+                  color: `${themeMode == "dark" ? "black" : "white"}`,
+                  height: "35px",
+                  width: "120px",
+                  marginLeft: "190px",
+                }}
                 onClick={imageUrl == "" ? this : handleRegisterSubmit}
               >
                 Register

@@ -5,9 +5,6 @@ import { baseArtUrl, ethToUsd } from "../utils/constant";
 import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 import CountdownTimer from "./Countdown";
-import { BiTimer } from "react-icons/bi";
-import { CiTimer } from "react-icons/ci";
-import { PiTimer } from "react-icons/pi";
 
 const FeaturedAuction = () => {
   const navigate = useNavigate();
@@ -16,7 +13,7 @@ const FeaturedAuction = () => {
   const fetch_data = async () => {
     try {
       const response = await axios.get(`${baseArtUrl}/get/featured/images`);
-      const featuredImages = response.data.data;
+      const featuredImages = response.data.data.price;
       const shuffledImages = shuffleArray(featuredImages);
       const randomFeaturedImages = shuffledImages.slice(0, 3);
       set_data(randomFeaturedImages);

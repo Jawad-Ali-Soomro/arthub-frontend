@@ -4,8 +4,8 @@ import Header from "../components/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { baseArtUrl, baseUserUrl, ethToUsd } from "../utils/constant";
-import { BiCart, BiHeart, BiLike, BiScan } from "react-icons/bi";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { BiCart, BiData, BiHeart, BiLike, BiScan } from "react-icons/bi";
+import { FaArrowDown, FaArrowUp, FaEthernet } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Footer from "../components/Footer";
@@ -15,7 +15,8 @@ import Deal from "../components/Deal";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { addToCart } from "../redux/cartSlice";
-import { FaHandshakeSimple } from "react-icons/fa6";
+import { FaEthereum, FaHandshakeSimple } from "react-icons/fa6";
+import { CgEthernet, CgScan } from "react-icons/cg";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -181,6 +182,24 @@ const MainArt = () => {
             <div className="price flex">
               <p>PRICE</p> &nbsp; : &nbsp;
               {main_data?.price} ~ ${Math.round(main_data?.price * ethToUsd)}
+              {main_data?.price >= 1000 ? (
+                <div
+                  className="tag-main flex"
+                  style={{
+                    padding: "7px 20px",
+                    background: "#333",
+                    color: "white",
+                    textTransform: "uppercase",
+                    fontSize: ".6rem",
+                    marginBottom: "30px",
+                    fontWeight: "600",
+                  }}
+                >
+                  rare
+                </div>
+              ) : (
+                this
+              )}
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (
@@ -273,7 +292,6 @@ const MainArt = () => {
                         Buy
                       </button>
                     </div>
-                    <div className="btns flex"></div>
                   </div>
                 </div>
               );
@@ -345,15 +363,19 @@ const MainArt = () => {
                 {imageDimensions.height}px
               </p>
             </div>
-            <div className="line border"></div>
             <div className="tags flex">
-              {main_data?.tags?.map((tag) => {
-                return (
-                  <div className="tag border flex">
-                    <p>#{tag}</p>
-                  </div>
-                );
-              })}
+              <div className="tag border flex">
+                <p className="flex" style={{ gap: "5px" }}>
+                  <img src="/ether.svg" alt="" />
+                  Metadata
+                </p>
+              </div>
+              <div className="tag border flex">
+                <p className="flex" style={{ gap: "5px" }}>
+                  <img src="/ether-scan.svg" alt="" />
+                  Etherscan
+                </p>
+              </div>
             </div>
           </div>
         </div>

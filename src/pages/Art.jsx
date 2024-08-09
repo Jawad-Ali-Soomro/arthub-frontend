@@ -160,50 +160,54 @@ const Art = () => {
           </div>
         ) : (
           <div className="main-data wrapper flex">
-            {filteredData?.map((card_item) => (
-              <div className="card flex col" key={card_item._id}>
-                <div className="img-sect flex">
-                  <img
-                    className="border"
-                    src={card_item?.image}
-                    alt={card_item?.title}
-                    onClick={() => navigate(`/art/${card_item?._id}`)}
-                  />
-                </div>
-                <div className="info flex col">
-                  <h2>{card_item?.title}</h2>
-                  <div
-                    className="owner flex"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
-                  >
-                    <div className="left flex">
-                      <img
-                        className="border"
-                        src={card_item?.owner?.avatar}
-                        alt={card_item?.owner?.username}
-                      />
-                      <h3 style={{ textTransform: "lowercase" }}>
-                        @{card_item?.owner?.username.split(" ")}
-                      </h3>
+            {filteredData?.map((card_item) =>
+              card_item?.price >= 1000 ? (
+                this
+              ) : (
+                <div className="card flex col" key={card_item._id}>
+                  <div className="img-sect flex">
+                    <img
+                      className="border"
+                      src={card_item?.image}
+                      alt={card_item?.title}
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                    />
+                  </div>
+                  <div className="info flex col">
+                    <h2>{card_item?.title}</h2>
+                    <div
+                      className="owner flex"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                    >
+                      <div className="left flex">
+                        <img
+                          className="border"
+                          src={card_item?.owner?.avatar}
+                          alt={card_item?.owner?.username}
+                        />
+                        <h3 style={{ textTransform: "lowercase" }}>
+                          @{card_item?.owner?.username.split(" ")}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="border"></div>
+                    <div className="price flex">
+                      <h2>
+                        {card_item?.price} ~{" "}
+                        <span>${Math.round(card_item?.price * ethToUsd)}</span>
+                      </h2>
+                      <button
+                        className="flex"
+                        onClick={() => navigate(`/art/${card_item?._id}`)}
+                      >
+                        Buy
+                      </button>
                     </div>
                   </div>
-                  <div className="border"></div>
-                  <div className="price flex">
-                    <h2>
-                      {card_item?.price} ~{" "}
-                      <span>${Math.round(card_item?.price * ethToUsd)}</span>
-                    </h2>
-                    <button
-                      className="flex"
-                      onClick={() => navigate(`/art/${card_item?._id}`)}
-                    >
-                      Buy
-                    </button>
-                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         )}
       </div>

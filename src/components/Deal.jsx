@@ -36,7 +36,14 @@ const Deal = ({ onClose, image, title, price }) => {
               Your ether, including the marketplace fee, will be escrowed in the
               smart contract until your offer is accepted or you withdraw it.
             </p>
-            <button>Submit Deal</button>
+            <button
+              style={{
+                background: `${themeMode == "dark" ? "white" : "black"}`,
+                color: `${themeMode == "dark" ? "black" : "white"}`,
+              }}
+            >
+              Submit Deal
+            </button>
           </div>
         </div>
       </div>

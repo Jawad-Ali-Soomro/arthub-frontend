@@ -22,7 +22,7 @@ export const connectMetaMask = async () => {
         const balance = ethers.getUint(balanceWei);
 
         // Display success message
-        toast.success("Connected To MetaMask");
+        toast.success("Wallet Connected!");
 
         // Store account and balance in session storage
         window.sessionStorage.setItem("token", account);

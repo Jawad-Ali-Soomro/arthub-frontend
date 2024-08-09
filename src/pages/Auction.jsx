@@ -90,16 +90,16 @@ const Auction = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          <h1 className="flex col">Live Auctions</h1>
-          <button
+          <h1 className="flex col">Rare Items </h1>
+          {/* <button
             className="border"
             onClick={() => setIsFilterVisible(!isFilterVisible)}
           >
             <BsFilter />
-          </button>
-          <div className="length flex" style={{ borderRadius: "10px" }}>
+          </button> */}
+          {/* <div className="length flex" style={{ borderRadius: "10px" }}>
             {filteredData?.length}
-          </div>
+          </div> */}
         </section>
         {isFilterVisible && (
           <div className="filter-div" onClick={() => setIsFilterVisible(false)}>
@@ -165,70 +165,56 @@ const Auction = () => {
             className="main-data wrapper flex"
             style={{ flexWrap: "wrap-reverse" }}
           >
-            {filteredData?.map((card_item) => (
-              <div className="card flex col" key={card_item._id}>
-                <div className="img-sect flex">
-                  <img
-                    className="border"
-                    src={card_item?.image}
-                    alt={card_item?.title}
-                    onClick={() => navigate(`/art/${card_item?._id}`)}
-                  />
-                </div>
-                <div className="info flex col">
-                  <h2>{card_item?.title}</h2>
-                  <div
-                    className="owner flex"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
-                  >
-                    <div className="left flex">
-                      <img
-                        className="border"
-                        src={card_item?.owner?.avatar}
-                        alt={card_item?.owner?.username}
-                      />
-                      <h3 style={{ textTransform: "lowercase" }}>
-                        @{card_item?.owner?.username.split(" ")}
-                      </h3>
+            {filteredData?.map((card_item) =>
+              card_item?.price <= 1000 ? (
+                this
+              ) : (
+                <div className="card flex col" key={card_item._id}>
+                  <div className="img-sect flex">
+                    <img
+                      className="border"
+                      src={card_item?.image}
+                      alt={card_item?.title}
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                    />
+                  </div>
+                  <div className="info flex col">
+                    <h2>{card_item?.title}</h2>
+                    <div
+                      className="owner flex"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                    >
+                      <div className="left flex">
+                        <img
+                          className="border"
+                          src={card_item?.owner?.avatar}
+                          alt={card_item?.owner?.username}
+                        />
+                        <h3 style={{ textTransform: "lowercase" }}>
+                          @{card_item?.owner?.username.split(" ")}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="border"></div>
+                    <div className="price flex">
+                      <h2>
+                        <span>
+                          {card_item?.price} ~ $
+                          {Math.round(card_item?.price * ethToUsd)}
+                        </span>
+                      </h2>
+                      <button
+                        className="flex border"
+                        onClick={() => navigate(`/art/${card_item?._id}`)}
+                      >
+                        buy
+                      </button>
                     </div>
                   </div>
-                  <div className="border"></div>
-                  <div className="price flex">
-                    <h2
-                      style={{
-                        fontWeight: "600",
-                        fontSize: ".7rem",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      highest bid ~ <span>{card_item?.price}</span>
-                    </h2>
-                    <button
-                      className="flex border"
-                      style={{
-                        width: "150px",
-                        background: "white",
-                        color: "black",
-                        gap: "10px",
-                        textTransform: "lowercase",
-                      }}
-                      onClick={() => navigate(`/art/${card_item?._id}`)}
-                    >
-                      <div
-                        style={{
-                          background: "#333",
-                          padding: "5px",
-                          borderRadius: "50%",
-                          color: "white",
-                        }}
-                      />
-                      <CountdownTimer endBidDate={"2024-08-08T12:00:00Z"} />
-                    </button>
-                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         )}
       </div>

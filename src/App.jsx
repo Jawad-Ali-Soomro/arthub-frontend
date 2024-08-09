@@ -44,7 +44,7 @@ function App() {
             path={userToken ? "/create" : "/"}
             element={<CreateArt />}
           ></Route>
-          <Route path="/auction" element={<Auction />}></Route>
+          <Route path="/rare" element={<Auction />}></Route>
           <Route path="/trending-art" element={<TrendingArt />}></Route>
           <Route path="/trending-series" element={<TrendingSeries />}></Route>
           <Route path="/events" element={<Events />}></Route>

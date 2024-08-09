@@ -28,12 +28,12 @@ const Series = () => {
       <div className="explore-wrapper flex col">
         <section className="flex">
           <h1 className="flex col">Collections</h1>
-          <button
+          {/* <button
             className="border"
             onClick={() => setIsFilterVisible(!isFilterVisible)}
           >
             <BsFilter />
-          </button>
+          </button> */}
           <div className="length flex" style={{ borderRadius: "10px" }}>
             <p>{main_data == undefined ? "0" : main_data?.length}</p>
           </div>
