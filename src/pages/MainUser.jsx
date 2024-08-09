@@ -13,9 +13,9 @@ import {
   BiLogoInstagram,
   BiLogoTwitter,
 } from "react-icons/bi";
-import Skeleton from "react-loading-skeleton";
 import toast from "react-hot-toast";
 import { MdVerified } from "react-icons/md";
+import ImageModal from "../components/ImageModal";
 
 const MainUser = () => {
   const navigate = useNavigate();
@@ -119,6 +119,10 @@ const MainUser = () => {
     set_show_followings(false);
   };
   const themeMode = window.localStorage.getItem("themeMode");
+
+  const [show_profile, setShow] = useState(false);
+
+  const onClose = () => setShow(false);
   return (
     <div>
       <Header />
@@ -133,7 +137,12 @@ const MainUser = () => {
         ) : (
           <div className="left flex col">
             <div className="wrap flex">
-              <img src={main_data?.avatar} className="border" alt="" />
+              <img
+                src={main_data?.avatar}
+                onClick={() => setShow(true)}
+                className="border"
+                alt=""
+              />
               <div className="info flex col">
                 <h1>{main_data?.username}</h1>
                 <div className="handle flex">
@@ -294,7 +303,10 @@ const MainUser = () => {
       </div>
       <div className="art-series flex">
         {!main_data ? (
-          <div className="main-art-wrap flex" style={{ height: "400px" }}>
+          <div
+            className="main-art-wrap flex"
+            style={{ height: "400px", justifyContent: "space-around" }}
+          >
             <img src="/loader.svg" style={{ width: "50px" }} alt="" />
             <img src="/loader.svg" style={{ width: "50px" }} alt="" />
             <img src="/loader.svg" style={{ width: "50px" }} alt="" />
@@ -383,7 +395,6 @@ const MainUser = () => {
           </div>
         )}
       </div>
-      <Footer />
       {show_followers == true ? (
         <div className="followers flex col" onClick={() => closeFollowers()}>
           <div
@@ -414,7 +425,6 @@ const MainUser = () => {
       ) : (
         this
       )}
-
       {show_followings == true ? (
         <div className="followers flex col" onClick={() => closeFollowing()}>
           <div
@@ -445,6 +455,11 @@ const MainUser = () => {
       ) : (
         this
       )}
+
+      {show_profile && (
+        <ImageModal imageUrl={main_data?.avatar} onClose={onClose} />
+      )}
+      <Footer />
     </div>
   );
 };

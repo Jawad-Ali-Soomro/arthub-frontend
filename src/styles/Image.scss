@@ -16,6 +16,7 @@
 }
 
 .modal-image {
-  height: 600px;
+  max-height: 550px;
+  max-width: 550px;
   object-fit: contain;
 }
