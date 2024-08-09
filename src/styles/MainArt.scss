@@ -68,6 +68,9 @@
     .price {
       width: 400px;
       justify-content: start;
+      h2 {
+        font-weight: 600;
+      }
     }
     .btns {
       gap: 10px;
@@ -221,7 +224,7 @@
           justify-content: space-between;
           h2 {
             font-size: 1rem;
-            font-weight: 300;
+            font-weight: 600;
           }
           button {
             width: 100px;
@@ -254,8 +257,10 @@
   top: 0;
   left: 0;
   background: rgba($color: #000000, $alpha: 0.3);
+  backdrop-filter: blur(15px);
   z-index: 1000;
   .information {
+    border: none;
     padding: 30px;
     align-items: start;
     gap: 20px;

@@ -12,11 +12,6 @@ import Footer from "../components/Footer";
 import ImageModal from "../components/ImageModal";
 import Popup from "../components/DeletePopup";
 import Deal from "../components/Deal";
-import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
-import { addToCart } from "../redux/cartSlice";
-import { FaEthereum, FaHandshakeSimple } from "react-icons/fa6";
-import { CgEthernet, CgScan } from "react-icons/cg";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();

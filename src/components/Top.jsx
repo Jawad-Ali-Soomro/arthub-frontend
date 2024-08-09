@@ -3,11 +3,35 @@ import axios from "axios";
 import { baseArtUrl, ethToUsd } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
 import "../styles/Top.scss";
-import Skeleton from "react-loading-skeleton";
 
 const Top = () => {
   const navigate = useNavigate();
   const [main_data, set_data] = useState();
+  const [sideData, setData] = useState();
+  const fetchSideData = async () => {
+    try {
+      const response = await axios.get(`${baseArtUrl}/get/featured/images`);
+      const featuredImages = response.data.data;
+      const shuffledImages = shuffleSideSata(featuredImages);
+      const randomFeaturedImages = shuffledImages.slice(0, 3);
+      setData(randomFeaturedImages);
+    } catch (error) {
+      console.error("Error fetching featured images:", error);
+    }
+  };
+
+  const shuffleSideSata = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  useEffect(() => {
+    fetch_data();
+    fetchSideData();
+  }, []);
 
   const fetch_data = async () => {
     try {
@@ -30,47 +54,81 @@ const Top = () => {
   useEffect(() => {
     fetch_data();
   }, []);
+
+  const image = main_data?.image;
+
   return (
-    <div className="top-wrap flex">
-      <div className="left">
+    <div className="top-wrap flex" style={{ backgroundImage: image }}>
+      <div
+        className="left-wrap flex col"
+        style={{ alignItems: "start", gap: "20px" }}
+      >
+        <div className="left" style={{ width: "380px", height: "410px" }}>
+          {main_data == undefined ? (
+            <div style={{ height: "550px" }}>
+              <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+            </div>
+          ) : (
+            <img
+              src={main_data?.image}
+              onClick={() => navigate(`/art/${main_data?._id}`)}
+              alt=""
+            />
+          )}
+        </div>
         {main_data == undefined ? (
-          <div style={{ height: "550px" }}>
-            <img src="/loader.svg" style={{ width: "50px" }} alt="" />
-          </div>
+          // <div>
+          //   <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          // </div>
+          this
         ) : (
-          <img
-            src={main_data?.image}
-            onClick={() => navigate(`/art/${main_data?._id}`)}
-            alt=""
-          />
+          <div className="right flex col">
+            <h1>{main_data?.title}</h1>
+            <div
+              className="profile-wrap flex"
+              onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+            >
+              <img className="border" src={main_data?.owner?.avatar} alt="" />
+              <h2>@{main_data?.owner?.handle.split(" ")}</h2>
+            </div>
+            <div className="line border" style={{ width: "380px" }}></div>
+            <div className="price-wrap flex">
+              <button
+                className="border"
+                onClick={() => navigate(`/art/${main_data?._id}`)}
+              >
+                BUY
+              </button>
+              <h2>
+                {main_data?.price} ~{" "}
+                <span>${Math.round(main_data?.price * ethToUsd)}</span>
+              </h2>
+            </div>
+          </div>
         )}
       </div>
-      {main_data == undefined ? (
-        <div>
+      {sideData == undefined ? (
+        <div
+          className="wrap flex col"
+          style={{ height: "550px", gap: "100px" }}
+        >
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
+          <img src="/loader.svg" style={{ width: "50px" }} alt="" />
           <img src="/loader.svg" style={{ width: "50px" }} alt="" />
         </div>
       ) : (
-        <div className="right flex col">
-          <h1>{main_data?.title}</h1>
-          <div
-            className="profile-wrap flex"
-            onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
-          >
-            <img className="border" src={main_data?.owner?.avatar} alt="" />
-            <h2>@{main_data?.owner?.handle.split(" ")}</h2>
-          </div>
-          <div className="price-wrap flex">
-            <button
-              className="border"
-              onClick={() => navigate(`/art/${main_data?._id}`)}
-            >
-              BUY
-            </button>
-            <h2>
-              {main_data?.price} ~{" "}
-              <span>${Math.round(main_data?.price * ethToUsd)}</span>
-            </h2>
-          </div>
+        <div className="right-side-data flex col" style={{ gap: "20px" }}>
+          {sideData?.map((side_data) => {
+            return (
+              <div className="card flex">
+                <img
+                  src={side_data?.image}
+                  alt=""
+                  onClick={() => set_data(side_data)}
+                />
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

@@ -17,7 +17,6 @@ import NotFound from "./pages/NotFound";
 import Auction from "./pages/Auction";
 import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
-import Events from "./pages/Events";
 import CreateArt from "./pages/CreateArt";
 
 function App() {
@@ -45,10 +44,8 @@ function App() {
             element={<CreateArt />}
           ></Route>
           <Route path="/rare" element={<Auction />}></Route>
-          <Route path="/trending-art" element={<TrendingArt />}></Route>
-          <Route path="/trending-series" element={<TrendingSeries />}></Route>
-          <Route path="/events" element={<Events />}></Route>
-          {/* <Route path="/cart" element={<Cart />}></Route> */}
+          <Route path="/featured-art" element={<TrendingArt />}></Route>
+          <Route path="/featured-series" element={<TrendingSeries />}></Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -2,13 +2,12 @@
   width: calc(100% - 200px);
   padding-left: 100px;
   padding-right: 100px;
-  min-height: 100vh;
   section {
     width: 100%;
     justify-content: space-between;
-    height: 50vh;
+    height: 30vh;
     margin-top: 10vh;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #9090903e;
     position: relative;
     h1 {
       font-size: 5rem;
@@ -173,6 +172,7 @@
     background-color: inherit; /* Adjust as needed */
     padding: 20px;
     background: rgba($color: #111, $alpha: 0.3);
+    backdrop-filter: blur(15px);
     z-index: 1000;
     overflow-y: auto;
     display: flex;
