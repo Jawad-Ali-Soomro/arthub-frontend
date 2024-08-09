@@ -15,6 +15,7 @@ import Deal from "../components/Deal";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { addToCart } from "../redux/cartSlice";
+import { FaHandshakeSimple } from "react-icons/fa6";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -79,7 +80,11 @@ const MainArt = () => {
   }, [main_data?.image]);
 
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
@@ -340,53 +345,12 @@ const MainArt = () => {
                 {imageDimensions.height}px
               </p>
             </div>
+            <div className="line border"></div>
             <div className="tags flex">
               {main_data?.tags?.map((tag) => {
                 return (
-                  <div className="tag flex">
+                  <div className="tag border flex">
                     <p>#{tag}</p>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="line border"></div>
-            <div className="previous-owners flex col">
-              <h3>Previous Owners</h3>
-              {main_data?.previous_owners?.map((owner) => {
-                return (
-                  <div className="card flex">
-                    <img src={owner?.avatar} alt="" />
-                    {owner?._id == main_data?.owner?._id ? (
-                      <div className="flex col" style={{ alignItems: "start" }}>
-                        <p>
-                          currently owned By{" "}
-                          <span
-                            style={{
-                              textTransform: "lowercase",
-                              fontWeight: 600,
-                            }}
-                          >
-                            @{owner?.username.split(" ")}
-                          </span>
-                        </p>
-                        <p style={{ textTransform: "capitalize" }}>{date}</p>
-                      </div>
-                    ) : (
-                      <div className="flex col" style={{ alignItems: "start" }}>
-                        <p>
-                          sold by{" "}
-                          <span
-                            style={{
-                              textTransform: "lowercase",
-                              fontWeight: 600,
-                            }}
-                          >
-                            @{owner?.username.split(" ")}
-                          </span>
-                        </p>
-                        <p style={{ textTransform: "capitalize" }}>{date}</p>
-                      </div>
-                    )}
                   </div>
                 );
               })}
