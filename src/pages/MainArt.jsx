@@ -360,16 +360,36 @@ const MainArt = () => {
             </div>
             <div className="tags flex">
               <div className="tag border flex">
-                <p className="flex" style={{ gap: "5px" }}>
+                <a
+                  target="_blank"
+                  href={`${baseArtUrl}/get/art/${artId}`}
+                  className="flex"
+                  style={{
+                    gap: "5px",
+                    textDecoration: "none",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
                   <img src="/ether.svg" alt="" />
                   Metadata
-                </p>
+                </a>
               </div>
               <div className="tag border flex">
-                <p className="flex" style={{ gap: "5px" }}>
+                <a
+                  target="_blank"
+                  href={`https://etherscan.io/address/${main_data?.owner?.wallet_address}`}
+                  className="flex"
+                  style={{
+                    gap: "5px",
+                    textDecoration: "none",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
                   <img src="/ether-scan.svg" alt="" />
                   Etherscan
-                </p>
+                </a>
               </div>
             </div>
           </div>
