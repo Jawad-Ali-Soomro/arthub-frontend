@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import toast from "react-hot-toast";
 
 export const connectMetaMask = async () => {
+  const themeMode = window.localStorage.getItem("themeMode");
   if (window.ethereum) {
     try {
       // Request account access
@@ -22,7 +23,16 @@ export const connectMetaMask = async () => {
         const balance = ethers.getUint(balanceWei);
 
         // Display success message
-        toast.success("Wallet Connected!");
+        toast.success("Wallet Connected!", {
+          style: {
+            borderRadius: "8px",
+            background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+            color: themeMode == "dark" ? "white" : "black",
+            fontFamily: "Poppins",
+            border: "1px solid #808090",
+            boxShadow: "none",
+          },
+        });
 
         // Store account and balance in session storage
         window.sessionStorage.setItem("token", account);
@@ -39,13 +49,40 @@ export const connectMetaMask = async () => {
           balance,
         };
       } else {
-        toast.error("No accounts found in MetaMask");
+        toast.error("No Account Found In Metamask!", {
+          style: {
+            borderRadius: "8px",
+            background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+            color: themeMode == "dark" ? "white" : "black",
+            fontFamily: "Poppins",
+            border: "1px solid #808090",
+            boxShadow: "none",
+          },
+        });
       }
     } catch (error) {
-      toast.error("Error connecting to MetaMask");
+      toast.error("Error Connecting Wallet!", {
+        style: {
+          borderRadius: "8px",
+          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
       console.error(error);
     }
   } else {
-    toast.error("MetaMask is not installed");
+    toast.error("Metamask Is Not Installed!", {
+      style: {
+        borderRadius: "8px",
+        background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+        color: themeMode == "dark" ? "white" : "black",
+        fontFamily: "Poppins",
+        border: "1px solid #808090",
+        boxShadow: "none",
+      },
+    });
   }
 };

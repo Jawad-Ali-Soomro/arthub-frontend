@@ -13,7 +13,7 @@ const Popup = ({ message, onConfirm, onCancel }) => {
   return (
     <div className="popup-overlay" onClick={onCancel}>
       <div
-        className="popup-content border"
+        className="popup-content"
         style={{
           background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
           color: `${themeMode == "dark" ? "white" : "black"}`,

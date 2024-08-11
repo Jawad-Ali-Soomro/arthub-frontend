@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import ImageModal from "../components/ImageModal";
 import Popup from "../components/DeletePopup";
 import Deal from "../components/Deal";
+import Buy from "../components/Buy";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -23,6 +24,7 @@ const MainArt = () => {
   const loggedInUser = localStorage.getItem("userId");
   const loggedInUserId = JSON.parse(loggedInUser);
   const [deal_opt, set_deal] = useState(false);
+  const [buy_opt, set_buy] = useState(false);
   const themeMode = window.localStorage.getItem("themeMode");
   const [show_details, set_details] = useState(false);
   const fetch_data = async () => {
@@ -57,7 +59,7 @@ const MainArt = () => {
     setShowPopup(false);
   };
 
-  const onClose = () => set_deal(false);
+  const onClose = () => set_deal(false) + set_buy(false);
   const [imageDimensions, setImageDimensions] = useState({
     width: 0,
     height: 0,
@@ -75,16 +77,6 @@ const MainArt = () => {
     };
   }, [main_data?.image]);
 
-  const formatDate = (dateString) => {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
-  const date = formatDate(main_data?.uploaded_at);
   return (
     <div>
       <Header />
@@ -200,7 +192,9 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button className="border">Update</button>
               ) : (
-                <button className="border">BUY</button>
+                <button className="border" onClick={() => set_buy(true)}>
+                  BUY
+                </button>
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
@@ -396,6 +390,13 @@ const MainArt = () => {
         </div>
       ) : (
         this
+      )}
+      {buy_opt && (
+        <Buy
+          onClose={onClose}
+          title={main_data?.title}
+          price={main_data?.price}
+        />
       )}
       <Footer />
     </div>

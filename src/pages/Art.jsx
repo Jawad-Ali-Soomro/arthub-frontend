@@ -128,12 +128,13 @@ const Art = () => {
                   ))}
                 </div>
               </div>
-              <div className="filter-section">
+              <div className="filter-section after">
                 <label>Max Price</label>
                 <input
                   type="text"
                   value={filterCriteria.price || ""}
                   className="border"
+                  placeholder="Enter Price"
                   onChange={(e) =>
                     setFilterCriteria({
                       ...filterCriteria,
@@ -142,7 +143,17 @@ const Art = () => {
                   }
                 />
               </div>
-              <button onClick={applyFilter}>Apply</button>
+              <button
+                onClick={applyFilter}
+                style={{
+                  background: `${
+                    themeMode == "dark" ? "white" : "rgb(23,20,32)"
+                  }`,
+                  color: `${themeMode == "dark" ? "black" : "white"}`,
+                }}
+              >
+                Apply
+              </button>
               <button className="border" onClick={removeFilter}>
                 Remove
               </button>

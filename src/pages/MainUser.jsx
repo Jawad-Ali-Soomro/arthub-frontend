@@ -88,14 +88,32 @@ const MainUser = () => {
         const message = res.data.message;
         if (message === "User followed!") {
           setBtnText("UNFOLLOW");
-          toast.success("Following!");
+          toast.success(`Following ${main_data?.username}!`, {
+            style: {
+              borderRadius: "8px",
+              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              color: themeMode == "dark" ? "white" : "black",
+              fontFamily: "Poppins",
+              boxShadow: "none",
+              border: "1px solid #808090",
+            },
+          });
           set_data((prevData) => ({
             ...prevData,
             followers: [...prevData.followers, { _id: userData?._id }],
           }));
         } else if (message === "User unfollowed!") {
           setBtnText("FOLLOW");
-          toast.success("Unfollowing!");
+          toast.success(`Unfollowing ${main_data?.username}!`, {
+            style: {
+              borderRadius: "8px",
+              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              color: themeMode == "dark" ? "white" : "black",
+              fontFamily: "Poppins",
+              boxShadow: "none",
+              border: "1px solid #808090",
+            },
+          });
           set_data((prevData) => ({
             ...prevData,
             followers: prevData.followers.filter(
@@ -108,7 +126,16 @@ const MainUser = () => {
         toast.error("An error occurred. Please try again!");
       }
     } else {
-      toast.error("Please Login!");
+      toast.error("Please Connect Wallet!", {
+        style: {
+          borderRadius: "7px",
+          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
     }
   };
 
@@ -398,7 +425,7 @@ const MainUser = () => {
       {show_followers == true ? (
         <div className="followers flex col" onClick={() => closeFollowers()}>
           <div
-            className="wrapper border flex col"
+            className="wrapper flex col"
             style={{
               background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
             }}
@@ -428,7 +455,7 @@ const MainUser = () => {
       {show_followings == true ? (
         <div className="followers flex col" onClick={() => closeFollowing()}>
           <div
-            className="wrapper flex border col"
+            className="wrapper flex col"
             style={{
               background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
             }}

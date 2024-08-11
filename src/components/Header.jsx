@@ -193,7 +193,19 @@ const Header = () => {
             <p>Profile</p>
             <p
               onClick={() =>
-                tokenId ? navigate("/profile") : toast.error("Please Login!")
+                tokenId
+                  ? navigate("/profile")
+                  : toast.error("Please Connect Wallet!", {
+                      style: {
+                        borderRadius: "8px",
+                        background:
+                          themeMode == "dark" ? "rgb(23,20,32)" : "white",
+                        color: themeMode == "dark" ? "white" : "black",
+                        fontFamily: "Poppins",
+                        border: "1px solid #808090",
+                        boxShadow: "none",
+                      },
+                    })
               }
             >
               Dashboard

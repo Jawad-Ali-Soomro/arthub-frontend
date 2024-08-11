@@ -1,11 +1,10 @@
 import React from "react";
 import "../styles/Deal.scss";
-import { useState } from "react";
 import { ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
 
-const Deal = ({ onClose, image, title, price }) => {
-  const [value, setValue] = useState(0);
+const Buy = ({ onClose, image, title, price }) => {
+  const balance = window.sessionStorage.getItem("balance");
   const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div className="main-deal flex" onClick={onClose}>
@@ -17,46 +16,58 @@ const Deal = ({ onClose, image, title, price }) => {
         }}
       >
         <div className="wrap flex">
-          <div className="right-info flex col">
+          <div className="right-info flex col" style={{ gap: "10px" }}>
             <h1>{title}</h1>
             <div className="price flex col">
-              <p>ORIGINAL PRICE</p>
+              <p>LISTING PRICE</p>
               <h2>
                 {price}
                 <span style={{ fontSize: ".6rem" }}>ETH</span>
               </h2>
             </div>
-            <div className="input-wrap flex col">
-              <p>YOUR OFFER</p>
-              <input
-                type="text"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder="Enter Price"
-                className="border"
-              />
+            <div className="flex col" style={{ width: "100%" }}>
+              <p
+                className="balance flex"
+                style={{
+                  width: "100%",
+                  justifyContent: "space-between",
+                  fontWeight: "600",
+                }}
+              >
+                YOUR BALANCE{" "}
+                <span>{balance == null || undefined ? "0" : balance}</span>
+              </p>
+              <p
+                style={{
+                  width: "100%",
+                  color: "red",
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                  textAlign: "end",
+                  fontSize: ".5rem",
+                }}
+              >
+                {balance < price
+                  ? "You have insufficient funds to buy this"
+                  : ""}
+              </p>
             </div>
             <p
-              className="flex"
+              className="balance flex"
               style={{
                 width: "calc(100% - 20px)",
-                height: "30px",
-                alignItems: "center",
                 justifyContent: "space-between",
-                paddingLeft: "10px",
-                paddingRight: "10px",
-                textTransform: "uppercase",
                 fontWeight: "600",
+                padding: "10px 10px",
                 background: "#333",
-                borderRadius: "5px",
                 color: "white",
+                borderRadius: "5px",
                 fontSize: ".6rem",
               }}
             >
-              Total Due &nbsp;
+              TOTAL DUE{" "}
               <span>
-                {"  "}
-                {value * 1.03} ~ ${Math.round(value * 1.03 * ethToUsd)}
+                {price * 1.03} ~ ${Math.round(price * 1.03 * ethToUsd)}
               </span>
             </p>
             <div className="wrap flex col">
@@ -76,7 +87,7 @@ const Deal = ({ onClose, image, title, price }) => {
                     borderRadius: "5px",
                   }}
                 >
-                  submit deal
+                  buy
                 </span>{" "}
                 button you agree to our <Link>Privacy Policy</Link> &{" "}
                 <Link>Terms of Service</Link>
@@ -88,7 +99,7 @@ const Deal = ({ onClose, image, title, price }) => {
                 color: `${themeMode == "dark" ? "black" : "white"}`,
               }}
             >
-              Submit Deal
+              buy
             </button>
           </div>
         </div>
@@ -97,4 +108,4 @@ const Deal = ({ onClose, image, title, price }) => {
   );
 };
 
-export default Deal;
+export default Buy;

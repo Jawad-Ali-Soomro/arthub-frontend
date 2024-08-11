@@ -33,7 +33,16 @@ const Login = ({ onClose }) => {
 
   const handleLoginSubmit = async () => {
     if (!loginData.email || !loginData.password) {
-      toast.error("Please Fill All The Fields");
+      toast.error("Fill All The Fileds!", {
+        style: {
+          borderRadius: "8px",
+          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
     } else {
       try {
         const loginResponse = await axios.post(`${baseUserUrl}/login`, {
@@ -45,13 +54,31 @@ const Login = ({ onClose }) => {
         if (message === "Logged In!") {
           window.localStorage.setItem("authToken", token);
           window.localStorage.setItem("userId", JSON.stringify(data));
-          toast.success("Success!");
+          toast.loading("Redirecting!", {
+            style: {
+              borderRadius: "8px",
+              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              color: themeMode == "dark" ? "white" : "black",
+              fontFamily: "Poppins",
+              border: "1px solid #808090",
+              boxShadow: "none",
+            },
+          });
           window.location.reload();
         } else {
           toast.error(message);
         }
       } catch (error) {
-        toast.error("An error occurred during login.");
+        toast.error("Error Logging In!", {
+          style: {
+            borderRadius: "8px",
+            background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+            color: themeMode == "dark" ? "white" : "black",
+            fontFamily: "Poppins",
+            border: "1px solid #808090",
+            boxShadow: "none",
+          },
+        });
       }
     }
   };
@@ -83,9 +110,27 @@ const Login = ({ onClose }) => {
       !registerData.password ||
       !registerData.username
     ) {
-      toast.error("Please fill all the fields!");
+      toast.error("Fill All The Fields!", {
+        style: {
+          borderRadius: "8px",
+          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
     } else if (!avatar) {
-      toast.error("Please upload an avatar!");
+      toast.error("Please Upload Avatar!", {
+        style: {
+          borderRadius: "8px",
+          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
     } else {
       try {
         const registerResponse = await axios.post(`${baseUserUrl}/create`, {
@@ -105,9 +150,27 @@ const Login = ({ onClose }) => {
         });
 
         if (registerResponse.data.message === "User exists already!") {
-          toast.error("Email exists already!");
+          toast.error("Email Already Exists!", {
+            style: {
+              borderRadius: "8px",
+              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              color: themeMode == "dark" ? "white" : "black",
+              fontFamily: "Poppins",
+              border: "1px solid #808090",
+              boxShadow: "none",
+            },
+          });
         } else {
-          toast.success("Account created!");
+          toast.success("Account Created!", {
+            style: {
+              borderRadius: "8px",
+              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              color: themeMode == "dark" ? "white" : "black",
+              fontFamily: "Poppins",
+              border: "1px solid #808090",
+              boxShadow: "none",
+            },
+          });
           setRegisterData({
             email: "",
             password: "",
@@ -121,7 +184,16 @@ const Login = ({ onClose }) => {
           setLoginStep(true);
         }
       } catch (error) {
-        toast.error("An error occurred during registration.");
+        toast.error("Error While Creating Account!", {
+          style: {
+            borderRadius: "8px",
+            background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+            color: themeMode == "dark" ? "white" : "black",
+            fontFamily: "Poppins",
+            border: "1px solid #808090",
+            boxShadow: "none",
+          },
+        });
       }
     }
   };
@@ -143,7 +215,16 @@ const Login = ({ onClose }) => {
       );
     } catch (error) {
       console.error(error);
-      toast.error("Failed to upload avatar.");
+      toast.error("Please Upload Avatar!", {
+        style: {
+          borderRadius: "8px",
+          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
     }
   };
 
@@ -279,7 +360,7 @@ const Login = ({ onClose }) => {
                   style={{
                     width: "40px",
                     height: "40px",
-                    borderRadius: "20px",
+                    borderRadius: "8px",
                   }}
                 />
               </div>
