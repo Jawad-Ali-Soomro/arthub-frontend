@@ -34,9 +34,9 @@ const Series = () => {
           >
             <BsFilter />
           </button> */}
-          <div className="length flex" style={{ borderRadius: "10px" }}>
+          {/* <div className="length flex" style={{ borderRadius: "10px" }}>
             <p>{main_data == undefined ? "0" : main_data?.length}</p>
-          </div>
+          </div> */}
         </section>
         {main_data == undefined ? (
           <div

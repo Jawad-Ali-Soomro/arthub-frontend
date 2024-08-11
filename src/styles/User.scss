@@ -231,6 +231,7 @@
       overflow: hidden;
       position: relative;
       cursor: pointer;
+      margin-top: 50px;
       .img-sect {
         width: 380px;
         height: 410px;
@@ -288,7 +289,7 @@
           }
         }
         .price {
-          width: 340px;
+          width: 330px;
           justify-content: space-between;
           h2 {
             font-size: 1rem;
@@ -305,7 +306,7 @@
           }
         }
         .line {
-          width: 340px;
+          width: 330px;
           margin-top: 10px;
         }
       }

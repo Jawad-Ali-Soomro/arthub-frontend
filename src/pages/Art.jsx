@@ -95,9 +95,9 @@ const Art = () => {
           >
             <BsFilter />
           </button>
-          <div className="length flex" style={{ borderRadius: "10px" }}>
+          {/* <div className="length flex" style={{ borderRadius: "10px" }}>
             {filteredData?.length}
-          </div>
+          </div> */}
         </section>
         {isFilterVisible && (
           <div className="filter-div" onClick={() => setIsFilterVisible(false)}>
