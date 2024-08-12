@@ -90,7 +90,7 @@ const MainUser = () => {
           setBtnText("UNFOLLOW");
           toast.success(`Following ${main_data?.username}!`, {
             style: {
-              borderRadius: "8px",
+              borderRadius: "20px",
               background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
@@ -106,7 +106,7 @@ const MainUser = () => {
           setBtnText("FOLLOW");
           toast.success(`Unfollowing ${main_data?.username}!`, {
             style: {
-              borderRadius: "8px",
+              borderRadius: "20px",
               background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
@@ -128,7 +128,7 @@ const MainUser = () => {
     } else {
       toast.error("Please Connect Wallet!", {
         style: {
-          borderRadius: "7px",
+          borderRadius: "20px",
           background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
@@ -302,6 +302,7 @@ const MainUser = () => {
                   </h2>
                   <button
                     className="flex"
+                    style={{ cursor: "pointer" }}
                     onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
                   >
                     Buy
@@ -353,7 +354,9 @@ const MainUser = () => {
                       <h3>{card_item?.title}</h3>
                       <div
                         className="owner flex"
-                        onClick={() => navigate(`/user/${main_data?._id}`)}
+                        onClick={() =>
+                          navigate(`/user/${main_data?._id}`) + scrollTo(0)
+                        }
                       >
                         <img src={main_data?.avatar} alt="" />
                         <h2
@@ -375,6 +378,7 @@ const MainUser = () => {
                           </span>
                         </h2>
                         <button
+                          style={{ cursor: "pointer" }}
                           onClick={() => navigate(`/art/${card_item?._id}`)}
                         >
                           Buy
@@ -386,14 +390,19 @@ const MainUser = () => {
                 ))
               : main_data?.series?.map((card_item) => (
                   <div className="card flex col" key={card_item?._id}>
-                    <div className="img-sect flex">
+                    <div
+                      className="img-sect flex"
+                      onClick={() => navigate(`/series/${card_item?._id}`)}
+                    >
                       <img src={card_item?.image} alt="" />
                     </div>
                     <div className="info flex col">
                       <h3>{card_item?.title}</h3>
                       <div
                         className="owner flex"
-                        onClick={() => navigate(`/user/${main_data?._id}`)}
+                        onClick={() =>
+                          navigate(`/user/${main_data?._id}`) + scrollTo(0)
+                        }
                       >
                         <img src={main_data?.avatar} alt="" />
                         <h2
@@ -410,6 +419,7 @@ const MainUser = () => {
                       <div className="price flex">
                         <h2 style={{ fontSize: "1rem" }}>~</h2>
                         <button
+                          style={{ cursor: "pointer" }}
                           onClick={() => navigate(`/series/${card_item?._id}`)}
                         >
                           view

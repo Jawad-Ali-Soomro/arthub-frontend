@@ -2,17 +2,19 @@ import React from "react";
 import "../styles/Deal.scss";
 import { ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Buy = ({ onClose, image, title, price }) => {
-  const balance = window.sessionStorage.getItem("balance");
+  const balance = window.sessionStorage.getItem("balance") || "0";
   const themeMode = window.localStorage.getItem("themeMode");
+
   return (
     <div className="main-deal flex" onClick={onClose}>
       <div
         className="main-wrap flex col"
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: `${themeMode == "dark" ? "rgb(30,20,32)" : "white"}`,
+          background: themeMode === "dark" ? "rgb(30,20,32)" : "white",
         }}
       >
         <div className="wrap flex">
@@ -34,23 +36,22 @@ const Buy = ({ onClose, image, title, price }) => {
                   fontWeight: "600",
                 }}
               >
-                YOUR BALANCE{" "}
-                <span>{balance == null || undefined ? "0" : balance}</span>
+                YOUR BALANCE <span>{balance}</span>
               </p>
-              <p
-                style={{
-                  width: "100%",
-                  color: "red",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                  textAlign: "end",
-                  fontSize: ".5rem",
-                }}
-              >
-                {balance < price
-                  ? "You have insufficient funds to buy this"
-                  : ""}
-              </p>
+              {parseFloat(balance) < parseFloat(price) && (
+                <p
+                  style={{
+                    width: "100%",
+                    color: "red",
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                    textAlign: "end",
+                    fontSize: ".5rem",
+                  }}
+                >
+                  You have insufficient funds to buy this
+                </p>
+              )}
             </div>
             <p
               className="balance flex"
@@ -67,13 +68,11 @@ const Buy = ({ onClose, image, title, price }) => {
             >
               TOTAL DUE{" "}
               <span>
-                {price * 1.03} ~ ${Math.round(price * 1.03 * ethToUsd)}
+                {(price * 1.03).toFixed(2)} ~ $
+                {Math.round(price * 1.03 * ethToUsd)}
               </span>
             </p>
             <div className="wrap flex col">
-              {/* <p style={{ marginTop: "50px" }}>
-                Final price includes a 3% buyers fee to the Arthub DAO Treasury.
-              </p> */}
               <p style={{ marginTop: "50px", lineHeight: "15px" }}>
                 By clicking on{" "}
                 <span
@@ -89,15 +88,28 @@ const Buy = ({ onClose, image, title, price }) => {
                 >
                   buy
                 </span>{" "}
-                button you agree to our <Link>Privacy Policy</Link> &{" "}
-                <Link>Terms of Service</Link>
+                button you agree to our{" "}
+                <Link to="/privacy-policy">Privacy Policy</Link> &{" "}
+                <Link to="/terms-of-service">Terms of Service</Link>
               </p>
             </div>
             <button
               style={{
-                background: `${themeMode == "dark" ? "white" : "black"}`,
-                color: `${themeMode == "dark" ? "black" : "white"}`,
+                background: themeMode === "dark" ? "white" : "black",
+                color: themeMode === "dark" ? "black" : "white",
               }}
+              // onClick={() =>
+              //   toast.loading("Processing!", {
+              //     style: {
+              //       borderRadius: "30px",
+              //       background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              //       color: themeMode == "dark" ? "white" : "black",
+              //       fontFamily: "Poppins",
+              //       border: "1px solid #808090",
+              //       boxShadow: "none",
+              //     },
+              //   })
+              // }
             >
               buy
             </button>

@@ -197,7 +197,7 @@ const Header = () => {
                   ? navigate("/profile")
                   : toast.error("Please Connect Wallet!", {
                       style: {
-                        borderRadius: "8px",
+                        borderRadius: "20px",
                         background:
                           themeMode == "dark" ? "rgb(23,20,32)" : "white",
                         color: themeMode == "dark" ? "white" : "black",

@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Popup.scss";
-import { AiOutlineExclamationCircle } from "react-icons/ai"; // Importing a warning icon from react-icons
 
 const Popup = ({ message, onConfirm, onCancel }) => {
   const handleConfirm = () => {
@@ -15,13 +14,12 @@ const Popup = ({ message, onConfirm, onCancel }) => {
       <div
         className="popup-content"
         style={{
-          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
-          color: `${themeMode == "dark" ? "white" : "black"}`,
+          background: themeMode === "dark" ? "rgb(30,20,30)" : "white",
+          color: themeMode === "dark" ? "white" : "black",
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="popup-header">
-          {/* <AiOutlineExclamationCircle className="popup-icon" /> */}
           <h2>Are You Sure?</h2>
         </div>
         <p>{message}</p>

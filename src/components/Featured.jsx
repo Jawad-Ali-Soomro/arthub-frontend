@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../styles/Featured.scss";
 import axios from "axios";
 import { baseArtUrl, ethToUsd } from "../utils/constant";
-import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 const Featured = () => {

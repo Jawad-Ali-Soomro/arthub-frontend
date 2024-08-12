@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Deal.scss";
-import { useState } from "react";
 import { ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
 
 const Deal = ({ onClose, image, title, price }) => {
   const [value, setValue] = useState(0);
   const themeMode = window.localStorage.getItem("themeMode");
+
   return (
     <div className="main-deal flex" onClick={onClose}>
       <div
         className="main-wrap flex col"
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: `${themeMode == "dark" ? "rgb(30,20,32)" : "white"}`,
+          background: themeMode === "dark" ? "rgb(30,20,32)" : "white",
         }}
       >
         <div className="wrap flex">
@@ -55,14 +55,10 @@ const Deal = ({ onClose, image, title, price }) => {
             >
               Total Due &nbsp;
               <span>
-                {"  "}
                 {value * 1.03} ~ ${Math.round(value * 1.03 * ethToUsd)}
               </span>
             </p>
             <div className="wrap flex col">
-              {/* <p style={{ marginTop: "50px" }}>
-                Final price includes a 3% buyers fee to the Arthub DAO Treasury.
-              </p> */}
               <p style={{ marginTop: "50px", lineHeight: "15px" }}>
                 By clicking on{" "}
                 <span
@@ -84,8 +80,8 @@ const Deal = ({ onClose, image, title, price }) => {
             </div>
             <button
               style={{
-                background: `${themeMode == "dark" ? "white" : "black"}`,
-                color: `${themeMode == "dark" ? "black" : "white"}`,
+                background: themeMode === "dark" ? "white" : "black",
+                color: themeMode === "dark" ? "black" : "white",
               }}
             >
               Submit Deal

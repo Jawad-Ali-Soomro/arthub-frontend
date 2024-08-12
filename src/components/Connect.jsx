@@ -1,28 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "../styles/Connect.scss";
 import { checkWalletExtensions } from "../utils/constant";
 import { connectMetaMask } from "../utils/wallet_connect";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const WalletSection = ({ onClose }) => {
-  const [installedWallets, setInstalledWallets] = useState([]);
-  const [recommendedWallets, setRecommendedWallets] = useState([]);
   const themeMode = window.localStorage.getItem("themeMode");
-  useEffect(() => {
-    const { installedWallets, recommendedWallets } = checkWalletExtensions();
-    setInstalledWallets(installedWallets);
-    setRecommendedWallets(
-      recommendedWallets.filter((wallet) => !installedWallets.includes(wallet))
-    );
-  }, []);
 
-  const walletImages = {
-    MetaMask: "/metamask.png",
-    TrustWallet: "/twt.png",
-    Coinbase: "/coinbase.png",
-  };
+  useEffect(() => {
+    checkWalletExtensions(); // If this function has side effects, you might still need to call it.
+  }, []);
 
   const handleWalletClick = (wallet) => {
     if (wallet === "MetaMask") {
@@ -36,20 +24,16 @@ const WalletSection = ({ onClose }) => {
   };
 
   return ReactDOM.createPortal(
-    <div
-      className="connect-portal flex col"
-      style={{ borderRadius: "0" }}
-      onClick={onClose}
-    >
+    <div className="connect-portal flex col" onClick={onClose}>
       <div
         className="main-connect flex col"
         style={{
-          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
-          color: `${themeMode == "dark" ? "white" : "black"}`,
+          background: themeMode === "dark" ? "rgb(30,20,30)" : "white",
+          color: themeMode === "dark" ? "white" : "black",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img src="/metamask.png" alt="" />
+        <img src="/metamask.png" alt="MetaMask" />
         <h1 style={{ fontWeight: "800", fontSize: "1.2rem" }}>Connecting...</h1>
         <p
           style={{
@@ -59,12 +43,12 @@ const WalletSection = ({ onClose }) => {
             fontWeight: "600",
           }}
         >
-          confirm action in metamask extension.
+          Confirm action in MetaMask extension.
         </p>
         <img
           style={{ width: "40px", marginTop: "10px" }}
           src="/loader.svg"
-          alt=""
+          alt="Loading"
         />
       </div>
     </div>,

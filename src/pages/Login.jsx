@@ -35,7 +35,7 @@ const Login = ({ onClose }) => {
     if (!loginData.email || !loginData.password) {
       toast.error("Fill All The Fileds!", {
         style: {
-          borderRadius: "8px",
+          borderRadius: "20px",
           background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
@@ -56,7 +56,7 @@ const Login = ({ onClose }) => {
           window.localStorage.setItem("userId", JSON.stringify(data));
           toast.loading("Redirecting!", {
             style: {
-              borderRadius: "8px",
+              borderRadius: "20px",
               background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
@@ -71,7 +71,7 @@ const Login = ({ onClose }) => {
       } catch (error) {
         toast.error("Error Logging In!", {
           style: {
-            borderRadius: "8px",
+            borderRadius: "20px",
             background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
             color: themeMode == "dark" ? "white" : "black",
             fontFamily: "Poppins",
@@ -112,7 +112,7 @@ const Login = ({ onClose }) => {
     ) {
       toast.error("Fill All The Fields!", {
         style: {
-          borderRadius: "8px",
+          borderRadius: "20px",
           background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
@@ -123,7 +123,7 @@ const Login = ({ onClose }) => {
     } else if (!avatar) {
       toast.error("Please Upload Avatar!", {
         style: {
-          borderRadius: "8px",
+          borderRadius: "20px",
           background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
@@ -152,7 +152,7 @@ const Login = ({ onClose }) => {
         if (registerResponse.data.message === "User exists already!") {
           toast.error("Email Already Exists!", {
             style: {
-              borderRadius: "8px",
+              borderRadius: "20px",
               background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
@@ -163,7 +163,7 @@ const Login = ({ onClose }) => {
         } else {
           toast.success("Account Created!", {
             style: {
-              borderRadius: "8px",
+              borderRadius: "20px",
               background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
@@ -186,7 +186,7 @@ const Login = ({ onClose }) => {
       } catch (error) {
         toast.error("Error While Creating Account!", {
           style: {
-            borderRadius: "8px",
+            borderRadius: "20px",
             background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
             color: themeMode == "dark" ? "white" : "black",
             fontFamily: "Poppins",
@@ -217,7 +217,7 @@ const Login = ({ onClose }) => {
       console.error(error);
       toast.error("Please Upload Avatar!", {
         style: {
-          borderRadius: "8px",
+          borderRadius: "20px",
           background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
@@ -360,7 +360,7 @@ const Login = ({ onClose }) => {
                   style={{
                     width: "40px",
                     height: "40px",
-                    borderRadius: "8px",
+                    borderRadius: "20px",
                   }}
                 />
               </div>
