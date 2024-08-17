@@ -7,6 +7,10 @@ import { toast } from "react-hot-toast";
 const Buy = ({ onClose, image, title, price }) => {
   const balance = window.sessionStorage.getItem("balance") || "0";
   const themeMode = window.localStorage.getItem("themeMode");
+  const playTapSound = () => {
+    const tapSound = new Audio("/tap.mp3");
+    tapSound.play();
+  };
 
   return (
     <div className="main-deal flex" onClick={onClose}>
@@ -98,18 +102,7 @@ const Buy = ({ onClose, image, title, price }) => {
                 background: themeMode === "dark" ? "white" : "black",
                 color: themeMode === "dark" ? "black" : "white",
               }}
-              // onClick={() =>
-              //   toast.loading("Processing!", {
-              //     style: {
-              //       borderRadius: "30px",
-              //       background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
-              //       color: themeMode == "dark" ? "white" : "black",
-              //       fontFamily: "Poppins",
-              //       border: "1px solid #808090",
-              //       boxShadow: "none",
-              //     },
-              //   })
-              // }
+              onClick={playTapSound}
             >
               buy
             </button>

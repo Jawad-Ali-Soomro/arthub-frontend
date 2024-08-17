@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import { baseArtUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import Skeleton from "react-loading-skeleton";
 import { BsFilter } from "react-icons/bs";
 
 const Art = () => {
@@ -13,12 +12,17 @@ const Art = () => {
   const navigate = useNavigate();
   const [mainData, setMainData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // New loading state
+  const [isLoading, setIsLoading] = useState(true);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filterCriteria, setFilterCriteria] = useState({
     price: null,
     tags: [],
   });
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isFetchingMore, setIsFetchingMore] = useState(false); // State to track if more data is being fetched
+  const loaderRef = useRef(null);
+
   const themeMode = window.localStorage.getItem("themeMode");
   const predefinedTags = [
     "Surreal",
@@ -35,21 +39,52 @@ const Art = () => {
     "Portrait",
   ];
 
-  const fetchData = async () => {
+  const fetchData = async (page) => {
     try {
-      const response = await axios.get(`${baseArtUrl}/get/all`);
-      setMainData(response.data.data);
-      setFilteredData(response.data.data);
+      setIsFetchingMore(true);
+      const response = await axios.get(`${baseArtUrl}/get/all`, {
+        params: { page, limit: 9 },
+      });
+      const newArt = response.data.data;
+
+      if (newArt.length === 0) {
+        setHasMore(false); // No more data available
+      } else {
+        setMainData((prevData) => [...prevData, ...newArt]);
+        setFilteredData((prevData) => [...prevData, ...newArt]);
+      }
     } catch (error) {
       console.error("Error fetching art data:", error);
     } finally {
-      setIsLoading(false); // Stop loading once data is fetched
+      setIsLoading(false);
+      setIsFetchingMore(false);
     }
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(page);
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [hasMore]);
 
   const applyFilter = () => {
     const { price, tags } = filterCriteria;
@@ -71,7 +106,7 @@ const Art = () => {
       price: null,
       tags: [],
     });
-    setFilteredData(mainData); // Reset filtered data to show all items
+    setFilteredData(mainData);
   };
 
   const handleTagChange = (tag) => {
@@ -95,9 +130,6 @@ const Art = () => {
           >
             <BsFilter />
           </button>
-          {/* <div className="length flex" style={{ borderRadius: "10px" }}>
-            {filteredData?.length}
-          </div> */}
         </section>
         {isFilterVisible && (
           <div className="filter-div" onClick={() => setIsFilterVisible(false)}>
@@ -160,67 +192,62 @@ const Art = () => {
             </div>
           </div>
         )}
-        {isLoading ? (
-          <div
-            className="loader flex"
-            style={{ marginTop: "150px", justifyContent: "space-around" }}
-          >
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-          </div>
-        ) : (
-          <div className="main-data wrapper flex">
-            {filteredData?.map((card_item) =>
-              card_item?.price >= 1000 ? (
-                this
-              ) : (
-                <div className="card flex col" key={card_item._id}>
-                  <div className="img-sect flex">
-                    <img
-                      className="border"
-                      src={card_item?.image}
-                      alt={card_item?.title}
-                      onClick={() => navigate(`/art/${card_item?._id}`)}
-                    />
+        <div className="main-data wrapper flex">
+          {filteredData?.map((card_item) =>
+            card_item?.price >= 1000 ? (
+              this
+            ) : (
+              <div className="card flex col" key={card_item._id}>
+                <div className="img-sect flex">
+                  <img
+                    className="border"
+                    src={card_item?.image}
+                    alt={card_item?.title}
+                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                  />
+                </div>
+                <div className="info flex col">
+                  <h2>{card_item?.title}</h2>
+                  <div
+                    className="owner flex"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                  >
+                    <div className="left flex">
+                      <img
+                        className="border"
+                        src={card_item?.owner?.avatar}
+                        alt={card_item?.owner?.username}
+                      />
+                      <h3 style={{ textTransform: "lowercase" }}>
+                        @{card_item?.owner?.username.split(" ")}
+                      </h3>
+                    </div>
                   </div>
-                  <div className="info flex col">
-                    <h2>{card_item?.title}</h2>
-                    <div
-                      className="owner flex"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                  <div className="border"></div>
+                  <div className="price flex">
+                    <h2>
+                      {card_item?.price} ~{" "}
+                      <span>${Math.round(card_item?.price * ethToUsd)}</span>
+                    </h2>
+                    <button
+                      className="flex"
+                      onClick={() => navigate(`/art/${card_item?._id}`)}
                     >
-                      <div className="left flex">
-                        <img
-                          className="border"
-                          src={card_item?.owner?.avatar}
-                          alt={card_item?.owner?.username}
-                        />
-                        <h3 style={{ textTransform: "lowercase" }}>
-                          @{card_item?.owner?.username.split(" ")}
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="border"></div>
-                    <div className="price flex">
-                      <h2>
-                        {card_item?.price} ~{" "}
-                        <span>${Math.round(card_item?.price * ethToUsd)}</span>
-                      </h2>
-                      <button
-                        className="flex"
-                        onClick={() => navigate(`/art/${card_item?._id}`)}
-                      >
-                        Buy
-                      </button>
-                    </div>
+                      Buy
+                    </button>
                   </div>
                 </div>
-              )
-            )}
+              </div>
+            )
+          )}
+        </div>
+        {isFetchingMore && (
+          <div className="fetching-loader flex" style={{ marginTop: "100px" }}>
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
           </div>
         )}
+        <div ref={loaderRef} style={{ height: "50px" }} />
       </div>
       <Footer />
     </div>

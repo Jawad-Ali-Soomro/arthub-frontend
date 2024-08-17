@@ -121,7 +121,9 @@ const Header = () => {
       <div className="logo flex">
         <img
           src={isDarkMode ? "/logo-white.png" : "/logo-black.png"}
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/");
+          }}
           alt=""
         />
       </div>

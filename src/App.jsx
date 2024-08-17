@@ -14,7 +14,7 @@ import MainUser from "./pages/MainUser";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import Auction from "./pages/Auction";
+import Auction from "./pages/rareItems";
 import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
 import CreateArt from "./pages/CreateArt";

@@ -90,7 +90,9 @@ const MainArt = () => {
             <img
               src={main_data?.image}
               alt=""
-              onClick={() => setShowImage(true)}
+              onClick={() => {
+                setShowImage(true);
+              }}
             />
           )}
         </div>
@@ -107,7 +109,9 @@ const MainArt = () => {
                 </div>{" "}
                 <div
                   className="icon border flex"
-                  onClick={() => set_details(true)}
+                  onClick={() => {
+                    set_details(true);
+                  }}
                 >
                   <BiScan />
                 </div>
@@ -192,7 +196,12 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button className="border">Update</button>
               ) : (
-                <button className="border" onClick={() => set_buy(true)}>
+                <button
+                  className="border"
+                  onClick={() => {
+                    set_buy(true);
+                  }}
+                >
                   BUY
                 </button>
               )}
@@ -205,7 +214,12 @@ const MainArt = () => {
                   DELETE
                 </button>
               ) : (
-                <button className="border" onClick={() => set_deal(true)}>
+                <button
+                  className="border"
+                  onClick={() => {
+                    set_deal(true);
+                  }}
+                >
                   DEAl
                 </button>
               )}
