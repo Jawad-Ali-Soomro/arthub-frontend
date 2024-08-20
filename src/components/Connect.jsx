@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "../styles/Connect.scss";
 import { checkWalletExtensions } from "../utils/constant";
-import { connectMetaMask } from "../utils/wallet_connect";
-import { toast } from "react-toastify";
 
 const WalletSection = ({ onClose }) => {
   const themeMode = window.localStorage.getItem("themeMode");
@@ -11,17 +9,6 @@ const WalletSection = ({ onClose }) => {
   useEffect(() => {
     checkWalletExtensions(); // If this function has side effects, you might still need to call it.
   }, []);
-
-  const handleWalletClick = (wallet) => {
-    if (wallet === "MetaMask") {
-      connectMetaMask();
-    } else if (wallet === "TrustWallet") {
-      window.location.href =
-        "https://chromewebstore.google.com/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph";
-    } else if (wallet === "Coinbase") {
-      toast("Service Unavailable");
-    }
-  };
 
   return ReactDOM.createPortal(
     <div className="connect-portal flex col" onClick={onClose}>
@@ -41,6 +28,7 @@ const WalletSection = ({ onClose }) => {
             textAlign: "center",
             fontSize: ".9rem",
             fontWeight: "600",
+            textTransform: "capitalize",
           }}
         >
           Confirm action in MetaMask extension.

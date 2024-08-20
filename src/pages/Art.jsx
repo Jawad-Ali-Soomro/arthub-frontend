@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import { baseArtUrl, ethToUsd } from "../utils/constant";
@@ -8,114 +8,75 @@ import Footer from "../components/Footer";
 import { BsFilter } from "react-icons/bs";
 
 const Art = () => {
-  document.title = "Explore Art";
   const navigate = useNavigate();
-  const [mainData, setMainData] = useState([]);
+  const [main_data, set_data] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFilterVisible, setIsFilterVisible] = useState(false);
-  const [filterCriteria, setFilterCriteria] = useState({
-    price: null,
-    tags: [],
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    tags: "",
+    price: "",
+    priceCondition: "less",
+    artist: "",
   });
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [isFetchingMore, setIsFetchingMore] = useState(false); // State to track if more data is being fetched
-  const loaderRef = useRef(null);
 
-  const themeMode = window.localStorage.getItem("themeMode");
-  const predefinedTags = [
-    "Surreal",
-    "Abstract",
-    "Illusion",
-    "Illustration",
-    "Surrealism",
-    "AI",
-    "Painting",
-    "Photography",
-    "Digital",
-    "Crypto Art",
-    "Vision",
-    "Portrait",
-  ];
-
-  const fetchData = async (page) => {
+  const fetch_data = async () => {
     try {
-      setIsFetchingMore(true);
-      const response = await axios.get(`${baseArtUrl}/get/all`, {
-        params: { page, limit: 9 },
-      });
-      const newArt = response.data.data;
-
-      if (newArt.length === 0) {
-        setHasMore(false); // No more data available
-      } else {
-        setMainData((prevData) => [...prevData, ...newArt]);
-        setFilteredData((prevData) => [...prevData, ...newArt]);
-      }
+      const res = await axios.get(`${baseArtUrl}/get/all`);
+      set_data(res.data.data);
+      setFilteredData(res.data.data); // Initial load without filters
     } catch (error) {
-      console.error("Error fetching art data:", error);
-    } finally {
-      setIsLoading(false);
-      setIsFetchingMore(false);
+      console.error("Error fetching data:", error);
     }
   };
 
-  useEffect(() => {
-    fetchData(page);
-  }, [page]);
+  const applyFilters = () => {
+    let filtered = main_data;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setPage((prevPage) => prevPage + 1);
-        }
-      },
-      { threshold: 1.0 }
-    );
-
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
+    if (filters.tags) {
+      const selectedTags = filters.tags
+        .toLowerCase()
+        .split(",")
+        .map((tag) => tag.trim());
+      filtered = filtered.filter((art) =>
+        selectedTags.every((tag) =>
+          art.tags.map((t) => t.toLowerCase()).includes(tag)
+        )
+      );
     }
 
-    return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
+    if (filters.price && filters.priceCondition) {
+      const price = parseFloat(filters.price);
+      if (filters.priceCondition === "equal") {
+        filtered = filtered.filter((art) => art.price === price);
+      } else if (filters.priceCondition === "less") {
+        filtered = filtered.filter((art) => art.price < price);
+      } else if (filters.priceCondition === "greater") {
+        filtered = filtered.filter((art) => art.price > price);
       }
-    };
-  }, [hasMore]);
+    }
 
-  const applyFilter = () => {
-    const { price, tags } = filterCriteria;
-    const filtered = mainData.filter((item) => {
-      let matches = true;
-      if (price !== null) {
-        matches = matches && item.price <= price;
-      }
-      if (tags.length > 0) {
-        matches = matches && tags.every((tag) => item.tags.includes(tag));
-      }
-      return matches;
-    });
+    if (filters.artist) {
+      filtered = filtered.filter((art) =>
+        art.owner.username.toLowerCase().includes(filters.artist.toLowerCase())
+      );
+    }
+
+    // Shuffle the array to show random results
+    filtered = filtered.sort(() => Math.random() - 0.5);
     setFilteredData(filtered);
   };
 
-  const removeFilter = () => {
-    setFilterCriteria({
-      price: null,
-      tags: [],
-    });
-    setFilteredData(mainData);
-  };
+  useEffect(() => {
+    fetch_data();
+  }, []);
 
-  const handleTagChange = (tag) => {
-    setFilterCriteria((prevCriteria) => ({
-      ...prevCriteria,
-      tags: prevCriteria.tags.includes(tag)
-        ? prevCriteria.tags.filter((t) => t !== tag)
-        : [...prevCriteria.tags, tag],
-    }));
+  useEffect(() => {
+    applyFilters();
+  }, [filters, main_data]);
+
+  const handleFilterChange = (e) => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
+    setShowFilters(true);
   };
 
   return (
@@ -123,131 +84,114 @@ const Art = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          <h1 className="flex col">Digital Art</h1>
+          <h1 className="flex col">
+            Digital Art{" "}
+            <span style={{ fontSize: "1rem" }}>
+              {filteredData?.length} Arts Found
+            </span>
+          </h1>
+          <div className="length flex"></div>
           <button
             className="border"
-            onClick={() => setIsFilterVisible(!isFilterVisible)}
+            onClick={() => setShowFilters(!showFilters)}
           >
             <BsFilter />
-          </button>
-        </section>
-        {isFilterVisible && (
-          <div className="filter-div" onClick={() => setIsFilterVisible(false)}>
             <div
-              className="filter-content"
-              style={{
-                background: `${
-                  themeMode == "dark" ? "rgb(23, 20, 32)" : "rgb(250, 250, 250)"
-                }`,
-                color: `${themeMode == "dark" ? "white" : "#111"}`,
-              }}
+              className="filter-controls flex"
               onClick={(e) => e.stopPropagation()}
+              style={{
+                height: `${showFilters == true ? "" : "0px"}`,
+                border: `${showFilters == true ? "1px solid #ddd" : "0px"}`,
+              }}
             >
-              <div className="filter-section">
-                <label>Tags</label>
-                <div className="tags">
-                  {predefinedTags.map((tag) => (
-                    <div
-                      key={tag}
-                      style={{ color: "inherit" }}
-                      className={`tag border ${
-                        filterCriteria.tags.includes(tag) ? "selected" : ""
-                      }`}
-                      onClick={() => handleTagChange(tag)}
-                    >
-                      {"#" + tag}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="filter-section after">
-                <label>Max Price</label>
+              <input
+                type="text"
+                className="border"
+                name="tags"
+                placeholder="Category"
+                onChange={handleFilterChange}
+              />
+              <div className="price-filter flex">
                 <input
-                  type="text"
-                  value={filterCriteria.price || ""}
                   className="border"
-                  placeholder="Enter Price"
-                  onChange={(e) =>
-                    setFilterCriteria({
-                      ...filterCriteria,
-                      price: e.target.value ? Number(e.target.value) : null,
-                    })
-                  }
+                  type="number"
+                  name="price"
+                  placeholder="Enter Max Price"
+                  onChange={handleFilterChange}
                 />
               </div>
-              <button
-                onClick={applyFilter}
-                style={{
-                  background: `${
-                    themeMode == "dark" ? "white" : "rgb(23,20,32)"
-                  }`,
-                  color: `${themeMode == "dark" ? "black" : "white"}`,
-                }}
-              >
-                Apply
-              </button>
-              <button className="border" onClick={removeFilter}>
-                Remove
-              </button>
+              <input
+                className="border"
+                type="text"
+                name="artist"
+                placeholder="Search By Artist"
+                onChange={handleFilterChange}
+              />
             </div>
+          </button>
+        </section>
+
+        {filteredData.length === 0 ? (
+          <div
+            className="loader flex"
+            style={{
+              marginTop: "150px",
+              justifyContent: "space-around",
+            }}
+          >
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
           </div>
-        )}
-        <div className="main-data wrapper flex">
-          {filteredData?.map((card_item) =>
-            card_item?.price >= 1000 ? (
-              this
-            ) : (
+        ) : (
+          <div className="main-data wrapper flex">
+            {filteredData.map((card_item) => (
               <div className="card flex col" key={card_item._id}>
                 <div className="img-sect flex">
                   <img
                     className="border"
-                    src={card_item?.image}
-                    alt={card_item?.title}
-                    onClick={() => navigate(`/art/${card_item?._id}`)}
+                    src={card_item.image}
+                    alt={card_item.title}
+                    onClick={() => navigate(`/art/${card_item._id}`)}
                   />
                 </div>
                 <div className="info flex col">
-                  <h2>{card_item?.title}</h2>
+                  <h2>{card_item.title}</h2>
                   <div
                     className="owner flex"
                     style={{ cursor: "pointer" }}
-                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
+                    onClick={() => navigate(`/user/${card_item.owner._id}`)}
                   >
                     <div className="left flex">
                       <img
                         className="border"
-                        src={card_item?.owner?.avatar}
-                        alt={card_item?.owner?.username}
+                        src={card_item.owner.avatar}
+                        alt={card_item.owner.username}
                       />
                       <h3 style={{ textTransform: "lowercase" }}>
-                        @{card_item?.owner?.username.split(" ")}
+                        @{card_item.owner.username.split(" ")}
                       </h3>
                     </div>
                   </div>
                   <div className="border"></div>
                   <div className="price flex">
                     <h2>
-                      {card_item?.price} ~{" "}
-                      <span>${Math.round(card_item?.price * ethToUsd)}</span>
+                      {" "}
+                      {card_item?.price} ~ $
+                      {Math.round(card_item?.price * ethToUsd)}{" "}
                     </h2>
                     <button
                       className="flex"
-                      onClick={() => navigate(`/art/${card_item?._id}`)}
+                      onClick={() => navigate(`/series/${card_item._id}`)}
                     >
-                      Buy
+                      view
                     </button>
                   </div>
                 </div>
               </div>
-            )
-          )}
-        </div>
-        {isFetchingMore && (
-          <div className="fetching-loader flex" style={{ marginTop: "100px" }}>
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            ))}
           </div>
         )}
-        <div ref={loaderRef} style={{ height: "50px" }} />
       </div>
       <Footer />
     </div>

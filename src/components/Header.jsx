@@ -67,7 +67,7 @@ const Header = () => {
       switchToLightMode();
     }
   }, []);
-  showLogin == true ? (document.title = "Login") : this;
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
@@ -129,7 +129,7 @@ const Header = () => {
       </div>
       <div className="search-bar border flex">
         <BiSearch />
-        <input type="text" />
+        <input type="text" id="search" />
       </div>
       <div className="navs flex">
         <ul className="flex">
@@ -156,10 +156,10 @@ const Header = () => {
           </li>
           <li
             className="icon"
-            onClick={() => navigate("/rare")}
-            id={location === "/rare" ? "active" : ""}
+            onClick={() => navigate("/community")}
+            id={location === "/community" ? "active" : ""}
           >
-            rare
+            community
           </li>
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}
@@ -263,24 +263,18 @@ const Header = () => {
                     className="flex"
                     onClick={() => navigate(`/user/${userData?._id}`)}
                   >
-                    PROFILE
+                    My Profile
                   </li>
-                  <li className="flex">SETTINGS</li>
+                  <li
+                    className="flex"
+                    onClick={() => {
+                      handleLogout();
+                      setProfileMenu(false);
+                    }}
+                  >
+                    Logout
+                  </li>
                 </ul>
-              </div>
-
-              <div className="line border"></div>
-              <div className="top flex">
-                <div
-                  className="logout-btn flex border"
-                  style={{
-                    background: `${themeMode == "dark" ? "white" : "black"}`,
-                    color: `${themeMode == "dark" ? "black" : "white"}`,
-                  }}
-                  onClick={() => handleLogout()}
-                >
-                  <BiLogOut />
-                </div>
               </div>
             </div>
           </div>

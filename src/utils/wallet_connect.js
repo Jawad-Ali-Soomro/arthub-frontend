@@ -76,7 +76,7 @@ export const connectMetaMask = async () => {
   } else {
     toast.error("Metamask Is Not Installed!", {
       style: {
-        borderRadius: "8px",
+        borderRadius: "25px",
         background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
         color: themeMode == "dark" ? "white" : "black",
         fontFamily: "Poppins",

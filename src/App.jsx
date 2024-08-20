@@ -18,6 +18,7 @@ import Auction from "./pages/rareItems";
 import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
 import CreateArt from "./pages/CreateArt";
+import Community from "./pages/Community";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -43,7 +44,7 @@ function App() {
             path={userToken ? "/create" : "/"}
             element={<CreateArt />}
           ></Route>
-          <Route path="/rare" element={<Auction />}></Route>
+          <Route path="/community" element={<Community />}></Route>
           <Route path="/featured-art" element={<TrendingArt />}></Route>
           <Route path="/featured-series" element={<TrendingSeries />}></Route>
         </Routes>

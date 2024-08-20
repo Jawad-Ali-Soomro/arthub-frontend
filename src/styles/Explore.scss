@@ -34,27 +34,34 @@
       right: 0;
       background: white;
       color: black;
+      position: relative;
     }
-    .length {
-      color: inherit;
-      border: none;
-      width: 100px;
-      height: 40px;
-      display: flex;
+
+    .filter-controls {
+      margin-top: 20px;
+      width: 250px;
       justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 1rem;
-      position: absolute;
-      bottom: -20px;
-      left: 60px;
+      transition: 0.3s;
+      height: 200px;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 10px;
+      overflow: hidden;
+      transition: 0.3s;
       background: white;
-      border: 1px solid #80809090;
-      color: black;
+      position: absolute;
+      left: -202px;
+      top: 35px;
+      input {
+        width: 200px;
+        height: 40px;
+        padding-left: 10px;
+        outline: none;
+      }
     }
   }
+
   .loader {
-    // background: black;
     width: 100%;
     justify-content: space-between;
     align-items: start !important;
@@ -157,122 +164,6 @@
             color: black;
           }
         }
-      }
-    }
-  }
-}
-
-.explore-wrapper {
-  .filter-div {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: inherit; /* Adjust as needed */
-    padding: 20px;
-    background: rgba($color: #111, $alpha: 0.3);
-    backdrop-filter: blur(15px);
-    z-index: 1000;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    .filter-content {
-      position: relative;
-      width: 380px;
-      padding: 50px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: white;
-      color: black;
-      right: 0;
-      border-radius: 10px;
-      border: 1px solid #80809090;
-      .filter-section {
-        margin-bottom: 20px;
-        justify-content: space-between;
-        gap: 20px;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        label {
-          display: block;
-          // margin-bottom: 10px;
-          // margin-top: 30px;
-          color: inherit;
-          text-transform: capitalize;
-          font-size: 1.2rem;
-          font-weight: 900;
-        }
-
-        input[type="text"] {
-          width: 340px;
-          height: 40px;
-          padding-left: 10px;
-          color: inherit;
-          background: transparent;
-          outline: none; /* Adjust as needed */
-        }
-
-        .tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-          width: 350px;
-          justify-content: space-between;
-          .tag {
-            width: 100px;
-            height: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-            color: #111; /* Adjust as needed */
-            font-size: 0.5rem;
-            text-transform: uppercase;
-            &.selected {
-              background: #333;
-              color: white !important;
-              border: 1px solid transparent;
-            }
-          }
-        }
-      }
-      .after::after {
-        content: "ETH";
-        position: absolute;
-        bottom: 13px;
-        right: 20px;
-        font-weight: 600;
-        font-size: 0.7rem;
-      }
-
-      button {
-        display: inline-block;
-        width: 200px;
-        height: 40px;
-        margin-right: 10px;
-        background: #333;
-        margin-left: 160px;
-        color: white;
-        cursor: pointer;
-        margin-top: 10px;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        border: none;
-      }
-      button:last-child {
-        background: transparent;
-        color: inherit;
-        border: 1px solid #80809090;
-      }
-      button:first-child {
-        border: none;
       }
     }
   }
