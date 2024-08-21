@@ -6,15 +6,14 @@ import FeaturedSeries from "../components/feturedSeries";
 import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import Top from "../components/Top";
-import { useNavigate } from "react-router-dom";
+import TopUsers from "../components/TopUsers";
+import { BiHeadphone, BiLogoDiscord, BiLogoTwitter } from "react-icons/bi";
 
 const Home = () => {
   document.title = "Artchain";
   return (
     <div>
       <Header />
-      <Top />
-
       {/* <div className="banner flex">
         <div className="left flex col">
           <h1>Discover , Collect & Sell Art</h1>
@@ -28,9 +27,11 @@ const Home = () => {
           <img src="./hero.png" alt="" />
         </div>
       </div> */}
+      <Top />
+
       <Featured />
       <FeaturedSeries />
-      {/* <TopUsers /> */}
+      <TopUsers />
       {/* <FeaturedAuction /> */}
       <Spotlight />
       {/* <div className="outro flex col">

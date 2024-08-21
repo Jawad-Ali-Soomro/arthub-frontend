@@ -5,7 +5,6 @@ import { baseArtUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { BsFilter } from "react-icons/bs";
 
 const Art = () => {
   const navigate = useNavigate();
@@ -86,12 +85,14 @@ const Art = () => {
         <section className="flex">
           <h1 className="flex col">
             Digital Art{" "}
-            <span style={{ fontSize: "1rem" }}>
-              {filteredData?.length} Arts Found
-            </span>
+            {/* <span style={{ fontSize: "1rem" }}>
+              {filteredData?.length <= 0
+                ? "Getting Arts"
+                : `${filteredData?.length} Arts Found`}
+            </span> */}
           </h1>
           <div className="length flex"></div>
-          <button
+          {/* <button
             className="border"
             onClick={() => setShowFilters(!showFilters)}
           >
@@ -128,7 +129,7 @@ const Art = () => {
                 onChange={handleFilterChange}
               />
             </div>
-          </button>
+          </button> */}
         </section>
 
         {filteredData.length === 0 ? (
@@ -182,7 +183,7 @@ const Art = () => {
                     </h2>
                     <button
                       className="flex"
-                      onClick={() => navigate(`/series/${card_item._id}`)}
+                      onClick={() => navigate(`/art/${card_item._id}`)}
                     >
                       view
                     </button>

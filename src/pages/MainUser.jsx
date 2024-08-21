@@ -291,7 +291,7 @@ const MainUser = () => {
                 />
               </div>
               <div className="info flex col">
-                <h2>{main_data?.art[0]?.title}</h2>
+                <h2 style={{ fontSize: "1rem" }}>{main_data?.art[0]?.title}</h2>
                 <div className="line border"></div>
                 <div className="price flex">
                   <h2>
