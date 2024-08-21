@@ -252,10 +252,11 @@ const Header = () => {
                 border: `${
                   isDarkMode ? "1px solid rgba(255,255,255,.3)  " : "none"
                 }`,
+                borderRadius: "10px",
               }}
             >
-              <div className="bottom flex col">
-                <ul className="flex col">
+              <div className="bottom flex col" style={{ alignItems: "end" }}>
+                <ul className="flex col" style={{ alignItems: "end" }}>
                   <li className="flex" onClick={() => navigate("/profile")}>
                     Dashboard
                   </li>

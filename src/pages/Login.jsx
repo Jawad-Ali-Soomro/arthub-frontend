@@ -231,7 +231,7 @@ const Login = ({ onClose }) => {
   return ReactDOM.createPortal(
     <div className="login-portal flex" onClick={onClose}>
       <div
-        className="login-wrap flex col"
+        className="login-wrap flex col border"
         style={{
           transform: loginStep ? "translateX(0%)" : "translateX(400%)",
           background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
