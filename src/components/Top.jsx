@@ -91,18 +91,21 @@ const Top = () => {
               <img className="border" src={main_data?.owner?.avatar} alt="" />
               <h2>@{main_data?.owner?.handle.split(" ")}</h2>
             </div>
-            <div className="line border" style={{ width: "380px" }}></div>
+            <div
+              className="line border"
+              style={{ width: "340px", marginLeft: "20px" }}
+            ></div>
             <div className="price-wrap flex">
+              <h2>
+                {main_data?.price} ~{" "}
+                <span>${Math.round(main_data?.price * ethToUsd)}</span>
+              </h2>
               <button
                 className="border"
                 onClick={() => navigate(`/art/${main_data?._id}`)}
               >
                 BUY
               </button>
-              <h2>
-                {main_data?.price} ~{" "}
-                <span>${Math.round(main_data?.price * ethToUsd)}</span>
-              </h2>
             </div>
           </div>
         )}

@@ -27,14 +27,16 @@
 
   .right {
     align-items: start;
-    gap: 10px;
+    gap: 20px;
     h1 {
       font-weight: 600;
       font-size: 1.2rem;
+      margin-left: 20px;
     }
     .profile-wrap {
       cursor: pointer;
       gap: 2px;
+      margin-left: 20px;
       img {
         width: 30px;
         height: 30px;
@@ -47,7 +49,10 @@
       }
     }
     .price-wrap {
+      width: 340px;
       gap: 10px;
+      justify-content: space-between;
+      margin-left: 20px;
       h2 {
         font-weight: 400;
         font-size: 1rem;
@@ -76,9 +81,9 @@
 
   .right-side-data {
     .card {
-      width: 170px;
+      width: 181px;
       overflow: hidden;
-      height: 170px;
+      height: 181px;
       img {
         transition: 0.3s;
         width: 100%;

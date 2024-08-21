@@ -7,7 +7,6 @@ import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import Top from "../components/Top";
 import TopUsers from "../components/TopUsers";
-import { BiHeadphone, BiLogoDiscord, BiLogoTwitter } from "react-icons/bi";
 
 const Home = () => {
   document.title = "Artchain";
@@ -60,6 +59,7 @@ const Home = () => {
           </div>
         </div>
       </div> */}
+      <h1>Top Artists</h1>
       <Footer />
     </div>
   );
