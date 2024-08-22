@@ -37,7 +37,10 @@ const Spotlight = () => {
   return (
     <div>
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
-        <h1 style={{ width: "100%", justifyContent: "space-between" }}>
+        <h1
+          data-aos="fade-right"
+          style={{ width: "100%", justifyContent: "space-between" }}
+        >
           Artist Spotlight : Botto{" "}
           <button
             className="border"
@@ -46,7 +49,11 @@ const Spotlight = () => {
             See all
           </button>
         </h1>
-        <p style={{ fontSize: ".8rem" }}>
+        <p
+          data-aos="fade-right"
+          data-aos-delay="300"
+          style={{ fontSize: ".8rem" }}
+        >
           Through his animations, Botto explores the impact of contemporary
           culture on our everyday lives, offering a unique and fresh perspective
           on the world around us.
@@ -67,7 +74,12 @@ const Spotlight = () => {
         ) : (
           <div className="wrapper flex">
             {main_data.map((card_item) => (
-              <div className="card flex col" key={card_item._id}>
+              <div
+                className="card flex col"
+                data-aos="fade-right"
+                data-aos-delay="600"
+                key={card_item._id}
+              >
                 <div className="img-sect flex">
                   <img
                     className="border"

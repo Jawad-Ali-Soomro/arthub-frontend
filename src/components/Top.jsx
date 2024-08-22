@@ -73,6 +73,7 @@ const Top = () => {
               src={main_data?.image}
               onClick={() => navigate(`/art/${main_data?._id}`)}
               alt=""
+              data-aos="fade-right"
             />
           )}
         </div>
@@ -83,10 +84,14 @@ const Top = () => {
           this
         ) : (
           <div className="right flex col">
-            <h1>{main_data?.title}</h1>
+            <h1 data-aos="fade-right" data-aos-delay="600">
+              {main_data?.title}
+            </h1>
             <div
               className="profile-wrap flex"
               onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+              data-aos-delay="900"
+              data-aos="fade-right"
             >
               <img className="border" src={main_data?.owner?.avatar} alt="" />
               <h2>@{main_data?.owner?.handle.split(" ")}</h2>
@@ -94,8 +99,14 @@ const Top = () => {
             <div
               className="line border"
               style={{ width: "340px", marginLeft: "20px" }}
+              data-aos-delay="1200"
+              data-aos="fade-right"
             ></div>
-            <div className="price-wrap flex">
+            <div
+              className="price-wrap flex"
+              data-aos-delay="1500"
+              data-aos="fade-right"
+            >
               <h2>
                 {main_data?.price} ~{" "}
                 <span>${Math.round(main_data?.price * ethToUsd)}</span>
@@ -123,7 +134,11 @@ const Top = () => {
         <div className="right-side-data flex col" style={{ gap: "20px" }}>
           {sideData?.map((side_data) => {
             return (
-              <div className="card flex">
+              <div
+                className="card flex"
+                data-aos-delay="1800"
+                data-aos="fade-right"
+              >
                 <img
                   src={side_data?.image}
                   alt=""

@@ -5,18 +5,19 @@ import { baseArtUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import { BiSearch } from "react-icons/bi";
 
 const Art = () => {
   const navigate = useNavigate();
   const [main_data, set_data] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
     tags: "",
     price: "",
     priceCondition: "less",
     artist: "",
   });
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
   const fetch_data = async () => {
     try {
@@ -60,6 +61,16 @@ const Art = () => {
       );
     }
 
+    if (searchQuery) {
+      const lowercasedQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (art) =>
+          art.title.toLowerCase().includes(lowercasedQuery) ||
+          art.owner.username.toLowerCase().includes(lowercasedQuery) ||
+          art.tags.some((tag) => tag.toLowerCase().includes(lowercasedQuery))
+      );
+    }
+
     // Shuffle the array to show random results
     filtered = filtered.sort(() => Math.random() - 0.5);
     setFilteredData(filtered);
@@ -71,11 +82,14 @@ const Art = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [filters, main_data]);
+  }, [filters, searchQuery, main_data]);
 
   const handleFilterChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
-    setShowFilters(true);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value); // Update search query state
   };
 
   return (
@@ -83,55 +97,30 @@ const Art = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          <h1 className="flex col">
-            Digital Art{" "}
-            {/* <span style={{ fontSize: "1rem" }}>
-              {filteredData?.length <= 0
-                ? "Getting Arts"
-                : `${filteredData?.length} Arts Found`}
-            </span> */}
-          </h1>
-          <div className="length flex"></div>
-          {/* <button
-            className="border"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <BsFilter />
-            <div
-              className="filter-controls flex"
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                height: `${showFilters == true ? "" : "0px"}`,
-                border: `${showFilters == true ? "1px solid #ddd" : "0px"}`,
-              }}
-            >
-              <input
-                type="text"
-                className="border"
-                name="tags"
-                placeholder="Category"
-                onChange={handleFilterChange}
-              />
-              <div className="price-filter flex">
-                <input
-                  className="border"
-                  type="number"
-                  name="price"
-                  placeholder="Enter Max Price"
-                  onChange={handleFilterChange}
-                />
-              </div>
-              <input
-                className="border"
-                type="text"
-                name="artist"
-                placeholder="Search By Artist"
-                onChange={handleFilterChange}
-              />
-            </div>
-          </button> */}
+          {/* <h1 className="flex col">Digital Art</h1> */}
+          <div className="search-bar flex">
+            <BiSearch className="icon" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange} // Capture search input
+            />
+          </div>
         </section>
-
+        <div className="suggestions flex col">
+          <div className="wrap flex">
+            <p onClick={() => setSearchQuery("Illustration")}>Illustration</p>
+            <p onClick={() => setSearchQuery("Illusion")}>Illusion</p>
+            <p onClick={() => setSearchQuery("Ai")}>Ai</p>
+            <p onClick={() => setSearchQuery("Surreal")}>Surreal</p>
+            <p onClick={() => setSearchQuery("Surrealism")}>Surrealism</p>
+            <p onClick={() => setSearchQuery("Crypto Art")}>Crypto Art</p>
+            <p onClick={() => setSearchQuery("Digital Art")}>Digital Art</p>
+            <p onClick={() => setSearchQuery("Abstract")}>Abstract</p>
+            <p onClick={() => setSearchQuery("Photography")}>Photography</p>
+            <p onClick={() => setSearchQuery("Painting")}>Painting</p>
+          </div>
+        </div>
         {filteredData.length === 0 ? (
           <div
             className="loader flex"
@@ -141,8 +130,8 @@ const Art = () => {
             }}
           >
             <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            {/* <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
+            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." /> */}
           </div>
         ) : (
           <div className="main-data wrapper flex">

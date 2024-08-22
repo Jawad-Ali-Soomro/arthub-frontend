@@ -6,7 +6,6 @@ import FeaturedSeries from "../components/feturedSeries";
 import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import Top from "../components/Top";
-import TopUsers from "../components/TopUsers";
 
 const Home = () => {
   document.title = "Artchain";
@@ -30,7 +29,7 @@ const Home = () => {
 
       <Featured />
       <FeaturedSeries />
-      <TopUsers />
+      {/* <TopUsers /> */}
       {/* <FeaturedAuction /> */}
       <Spotlight />
       {/* <div className="outro flex col">
@@ -59,7 +58,6 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-      <h1>Top Artists</h1>
       <Footer />
     </div>
   );

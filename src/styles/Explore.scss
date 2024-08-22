@@ -5,9 +5,8 @@
   section {
     width: 100%;
     justify-content: space-between;
-    height: 30vh;
+    height: 20vh;
     margin-top: 10vh;
-    border-bottom: 1px solid #9090903e;
     position: relative;
     h1 {
       font-size: 5rem;
@@ -57,6 +56,66 @@
         height: 40px;
         padding-left: 10px;
         outline: none;
+      }
+    }
+    .search-bar {
+      transition: 0.3s;
+      width: 800px;
+      height: 50px;
+      border: 1px solid #9090903e;
+      position: absolute;
+      left: calc(50% - 400px);
+      color: inherit;
+      bottom: -25px;
+      overflow: hidden;
+      .icon {
+        width: 5%;
+      }
+      input {
+        width: 94%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: inherit;
+      }
+      button {
+        width: 14%;
+        height: 90%;
+        border: none;
+        background: #333;
+        position: static;
+        color: white;
+        border-radius: 10px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+      }
+    }
+    .search-bar:focus-within {
+      box-shadow: 0 0 5px #9090903e;
+    }
+  }
+  .suggestions {
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    .wrap {
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 600px;
+      p {
+        font-size: 0.5rem;
+        padding: 10px 20px;
+        border: 1px solid #9090903e;
+        text-transform: uppercase;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      p:hover {
+        background: #333;
+        color: white;
+        border: 1px solid #333;
       }
     }
   }

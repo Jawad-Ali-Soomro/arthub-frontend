@@ -34,8 +34,8 @@ const FeaturedSeries = () => {
   }, []);
   return (
     <div className="featuerd-wrap flex col">
-      <h1>Featured Series</h1>
-      <p>
+      <h1 data-aos="fade-right">Featured Series</h1>
+      <p data-aos="fade-right" data-aos-delay="300">
         Explore the boundless creativity and inspiration of featured series.
       </p>
       {main_data == undefined ? (
@@ -52,7 +52,11 @@ const FeaturedSeries = () => {
           <img src="/loader.svg" style={{ width: "50px" }} alt="" />
         </div>
       ) : (
-        <div className="wrapper flex">
+        <div
+          className="wrapper flex"
+          data-aos="fade-right"
+          data-aos-delay="600"
+        >
           {main_data?.map((card_item) => (
             <div className="card flex col" key={card_item._id}>
               <div className="img-sect flex">

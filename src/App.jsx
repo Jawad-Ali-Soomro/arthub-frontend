@@ -18,17 +18,26 @@ import Auction from "./pages/rareItems";
 import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
 import CreateArt from "./pages/CreateArt";
-import Community from "./pages/Community";
+import Artists from "./pages/Community";
+import { useState } from "react";
+import Loader from "./pages/Loader";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
+  const [showLoader, setShowLoader] = useState(true);
+  setTimeout(() => {
+    setShowLoader(false);
+  }, [5000]);
   return (
     <>
       <Toaster position="top-left" />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/"
+            element={showLoader == true ? <Loader /> : <Home />}
+          ></Route>
           <Route path="/explore/art" element={<Art />}></Route>
           <Route path="/explore/series" element={<Series />}></Route>
           <Route path="/art/:artId" element={<MainArt />}></Route>
@@ -44,7 +53,7 @@ function App() {
             path={userToken ? "/create" : "/"}
             element={<CreateArt />}
           ></Route>
-          <Route path="/community" element={<Community />}></Route>
+          <Route path="/artists" element={<Artists />}></Route>
           <Route path="/featured-art" element={<TrendingArt />}></Route>
           <Route path="/featured-series" element={<TrendingSeries />}></Route>
         </Routes>

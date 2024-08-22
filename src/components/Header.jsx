@@ -2,40 +2,18 @@ import React, { useState, useEffect } from "react";
 import { switchToDarkMode, switchToLightMode } from "../utils/toggler";
 import "../styles/Header.scss";
 import {
-  BiCalendar,
-  BiCart,
-  BiChat,
-  BiCopy,
-  BiLayer,
   BiLogoDribbble,
   BiLogoFacebook,
   BiLogoGithub,
   BiLogoInstagram,
   BiLogoTwitter,
-  BiLogOut,
   BiSearch,
-  BiUser,
 } from "react-icons/bi";
 import { FaAdjust, FaArtstation, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
-import {
-  RiAuctionFill,
-  RiInformation2Line,
-  RiInformationLine,
-} from "react-icons/ri";
-import { CgLogOff, CgLogOut, CgProfile, CgTrending } from "react-icons/cg";
 import toast from "react-hot-toast";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { MdDashboard } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
-import { GoSignOut } from "react-icons/go";
-import { SiEventstore } from "react-icons/si";
-import { BsBrush } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
-import MainUser from "../pages/MainUser";
 import { connectMetaMask } from "../utils/wallet_connect";
 
 const Header = () => {
@@ -127,10 +105,10 @@ const Header = () => {
           alt=""
         />
       </div>
-      <div className="search-bar border flex">
+      {/* <div className="search-bar border flex">
         <BiSearch />
         <input type="text" id="search" />
-      </div>
+      </div> */}
       <div className="navs flex">
         <ul className="flex">
           <li
@@ -156,10 +134,10 @@ const Header = () => {
           </li>
           <li
             className="icon"
-            onClick={() => navigate("/community")}
-            id={location === "/community" ? "active" : ""}
+            onClick={() => navigate("/artists")}
+            id={location === "/artists" ? "active" : ""}
           >
-            community
+            artists
           </li>
           <li onClick={() => toggleTheme()}>
             {isDarkMode ? <FaAdjust className="transform" /> : <FaAdjust />}

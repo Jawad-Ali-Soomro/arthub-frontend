@@ -34,8 +34,10 @@ const Featured = () => {
 
   return (
     <div className="featuerd-wrap flex col">
-      <h1>Featured Art</h1>
-      <p>Explore the boundless creativity and inspiration of featured art.</p>
+      <h1 data-aos="fade-right">Featured Art</h1>
+      <p data-aos="fade-right" data-aos-delay="300">
+        Explore the boundless creativity and inspiration of featured art.
+      </p>
       {main_data == undefined ? (
         <div
           className="wrapper flex"
@@ -52,7 +54,12 @@ const Featured = () => {
       ) : (
         <div className="wrapper flex">
           {main_data?.map((card_item) => (
-            <div className="card flex col" key={card_item._id}>
+            <div
+              className="card flex col"
+              data-aos="fade-right"
+              data-aos-delay="600"
+              key={card_item._id}
+            >
               <div className="img-sect flex">
                 <img
                   className="border"

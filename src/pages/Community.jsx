@@ -1,11 +1,11 @@
 import React from "react";
 
-const Community = () => {
+const Artists = () => {
   return (
     <div>
-      <h1>Community</h1>
+      <h1>Artists</h1>
     </div>
   );
 };
 
-export default Community;
+export default Artists;
