@@ -212,7 +212,7 @@ const Series = () => {
                     className="border"
                     src={card_item.image}
                     alt={card_item.title}
-                    onClick={() => navigate(`/art/${card_item._id}`)}
+                    onClick={() => navigate(`/series/${card_item._id}`)}
                   />
                 </div>
                 <div className="info flex col">
@@ -238,7 +238,7 @@ const Series = () => {
                     <h2></h2>
                     <button
                       className="flex"
-                      onClick={() => navigate(`/art/${card_item._id}`)}
+                      onClick={() => navigate(`/series/${card_item._id}`)}
                     >
                       view
                     </button>

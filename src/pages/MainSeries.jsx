@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
 import { BiLayer } from "react-icons/bi";
 import Deal from "../components/Deal";
+import Buy from "../components/Buy";
 
 const MainSeries = () => {
   const [main_data, set_data] = useState();
@@ -41,8 +42,9 @@ const MainSeries = () => {
   const loggedInUserId = JSON.parse(loggedInUser);
 
   const [show_deal, setDeal] = useState(false);
+  const [showBuy, setBuy] = useState(false);
 
-  const onClose = () => setDeal(false);
+  const onClose = () => setDeal(false) + setBuy(false);
 
   return (
     <div>
@@ -127,6 +129,7 @@ const MainSeries = () => {
                     color: "black",
                     border: "1px solid #808090",
                   }}
+                  onClick={() => setBuy(true)}
                 >
                   BUY ALL
                 </button>
@@ -244,8 +247,15 @@ const MainSeries = () => {
       {show_deal && (
         <Deal
           onClose={onClose}
-          title={main_data?.title}
+          title={"(series)" + main_data?.title}
           price={totalPricesSum}
+        />
+      )}
+      {showBuy && (
+        <Buy
+          title={"(series)" + main_data?.title}
+          price={totalPricesSum}
+          onClose={onClose}
         />
       )}
       <Footer />
