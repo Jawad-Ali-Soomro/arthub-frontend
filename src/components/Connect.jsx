@@ -11,7 +11,11 @@ const WalletSection = ({ onClose }) => {
   }, []);
 
   return ReactDOM.createPortal(
-    <div className="connect-portal flex col" onClick={onClose}>
+    <div
+      className="connect-portal flex col"
+      style={{ borderRadius: "0" }}
+      onClick={onClose}
+    >
       <div
         className="main-connect flex col"
         style={{

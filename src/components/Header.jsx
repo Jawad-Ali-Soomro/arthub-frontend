@@ -93,7 +93,7 @@ const Header = () => {
         isVisible ? "header--visible" : "header--hidden"
       }`}
       style={{
-        background: `${isDarkMode ? "rgb(23, 20, 32)" : "rgb(250,250,250)"}`,
+        background: `${isDarkMode ? "#212121" : "rgb(250,250,250)"}`,
       }}
     >
       <div className="logo flex">
@@ -164,7 +164,7 @@ const Header = () => {
               showMenu ? "main-menu-active flex col" : "main-menu flex col"
             }
             style={{
-              background: `${isDarkMode ? "rgb(23, 20, 32)" : "white"}`,
+              background: `${isDarkMode ? "#212121" : "white"}`,
               border: `${
                 isDarkMode ? "1px solid rgba(255,255,255,.3)  " : "none"
               }`,
@@ -226,7 +226,7 @@ const Header = () => {
               className={profileMenu ? "menu-active flex col" : "menu flex col"}
               style={{
                 color: `${isDarkMode ? "rgba(255,255,255,1)" : "black"}`,
-                background: `${isDarkMode ? "rgb(23, 20, 32)" : "white"}`,
+                background: `${isDarkMode ? "#212121" : "white"}`,
                 border: `${
                   isDarkMode ? "1px solid rgba(255,255,255,.3)  " : "none"
                 }`,

@@ -11,7 +11,7 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
 
   /* Dark mode variables */
-  --background-color-dark: rgb(23, 20, 32);
+  --background-color-dark: #212121;
   --text-color-dark: #ffffff;
   --primary-color-dark: #bb86fc;
   --secondary-color-dark: #03dac6;

@@ -5,12 +5,16 @@ import { baseArtUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { BiSearch } from "react-icons/bi";
+import { BiMoney, BiSearch } from "react-icons/bi";
+import { BsFilter } from "react-icons/bs";
+import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
+import { GiPriceTag } from "react-icons/gi";
 
 const Art = () => {
   const navigate = useNavigate();
   const [main_data, set_data] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
     tags: "",
     price: "",
@@ -28,7 +32,8 @@ const Art = () => {
       console.error("Error fetching data:", error);
     }
   };
-
+  const [showTags, setShowTags] = useState(false);
+  const [showPrice, setShowPrice] = useState(false);
   const applyFilters = () => {
     let filtered = main_data;
 
@@ -76,6 +81,8 @@ const Art = () => {
     setFilteredData(filtered);
   };
 
+  const themeMode = window.localStorage.getItem("themeMode");
+
   useEffect(() => {
     fetch_data();
   }, []);
@@ -97,44 +104,107 @@ const Art = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          {/* <h1 className="flex col">Digital Art</h1> */}
-          <div className="search-bar flex">
-            <BiSearch className="icon" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchChange} // Capture search input
-            />
-          </div>
+          <h1 className="flex col">Digital Art</h1>
         </section>
-        <div className="suggestions flex col">
-          <div className="wrap flex">
-            <p onClick={() => setSearchQuery("Illustration")}>Illustration</p>
-            <p onClick={() => setSearchQuery("Illusion")}>Illusion</p>
-            <p onClick={() => setSearchQuery("Ai")}>Ai</p>
-            <p onClick={() => setSearchQuery("Surreal")}>Surreal</p>
-            <p onClick={() => setSearchQuery("Surrealism")}>Surrealism</p>
-            <p onClick={() => setSearchQuery("Crypto Art")}>Crypto Art</p>
-            <p onClick={() => setSearchQuery("Digital Art")}>Digital Art</p>
-            <p onClick={() => setSearchQuery("Abstract")}>Abstract</p>
-            <p onClick={() => setSearchQuery("Photography")}>Photography</p>
-            <p onClick={() => setSearchQuery("Painting")}>Painting</p>
-          </div>
-        </div>
-        {filteredData.length === 0 ? (
+
+        <div className="main-data wrapper flex">
+          {showFilters == true ? (
+            <div className="left filters flex col">
+              <div className="search-bar flex">
+                <BiSearch className="icon" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange} // Capture search input
+                />
+              </div>
+              <div
+                className="toggler flex"
+                onClick={() => setShowTags(!showTags)}
+              >
+                <p>Category</p>
+                {showTags == true ? <LiaAngleUpSolid /> : <LiaAngleDownSolid />}
+              </div>
+              {showTags == true ? (
+                <div className="suggestions flex col">
+                  <div className="wrap flex">
+                    <p onClick={() => setSearchQuery("Illustration")}>
+                      Illustration
+                    </p>
+                    <p onClick={() => setSearchQuery("Illusion")}>Illusion</p>
+                    <p onClick={() => setSearchQuery("Ai")}>Ai</p>
+                    <p onClick={() => setSearchQuery("Surreal")}>Surreal</p>
+                    <p onClick={() => setSearchQuery("Crypto Art")}>
+                      Crypto Art
+                    </p>
+                    <p onClick={() => setSearchQuery("Digital Art")}>
+                      Digital Art
+                    </p>
+                    <p onClick={() => setSearchQuery("Abstract")}>Abstract</p>
+                    <p onClick={() => setSearchQuery("Photography")}>
+                      Photography
+                    </p>
+                    <p onClick={() => setSearchQuery("Painting")}>Painting</p>
+                  </div>
+                </div>
+              ) : (
+                this
+              )}
+              <div className="line border"></div>
+              <div
+                className="toggler flex"
+                onClick={() => setShowPrice(!showPrice)}
+              >
+                <p>PRICE RANGE</p>
+                {showPrice == true ? (
+                  <LiaAngleUpSolid />
+                ) : (
+                  <LiaAngleDownSolid />
+                )}
+              </div>
+              {showPrice == true ? (
+                <div className="search-bar flex money">
+                  <GiPriceTag />
+                  <input type="text" />
+                </div>
+              ) : (
+                this
+              )}
+              {showPrice == true ? (
+                <div className="btns flex col">
+                  <button
+                    style={{
+                      border: "none",
+                      color: `${themeMode == "dark" ? "black" : "white "}`,
+                      background: `${themeMode == "dark" ? "white" : "black"}`,
+                    }}
+                  >
+                    Apply
+                  </button>
+                  <button
+                    className="border"
+                    style={{ background: "transparent" }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              ) : (
+                this
+              )}
+            </div>
+          ) : (
+            this
+          )}
           <div
-            className="loader flex"
-            style={{
-              marginTop: "150px",
-              justifyContent: "space-around",
-            }}
+            className="right flex"
+            style={{ paddingLeft: `${showFilters == true ? "100px" : "0"}` }}
           >
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-            {/* <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." />
-            <img src="/loader.svg" style={{ width: "50px" }} alt="Loading..." /> */}
-          </div>
-        ) : (
-          <div className="main-data wrapper flex">
+            <div
+              className="filter-btn flex"
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              <BsFilter />
+            </div>
             {filteredData.map((card_item) => (
               <div className="card flex col" key={card_item._id}>
                 <div className="img-sect flex">
@@ -181,7 +251,7 @@ const Art = () => {
               </div>
             ))}
           </div>
-        )}
+        </div>
       </div>
       <Footer />
     </div>
