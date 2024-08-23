@@ -3,7 +3,7 @@ import "../styles/Deal.scss";
 import { ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
 
-const Deal = ({ onClose, image, title, price }) => {
+const Deal = ({ onClose, title, price }) => {
   const [value, setValue] = useState(0);
   const themeMode = window.localStorage.getItem("themeMode");
 

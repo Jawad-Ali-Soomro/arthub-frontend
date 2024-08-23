@@ -7,7 +7,7 @@ const WalletSection = ({ onClose }) => {
   const themeMode = window.localStorage.getItem("themeMode");
 
   useEffect(() => {
-    checkWalletExtensions(); // If this function has side effects, you might still need to call it.
+    checkWalletExtensions(); // Checking Installation of Metamask
   }, []);
 
   return ReactDOM.createPortal(

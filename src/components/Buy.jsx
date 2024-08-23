@@ -1,17 +1,15 @@
+// Importing Links
 import React from "react";
 import "../styles/Deal.scss";
 import { ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
 
-const Buy = ({ onClose, image, title, price }) => {
+const Buy = ({ onClose, title, price }) => {
+  // Getting Balance From Metamask Extension
   const balance = window.sessionStorage.getItem("balance") || "0";
-  const themeMode = window.localStorage.getItem("themeMode");
-  const playTapSound = () => {
-    const tapSound = new Audio("/tap.mp3");
-    tapSound.play();
-  };
 
+  // Getting themeMode from localStorage
+  const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div className="main-deal flex" onClick={onClose}>
       <div
@@ -102,7 +100,6 @@ const Buy = ({ onClose, image, title, price }) => {
                 background: themeMode === "dark" ? "white" : "black",
                 color: themeMode === "dark" ? "black" : "white",
               }}
-              onClick={playTapSound}
             >
               buy
             </button>
