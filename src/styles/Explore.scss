@@ -84,8 +84,10 @@
         width: 40px;
         height: 40px;
         border: 1px solid #9090903e;
+        background: white;
+        color: black;
         position: absolute;
-        top: -0px;
+        top: -50px;
         right: 0;
         border-radius: 10px;
         cursor: pointer;
@@ -93,8 +95,7 @@
       .card {
         // align-items: start;
         gap: 20px;
-        // padding-top: 14px;
-        margin-top: 100px;
+        margin-top: 50px;
         .img-sect {
           width: 370px;
           height: 410px;
@@ -117,10 +118,9 @@
           h2 {
             font-weight: 600;
             font-size: 1rem;
-            margin-left: 20px;
           }
           .owner {
-            width: 340px;
+            width: 330px;
             justify-content: space-between;
             .left {
               display: flex;
@@ -135,7 +135,6 @@
               h3 {
                 font-size: 1rem;
                 font-weight: 500;
-                padding-top: 8px;
                 text-transform: capitalize;
               }
             }
@@ -154,20 +153,20 @@
           .border {
             width: 330px;
             margin-top: 10px;
-            margin-left: 20px;
           }
           .price {
-            width: 350px;
+            width: 330px;
             justify-content: space-between;
             h2 {
-              font-size: 1rem;
-              font-weight: 600;
+              font-family: "Inter";
+              font-size: 0.9rem;
+              font-weight: 400;
             }
             button {
               width: 100px;
               height: 35px;
               text-transform: uppercase;
-              border: 1px solid;
+              border: 1px solid gray;
               background: transparent;
               font-size: 0.7rem;
               color: inherit;

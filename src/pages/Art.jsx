@@ -209,7 +209,6 @@ const Art = () => {
               <div className="card flex col" key={card_item._id}>
                 <div className="img-sect flex">
                   <img
-                    className="border"
                     src={card_item.image}
                     alt={card_item.title}
                     onClick={() => navigate(`/art/${card_item._id}`)}
@@ -224,7 +223,6 @@ const Art = () => {
                   >
                     <div className="left flex">
                       <img
-                        className="border"
                         src={card_item.owner.avatar}
                         alt={card_item.owner.username}
                       />
@@ -237,8 +235,8 @@ const Art = () => {
                   <div className="price flex">
                     <h2>
                       {" "}
-                      {card_item?.price} ~ $
-                      {Math.round(card_item?.price * ethToUsd)}{" "}
+                      {card_item?.price}Ξ($
+                      {Math.round(card_item?.price * ethToUsd)}){" "}
                     </h2>
                     <button
                       className="flex"

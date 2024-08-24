@@ -70,6 +70,7 @@
       justify-content: start;
       h2 {
         font-weight: 600;
+        font-family: "Inter";
       }
     }
     .btns {
@@ -224,8 +225,9 @@
           width: 330px;
           justify-content: space-between;
           h2 {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 400;
+            font-family: "Inter";
           }
           button {
             width: 100px;

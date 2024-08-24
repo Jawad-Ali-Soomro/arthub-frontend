@@ -98,7 +98,7 @@ const Top = () => {
             </div>
             <div
               className="line border"
-              style={{ width: "340px", marginLeft: "20px" }}
+              style={{ width: "380px" }}
               data-aos-delay="1200"
               data-aos="fade-right"
             ></div>
@@ -108,8 +108,8 @@ const Top = () => {
               data-aos="fade-right"
             >
               <h2>
-                {main_data?.price} ~{" "}
-                <span>${Math.round(main_data?.price * ethToUsd)}</span>
+                {main_data?.price} Ξ{" "}
+                <span>(${Math.round(main_data?.price * ethToUsd)})</span>
               </h2>
               <button
                 className="border"

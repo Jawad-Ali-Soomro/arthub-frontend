@@ -172,7 +172,7 @@ const MainArt = () => {
             <div className="line"></div>
             <div className="price flex">
               <p>PRICE</p> &nbsp; : &nbsp;
-              {main_data?.price} ~ ${Math.round(main_data?.price * ethToUsd)}
+              {main_data?.price}Ξ(${Math.round(main_data?.price * ethToUsd)})
               {main_data?.price >= 1000 ? (
                 <div
                   className="tag-main flex"
@@ -286,8 +286,10 @@ const MainArt = () => {
                     <div className="line border"></div>
                     <div className="price flex">
                       <h2>
-                        {card_item?.price} ~{" "}
-                        <span>${Math.round(card_item?.price * ethToUsd)}</span>
+                        {card_item?.price}Ξ{""}
+                        <span style={{ fontFamily: "Inter" }}>
+                          (${Math.round(card_item?.price * ethToUsd)})
+                        </span>
                       </h2>
                       <button
                         onClick={() => navigate(`/art/${card_item?._id}`)}

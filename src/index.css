@@ -56,8 +56,7 @@ div,
 button,
 img,
 input {
-  border-radius: 20px;
-  /* transition: 0.3s; */
+  border-radius: 10px;
 }
 
 button {
@@ -90,3 +89,7 @@ button:hover {
     transform: translateY(5px);
   }
 } */
+
+.price {
+  font-family: "Inter";
+}
