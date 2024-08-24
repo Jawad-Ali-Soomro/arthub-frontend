@@ -5,10 +5,11 @@ import { baseArtUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { BiMoney, BiSearch } from "react-icons/bi";
+import { BiFilter, BiMoney, BiSearch } from "react-icons/bi";
 import { BsFilter } from "react-icons/bs";
 import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
 import { GiPriceTag } from "react-icons/gi";
+import { CiFilter } from "react-icons/ci";
 
 const Art = () => {
   const navigate = useNavigate();
@@ -203,7 +204,7 @@ const Art = () => {
               className="filter-btn flex"
               onClick={() => setShowFilters(!showFilters)}
             >
-              <BsFilter />
+              <CiFilter />
             </div>
             {filteredData.map((card_item) => (
               <div className="card flex col" key={card_item._id}>

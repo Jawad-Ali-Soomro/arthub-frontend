@@ -159,10 +159,22 @@ const MainSeries = () => {
                 <h2>{main_data?.art[0]?.title}</h2>
                 <div className="line border"></div>
                 <div className="price flex">
-                  <h2>
-                    {main_data?.art[0]?.price} ~{" "}
-                    <span>
-                      ${Math.round(main_data?.art[0]?.price * ethToUsd)}
+                  <h2
+                    style={{
+                      fontFamily: "Inter",
+                      fontSize: ".9rem",
+                      fontWeight: "400",
+                    }}
+                  >
+                    {main_data?.art[0]?.price}Ξ{""}
+                    <span
+                      style={{
+                        fontFamily: "Inter",
+                        fontSize: ".9rem",
+                        fontWeight: "400",
+                      }}
+                    >
+                      (${Math.round(main_data?.art[0]?.price * ethToUsd)})
                     </span>
                   </h2>
                   <button
@@ -226,9 +238,23 @@ const MainSeries = () => {
                     </div>
                     <div className="line border"></div>
                     <div className="price flex">
-                      <h2>
-                        {card_item?.price} ~{" "}
-                        <span>${Math.round(card_item?.price * ethToUsd)}</span>
+                      <h2
+                        style={{
+                          fontFamily: "Inter",
+                          fontSize: ".9rem",
+                          fontWeight: 400,
+                        }}
+                      >
+                        {card_item?.price}Ξ{""}
+                        <span
+                          style={{
+                            fontFamily: "Inter",
+                            fontSize: ".9rem",
+                            fontWeight: 400,
+                          }}
+                        >
+                          (${Math.round(card_item?.price * ethToUsd)})
+                        </span>
                       </h2>
                       <button
                         onClick={() => navigate(`/art/${card_item?._id}`)}

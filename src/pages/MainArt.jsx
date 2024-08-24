@@ -150,11 +150,7 @@ const MainArt = () => {
                     navigate(`/series/${main_data?.series[0]._id}`)
                   }
                 >
-                  <img
-                    className="border"
-                    src={main_data?.series[0]?.image}
-                    alt=""
-                  />
+                  <img src={main_data?.series[0]?.image} alt="" />
                   <div className="flex col" style={{ alignItems: "start" }}>
                     <p
                       style={{ fontSize: ".4rem", textTransform: "uppercase" }}

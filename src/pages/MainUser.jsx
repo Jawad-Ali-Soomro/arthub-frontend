@@ -181,7 +181,7 @@ const MainUser = () => {
                       this
                     )}{" "}
                   </p>
-                  <p>
+                  <p style={{ fontFamily: "Inter" }}>
                     {main_data?.wallet_address.substring(0, 5)}...
                     {main_data?.wallet_address.substring(
                       main_data?.wallet_address.length - 5
@@ -212,7 +212,7 @@ const MainUser = () => {
             </div>
             <div className="join border flex">
               <p>Joined</p>
-              <p>
+              <p style={{ fontFamily: "Inter" }}>
                 {day} - {monthInText} - {year}
               </p>
             </div>
@@ -294,10 +294,22 @@ const MainUser = () => {
                 <h2 style={{ fontSize: "1rem" }}>{main_data?.art[0]?.title}</h2>
                 <div className="line border"></div>
                 <div className="price flex">
-                  <h2>
-                    {main_data?.art[0]?.price} ~{" "}
-                    <span>
-                      ${Math.round(main_data?.art[0]?.price * ethToUsd)}
+                  <h2
+                    style={{
+                      fontSize: ".9rem",
+                      fontWeight: "400",
+                      fontFamily: "Inter",
+                    }}
+                  >
+                    {main_data?.art[0]?.price}Ξ{""}
+                    <span
+                      style={{
+                        fontSize: ".9rem",
+                        fontWeight: "400",
+                        fontFamily: "Inter",
+                      }}
+                    >
+                      ( ${Math.round(main_data?.art[0]?.price * ethToUsd)})
                     </span>
                   </h2>
                   <button
@@ -371,10 +383,22 @@ const MainUser = () => {
                       </div>
                       <div className="line border"></div>
                       <div className="price flex">
-                        <h2>
-                          {card_item?.price} ~{" "}
-                          <span>
-                            ${Math.round(card_item?.price * ethToUsd)}
+                        <h2
+                          style={{
+                            fontSize: ".9rem",
+                            fontWeight: "400",
+                            fontFamily: "Inter",
+                          }}
+                        >
+                          {card_item?.price}Ξ{""}
+                          <span
+                            style={{
+                              fontSize: ".9rem",
+                              fontWeight: "400",
+                              fontFamily: "Inter",
+                            }}
+                          >
+                            ( ${Math.round(card_item?.price * ethToUsd)})
                           </span>
                         </h2>
                         <button
@@ -417,7 +441,12 @@ const MainUser = () => {
                       </div>
                       <div className="line border"></div>
                       <div className="price flex">
-                        <h2 style={{ fontSize: "1rem" }}>~</h2>
+                        <h2>
+                          {card_item?.price} ~{" "}
+                          <span>
+                            ${Math.round(card_item?.price * ethToUsd)}
+                          </span>
+                        </h2>
                         <button
                           style={{ cursor: "pointer" }}
                           onClick={() => navigate(`/series/${card_item?._id}`)}
