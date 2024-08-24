@@ -170,7 +170,7 @@ const Art = () => {
               ) : (
                 this
               )}
-              {showPrice == true ? (
+              {/* {showPrice == true ? (
                 <div className="btns flex col">
                   <button
                     style={{
@@ -190,7 +190,7 @@ const Art = () => {
                 </div>
               ) : (
                 this
-              )}
+              )} */}
             </div>
           ) : (
             this
