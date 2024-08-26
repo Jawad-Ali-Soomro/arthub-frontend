@@ -91,7 +91,7 @@ const MainUser = () => {
           toast.success(`Following ${main_data?.username}!`, {
             style: {
               borderRadius: "20px",
-              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              background: themeMode == "dark" ? "#212121" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
               boxShadow: "none",
@@ -107,7 +107,7 @@ const MainUser = () => {
           toast.success(`Unfollowing ${main_data?.username}!`, {
             style: {
               borderRadius: "20px",
-              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              background: themeMode == "dark" ? "#212121" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
               boxShadow: "none",
@@ -129,7 +129,7 @@ const MainUser = () => {
       toast.error("Please Connect Wallet!", {
         style: {
           borderRadius: "20px",
-          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          background: themeMode == "dark" ? "#212121" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
           border: "1px solid #808090",
@@ -466,7 +466,7 @@ const MainUser = () => {
           <div
             className="wrapper flex col"
             style={{
-              background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+              background: `${themeMode == "dark" ? "#212121" : "white"}`,
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -496,7 +496,7 @@ const MainUser = () => {
           <div
             className="wrapper flex col"
             style={{
-              background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+              background: `${themeMode == "dark" ? "#212121" : "white"}`,
             }}
             onClick={(e) => e.stopPropagation()}
           >

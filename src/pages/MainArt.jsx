@@ -330,7 +330,7 @@ const MainArt = () => {
             className="information border flex col"
             onClick={(e) => e.stopPropagation()}
             style={{
-              background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+              background: `${themeMode == "dark" ? "#212121" : "white"}`,
               color: `${themeMode == "dark" ? "white" : "black"}`,
             }}
           >

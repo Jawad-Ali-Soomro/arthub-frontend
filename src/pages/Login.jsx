@@ -36,7 +36,7 @@ const Login = ({ onClose }) => {
       toast.error("Fill All The Fileds!", {
         style: {
           borderRadius: "20px",
-          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          background: themeMode == "dark" ? "#212121" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
           border: "1px solid #808090",
@@ -57,7 +57,7 @@ const Login = ({ onClose }) => {
           toast.loading("Redirecting!", {
             style: {
               borderRadius: "20px",
-              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              background: themeMode == "dark" ? "#212121" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
               border: "1px solid #808090",
@@ -72,7 +72,7 @@ const Login = ({ onClose }) => {
         toast.error("Error Logging In!", {
           style: {
             borderRadius: "20px",
-            background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+            background: themeMode == "dark" ? "#212121" : "white",
             color: themeMode == "dark" ? "white" : "black",
             fontFamily: "Poppins",
             border: "1px solid #808090",
@@ -113,7 +113,7 @@ const Login = ({ onClose }) => {
       toast.error("Fill All The Fields!", {
         style: {
           borderRadius: "20px",
-          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          background: themeMode == "dark" ? "#212121" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
           border: "1px solid #808090",
@@ -124,7 +124,7 @@ const Login = ({ onClose }) => {
       toast.error("Please Upload Avatar!", {
         style: {
           borderRadius: "20px",
-          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          background: themeMode == "dark" ? "#212121" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
           border: "1px solid #808090",
@@ -153,7 +153,7 @@ const Login = ({ onClose }) => {
           toast.error("Email Already Exists!", {
             style: {
               borderRadius: "20px",
-              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              background: themeMode == "dark" ? "#212121" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
               border: "1px solid #808090",
@@ -164,7 +164,7 @@ const Login = ({ onClose }) => {
           toast.success("Account Created!", {
             style: {
               borderRadius: "20px",
-              background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+              background: themeMode == "dark" ? "#212121" : "white",
               color: themeMode == "dark" ? "white" : "black",
               fontFamily: "Poppins",
               border: "1px solid #808090",
@@ -187,7 +187,7 @@ const Login = ({ onClose }) => {
         toast.error("Error While Creating Account!", {
           style: {
             borderRadius: "20px",
-            background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+            background: themeMode == "dark" ? "#212121" : "white",
             color: themeMode == "dark" ? "white" : "black",
             fontFamily: "Poppins",
             border: "1px solid #808090",
@@ -218,7 +218,7 @@ const Login = ({ onClose }) => {
       toast.error("Please Upload Avatar!", {
         style: {
           borderRadius: "20px",
-          background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
+          background: themeMode == "dark" ? "#212121" : "white",
           color: themeMode == "dark" ? "white" : "black",
           fontFamily: "Poppins",
           border: "1px solid #808090",
@@ -234,7 +234,7 @@ const Login = ({ onClose }) => {
         className="login-wrap flex col border"
         style={{
           transform: loginStep ? "translateX(0%)" : "translateX(400%)",
-          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
+          background: `${themeMode == "dark" ? "#212121" : "white"}`,
           color: `${themeMode == "dark" ? "white" : "black"}`,
         }}
         onClick={(e) => e.stopPropagation()}
@@ -282,6 +282,8 @@ const Login = ({ onClose }) => {
               height: "35px",
               width: "120px",
               marginLeft: "190px",
+              fontSize: ".6rem",
+              fontWeight: 700,
             }}
             onClick={handleLoginSubmit}
           >
@@ -297,11 +299,11 @@ const Login = ({ onClose }) => {
         </div>
       </div>
       <div
-        className="register-wrap flex col"
+        className="register-wrap flex col border"
         onClick={(e) => e.stopPropagation()}
         style={{
           transform: loginStep ? "translateX(600%)" : "translateX(0%)",
-          background: `${themeMode == "dark" ? "rgb(30,20,30)" : "white"}`,
+          background: `${themeMode == "dark" ? "#212121" : "white"}`,
           color: `${themeMode == "dark" ? "white" : "black"}`,
         }}
       >
@@ -385,6 +387,8 @@ const Login = ({ onClose }) => {
                   height: "35px",
                   width: "120px",
                   marginLeft: "190px",
+                  fontSize: ".6rem",
+                  fontWeight: 500,
                 }}
                 onClick={imageUrl == "" ? this : handleRegisterSubmit}
               >

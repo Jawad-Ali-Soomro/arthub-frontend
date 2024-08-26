@@ -173,9 +173,7 @@ const Profile = () => {
             <div
               className="wrap flex border"
               style={{
-                background: `${
-                  themeMode == "dark" ? "rgb(23,20,32)" : "white"
-                }`,
+                background: `${themeMode == "dark" ? "#212121" : "white"}`,
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -198,9 +196,7 @@ const Profile = () => {
             <div
               className="wrap flex border"
               style={{
-                background: `${
-                  themeMode == "dark" ? "rgb(23,20,32)" : "white"
-                }`,
+                background: `${themeMode == "dark" ? "#212121" : "white"}`,
               }}
               onClick={(e) => e.stopPropagation()}
             >

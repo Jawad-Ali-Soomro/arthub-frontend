@@ -228,7 +228,12 @@ const Series = () => {
                         src={card_item.owner.avatar}
                         alt={card_item.owner.username}
                       />
-                      <h3 style={{ textTransform: "lowercase" }}>
+                      <h3
+                        style={{
+                          textTransform: "lowercase",
+                          paddingTop: "10px",
+                        }}
+                      >
                         @{card_item.owner.username.split(" ")}
                       </h3>
                     </div>

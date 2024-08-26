@@ -16,7 +16,7 @@ const Buy = ({ onClose, title, price }) => {
         className="main-wrap flex col"
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: themeMode === "dark" ? "rgb(30,20,32)" : "white",
+          background: themeMode === "dark" ? "#212121" : "white",
         }}
       >
         <div className="wrap flex">

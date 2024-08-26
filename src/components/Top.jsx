@@ -108,7 +108,7 @@ const Top = () => {
               data-aos="fade-right"
             >
               <h2>
-                {main_data?.price} Ξ{" "}
+                {main_data?.price}Ξ{""}
                 <span>(${Math.round(main_data?.price * ethToUsd)})</span>
               </h2>
               <button

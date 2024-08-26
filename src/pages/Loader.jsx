@@ -7,7 +7,7 @@ const Loader = () => {
       className="flex col"
       style={{
         height: "100vh",
-        background: `${themeMode == "dark" ? "rgb(23,20,32)" : "white"}`,
+        background: `${themeMode == "dark" ? "#212121" : "white"}`,
         borderRadius: "0",
         color: `${themeMode == "dark" ? "white" : "black"}`,
         overflow: "hidden",
