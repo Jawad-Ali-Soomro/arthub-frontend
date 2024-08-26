@@ -186,7 +186,7 @@
       gap: 20px;
       .search-bar {
         transition: 0.3s;
-        width: 350px;
+        width: 300px;
         height: 40px;
         border: 1px solid #9090909d;
         left: calc(50% - 400px);
@@ -198,7 +198,7 @@
           width: 5%;
         }
         input {
-          width: 300px;
+          width: 250px;
           padding-left: 10px;
           height: 100%;
           border: none;
@@ -212,14 +212,13 @@
         box-shadow: 0 0 5px #9090903e;
       }
       .line {
-        width: 330px;
+        width: 300px;
         border: 1px solid #9090903e;
       }
       .toggler {
-        width: 330px;
+        width: 300px;
         justify-content: space-between;
         cursor: pointer;
-
         p {
           font-weight: 600;
           text-transform: uppercase;
@@ -232,10 +231,10 @@
         .wrap {
           flex-wrap: wrap;
           gap: 10px;
-          max-width: 350px;
+          max-width: 300px;
           p {
             font-size: 0.5rem;
-            width: 108px;
+            width: 91px;
             display: flex;
             justify-content: center;
             height: 30px;

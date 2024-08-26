@@ -35,6 +35,7 @@ const Art = () => {
   };
   const [showTags, setShowTags] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
+  const [showCurreny, setshowCurreny] = useState(false);
   const applyFilters = () => {
     let filtered = main_data;
 
@@ -171,27 +172,63 @@ const Art = () => {
               ) : (
                 this
               )}
-              {/* {showPrice == true ? (
-                <div className="btns flex col">
-                  <button
-                    style={{
-                      border: "none",
-                      color: `${themeMode == "dark" ? "black" : "white "}`,
-                      background: `${themeMode == "dark" ? "white" : "black"}`,
-                    }}
-                  >
-                    Apply
-                  </button>
-                  <button
-                    className="border"
-                    style={{ background: "transparent" }}
-                  >
-                    Remove
-                  </button>
+              <div className="line border"></div>
+              <div
+                className="toggler flex"
+                onClick={() => setshowCurreny(!showCurreny)}
+              >
+                <p>Status</p>
+                {showCurreny == true ? (
+                  <LiaAngleUpSolid />
+                ) : (
+                  <LiaAngleDownSolid />
+                )}
+              </div>
+              {showCurreny == true ? (
+                <div
+                  className="currency flex col"
+                  style={{ alignItems: "start", width: "300px", gap: "10px" }}
+                >
+                  <div className="wrap flex" style={{ gap: "5px" }}>
+                    <input type="checkbox" id="upcoming" />
+                    <label
+                      htmlFor="upcoming"
+                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                    >
+                      Upcoming
+                    </label>
+                  </div>
+                  <div className="wrap flex" style={{ gap: "5px" }}>
+                    <input type="checkbox" id="live" />
+                    <label
+                      htmlFor="live"
+                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                    >
+                      Live Offers
+                    </label>
+                  </div>
+                  <div className="wrap flex" style={{ gap: "5px" }}>
+                    <input type="checkbox" id="auctions" />
+                    <label
+                      htmlFor="auctions"
+                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                    >
+                      Live Auctions
+                    </label>
+                  </div>
+                  <div className="wrap flex" style={{ gap: "5px" }}>
+                    <input type="checkbox" id="reserved" />
+                    <label
+                      htmlFor="reserved"
+                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                    >
+                      Reserved Price
+                    </label>
+                  </div>
                 </div>
               ) : (
                 this
-              )} */}
+              )}
             </div>
           ) : (
             this

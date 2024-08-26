@@ -441,12 +441,7 @@ const MainUser = () => {
                       </div>
                       <div className="line border"></div>
                       <div className="price flex">
-                        <h2>
-                          {card_item?.price} ~{" "}
-                          <span>
-                            ${Math.round(card_item?.price * ethToUsd)}
-                          </span>
-                        </h2>
+                        <h2></h2>
                         <button
                           style={{ cursor: "pointer" }}
                           onClick={() => navigate(`/series/${card_item?._id}`)}
