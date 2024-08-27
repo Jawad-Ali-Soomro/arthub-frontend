@@ -5,8 +5,7 @@ import { baseArtUrl, ethToUsd } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { BiFilter, BiMoney, BiSearch } from "react-icons/bi";
-import { BsFilter } from "react-icons/bs";
+import { BiSearch } from "react-icons/bi";
 import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
 import { GiPriceTag } from "react-icons/gi";
 import { CiFilter } from "react-icons/ci";
@@ -22,7 +21,7 @@ const Art = () => {
     priceCondition: "less",
     artist: "",
   });
-  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetch_data = async () => {
     try {

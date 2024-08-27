@@ -5,10 +5,7 @@ import { ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
 
 const Buy = ({ onClose, title, price }) => {
-  // Getting Balance From Metamask Extension
   const balance = window.sessionStorage.getItem("balance") || "0";
-
-  // Getting themeMode from localStorage
   const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div className="main-deal flex" onClick={onClose}>

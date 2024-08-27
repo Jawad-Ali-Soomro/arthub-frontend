@@ -4,7 +4,7 @@ import "../styles/Popup.scss";
 const Popup = ({ message, onConfirm, onCancel }) => {
   const handleConfirm = () => {
     onConfirm();
-    onCancel(); // Close the popup after confirming
+    onCancel();
   };
 
   const themeMode = window.localStorage.getItem("themeMode");
