@@ -74,20 +74,25 @@
       gap: 20px;
       #active {
         position: relative;
+        margin-bottom: 10px;
+        transition: 0.3s;
       }
       #active::after {
         content: "";
-        width: 15px;
-        border: 1px solid;
+        width: 5px;
+        height: 5px;
+        background: #808090;
         position: absolute;
         top: 20px;
-        left: calc(50% - 9.5px);
+        border-radius: 50%;
+        left: calc(50% - 2.5px);
       }
       li {
         font-size: 0.8rem;
         text-transform: uppercase;
         list-style: none;
-        font-weight: 400;
+        font-weight: 500;
+        transition: 0.3s;
         cursor: pointer;
         .transform {
           transform: rotate(90deg);

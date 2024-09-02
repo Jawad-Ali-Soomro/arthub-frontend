@@ -98,6 +98,8 @@ const Art = () => {
     setSearchQuery(e.target.value);
   };
 
+  const [hoveredImage, setHoveredImage] = useState(null);
+
   return (
     <div>
       <Header />
@@ -318,14 +320,25 @@ const Art = () => {
                     style={{ cursor: "pointer" }}
                     onClick={() => navigate(`/user/${card_item.owner._id}`)}
                   >
-                    <div className="left flex">
+                    <div className="left flex" style={{ position: "relative" }}>
                       <img
+                        onMouseEnter={() => setHoveredImage(card_item?._id)}
+                        onMouseLeave={() => setHoveredImage(null)}
                         src={card_item.owner.avatar}
                         alt={card_item.owner.username}
                       />
                       <h3 style={{ textTransform: "lowercase" }}>
                         @{card_item.owner.username.split(" ")}
                       </h3>
+                      {hoveredImage === card_item?._id && (
+                        <div className="image-popup">
+                          <img
+                            src={card_item?.owner?.avatar}
+                            alt={card_item?.owner?.username}
+                            className="large-image"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="border"></div>

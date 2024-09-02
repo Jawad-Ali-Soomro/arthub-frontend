@@ -12,17 +12,7 @@ const Support = () => {
   const [showSysMessage, setShowSysMessage] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleClickOrEnter = (e) => {
-    addEventListener("keypress", (e) => {
-      if (e.key == "Enter" || e.type === "click") {
-        setShowMessage(true);
-        setShowSysMessage(true);
-        setIsDisabled(true);
-      } else {
-        console.log("Error In Logic");
-      }
-    });
-  };
+  const handleClickOrEnter = (e) => {};
 
   return (
     <div className="support-wrap">
@@ -78,8 +68,17 @@ const Support = () => {
             />
             <div
               className="icon flex"
-              onClick={handleClickOrEnter}
-              onKeyUp={handleClickOrEnter}
+              onClick={function (e) {
+                addEventListener("keypress", (e) => {
+                  if (e.key == "Enter" || e.type === "click") {
+                    setShowMessage(true);
+                    setShowSysMessage(true);
+                    setIsDisabled(true);
+                  } else {
+                    console.log("Error In Logic");
+                  }
+                });
+              }}
               disabled={isDisabled}
               style={{ background: `${isDisabled ? "gray" : "#212121"}` }}
             >

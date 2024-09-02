@@ -3,7 +3,7 @@ const baseUserUrl = "http://localhost:8080/api/v1/user";
 const baseArtUrl = "http://localhost:8080/api/v1/art";
 const baseSeriesUrl = "http://localhost:8080/api/v1/series";
 const baseBidUrl = "http://localhost:8080/api/v1/bid";
-const ethToUsd = 3800;
+const ethToUsd = 2494.73;
 
 // https://arthub-backend-psi.vercel.app
 
