@@ -231,7 +231,7 @@ const Login = ({ onClose }) => {
   return ReactDOM.createPortal(
     <div className="login-portal flex" onClick={onClose}>
       <div
-        className="login-wrap flex col border"
+        className="login-wrap flex col"
         style={{
           transform: loginStep ? "translateX(0%)" : "translateX(400%)",
           background: `${themeMode == "dark" ? "#212121" : "white"}`,
@@ -299,7 +299,7 @@ const Login = ({ onClose }) => {
         </div>
       </div>
       <div
-        className="register-wrap flex col border"
+        className="register-wrap flex col"
         onClick={(e) => e.stopPropagation()}
         style={{
           transform: loginStep ? "translateX(600%)" : "translateX(0%)",
@@ -388,7 +388,7 @@ const Login = ({ onClose }) => {
                   width: "120px",
                   marginLeft: "190px",
                   fontSize: ".6rem",
-                  fontWeight: 500,
+                  fontWeight: 700,
                 }}
                 onClick={imageUrl == "" ? this : handleRegisterSubmit}
               >

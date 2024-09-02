@@ -41,6 +41,7 @@ const Profile = () => {
       <Header />
       <div className="main-profile flex">
         <div className="dashboard flex col">
+          <h1>Dashboard</h1>
           <div className="wrapper flex col">
             <div className="wrap flex">
               <h1>
@@ -104,20 +105,6 @@ const Profile = () => {
                 )}
               </div>
               <div className="card flex border col">
-                <p>Total # auctions</p>
-                {profile_data?.auctions == undefined ? (
-                  <img
-                    src="/loader.svg"
-                    style={{ width: "50px", marginTop: "10px" }}
-                    alt=""
-                  />
-                ) : (
-                  <h2>{profile_data?.auctions?.length}</h2>
-                )}
-              </div>
-            </div>
-            <div className="wrap flex">
-              <div className="card flex border col">
                 <p>Total # events</p>
                 {profile_data?.events == undefined ? (
                   <img
@@ -129,6 +116,8 @@ const Profile = () => {
                   <h2>{profile_data?.events?.length}</h2>
                 )}
               </div>
+            </div>
+            {/* <div className="wrap flex">
               <div className="card flex border col">
                 <p>Total # followers</p>
                 {profile_data?.followers == undefined ? (
@@ -153,7 +142,7 @@ const Profile = () => {
                   <h2>{profile_data?.following?.length}</h2>
                 )}
               </div>
-            </div>
+            </div> */}
           </div>
           {/* <div className="btns-logout flex">
               <button

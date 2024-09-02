@@ -14,13 +14,13 @@ import MainUser from "./pages/MainUser";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import Auction from "./pages/rareItems";
 import TrendingArt from "./pages/TrendingArt";
 import TrendingSeries from "./pages/TrendingSeries";
 import CreateArt from "./pages/CreateArt";
-import Artists from "./pages/Community";
+import Artists from "./pages/Artists";
 import { useState } from "react";
 import Loader from "./pages/Loader";
+import { BsCloudSlash } from "react-icons/bs";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -28,9 +28,22 @@ function App() {
   setTimeout(() => {
     setShowLoader(false);
   }, [5000]);
+
   return (
     <>
       <Toaster position="top-left" />
+      {!navigator.onLine ? (
+        <div className="offline-message flex col">
+          <BsCloudSlash className="icon" />
+          <h1>Oops</h1>
+          <p>
+            It looks like you lost your connection.{" "}
+            <span>Check it & try again!</span>
+          </p>
+        </div>
+      ) : (
+        this
+      )}
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

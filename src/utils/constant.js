@@ -31,6 +31,15 @@ const checkWalletExtensions = () => {
   return { installedWallets, recommendedWallets };
 };
 
+function formatPrice(price) {
+  if (price >= 1000) {
+    return (price / 1000).toFixed(1) + "K";
+  } else if (price >= 100000) {
+    return Math.round(price);
+  }
+  return Math.round(price.toString());
+}
+
 export {
   baseArtUrl,
   baseUserUrl,
@@ -38,4 +47,5 @@ export {
   ethToUsd,
   baseBidUrl,
   checkWalletExtensions,
+  formatPrice,
 };

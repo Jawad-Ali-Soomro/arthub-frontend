@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
-import { baseArtUrl, ethToUsd } from "../utils/constant";
+import { baseArtUrl, ethToUsd, formatPrice } from "../utils/constant";
 import "../styles/Explore.scss";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { BiSearch } from "react-icons/bi";
 import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
-import { GiPriceTag } from "react-icons/gi";
-import { CiFilter } from "react-icons/ci";
+import { BsFilter } from "react-icons/bs";
+import { CgClose } from "react-icons/cg";
 
 const Art = () => {
   const navigate = useNavigate();
@@ -82,8 +82,6 @@ const Art = () => {
     setFilteredData(filtered);
   };
 
-  const themeMode = window.localStorage.getItem("themeMode");
-
   useEffect(() => {
     fetch_data();
   }, []);
@@ -97,7 +95,7 @@ const Art = () => {
   };
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value); // Update search query state
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -105,7 +103,18 @@ const Art = () => {
       <Header />
       <div className="explore-wrapper flex col">
         <section className="flex">
-          <h1 className="flex col">Digital Art</h1>
+          <h1 className="flex col">
+            Digital Art{" "}
+            <span
+              style={{
+                fontFamily: "Inter",
+                fontSize: ".9rem",
+                fontWeight: "600",
+              }}
+            >
+              {filteredData?.length} Results Found
+            </span>
+          </h1>
         </section>
 
         <div className="main-data wrapper flex">
@@ -156,7 +165,7 @@ const Art = () => {
                 className="toggler flex"
                 onClick={() => setShowPrice(!showPrice)}
               >
-                <p>PRICE RANGE</p>
+                <p>MEDIA</p>
                 {showPrice == true ? (
                   <LiaAngleUpSolid />
                 ) : (
@@ -164,9 +173,38 @@ const Art = () => {
                 )}
               </div>
               {showPrice == true ? (
-                <div className="search-bar flex money">
-                  <GiPriceTag />
-                  <input type="text" />
+                <div
+                  className="currency flex col"
+                  style={{ alignItems: "start", width: "300px", gap: "10px" }}
+                >
+                  <div className="wrap flex" style={{ gap: "5px" }}>
+                    <input type="checkbox" id="Image" />
+                    <label
+                      htmlFor="Image"
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "600",
+                        cursor: "pointer",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Image
+                    </label>
+                  </div>
+                  <div className="wrap flex" style={{ gap: "5px" }}>
+                    <input type="checkbox" id="Video" />
+                    <label
+                      htmlFor="Video"
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "600",
+                        cursor: "pointer",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Video
+                    </label>
+                  </div>
                 </div>
               ) : (
                 this
@@ -192,7 +230,12 @@ const Art = () => {
                     <input type="checkbox" id="upcoming" />
                     <label
                       htmlFor="upcoming"
-                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "600",
+                        textTransform: "uppercase",
+                        cursor: "pointer",
+                      }}
                     >
                       Upcoming
                     </label>
@@ -201,7 +244,12 @@ const Art = () => {
                     <input type="checkbox" id="live" />
                     <label
                       htmlFor="live"
-                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "600",
+                        textTransform: "uppercase",
+                        cursor: "pointer",
+                      }}
                     >
                       Live Offers
                     </label>
@@ -210,7 +258,13 @@ const Art = () => {
                     <input type="checkbox" id="auctions" />
                     <label
                       htmlFor="auctions"
-                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "600",
+
+                        textTransform: "uppercase",
+                        cursor: "pointer",
+                      }}
                     >
                       Live Auctions
                     </label>
@@ -219,7 +273,13 @@ const Art = () => {
                     <input type="checkbox" id="reserved" />
                     <label
                       htmlFor="reserved"
-                      style={{ fontSize: ".8rem", cursor: "pointer" }}
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "600",
+
+                        textTransform: "uppercase",
+                        cursor: "pointer",
+                      }}
                     >
                       Reserved Price
                     </label>
@@ -240,7 +300,7 @@ const Art = () => {
               className="filter-btn flex"
               onClick={() => setShowFilters(!showFilters)}
             >
-              <CiFilter />
+              {showFilters == true ? <CgClose /> : <BsFilter />}
             </div>
             {filteredData.map((card_item) => (
               <div className="card flex col" key={card_item._id}>
@@ -273,7 +333,7 @@ const Art = () => {
                     <h2>
                       {" "}
                       {card_item?.price}Ξ($
-                      {Math.round(card_item?.price * ethToUsd)}){" "}
+                      {formatPrice(card_item?.price * ethToUsd)}){" "}
                     </h2>
                     <button
                       className="flex"

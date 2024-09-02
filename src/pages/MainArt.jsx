@@ -345,7 +345,10 @@ const MainArt = () => {
             </div>
             <div className="card flex">
               <p>Price</p>
-              <p>{main_data?.price}</p>
+              <p>
+                {main_data?.price}
+                <sup>(eth)</sup>
+              </p>
             </div>
             <div className="card flex">
               <p>contract address</p>
@@ -354,14 +357,13 @@ const MainArt = () => {
                 {main_data?.owner?.wallet_address.substring(
                   main_data?.owner?.wallet_address.length - 5
                 )}
+                <span>COPY</span>
               </p>
             </div>
             <div className="card flex">
               <p>dimension</p>
               <p style={{ textTransform: "lowercase" }}>
-                {imageDimensions.width}px{" "}
-                <span style={{ fontSize: ".4rem" }}>x</span>{" "}
-                {imageDimensions.height}px
+                {imageDimensions.width}px * {imageDimensions.height}px
               </p>
             </div>
             <div className="tags flex">

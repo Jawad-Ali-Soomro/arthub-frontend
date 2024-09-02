@@ -19,7 +19,7 @@ const WalletSection = ({ onClose }) => {
       <div
         className="main-connect flex col"
         style={{
-          background: themeMode === "dark" ? "rgb(30,20,30)" : "white",
+          background: themeMode === "dark" ? "#212121" : "white",
           color: themeMode === "dark" ? "white" : "black",
         }}
         onClick={(e) => e.stopPropagation()}

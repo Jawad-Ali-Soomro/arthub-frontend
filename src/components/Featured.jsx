@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Featured.scss";
 import axios from "axios";
-import { baseArtUrl, ethToUsd } from "../utils/constant";
+import { baseArtUrl, ethToUsd, formatPrice } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
 
 const Featured = () => {
   const navigate = useNavigate();
   const [main_data, set_data] = useState();
+  const [hoveredImage, setHoveredImage] = useState(null);
 
   const fetch_data = async () => {
     try {
@@ -62,7 +63,6 @@ const Featured = () => {
             >
               <div className="img-sect flex">
                 <img
-                  className="border"
                   src={card_item?.image}
                   alt={card_item?.title}
                   onClick={() => navigate(`/art/${card_item?._id}`)}
@@ -77,20 +77,30 @@ const Featured = () => {
                 >
                   <div className="left flex">
                     <img
-                      className="border"
                       src={card_item?.owner?.avatar}
+                      onMouseEnter={() => setHoveredImage(card_item?._id)}
+                      onMouseLeave={() => setHoveredImage(null)}
                       alt={card_item?.owner?.username.split(" ")}
                     />
                     <h3 style={{ textTransform: "lowercase" }}>
                       @{card_item?.owner?.username.split(" ")}
                     </h3>
+                    {hoveredImage === card_item?._id && (
+                      <div className="image-popup">
+                        <img
+                          src={card_item?.owner?.avatar}
+                          alt={card_item?.owner?.username}
+                          className="large-image"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="border"></div>
                 <div className="price flex">
                   <h2>
                     {card_item?.price}Ξ
-                    <span>(${Math.round(card_item?.price * ethToUsd)})</span>
+                    <span>(${formatPrice(card_item?.price * ethToUsd)})</span>
                   </h2>
                   <button
                     className="flex"

@@ -31,6 +31,7 @@
       align-items: start;
       gap: 20px;
       padding-top: 14px;
+      position: relative;
       .img-sect {
         width: 370px;
         height: 410px;
@@ -58,11 +59,13 @@
         .owner {
           width: 340px;
           justify-content: space-between;
+          margin-left: 20px;
           .left {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 5px;
+            position: relative;
             img {
               width: 30px;
               height: 30px;
@@ -71,8 +74,28 @@
             h3 {
               font-size: 1rem;
               font-weight: 500;
-              padding-top: 8px;
               text-transform: capitalize;
+            }
+            .image-popup {
+              width: 200px;
+              height: 200px;
+              position: absolute;
+              top: -210px;
+              left: -80px;
+              animation: scale 0.3s linear;
+              img {
+                width: 200px;
+                height: 200px;
+                border-radius: 20px;
+              }
+            }
+            @keyframes scale {
+              25% {
+                scale: 0.9;
+              }
+              75% {
+                scale: 1;
+              }
             }
           }
           .more {

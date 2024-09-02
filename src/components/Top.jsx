@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { baseArtUrl, ethToUsd } from "../utils/constant";
+import { baseArtUrl, ethToUsd, formatPrice } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
 import "../styles/Top.scss";
 
@@ -57,6 +57,8 @@ const Top = () => {
 
   const image = main_data?.image;
 
+  const [hoveredImage, setHoveredImage] = useState(null);
+
   return (
     <div className="top-wrap flex" style={{ backgroundImage: image }}>
       <div
@@ -92,9 +94,25 @@ const Top = () => {
               onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
               data-aos-delay="900"
               data-aos="fade-right"
+              style={{ position: "relative" }}
             >
-              <img className="border" src={main_data?.owner?.avatar} alt="" />
+              <img
+                className="border"
+                src={main_data?.owner?.avatar}
+                alt=""
+                onMouseEnter={() => setHoveredImage(main_data?.owner?.avatar)}
+                onMouseLeave={() => setHoveredImage(null)}
+              />
               <h2>@{main_data?.owner?.handle.split(" ")}</h2>
+              {hoveredImage === main_data?.owner?.avatar && (
+                <div className="image-popup">
+                  <img
+                    src={main_data?.owner?.avatar}
+                    alt={main_data?.owner?.username}
+                    className="large-image"
+                  />
+                </div>
+              )}
             </div>
             <div
               className="line border"
@@ -109,7 +127,7 @@ const Top = () => {
             >
               <h2>
                 {main_data?.price}Ξ{""}
-                <span>(${Math.round(main_data?.price * ethToUsd)})</span>
+                <span>(${formatPrice(main_data?.price * ethToUsd)})</span>
               </h2>
               <button
                 className="border"

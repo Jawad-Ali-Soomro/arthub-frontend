@@ -6,12 +6,15 @@ import Footer from "../components/Footer";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
+  BiAt,
   BiCopy,
   BiImage,
+  BiKey,
   BiLayer,
   BiLogoFacebook,
   BiLogoInstagram,
   BiLogoTwitter,
+  BiUser,
 } from "react-icons/bi";
 import toast from "react-hot-toast";
 import { MdVerified } from "react-icons/md";
@@ -150,6 +153,12 @@ const MainUser = () => {
   const [show_profile, setShow] = useState(false);
 
   const onClose = () => setShow(false);
+
+  const [updateUser, setUpdate] = useState(false);
+  const hideUpdate = () => {
+    setUpdate(false);
+  };
+
   return (
     <div>
       <Header />
@@ -248,7 +257,7 @@ const MainUser = () => {
             {main_data?._id === userData?._id ? (
               <div className="btns flex">
                 <button
-                  onClick={() => navigate("/profile")}
+                  onClick={() => setUpdate(true)}
                   style={{
                     background: "white",
                     color: "black",
@@ -317,7 +326,7 @@ const MainUser = () => {
                     style={{ cursor: "pointer" }}
                     onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
                   >
-                    Buy
+                    {main_data?._id === userData?._id ? "edit" : "BUY"}
                   </button>
                 </div>
               </div>
@@ -405,7 +414,7 @@ const MainUser = () => {
                           style={{ cursor: "pointer" }}
                           onClick={() => navigate(`/art/${card_item?._id}`)}
                         >
-                          Buy
+                          {main_data?._id === userData?._id ? "edit" : "BUY"}
                         </button>
                       </div>
                       <div className="btns flex"></div>
@@ -519,6 +528,106 @@ const MainUser = () => {
 
       {show_profile && (
         <ImageModal imageUrl={main_data?.avatar} onClose={onClose} />
+      )}
+
+      {updateUser ? (
+        <div className="update-wrap flex col" onClick={() => hideUpdate()}>
+          <div
+            className="update-container flex col"
+            style={{
+              background: `${themeMode === "dark" ? "#212121" : "white"}`,
+              padding: "30px",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h1>Update Account</h1>
+            <div
+              className="wrap flex border flex"
+              style={{ marginTop: "20px" }}
+            >
+              <BiUser />
+              <input type="text" placeholder={main_data?.username} />
+            </div>
+            <div className="wrap flex border flex">
+              <BiAt />
+              <input type="text" placeholder={main_data?.handle} />
+            </div>
+            <div className="wrap flex border flex">
+              <BiLogoTwitter />
+              <input
+                type="text"
+                placeholder={
+                  main_data?.links[0]?.twitter
+                    ? main_data?.links[0]?.twitter
+                    : "Twitter"
+                }
+              />
+            </div>
+            <div className="wrap flex border flex">
+              <BiLogoInstagram />
+              <input
+                type="text"
+                placeholder={
+                  main_data?.links[0]?.instagram
+                    ? main_data?.links[0]?.instagram
+                    : "Instagram"
+                }
+              />
+            </div>
+            <div className="wrap flex border flex">
+              <BiLogoFacebook />
+              <input
+                type="text"
+                placeholder={
+                  main_data?.links[0]?.facebook
+                    ? main_data?.links[0]?.facebook
+                    : "Facebook"
+                }
+              />
+            </div>
+            <div
+              className="wrap flex border flex"
+              style={{ height: "100px", cursor: "pointer" }}
+            >
+              <input
+                type="file"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  opacity: "0",
+                  position: "absolute",
+                  zIndex: 10,
+                  cursor: "pointer",
+                }}
+              />
+              <p
+                className="flex col"
+                style={{
+                  position: "absolute",
+                  gap: "5px",
+                  fontWeight: 600,
+                  zIndex: 0,
+                }}
+              >
+                Update Avatar
+                <span style={{ fontSize: ".8rem", fontWeight: 400 }}>
+                  Drag & Drop File To Upload!
+                </span>
+              </p>
+            </div>
+            <button
+              className="border"
+              style={{
+                background: `${themeMode == "dark" ? "white" : "#212121"}`,
+                color: `${themeMode == "dark" ? "black" : "white"}`,
+              }}
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      ) : (
+        this
       )}
       <Footer />
     </div>

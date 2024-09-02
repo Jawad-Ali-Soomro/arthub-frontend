@@ -32,6 +32,8 @@ const FeaturedSeries = () => {
   useEffect(() => {
     fetch_data();
   }, []);
+
+  const [hoveredImage, setHoveredImage] = useState(null);
   return (
     <div className="featuerd-wrap flex col">
       <h1 data-aos="fade-right">Featured Series</h1>
@@ -61,7 +63,6 @@ const FeaturedSeries = () => {
             <div className="card flex col" key={card_item._id}>
               <div className="img-sect flex">
                 <img
-                  className="border"
                   src={card_item?.image}
                   alt={card_item?.title}
                   onClick={() => navigate(`/series/${card_item?._id}`)}
@@ -76,13 +77,23 @@ const FeaturedSeries = () => {
                 >
                   <div className="left flex">
                     <img
-                      className="border"
+                      onMouseEnter={() => setHoveredImage(card_item?._id)}
+                      onMouseLeave={() => setHoveredImage(null)}
                       src={card_item?.owner?.avatar}
                       alt={card_item?.owner?.username}
                     />
                     <h3 style={{ textTransform: "lowercase" }}>
                       @{card_item?.owner?.username.split(" ")}
                     </h3>
+                    {hoveredImage === card_item?._id && (
+                      <div className="image-popup">
+                        <img
+                          src={card_item?.owner?.avatar}
+                          alt={card_item?.owner?.username}
+                          className="large-image"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="border"></div>

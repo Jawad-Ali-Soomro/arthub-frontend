@@ -6,6 +6,7 @@ import FeaturedSeries from "../components/feturedSeries";
 import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import Top from "../components/Top";
+import Support from "../components/Support";
 
 const Home = () => {
   document.title = "Artchain";
@@ -58,6 +59,7 @@ const Home = () => {
           </div>
         </div>
       </div> */}
+      <Support />
       <Footer />
     </div>
   );

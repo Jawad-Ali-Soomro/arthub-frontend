@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { baseArtUrl, baseUserUrl, ethToUsd } from "../utils/constant";
+import {
+  baseArtUrl,
+  baseUserUrl,
+  ethToUsd,
+  formatPrice,
+} from "../utils/constant";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
@@ -94,7 +99,7 @@ const Spotlight = () => {
                   <div className="price flex">
                     <h2>
                       {card_item?.price}Ξ{""}
-                      <span>(${Math.round(card_item?.price * ethToUsd)})</span>
+                      <span>(${formatPrice(card_item?.price * ethToUsd)})</span>
                     </h2>
                     <button
                       className="flex"

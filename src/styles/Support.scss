@@ -1,0 +1,120 @@
+.support-wrap {
+  position: fixed;
+  bottom: 50px;
+  right: 10vh;
+  .icon {
+    background: white;
+    color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .wrapper {
+    width: 250px;
+    height: 400px;
+    background: white;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    gap: 10px;
+    img {
+      width: 50px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-family: "Inter";
+    }
+    p {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .message {
+      border: 1px solid #80808070;
+      width: 250px;
+      height: 40px;
+      margin-top: 200px;
+      input {
+        width: 200px;
+        padding-left: 10px;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+      }
+      .icon {
+        width: 40px;
+        height: 40px;
+        background: #212121;
+        color: white;
+      }
+    }
+    .user-message {
+      position: absolute;
+      height: auto;
+      right: 30px;
+      max-width: 200px;
+      background: #333;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 10px 10px 0px 10px;
+      p {
+        font-size: 0.7rem;
+      }
+    }
+    .user-message::after {
+      content: "Delieverd";
+      position: absolute;
+      top: 120%;
+      color: black;
+      font-size: 0.7rem;
+      right: 0;
+    }
+    .close {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      background: #212121;
+      color: white;
+      top: 20px;
+      right: 20px;
+    }
+    .sys-message {
+      position: absolute;
+      height: auto;
+      left: 30px;
+      max-width: 200px;
+      background: #eee;
+      color: black;
+      padding: 10px 25px;
+      bottom: 100px;
+      border-radius: 0px 10px 10px 10px;
+      p {
+        font-size: 0.7rem;
+      }
+    }
+    .sys-message::after {
+      content: "Bot . Replied";
+      position: absolute;
+      top: 120%;
+      color: black;
+      font-size: 0.7rem;
+      right: 0;
+    }
+  }
+  .wrapper::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background: white;
+    border: 1px solid #80808070;
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    transform: rotate(0deg);
+    border-width: 0 1px 1px 0px;
+  }
+}
