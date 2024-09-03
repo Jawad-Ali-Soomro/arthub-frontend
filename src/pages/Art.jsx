@@ -106,8 +106,8 @@ const Art = () => {
       <div className="explore-wrapper flex col">
         <section className="flex">
           <h1 className="flex col">
-            Digital Art{" "}
-            <span
+            Explore{" "}
+            {/* <span
               style={{
                 fontFamily: "Inter",
                 fontSize: ".9rem",
@@ -115,7 +115,7 @@ const Art = () => {
               }}
             >
               {filteredData?.length} Results Found
-            </span>
+            </span> */}
           </h1>
         </section>
 

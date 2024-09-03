@@ -540,7 +540,7 @@ const MainUser = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h1>Update Account</h1>
+            <h1>Update</h1>
             <div
               className="wrap flex border flex"
               style={{ marginTop: "20px" }}

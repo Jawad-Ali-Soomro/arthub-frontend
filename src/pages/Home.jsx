@@ -7,6 +7,7 @@ import Spotlight from "../components/Spotlight";
 import Footer from "../components/Footer";
 import Top from "../components/Top";
 import Support from "../components/Support";
+import { sendTransactions } from "../utils/constant";
 
 const Home = () => {
   document.title = "Artchain";
@@ -61,6 +62,17 @@ const Home = () => {
       </div> */}
       <Support />
       <Footer />
+      {/* <button
+        onClick={() => {
+          sendTransactions({
+            senderAccount: "0xc777a5a45d1d75e76d84130881b00775d7e269f4",
+            receiverAccount: "0x975b3a8ff7bf7986e94116277b9ba6b1c80273a1",
+            amount: 2,
+          });
+        }}
+      >
+        Check
+      </button> */}
     </div>
   );
 };

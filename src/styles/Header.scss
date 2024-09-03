@@ -76,16 +76,15 @@
         position: relative;
         margin-bottom: 10px;
         transition: 0.3s;
+        background: inherit;
       }
       #active::after {
         content: "";
-        width: 5px;
-        height: 5px;
-        background: #808090;
+        width: 10px;
+        border: 1px solid;
         position: absolute;
         top: 20px;
-        border-radius: 50%;
-        left: calc(50% - 2.5px);
+        left: calc(50% - 5px);
       }
       li {
         font-size: 0.8rem;
