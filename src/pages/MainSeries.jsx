@@ -62,7 +62,10 @@ const MainSeries = () => {
             <div className="wrap flex">
               <img src={main_data?.image} alt="" />
               <div className="info flex col">
-                <p className="flex" style={{ fontSize: ".6rem" }}>
+                <p
+                  className="flex"
+                  style={{ fontSize: ".6rem", marginTop: "20px" }}
+                >
                   <BiLayer /> SERIES
                 </p>
                 <h1 style={{ marginBottom: "20px" }}>{main_data?.title}</h1>

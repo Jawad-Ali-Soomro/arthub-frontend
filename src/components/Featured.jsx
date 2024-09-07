@@ -36,9 +36,9 @@ const Featured = () => {
   return (
     <div className="featuerd-wrap flex col">
       <h1 data-aos="fade-right">Featured Art</h1>
-      <p data-aos="fade-right" data-aos-delay="300">
-        Explore the boundless creativity and inspiration of featured art.
-      </p>
+      {/* <p data-aos="fade-right" data-aos-delay="300">
+        explore the boundless creativity and inspiration of featured art.
+      </p> */}
       {main_data == undefined ? (
         <div
           className="wrapper flex"

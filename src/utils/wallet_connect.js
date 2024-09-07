@@ -25,7 +25,7 @@ export const connectMetaMask = async () => {
         // Display success message
         toast.success("Wallet Connected!", {
           style: {
-            borderRadius: "8px",
+            borderRadius: "20px",
             background: themeMode == "dark" ? "rgb(23,20,32)" : "white",
             color: themeMode == "dark" ? "white" : "black",
             fontFamily: "Poppins",

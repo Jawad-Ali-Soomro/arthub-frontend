@@ -190,7 +190,7 @@ const MainUser = () => {
                       this
                     )}{" "}
                   </p>
-                  <p style={{ fontFamily: "Inter" }}>
+                  <p>
                     {main_data?.wallet_address.substring(0, 5)}...
                     {main_data?.wallet_address.substring(
                       main_data?.wallet_address.length - 5

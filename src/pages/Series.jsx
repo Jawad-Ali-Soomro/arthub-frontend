@@ -229,7 +229,6 @@ const Series = () => {
                       <h3
                         style={{
                           textTransform: "lowercase",
-                          paddingTop: "10px",
                         }}
                       >
                         @{card_item.owner.username.split(" ")}
