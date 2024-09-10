@@ -2,9 +2,40 @@ const baseUserUrl = "http://localhost:8080/api/v1/user";
 const baseArtUrl = "http://localhost:8080/api/v1/art";
 const baseSeriesUrl = "http://localhost:8080/api/v1/series";
 const baseBidUrl = "http://localhost:8080/api/v1/bid";
-const ethToUsd = 2494.73;
 
-// https://arthub-backend-psi.vercel.app
+let ethToUsd = 2494.73; // Default value for global usage
+
+// Function to update the ETH price
+const updateethToUsd = async () => {
+  try {
+    const response = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+    );
+    const data = await response.json();
+    ethToUsd = data.ethereum.usd;
+    console.log(`Updated ETH price: $${ethToUsd}`);
+  } catch (error) {
+    console.error("Error fetching ETH price:", error);
+  }
+};
+
+// Check if the window.ethereum is available
+if (window.ethereum) {
+  // Request account access if needed
+  window.ethereum
+    .request({ method: "eth_requestAccounts" })
+    .then((accounts) => {
+      // Accounts now exposed, you can interact with the user
+
+      // Update the ETH price when accounts are exposed
+      updateethToUsd();
+    })
+    .catch((error) =>
+      console.error("User rejected account access or other error:", error)
+    );
+} else {
+  console.log("Ethereum provider not found. Install MetaMask.");
+}
 
 // https://arthub-backend-psi.vercel.app
 
@@ -69,7 +100,8 @@ export {
   baseArtUrl,
   baseUserUrl,
   baseSeriesUrl,
-  ethToUsd,
+  ethToUsd, // Export the global ethToUsd variable
+  updateethToUsd, // Export the function to update ethToUsd
   baseBidUrl,
   checkWalletExtensions,
   formatPrice,
