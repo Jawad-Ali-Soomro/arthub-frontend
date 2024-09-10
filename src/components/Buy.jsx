@@ -1,11 +1,12 @@
 // Importing Links
 import React from "react";
 import "../styles/Deal.scss";
-import { ethToUsd } from "../utils/constant";
+import { ethToUsd, sendTransactions } from "../utils/constant";
 import { Link } from "react-router-dom";
 
-const Buy = ({ onClose, title, price }) => {
+const Buy = ({ onClose, title, price, receiverAddress }) => {
   const balance = window.sessionStorage.getItem("balance") || "0";
+  const currentAddress = window.sessionStorage.getItem("token");
   const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div className="main-deal flex" onClick={onClose}>
@@ -97,6 +98,13 @@ const Buy = ({ onClose, title, price }) => {
                 background: themeMode === "dark" ? "white" : "black",
                 color: themeMode === "dark" ? "black" : "white",
               }}
+              onClick={() =>
+                sendTransactions({
+                  senderAccount: currentAddress,
+                  receiverAccount: receiverAddress,
+                  amount: price,
+                })
+              }
             >
               buy
             </button>

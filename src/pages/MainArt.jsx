@@ -410,6 +410,7 @@ const MainArt = () => {
           onClose={onClose}
           title={main_data?.title}
           price={main_data?.price}
+          receiverAddress={main_data?.owner?.wallet_address}
         />
       )}
       <Footer />
