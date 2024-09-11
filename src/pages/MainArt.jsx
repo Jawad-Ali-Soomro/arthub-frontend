@@ -284,7 +284,7 @@ const MainArt = () => {
                     <div className="price flex">
                       <h2>
                         {card_item?.price}Ξ{""}
-                        <span style={{ fontFamily: "Inter" }}>
+                        <span>
                           (${Math.round(card_item?.price * ethToUsd)})
                         </span>
                       </h2>

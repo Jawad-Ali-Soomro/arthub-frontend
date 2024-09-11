@@ -60,7 +60,7 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-      <Support />
+      {/* <Support /> */}
       <Footer />
       {/* <button
         onClick={() => {

@@ -164,7 +164,6 @@ const MainSeries = () => {
                 <div className="price flex">
                   <h2
                     style={{
-                      fontFamily: "Inter",
                       fontSize: ".9rem",
                       fontWeight: "400",
                     }}
@@ -172,7 +171,6 @@ const MainSeries = () => {
                     {main_data?.art[0]?.price}Ξ{""}
                     <span
                       style={{
-                        fontFamily: "Inter",
                         fontSize: ".9rem",
                         fontWeight: "400",
                       }}
@@ -243,7 +241,6 @@ const MainSeries = () => {
                     <div className="price flex">
                       <h2
                         style={{
-                          fontFamily: "Inter",
                           fontSize: ".9rem",
                           fontWeight: 400,
                         }}
@@ -251,7 +248,6 @@ const MainSeries = () => {
                         {card_item?.price}Ξ{""}
                         <span
                           style={{
-                            fontFamily: "Inter",
                             fontSize: ".9rem",
                             fontWeight: 400,
                           }}
