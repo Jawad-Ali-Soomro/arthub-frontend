@@ -8,6 +8,7 @@ import { baseUserUrl } from "../utils/constant";
 import axios from "axios";
 import toast from "react-hot-toast";
 import uploadToPinata from "../utils/upload";
+import { BiEnvelope, BiKey, BiUser } from "react-icons/bi";
 
 const loginPortal = document.getElementById("loginPortal");
 
@@ -245,7 +246,8 @@ const Login = ({ onClose }) => {
         />
         <h1>Welcome Back!</h1>
         <div className="form flex col">
-          <div className="input-wrap flex col">
+          <div className="input-wrap flex">
+            <BiEnvelope />
             <input
               type="text"
               placeholder="Enter Email..."
@@ -258,6 +260,7 @@ const Login = ({ onClose }) => {
             </div>
           </div>
           <div className="input-wrap flex">
+            <BiKey />
             <input
               type={showPass ? "text" : "password"}
               placeholder="Enter Password..."
@@ -314,7 +317,8 @@ const Login = ({ onClose }) => {
         <h1>Create An Account!</h1>
         <div className="wrap flex">
           <div className="form flex col">
-            <div className="input-wrap">
+            <div className="input-wrap flex">
+              <BiUser />
               <input
                 type="text"
                 placeholder="Enter Username"
@@ -326,7 +330,8 @@ const Login = ({ onClose }) => {
                 <FaAsterisk style={{ color: "red", fontSize: ".6rem" }} />
               </div>
             </div>
-            <div className="input-wrap">
+            <div className="input-wrap flex">
+              <BiEnvelope />
               <input
                 type="text"
                 placeholder="Enter Email"
@@ -339,6 +344,7 @@ const Login = ({ onClose }) => {
               </div>
             </div>
             <div className="input-wrap flex">
+              <BiKey />
               <input
                 type={showPass ? "text" : "password"}
                 placeholder="Enter Password..."

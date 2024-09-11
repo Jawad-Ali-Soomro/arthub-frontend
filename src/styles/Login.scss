@@ -29,9 +29,11 @@
       margin-top: 30px;
       gap: 15px;
       .input-wrap {
-        align-items: start;
+        align-items: center;
         gap: 5px;
         position: relative;
+        padding-left: 5px;
+        border: 1px solid #808090;
         .icon {
           width: 40px;
           height: 40px;
@@ -43,12 +45,10 @@
           width: 290px;
           height: 40px;
           border: none;
-          padding-left: 20px;
           background: transparent;
           outline: none;
           font-size: 0.8rem;
           color: inherit;
-          border: 1px solid #808090;
         }
       }
       button {
@@ -108,9 +108,11 @@
         margin-top: 30px;
         gap: 15px;
         .input-wrap {
-          align-items: start;
+          border: 1px solid #808080;
+          align-items: center;
           gap: 5px;
           position: relative;
+          padding-left: 10px;
           .icon {
             width: 40px;
             height: 40px;
@@ -123,13 +125,10 @@
             width: 290px;
             height: 40px;
             border: none;
-            padding-left: 20px;
             background: transparent;
             color: inherit;
             outline: none;
             font-size: 0.8rem;
-
-            border: 1px solid #808080;
           }
         }
         .text {
