@@ -82,7 +82,7 @@ const sendTransactions = async ({ senderAccount, receiverAccount, amount }) => {
       to: receiverAccount,
       gas: Number(21000).toString(16),
       gasPrice: Number(2500000).toString(16),
-      value: weiAmount, // Set the value to the amount in wei
+      value: weiAmount,
     },
   ];
 

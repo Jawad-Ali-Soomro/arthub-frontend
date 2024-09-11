@@ -219,6 +219,7 @@ const Header = () => {
               src={userData?.avatar}
               alt=""
               className="border"
+              style={{ width: "35px", height: "35px" }}
               onClick={() => setProfileMenu(!profileMenu) + setShowMenu(false)}
             />
             <div

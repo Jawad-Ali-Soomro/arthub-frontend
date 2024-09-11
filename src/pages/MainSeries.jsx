@@ -46,6 +46,8 @@ const MainSeries = () => {
 
   const onClose = () => setDeal(false) + setBuy(false);
 
+  console.log(main_data);
+
   return (
     <div>
       <Header />
@@ -87,17 +89,28 @@ const MainSeries = () => {
               </div>
             </div>
             <div className="join flex border">
-              <p>CREATOR</p>
+              <p>ARTS</p>
               <div className="flex" style={{ gap: "2px" }}>
-                <p style={{ fontSize: ".6rem", textTransform: "lowercase" }}>
-                  @{main_data?.owner?.username.split(" ")}
-                </p>
-                <img
+                <p style={{ paddingRight: "10px" }}>{main_data?.art?.length}</p>
+                {main_data?.art?.slice(0, 3)?.map((item) => {
+                  return (
+                    <img
+                      src={item?.image}
+                      alt=""
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  );
+                })}
+                {/* <img
                   style={{ width: "25px", height: "25px", borderRadius: "50%" }}
                   src={main_data?.owner?.avatar}
                   alt=""
                   className="border"
-                />
+                /> */}
               </div>
             </div>
             <div className="btns flex col">
