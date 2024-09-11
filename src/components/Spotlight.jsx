@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  baseArtUrl,
-  baseUserUrl,
-  ethToUsd,
-  formatPrice,
-} from "../utils/constant";
+import { baseUserUrl, ethToUsd, formatPrice } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 
 const Spotlight = () => {
   const [main_data, set_data] = useState();

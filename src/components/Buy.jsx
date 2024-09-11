@@ -1,4 +1,3 @@
-// Importing Links
 import React from "react";
 import "../styles/Deal.scss";
 import { ethToUsd, sendTransactions } from "../utils/constant";
