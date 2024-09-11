@@ -9,7 +9,6 @@ import {
   BiAt,
   BiCopy,
   BiImage,
-  BiKey,
   BiLayer,
   BiLogoFacebook,
   BiLogoInstagram,
@@ -540,7 +539,7 @@ const MainUser = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h1>Update</h1>
+            <h1>Update Profile</h1>
             <div
               className="wrap flex border flex"
               style={{ marginTop: "20px" }}
