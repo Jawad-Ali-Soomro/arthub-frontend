@@ -16,7 +16,7 @@ const Spotlight = () => {
   const fetch_data = async () => {
     try {
       const response = await axios.get(
-        `${baseUserUrl}/get/66b061bd9ddaf3bfd97d8608`
+        `${baseUserUrl}/get/66e102fec85c33fa8d758d35`
       );
       const featuredImages = response.data.data.art;
       const shuffledImages = shuffleArray(featuredImages);
@@ -49,7 +49,7 @@ const Spotlight = () => {
           Artist Spotlight : Botto{" "}
           <button
             className="border"
-            onClick={() => navigate("/user/66b061bd9ddaf3bfd97d8608")}
+            onClick={() => navigate("/user/66e102fec85c33fa8d758d35")}
           >
             See all
           </button>

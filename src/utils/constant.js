@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const baseUserUrl = "http://localhost:8080/api/v1/user";
 const baseArtUrl = "http://localhost:8080/api/v1/art";
 const baseSeriesUrl = "http://localhost:8080/api/v1/series";
@@ -87,10 +89,12 @@ const sendTransactions = async ({ senderAccount, receiverAccount, amount }) => {
   let result = await window.ethereum
     .request({ method: "eth_sendTransaction", params })
     .then((res) => {
-      console.log(res);
+      toast(res);
     })
     .catch((err) => {
-      console.log(err);
+      toast.error(
+        "Error : You" + err.message.split("MetaMask Tx Signature: User")
+      );
     });
 
   return result;

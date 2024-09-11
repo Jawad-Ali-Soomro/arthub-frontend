@@ -123,7 +123,7 @@ const Header = () => {
             id={location === "/explore/art" ? "active" : ""}
             onClick={() => navigate("/explore/art")}
           >
-            Art
+            Arts
           </li>
           <li
             className="icon"

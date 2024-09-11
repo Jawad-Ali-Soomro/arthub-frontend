@@ -3,11 +3,14 @@ import React from "react";
 import "../styles/Deal.scss";
 import { ethToUsd, sendTransactions } from "../utils/constant";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Buy = ({ onClose, title, price, receiverAddress }) => {
   const balance = window.sessionStorage.getItem("balance") || "0";
   const currentAddress = window.sessionStorage.getItem("token");
   const themeMode = window.localStorage.getItem("themeMode");
+  const userLoggedInId = window.localStorage.getItem("userId");
+
   return (
     <div className="main-deal flex" onClick={onClose}>
       <div
@@ -99,11 +102,13 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
                 color: themeMode === "dark" ? "black" : "white",
               }}
               onClick={() =>
-                sendTransactions({
-                  senderAccount: currentAddress,
-                  receiverAccount: receiverAddress,
-                  amount: price,
-                })
+                userLoggedInId !== null
+                  ? sendTransactions({
+                      senderAccount: currentAddress,
+                      receiverAccount: receiverAddress,
+                      amount: price,
+                    })
+                  : toast.error("Please Login To Buy!")
               }
             >
               buy

@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 import { BiSearch } from "react-icons/bi";
 import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
 import { BsFilter } from "react-icons/bs";
-import { CgClose } from "react-icons/cg";
 
 const Art = () => {
   const navigate = useNavigate();
@@ -301,8 +300,13 @@ const Art = () => {
             <div
               className="filter-btn flex"
               onClick={() => setShowFilters(!showFilters)}
+              style={{
+                border: `${
+                  showFilters == true ? "1px solid" : "1px solid #80808090"
+                }`,
+              }}
             >
-              {showFilters == true ? <CgClose /> : <BsFilter />}
+              <BsFilter />
             </div>
             {filteredData.map((card_item) => (
               <div className="card flex col" key={card_item._id}>

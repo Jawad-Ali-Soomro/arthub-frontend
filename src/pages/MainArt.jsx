@@ -4,9 +4,8 @@ import Header from "../components/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { baseArtUrl, baseUserUrl, ethToUsd } from "../utils/constant";
-import { BiCart, BiData, BiHeart, BiLike, BiScan } from "react-icons/bi";
-import { FaArrowDown, FaArrowUp, FaEthernet } from "react-icons/fa";
-import Skeleton from "react-loading-skeleton";
+import { BiHeart, BiScan } from "react-icons/bi";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import "react-loading-skeleton/dist/skeleton.css";
 import Footer from "../components/Footer";
 import ImageModal from "../components/ImageModal";
@@ -27,6 +26,8 @@ const MainArt = () => {
   const [buy_opt, set_buy] = useState(false);
   const themeMode = window.localStorage.getItem("themeMode");
   const [show_details, set_details] = useState(false);
+  // console.log(main_data?._id);
+
   const fetch_data = async () => {
     await axios
       .get(`${baseArtUrl}/get/art/${artId}`)
