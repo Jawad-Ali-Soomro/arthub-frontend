@@ -185,7 +185,7 @@ const Header = () => {
               onClick={() =>
                 userData
                   ? navigate("/deals")
-                  : toast.error("Please Login To View Notifications!")
+                  : toast.error("Please Login To View Deals!")
               }
             >
               Deals
