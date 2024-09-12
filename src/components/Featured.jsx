@@ -28,10 +28,11 @@ const Featured = () => {
     }
     return array;
   };
+  const themeMode = window.localStorage.getItem("themeMode");
 
   useEffect(() => {
     fetch_data();
-  }, []);
+  }, [themeMode]);
 
   return (
     <div className="featuerd-wrap flex col">
@@ -61,7 +62,14 @@ const Featured = () => {
               data-aos-delay="600"
               key={card_item._id}
             >
-              <div className="img-sect flex">
+              <div
+                className="img-sect flex"
+                style={{
+                  background: `${
+                    themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                  }`,
+                }}
+              >
                 <img
                   src={card_item?.image}
                   alt={card_item?.title}

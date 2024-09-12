@@ -154,6 +154,7 @@ const MainUser = () => {
   const onClose = () => setShow(false);
 
   const [updateUser, setUpdate] = useState(false);
+
   const hideUpdate = () => {
     setUpdate(false);
   };
@@ -175,7 +176,7 @@ const MainUser = () => {
               <img
                 src={main_data?.avatar}
                 onClick={() => setShow(true)}
-                className="border"
+                // className="border"
                 alt=""
               />
               <div className="info flex col">
@@ -290,9 +291,15 @@ const MainUser = () => {
             </div>
           ) : (
             <div className="card flex col">
-              <div className="img-sect flex">
+              <div
+                className="img-sect flex"
+                style={{
+                  background: `${
+                    themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                  }`,
+                }}
+              >
                 <img
-                  className="border"
                   src={main_data?.art[0]?.image}
                   alt=""
                   onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
@@ -366,6 +373,11 @@ const MainUser = () => {
                   <div className="card flex col" key={card_item?._id}>
                     <div
                       className="img-sect flex"
+                      style={{
+                        background: `${
+                          themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                        }`,
+                      }}
                       onClick={() => navigate(`/art/${card_item?._id}`)}
                     >
                       <img src={card_item?.image} alt="" />
@@ -424,6 +436,11 @@ const MainUser = () => {
                   <div className="card flex col" key={card_item?._id}>
                     <div
                       className="img-sect flex"
+                      style={{
+                        background: `${
+                          themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                        }`,
+                      }}
                       onClick={() => navigate(`/series/${card_item?._id}`)}
                     >
                       <img src={card_item?.image} alt="" />

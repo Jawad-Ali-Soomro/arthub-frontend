@@ -47,7 +47,7 @@ const MainSeries = () => {
   const onClose = () => setDeal(false) + setBuy(false);
 
   console.log(main_data);
-
+  const themeMode = window.localStorage.getItem("themeMode");
   return (
     <div>
       <Header />
@@ -163,7 +163,14 @@ const MainSeries = () => {
             </div>
           ) : (
             <div className="card flex col">
-              <div className="img-sect flex">
+              <div
+                className="img-sect flex"
+                style={{
+                  background: `${
+                    themeMode == "dark" ? "rgba(255,255,255,0.05)" : "#eee"
+                  }`,
+                }}
+              >
                 <img
                   className="border"
                   src={main_data?.art[0]?.image}
@@ -235,6 +242,11 @@ const MainSeries = () => {
                 <div className="card flex col" key={card_item?._id}>
                   <div
                     className="img-sect flex"
+                    style={{
+                      background: `${
+                        themeMode == "dark" ? "rgba(255,255,255,0.05)" : "#eee"
+                      }`,
+                    }}
                     onClick={() => navigate(`/art/${card_item?._id}`)}
                   >
                     <img src={card_item?.image} alt="" />
@@ -292,6 +304,7 @@ const MainSeries = () => {
       {showBuy && (
         <Buy
           title={"(series)" + main_data?.title}
+          receiverAddress={main_data?.owner?.wallet_address}
           price={totalPricesSum}
           onClose={onClose}
         />

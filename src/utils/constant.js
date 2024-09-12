@@ -92,9 +92,7 @@ const sendTransactions = async ({ senderAccount, receiverAccount, amount }) => {
       toast(res);
     })
     .catch((err) => {
-      toast.error(
-        "Error : You" + err.message.split("MetaMask Tx Signature: User")
-      );
+      toast.error("Error During Transaction Please Try Again!", err);
     });
 
   return result;

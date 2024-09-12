@@ -36,16 +36,13 @@
         width: 370px;
         height: 410px;
         overflow: hidden;
+        background: #eee;
         img {
           cursor: pointer;
-          width: 381px;
-          height: 411px;
-          transition: 0.3s;
-        }
-      }
-      .img-sect:hover {
-        img {
-          scale: 1.1;
+          max-width: 320px !important;
+          max-height: 350px !important;
+          object-fit: contain;
+          border-radius: 10px !important;
         }
       }
       .info {
@@ -124,8 +121,6 @@
             font-family: "Inter";
             font-size: 0.9rem;
             font-weight: 400;
-            span {
-            }
           }
           button {
             width: 100px;

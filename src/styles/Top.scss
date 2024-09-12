@@ -14,14 +14,12 @@
     align-items: center;
     display: flex;
     height: 550px;
+    background: #eee;
     img {
-      width: 500px;
-      height: 550px;
+      max-width: 300px !important;
+      max-height: 350px !important;
       transition: 0.3s;
       cursor: pointer;
-    }
-    img:hover {
-      scale: 1.1;
     }
   }
 

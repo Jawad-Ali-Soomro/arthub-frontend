@@ -170,27 +170,36 @@ const Header = () => {
               }`,
             }}
           >
-            <p>Profile</p>
+            <p
+              onClick={() =>
+                userData
+                  ? navigate(`/user/${userData?._id}`)
+                  : toast.error("Please Login To View Profile!")
+              }
+            >
+              Profile
+            </p>
+            <p
+              className="notify"
+              data-num={0}
+              onClick={() =>
+                userData
+                  ? navigate("/notifications")
+                  : toast.error("Please Login To View Notifications!")
+              }
+            >
+              Notification
+            </p>
+            <div className="line"></div>
             <p
               onClick={() =>
                 tokenId
                   ? navigate("/profile")
-                  : toast.error("Please Connect Wallet!", {
-                      style: {
-                        borderRadius: "20px",
-                        background: themeMode == "dark" ? "#212121" : "white",
-                        color: themeMode == "dark" ? "white" : "black",
-                        fontFamily: "Poppins",
-                        border: "1px solid #808090",
-                        boxShadow: "none",
-                      },
-                    })
+                  : toast.error("Please Login To View Dashboard!", {})
               }
             >
               Dashboard
             </p>
-            <div className="line"></div>
-            <p onClick={() => navigate("/rare")}>Rare Items</p>
             <p onClick={() => navigate("/trending-art")}>Featured Art</p>
             <p onClick={() => navigate("/trending-series")}>Featured Series</p>
             <div className="line"></div>

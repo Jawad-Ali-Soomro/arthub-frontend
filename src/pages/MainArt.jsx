@@ -12,6 +12,7 @@ import ImageModal from "../components/ImageModal";
 import Popup from "../components/DeletePopup";
 import Deal from "../components/Deal";
 import Buy from "../components/Buy";
+import toast from "react-hot-toast";
 
 const MainArt = () => {
   const [main_data, set_data] = useState();
@@ -51,9 +52,12 @@ const MainArt = () => {
   const closeModal = () => setShowImage(false);
   const [showPopup, setShowPopup] = useState(false);
 
-  const handleDelete = () => {
-    console.log("Item deleted");
+  const handleDelete = async () => {
+    const res = await axios.delete(`${baseArtUrl}/delete/${main_data?._id}`);
     setShowPopup(false);
+    toast.success(res.data.message);
+
+    navigate(`/user/${main_data?.owner?._id}`);
   };
 
   const handleCancel = () => {
@@ -82,7 +86,14 @@ const MainArt = () => {
     <div>
       <Header />
       <div className="main-art flex">
-        <div className="main-art-left">
+        <div
+          className="main-art-left"
+          style={{
+            background: `${
+              themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+            }`,
+          }}
+        >
           {main_data == undefined ? (
             <div className="wrap flex">
               <img src="/loader.svg" style={{ width: "50px" }} alt="" />
@@ -131,7 +142,7 @@ const MainArt = () => {
                 className="owner flex"
                 onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
               >
-                <img className="border" src={main_data?.owner?.avatar} alt="" />
+                <img src={main_data?.owner?.avatar} alt="" />
                 <div className="flex col" style={{ alignItems: "start" }}>
                   <p
                     style={{
@@ -263,6 +274,11 @@ const MainArt = () => {
                 <div className="card flex col" key={card_item?._id}>
                   <div
                     className="img-sect flex"
+                    style={{
+                      background: `${
+                        themeMode == "dark" ? "rgba(255,255,255,0.05)" : "#eee"
+                      }`,
+                    }}
                     onClick={() => navigate(`/art/${card_item?._id}`)}
                   >
                     <img src={card_item?.image} alt="" />
@@ -272,8 +288,13 @@ const MainArt = () => {
                     <div
                       className="owner flex"
                       onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+                      style={{ gap: "5px" }}
                     >
-                      <img src={main_data?.owner?.avatar} alt="" />
+                      <img
+                        style={{ border: "none" }}
+                        src={main_data?.owner?.avatar}
+                        alt=""
+                      />
                       <div className="wrap flex col">
                         <h2 style={{ textTransform: "lowercase" }}>
                           @{main_data?.owner?.username.split(" ")}

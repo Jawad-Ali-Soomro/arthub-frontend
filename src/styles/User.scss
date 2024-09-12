@@ -122,16 +122,12 @@
         overflow: hidden;
         img {
           cursor: pointer;
-          width: 381px;
-          height: 411px;
+          max-width: 320px;
+          max-height: 350px;
           transition: 0.3s;
         }
       }
-      .img-sect:hover {
-        img {
-          scale: 1.1;
-        }
-      }
+
       .info {
         align-items: start;
         gap: 10px;
@@ -237,15 +233,10 @@
         height: 410px;
         overflow: hidden;
         img {
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
+          cursor: pointer;
+          max-width: 320px;
+          max-height: 350px;
           transition: 0.3s;
-        }
-      }
-      .img-sect:hover {
-        img {
-          scale: 1.1;
         }
       }
       .info {
@@ -272,7 +263,6 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            border: 1px solid rgba($color: #fff, $alpha: 0.8);
           }
 
           .wrap {

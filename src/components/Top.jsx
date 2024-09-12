@@ -58,6 +58,7 @@ const Top = () => {
   const image = main_data?.image;
 
   const [hoveredImage, setHoveredImage] = useState(null);
+  const themeMode = window.localStorage.getItem("themeMode");
 
   return (
     <div className="top-wrap flex" style={{ backgroundImage: image }}>
@@ -65,7 +66,16 @@ const Top = () => {
         className="left-wrap flex col"
         style={{ alignItems: "start", gap: "20px" }}
       >
-        <div className="left" style={{ width: "380px", height: "410px" }}>
+        <div
+          className="left"
+          style={{
+            width: "380px",
+            height: "410px",
+            background: `${
+              themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+            }`,
+          }}
+        >
           {main_data == undefined ? (
             <div style={{ height: "550px" }}>
               <img src="/loader.svg" style={{ width: "50px" }} alt="" />

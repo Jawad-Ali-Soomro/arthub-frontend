@@ -5,13 +5,17 @@
   padding-left: 100px;
   padding-right: 100px;
   .main-art-left {
-    width: 550px;
-    height: 580px;
+    width: 800px;
+    background: #111;
+    height: 85vh;
     margin-top: 10vh;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
-      width: 550px;
-      height: 580px;
+      max-width: 550px;
+      max-height: 580px;
     }
   }
   .main-art-right {
@@ -171,16 +175,12 @@
         height: 410px;
         overflow: hidden;
         img {
-          width: 100%;
-          height: 100%;
+          max-width: 320px;
+          max-height: 350px;
           transition: 0.3s;
         }
       }
-      .img-sect:hover {
-        img {
-          scale: 1.1;
-        }
-      }
+
       .info {
         width: 100%;
         height: calc(100% + 10px);

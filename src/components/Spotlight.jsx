@@ -29,10 +29,10 @@ const Spotlight = () => {
     return array;
   };
 
+  const themeMode = window.localStorage.getItem("themeMode");
   useEffect(() => {
     fetch_data();
-  }, []);
-  const themeMode = window.localStorage.getItem("themeMode");
+  }, [themeMode]);
   return (
     <div>
       <div className="featuerd-wrap flex col" style={{ marginTop: "0px" }}>
@@ -79,9 +79,15 @@ const Spotlight = () => {
                 data-aos-delay="600"
                 key={card_item._id}
               >
-                <div className="img-sect flex">
+                <div
+                  className="img-sect flex"
+                  style={{
+                    background: `${
+                      themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                    }`,
+                  }}
+                >
                   <img
-                    className="border"
                     src={card_item?.image}
                     alt={card_item?.title}
                     onClick={() => navigate(`/art/${card_item?._id}`)}

@@ -21,6 +21,7 @@ import Artists from "./pages/Artists";
 import { useState } from "react";
 import Loader from "./pages/Loader";
 import { BsCloudSlash } from "react-icons/bs";
+import Notifications from "./pages/Notifications";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -67,6 +68,7 @@ function App() {
             element={<CreateArt />}
           ></Route>
           <Route path="/artists" element={<Artists />}></Route>
+          <Route path="/notifications" element={<Notifications />}></Route>
           <Route path="/featured-art" element={<TrendingArt />}></Route>
           <Route path="/featured-series" element={<TrendingSeries />}></Route>
         </Routes>

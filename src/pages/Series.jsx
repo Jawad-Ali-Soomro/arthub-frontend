@@ -207,7 +207,14 @@ const Series = () => {
             </div>
             {filteredData.map((card_item) => (
               <div className="card flex col" key={card_item._id}>
-                <div className="img-sect flex">
+                <div
+                  className="img-sect flex"
+                  style={{
+                    background: `${
+                      themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                    }`,
+                  }}
+                >
                   <img
                     src={card_item.image}
                     alt={card_item.title}
