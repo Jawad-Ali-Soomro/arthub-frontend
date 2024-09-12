@@ -339,7 +339,8 @@ const MainArt = () => {
       {deal_opt == true ? (
         <Deal
           onClose={onClose}
-          image={main_data?.image}
+          artId={main_data?._id}
+          artOwnerId={main_data?.owner?._id}
           title={main_data?.title}
           price={main_data?.price}
         />

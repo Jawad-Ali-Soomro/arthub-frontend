@@ -48,6 +48,8 @@ const MainSeries = () => {
 
   console.log(main_data);
   const themeMode = window.localStorage.getItem("themeMode");
+  console.log(main_data?._id);
+
   return (
     <div>
       <Header />
@@ -121,12 +123,7 @@ const MainSeries = () => {
                   UPDATE
                 </button>
               ) : (
-                <button
-                  style={{ border: "none" }}
-                  onClick={() => setDeal(true)}
-                >
-                  DEAL
-                </button>
+                <button style={{ border: "none" }}>CHAT</button>
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
@@ -172,7 +169,6 @@ const MainSeries = () => {
                 }}
               >
                 <img
-                  className="border"
                   src={main_data?.art[0]?.image}
                   alt=""
                   onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
@@ -294,13 +290,7 @@ const MainSeries = () => {
           </div>
         )}
       </div>
-      {show_deal && (
-        <Deal
-          onClose={onClose}
-          title={"(series)" + main_data?.title}
-          price={totalPricesSum}
-        />
-      )}
+
       {showBuy && (
         <Buy
           title={"(series)" + main_data?.title}

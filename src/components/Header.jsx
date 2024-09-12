@@ -184,11 +184,11 @@ const Header = () => {
               data-num={0}
               onClick={() =>
                 userData
-                  ? navigate("/notifications")
+                  ? navigate("/deals")
                   : toast.error("Please Login To View Notifications!")
               }
             >
-              Notification
+              Deals
             </p>
             <div className="line"></div>
             <p

@@ -4,6 +4,7 @@ const baseUserUrl = "http://localhost:8080/api/v1/user";
 const baseArtUrl = "http://localhost:8080/api/v1/art";
 const baseSeriesUrl = "http://localhost:8080/api/v1/series";
 const baseBidUrl = "http://localhost:8080/api/v1/bid";
+const baseDealUrl = "http://localhost:8080/api/v1/deal";
 
 let ethToUsd = 2494.73; // Default value for global usage
 
@@ -102,6 +103,7 @@ export {
   baseArtUrl,
   baseUserUrl,
   baseSeriesUrl,
+  baseDealUrl,
   ethToUsd, // Export the global ethToUsd variable
   updateethToUsd, // Export the function to update ethToUsd
   baseBidUrl,

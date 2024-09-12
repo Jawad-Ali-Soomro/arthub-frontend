@@ -107,15 +107,14 @@ const Art = () => {
         <section className="flex">
           <h1 className="flex col">
             Explore{" "}
-            {/* <span
+            <span
               style={{
-                fontFamily: "Inter",
                 fontSize: ".9rem",
                 fontWeight: "600",
               }}
             >
               {filteredData?.length} Results Found
-            </span> */}
+            </span>
           </h1>
         </section>
 

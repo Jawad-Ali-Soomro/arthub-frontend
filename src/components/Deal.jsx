@@ -1,11 +1,24 @@
 import React, { useState } from "react";
 import "../styles/Deal.scss";
-import { ethToUsd } from "../utils/constant";
+import { baseDealUrl, ethToUsd } from "../utils/constant";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
-const Deal = ({ onClose, title, price }) => {
+const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
   const [value, setValue] = useState(0);
   const themeMode = window.localStorage.getItem("themeMode");
+  const userId = JSON.parse(window.localStorage.getItem("userId"));
+
+  const offeringArt = async () => {
+    const res = await axios.post(`${baseDealUrl}/create`, {
+      mainUser: artOwnerId,
+      price: value,
+      artId: artId,
+      offering_user: userId?._id,
+    });
+    toast.success(res.data.message);
+  };
 
   return (
     <div className="main-deal flex" onClick={onClose}>
@@ -83,6 +96,11 @@ const Deal = ({ onClose, title, price }) => {
                 background: themeMode === "dark" ? "white" : "black",
                 color: themeMode === "dark" ? "black" : "white",
               }}
+              onClick={() =>
+                userId
+                  ? offeringArt()
+                  : toast.error("Please Login To Make A Deal!")
+              }
             >
               Submit Deal
             </button>
