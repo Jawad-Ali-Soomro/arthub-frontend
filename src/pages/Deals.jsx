@@ -4,8 +4,14 @@ import Footer from "../components/Footer";
 import "../styles/Notifications.scss";
 import { useState } from "react";
 import axios from "axios";
-import { baseDealUrl, baseSeriesUrl } from "../utils/constant";
+import {
+  baseDealUrl,
+  baseSeriesUrl,
+  ethToUsd,
+  formatPrice,
+} from "../utils/constant";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Deals = () => {
   const userId = window.localStorage.getItem("userId");
@@ -21,7 +27,11 @@ const Deals = () => {
   }, [dealData]);
 
   const themeMode = window.localStorage.getItem("themeMode");
-  // console.log(dealData);
+
+  const rejectDeal = async ({ id }) => {
+    const res = await axios.delete(`${baseDealUrl}/delete/${id}`);
+    toast.success(res.data.message);
+  };
 
   return (
     <div>
@@ -34,28 +44,78 @@ const Deals = () => {
           </div>
         ) : (
           <div className="wrap flex col">
-            {/* <h1 style={{ fontWeight: 900 }}>Deals</h1> */}
-            <div className="wrap flex col">
+            <h1 style={{ fontWeight: 900 }}>Deals</h1>
+            <div
+              className="card-wrap flex"
+              style={{
+                justifyContent: `${
+                  dealData?.length < 3 ? "start" : "space-between"
+                }`,
+              }}
+            >
               {dealData?.map((item) => {
                 return (
-                  <div
-                    className="card flex"
-                    style={{
-                      background: `${
-                        themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
-                      }`,
-                    }}
-                  >
-                    <div className="info flex">
+                  <div className="card flex col">
+                    <div
+                      className="img-sect flex"
+                      style={{
+                        background: `${
+                          themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
+                        }`,
+                      }}
+                    >
+                      <img src={item?.artId?.image} alt="" />
+                    </div>
+                    <h2
+                      style={{
+                        fontSize: "1.2rem",
+                        paddingLeft: "20px",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {item?.artId?.title}
+                    </h2>
+                    <div className="offered-by flex">
                       <img src={item?.offeringUser?.avatar} alt="" />
+                      <div className="flex col" style={{ alignItems: "start" }}>
+                        <p
+                          style={{
+                            fontSize: ".5rem",
+                            lineHeight: "5px",
+                            paddingLeft: "2px",
+                          }}
+                        >
+                          OFFERED BY
+                        </p>
+                        <p>@{item?.offeringUser?.handle}</p>
+                      </div>
+                    </div>
+                    <div
+                      className="offering-price flex col"
+                      style={{ alignItems: "end", justifyContent: "end" }}
+                    >
+                      <p
+                        style={{
+                          fontSize: ".5rem",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Offering Price
+                      </p>
                       <p>
-                        @{item?.offeringUser?.handle} offered (
-                        {item?.offeringPrice}eth) on art ({item?.artId?.title})
+                        {item?.offeringPrice}Ξ($
+                        {formatPrice(item?.offeringPrice * ethToUsd)})
                       </p>
                     </div>
+                    <div className="line border"></div>
                     <div className="btns flex">
-                      <button>Accept</button>
-                      <button>Deny</button>
+                      <button>ACCEPT</button>
+                      <button
+                        style={{ background: "red", color: "white" }}
+                        onClick={() => rejectDeal({ id: item?.artId?._id })}
+                      >
+                        REJECT
+                      </button>
                     </div>
                   </div>
                 );
