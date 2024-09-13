@@ -4,12 +4,7 @@ import Footer from "../components/Footer";
 import "../styles/Notifications.scss";
 import { useState } from "react";
 import axios from "axios";
-import {
-  baseDealUrl,
-  baseSeriesUrl,
-  ethToUsd,
-  formatPrice,
-} from "../utils/constant";
+import { baseDealUrl, ethToUsd, formatPrice } from "../utils/constant";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
