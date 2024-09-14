@@ -18,6 +18,7 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
       offering_user: userId?._id,
     });
     toast.success(res.data.message);
+    onClose();
   };
 
   return (

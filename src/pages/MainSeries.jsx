@@ -9,6 +9,7 @@ import Skeleton from "react-loading-skeleton";
 import { BiLayer } from "react-icons/bi";
 import Deal from "../components/Deal";
 import Buy from "../components/Buy";
+import toast from "react-hot-toast";
 
 const MainSeries = () => {
   const [main_data, set_data] = useState();
@@ -123,7 +124,16 @@ const MainSeries = () => {
                   UPDATE
                 </button>
               ) : (
-                <button style={{ border: "none" }}>CHAT</button>
+                <button
+                  style={{ border: "none" }}
+                  onClick={() =>
+                    loggedInUserId
+                      ? navigate("/chat")
+                      : toast.error("Please Login To Chat!")
+                  }
+                >
+                  MESSAGE
+                </button>
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button

@@ -1,0 +1,174 @@
+.chat-main {
+  min-height: 100vh;
+  .side-bar {
+    width: 100px;
+    height: 100vh;
+    border-radius: 0;
+    .logo {
+      img {
+        width: 40px;
+        cursor: pointer;
+      }
+    }
+    .menu {
+      margin-top: 550px;
+      .img-sect {
+        position: relative;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+      .img-sect::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: rgb(15, 155, 83);
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      button {
+        background: transparent;
+        border: none;
+        width: 50px;
+        height: 50px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        color: inherit;
+      }
+      button:hover {
+        background: #333;
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
+  .users {
+    width: 400px;
+    height: 100vh;
+    .top-search {
+      width: 80%;
+      border-radius: 25px;
+      height: 50px;
+      justify-content: space-between;
+      overflow: hidden;
+      input {
+        background: transparent;
+        color: inherit;
+        height: 50px;
+        width: calc(100% - 100px);
+        border: none;
+        outline: none;
+        padding-left: 15px;
+      }
+      button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 5px;
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .main-users {
+      width: 100%;
+      height: 650px;
+      overflow: scroll;
+      .card {
+        width: 350px;
+        height: 60px;
+        justify-content: space-between;
+        border-bottom: 1px solid #8080802d;
+        border-radius: 0;
+        cursor: pointer;
+        .profile {
+          gap: 10px;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+        .arrow {
+          max-width: 0;
+          transition: 0.3s;
+        }
+      }
+      .card:hover {
+        .arrow {
+          max-width: inherit;
+        }
+      }
+    }
+  }
+  .message-wrap {
+    width: calc(100% - 500px);
+    height: 100vh;
+    border-radius: 0;
+    .user-info {
+      width: 750px;
+      border-radius: 50px;
+      justify-content: space-between;
+      padding: 20px;
+      .profile {
+        gap: 10px;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+        p {
+          font-size: 0.8rem;
+          text-transform: capitalize;
+        }
+      }
+      button {
+        width: 150px;
+        height: 50px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        color: inherit;
+      }
+    }
+    .message-main {
+      width: 750px;
+      height: 70%;
+    }
+    .message-send {
+      width: 80%;
+      height: 60px;
+      justify-content: space-between;
+      padding-left: 5px;
+      padding-right: 5px;
+      border-radius: 30px;
+      overflow: hidden;
+      input {
+        width: 80%;
+        height: 50px;
+        padding-left: 20px;
+        outline: none;
+        border: none;
+        background: transparent;
+        color: inherit;
+      }
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

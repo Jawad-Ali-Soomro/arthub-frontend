@@ -93,7 +93,7 @@ const sendTransactions = async ({ senderAccount, receiverAccount, amount }) => {
       toast(res);
     })
     .catch((err) => {
-      toast.error("Error During Transaction Please Try Again!", err);
+      toast.error("Error During Transaction Please Try Again!");
     });
 
   return result;

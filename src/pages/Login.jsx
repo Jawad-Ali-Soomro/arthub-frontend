@@ -284,7 +284,7 @@ const Login = ({ onClose }) => {
               color: `${themeMode == "dark" ? "black" : "white"}`,
               height: "35px",
               width: "120px",
-              marginLeft: "190px",
+              marginLeft: "170px",
               fontSize: ".6rem",
               fontWeight: 700,
             }}
@@ -392,7 +392,7 @@ const Login = ({ onClose }) => {
                   color: `${themeMode == "dark" ? "black" : "white"}`,
                   height: "35px",
                   width: "120px",
-                  marginLeft: "190px",
+                  marginLeft: "170px",
                   fontSize: ".6rem",
                   fontWeight: 700,
                 }}

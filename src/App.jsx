@@ -22,6 +22,7 @@ import { useState } from "react";
 import Loader from "./pages/Loader";
 import { BsCloudSlash } from "react-icons/bs";
 import Deals from "./pages/Deals";
+import Chat from "./pages/Chat";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -70,6 +71,7 @@ function App() {
           <Route path="/artists" element={<Artists />}></Route>
           <Route path="/deals" element={<Deals />}></Route>
           <Route path="/featured-art" element={<TrendingArt />}></Route>
+          <Route path="/chat" element={<Chat />}></Route>
           <Route path="/featured-series" element={<TrendingSeries />}></Route>
         </Routes>
       </BrowserRouter>

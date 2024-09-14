@@ -7,6 +7,7 @@ import {
   BiLogoGithub,
   BiLogoInstagram,
   BiLogoTwitter,
+  BiLogOut,
   BiSearch,
 } from "react-icons/bi";
 import { FaAdjust, FaArtstation, FaSignOutAlt } from "react-icons/fa";
@@ -15,6 +16,12 @@ import Login from "../pages/Login";
 import WalletSection from "./Connect";
 import toast from "react-hot-toast";
 import { connectMetaMask } from "../utils/wallet_connect";
+import { GrChat, GrDashboard } from "react-icons/gr";
+import { MdDashboard } from "react-icons/md";
+import { RiDashboardLine } from "react-icons/ri";
+import { TiUserOutline } from "react-icons/ti";
+import { CgUser } from "react-icons/cg";
+import { BsChat } from "react-icons/bs";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -171,15 +178,6 @@ const Header = () => {
             }}
           >
             <p
-              onClick={() =>
-                userData
-                  ? navigate(`/user/${userData?._id}`)
-                  : toast.error("Please Login To View Profile!")
-              }
-            >
-              Profile
-            </p>
-            <p
               className="notify"
               data-num={0}
               onClick={() =>
@@ -190,6 +188,16 @@ const Header = () => {
             >
               Deals
             </p>
+            <p
+              onClick={() =>
+                userData
+                  ? navigate(`/user/${userData?._id}`)
+                  : toast.error("Please Login To View Profile!")
+              }
+            >
+              Profile
+            </p>
+
             <div className="line"></div>
             <p
               onClick={() =>
@@ -200,8 +208,8 @@ const Header = () => {
             >
               Dashboard
             </p>
-            <p onClick={() => navigate("/trending-art")}>Featured Art</p>
-            <p onClick={() => navigate("/trending-series")}>Featured Series</p>
+            <p onClick={() => navigate("/featured-art")}>Featured Art</p>
+            <p onClick={() => navigate("/featured-series")}>Featured Series</p>
             <div className="line"></div>
             <div className="links flex">
               <Link className="link flex">
@@ -237,21 +245,34 @@ const Header = () => {
                 color: `${isDarkMode ? "rgba(255,255,255,1)" : "black"}`,
                 background: `${isDarkMode ? "#212121" : "white"}`,
                 border: `${
-                  isDarkMode ? "1px solid rgba(255,255,255,.3)  " : "none"
+                  isDarkMode ? "1px solid rgba(255,255,255,.1)  " : "none"
                 }`,
                 borderRadius: "10px",
               }}
             >
               <div className="bottom flex col" style={{ alignItems: "end" }}>
                 <ul className="flex col" style={{ alignItems: "end" }}>
-                  <li className="flex" onClick={() => navigate("/profile")}>
-                    Dashboard
+                  <li
+                    className="flex"
+                    onClick={() => navigate("/profile")}
+                    data-nav="Dashboard"
+                  >
+                    <RiDashboardLine />
                   </li>
                   <li
                     className="flex"
                     onClick={() => navigate(`/user/${userData?._id}`)}
+                    data-nav="Profile"
                   >
-                    My Profile
+                    <CgUser />
+                  </li>
+
+                  <li
+                    className="flex"
+                    onClick={() => navigate(`/chat`)}
+                    data-nav="Messages"
+                  >
+                    <GrChat />
                   </li>
                   <li
                     className="flex"
@@ -259,8 +280,9 @@ const Header = () => {
                       handleLogout();
                       setProfileMenu(false);
                     }}
+                    data-nav="Logout"
                   >
-                    Logout
+                    <BiLogOut />
                   </li>
                 </ul>
               </div>
