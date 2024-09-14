@@ -48,7 +48,14 @@ const Artists = () => {
                 />
                 <h3>@{artist.username.split(" ").join("_")}</h3>
               </div>
-              <button onClick={() => navigate(`/user/${artist?._id}`)}>
+              <button
+                style={{
+                  background: "#EDEADE",
+                  color: "black",
+                  border: "none",
+                }}
+                onClick={() => navigate(`/user/${artist?._id}`)}
+              >
                 Profile
               </button>
               {hoveredImage === artist.avatar && (

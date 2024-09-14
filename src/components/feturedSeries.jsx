@@ -109,6 +109,11 @@ const FeaturedSeries = () => {
                   </h2>
                   <button
                     className="flex"
+                    style={{
+                      background: "#EDEADE",
+                      color: "black",
+                      border: "none",
+                    }}
                     onClick={() => navigate(`/series/${card_item?._id}`)}
                   >
                     view

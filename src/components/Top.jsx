@@ -140,7 +140,11 @@ const Top = () => {
                 <span>(${formatPrice(main_data?.price * ethToUsd)})</span>
               </h2>
               <button
-                className="border"
+                style={{
+                  background: "#EDEADE",
+                  color: "black",
+                  border: "none",
+                }}
                 onClick={() => navigate(`/art/${main_data?._id}`)}
               >
                 BUY

@@ -139,8 +139,9 @@ const MainSeries = () => {
                 <button
                   className="border"
                   style={{
-                    background: "white",
+                    background: "#EDEADE",
                     color: "black",
+                    border: "none",
                   }}
                 >
                   DELETE
@@ -148,9 +149,9 @@ const MainSeries = () => {
               ) : (
                 <button
                   style={{
-                    background: "white",
+                    background: "#EDEADE",
                     color: "black",
-                    border: "1px solid #808090",
+                    border: "none",
                   }}
                   onClick={() => setBuy(true)}
                 >

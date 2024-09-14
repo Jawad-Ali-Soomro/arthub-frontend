@@ -80,12 +80,13 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
                 <span
                   style={{
                     padding: "3px 10px",
-                    background: "#333",
-                    color: "white",
                     textTransform: "uppercase",
                     fontWeight: "600",
                     fontSize: ".5rem",
                     borderRadius: "5px",
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
                   }}
                 >
                   buy
@@ -97,8 +98,9 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
             </div>
             <button
               style={{
-                background: themeMode === "dark" ? "white" : "black",
-                color: themeMode === "dark" ? "black" : "white",
+                background: "#EDEADE",
+                color: "black",
+                border: "none",
               }}
               onClick={() =>
                 userLoggedInId !== null

@@ -24,10 +24,26 @@ const Popup = ({ message, onConfirm, onCancel }) => {
         </div>
         <p>{message}</p>
         <div className="popup-buttons">
-          <button onClick={handleConfirm} className="confirm-button">
+          <button
+            onClick={handleConfirm}
+            style={{
+              background: "#EDEADE",
+              color: "black",
+              border: "none",
+            }}
+            className="confirm-button"
+          >
             Confirm
           </button>
-          <button onClick={onCancel} className="cancel-button">
+          <button
+            onClick={onCancel}
+            className="cancel-button"
+            style={{
+              background: "red",
+              color: "black",
+              border: "none",
+            }}
+          >
             Cancel
           </button>
         </div>

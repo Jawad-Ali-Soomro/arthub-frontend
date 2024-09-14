@@ -78,8 +78,10 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
                 <span
                   style={{
                     padding: "3px 10px",
-                    background: "#333",
-                    color: "white",
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
+
                     textTransform: "uppercase",
                     fontWeight: "600",
                     fontSize: ".5rem",
@@ -94,8 +96,9 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
             </div>
             <button
               style={{
-                background: themeMode === "dark" ? "white" : "black",
-                color: themeMode === "dark" ? "black" : "white",
+                background: "#EDEADE",
+                color: "black",
+                border: "none",
               }}
               onClick={() =>
                 userId

@@ -174,9 +174,9 @@ const Series = () => {
                 <div className="btns flex col">
                   <button
                     style={{
+                      background: "#EDEADE",
+                      color: "black",
                       border: "none",
-                      color: `${themeMode == "dark" ? "black" : "white "}`,
-                      background: `${themeMode == "dark" ? "white" : "black"}`,
                     }}
                   >
                     Apply
@@ -247,6 +247,11 @@ const Series = () => {
                     <h2></h2>
                     <button
                       className="flex"
+                      style={{
+                        background: "#EDEADE",
+                        color: "black",
+                        border: "none",
+                      }}
                       onClick={() => navigate(`/series/${card_item._id}`)}
                     >
                       view

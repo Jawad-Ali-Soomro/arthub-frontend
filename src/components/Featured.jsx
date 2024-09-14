@@ -112,6 +112,11 @@ const Featured = () => {
                   </h2>
                   <button
                     className="flex"
+                    style={{
+                      background: "#EDEADE",
+                      color: "black",
+                      border: "none",
+                    }}
                     onClick={() => navigate(`/art/${card_item?._id}`)}
                   >
                     Buy

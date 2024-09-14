@@ -290,8 +290,12 @@ const Header = () => {
           </div>
         ) : (
           <button
-            style={{ background: "white", color: "black", fontWeight: "600" }}
-            className="border"
+            style={{
+              background: "#EDEADE",
+              color: "black",
+              fontWeight: "600",
+              border: "none",
+            }}
             onClick={() =>
               tokenId
                 ? null

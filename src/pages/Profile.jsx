@@ -75,7 +75,7 @@ const Profile = () => {
             </div>
             <div className="wrap flex">
               <div
-                className="card flex border col"
+                className="card flex  col"
                 onClick={() => set_show_art(true)}
               >
                 <p>Total # creations</p>
@@ -90,7 +90,7 @@ const Profile = () => {
                 )}
               </div>
               <div
-                className="card flex border col"
+                className="card flex col"
                 onClick={() => set_show_series(true)}
               >
                 <p>total # sreies</p>{" "}
@@ -104,7 +104,7 @@ const Profile = () => {
                   <h2>{profile_data?.series?.length}</h2>
                 )}
               </div>
-              <div className="card flex border col">
+              <div className="card flex col">
                 <p>Total # events</p>
                 {profile_data?.events == undefined ? (
                   <img

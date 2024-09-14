@@ -75,7 +75,7 @@
         height: 200px;
         position: relative;
         cursor: pointer;
-        background: #333;
+        background: #edeade;
         .icon {
           width: 40px;
           height: 40px;
@@ -187,6 +187,8 @@
       .card {
         width: 320px;
         height: 150px;
+        background: #edeade;
+        color: black;
         align-items: start;
         padding-left: 20px;
         cursor: pointer;

@@ -116,11 +116,23 @@ const MainArt = () => {
           <div className="main-art-right flex col">
             <div className="top flex col">
               <div className="icons flex">
-                <div className="icon border flex">
+                <div
+                  style={{
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
+                  }}
+                  className="icon border flex"
+                >
                   <BiHeart />
                 </div>{" "}
                 <div
                   className="icon border flex"
+                  style={{
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
+                  }}
                   onClick={() => {
                     set_details(true);
                   }}
@@ -215,15 +227,22 @@ const MainArt = () => {
               )}
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
-                  className="border"
-                  style={{ background: "white" }}
+                  style={{
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
+                  }}
                   onClick={() => setShowPopup(true)}
                 >
                   DELETE
                 </button>
               ) : (
                 <button
-                  className="border"
+                  style={{
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
+                  }}
                   onClick={() => {
                     set_deal(true);
                   }}
@@ -240,7 +259,14 @@ const MainArt = () => {
               )}
             </div>
             <div className="more flex">
-              <button onClick={() => set_desc(!show_desc)}>
+              <button
+                style={{
+                  background: "#EDEADE",
+                  color: "black",
+                  border: "none",
+                }}
+                onClick={() => set_desc(!show_desc)}
+              >
                 {show_desc == true ? <FaArrowUp /> : <FaArrowDown />}
               </button>
             </div>
@@ -250,7 +276,14 @@ const MainArt = () => {
       <div className="more-by-artist flex col">
         <h1>
           More From {main_data?.owner?.username}{" "}
-          <button onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
+          <button
+            style={{
+              background: "#EDEADE",
+              color: "black",
+              border: "none",
+            }}
+            onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+          >
             Profile
           </button>
         </h1>
@@ -310,6 +343,11 @@ const MainArt = () => {
                         </span>
                       </h2>
                       <button
+                        style={{
+                          background: "#EDEADE",
+                          color: "black",
+                          border: "none",
+                        }}
                         onClick={() => navigate(`/art/${card_item?._id}`)}
                       >
                         Buy

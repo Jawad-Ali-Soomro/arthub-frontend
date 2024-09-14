@@ -81,8 +81,9 @@ const Chat = () => {
           <button
             className="flex"
             style={{
-              background: `${themeMode === "dark" ? "#eee" : "white"}`,
+              background: "#EDEADE",
               color: "black",
+              border: "none",
             }}
           >
             <CgSearch />
@@ -149,8 +150,9 @@ const Chat = () => {
             <div className="icon flex">
               <button
                 style={{
-                  background: "#eee",
+                  background: "#EDEADE",
                   color: "black",
+                  border: "none",
                 }}
                 onClick={() => navigate(`/user/${activeUser?.id}`)}
               >
@@ -174,8 +176,9 @@ const Chat = () => {
           <button
             className="flex"
             style={{
-              background: "#eee",
+              background: "#EDEADE",
               color: "black",
+              border: "none",
             }}
           >
             <BiSend />

@@ -43,6 +43,11 @@ const Spotlight = () => {
           Artist Spotlight : Botto{" "}
           <button
             className="border"
+            style={{
+              background: "#EDEADE",
+              color: "black",
+              border: "none",
+            }}
             onClick={() => navigate("/user/66e102fec85c33fa8d758d35")}
           >
             See all
@@ -103,6 +108,11 @@ const Spotlight = () => {
                     </h2>
                     <button
                       className="flex"
+                      style={{
+                        background: "#EDEADE",
+                        color: "black",
+                        border: "none",
+                      }}
                       onClick={() => navigate(`/art/${card_item?._id}`)}
                     >
                       Buy

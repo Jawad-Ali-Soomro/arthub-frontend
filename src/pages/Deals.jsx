@@ -104,9 +104,21 @@ const Deals = () => {
                     </div>
                     <div className="line border"></div>
                     <div className="btns flex">
-                      <button>ACCEPT</button>
                       <button
-                        style={{ background: "red", color: "white" }}
+                        style={{
+                          background: "#EDEADE",
+                          color: "black",
+                          border: "none",
+                        }}
+                      >
+                        ACCEPT
+                      </button>
+                      <button
+                        style={{
+                          background: "red",
+                          color: "white",
+                          border: "none",
+                        }}
                         onClick={() => rejectDeal({ id: item?.artId?._id })}
                       >
                         REJECT

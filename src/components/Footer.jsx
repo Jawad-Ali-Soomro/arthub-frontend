@@ -18,7 +18,15 @@ const Footer = () => {
           <p>ARTWORK & NEWS TO YOUR BOX</p>
           <div className="input-box border">
             <input type="text" placeholder="EMAIL ADDRESS" />
-            <button>Subscribe</button>
+            <button
+              style={{
+                background: "#EDEADE",
+                color: "black",
+                border: "none",
+              }}
+            >
+              Subscribe
+            </button>
           </div>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeZhVNtTyuI9WqQf2Cj5vwx5geP0oQOOKvaEzU5jO5pkALDzA/viewform?usp=sf_link"

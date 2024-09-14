@@ -259,9 +259,9 @@ const MainUser = () => {
                 <button
                   onClick={() => setUpdate(true)}
                   style={{
-                    background: "white",
+                    background: "#EDEADE",
                     color: "black",
-                    border: "1px solid #808090",
+                    border: "none",
                   }}
                 >
                   EDIT PROFILE
@@ -281,7 +281,11 @@ const MainUser = () => {
                 </button>
                 <button
                   className="border"
-                  style={{ background: "white", color: "black" }}
+                  style={{
+                    background: "#EDEADE",
+                    color: "black",
+                    border: "none",
+                  }}
                   onClick={() => toggleFollow()}
                 >
                   {btnText}
@@ -338,7 +342,12 @@ const MainUser = () => {
                   </h2>
                   <button
                     className="flex"
-                    style={{ cursor: "pointer" }}
+                    style={{
+                      background: "#EDEADE",
+                      color: "black",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
                     onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
                   >
                     {main_data?._id === userData?._id ? "edit" : "BUY"}
@@ -431,7 +440,12 @@ const MainUser = () => {
                           </span>
                         </h2>
                         <button
-                          style={{ cursor: "pointer" }}
+                          style={{
+                            background: "#EDEADE",
+                            color: "black",
+                            border: "none",
+                            cursor: "pointer",
+                          }}
                           onClick={() => navigate(`/art/${card_item?._id}`)}
                         >
                           {main_data?._id === userData?._id ? "edit" : "BUY"}
@@ -477,8 +491,13 @@ const MainUser = () => {
                       <div className="price flex">
                         <h2></h2>
                         <button
-                          style={{ cursor: "pointer" }}
                           onClick={() => navigate(`/series/${card_item?._id}`)}
+                          style={{
+                            background: "#EDEADE",
+                            color: "black",
+                            border: "none",
+                            cursor: "pointer",
+                          }}
                         >
                           view
                         </button>
