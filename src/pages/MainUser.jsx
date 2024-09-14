@@ -269,7 +269,16 @@ const MainUser = () => {
               </div>
             ) : (
               <div className="btns flex col">
-                <button style={{ border: "none" }}>MESSAGE</button>
+                <button
+                  style={{ border: "none" }}
+                  onClick={() =>
+                    userId
+                      ? navigate("/chat")
+                      : toast.error("Please Login To Chat!")
+                  }
+                >
+                  MESSAGE
+                </button>
                 <button
                   className="border"
                   style={{ background: "white", color: "black" }}
