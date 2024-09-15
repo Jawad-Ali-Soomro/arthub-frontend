@@ -4,11 +4,14 @@ import { BiInfoCircle, BiLogOut, BiSend } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { CgSearch } from "react-icons/cg";
 import axios from "axios";
+import io from "socket.io-client";
 import {
   baseConversationUrl,
   baseMessageUrl,
   baseUserUrl,
 } from "../utils/constant";
+
+const socket = io("http://localhost:8080"); // Change this to your server URL
 
 const Chat = () => {
   const userId = window.localStorage.getItem("userId");
@@ -24,6 +27,7 @@ const Chat = () => {
   });
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [onlineUsers, setOnlineUsers] = useState({});
 
   // Fetch conversations
   const fetchConversations = async () => {
@@ -55,7 +59,7 @@ const Chat = () => {
       userName: user.username,
       avatar: user.avatar,
       id: user._id,
-      status: user.status,
+      status: onlineUsers[user._id] ? true : false, // Check online status
     });
 
     // Find conversation ID
@@ -103,7 +107,7 @@ const Chat = () => {
 
   useEffect(() => {
     fetchConversations();
-  }, []);
+  }, [newMessage]);
 
   const themeMode = window.localStorage.getItem("themeMode");
 
@@ -165,6 +169,16 @@ const Chat = () => {
                 <div
                   key={conv._id}
                   className="card flex"
+                  style={{
+                    background: `${
+                      activeUser?.id == otherUser?._id
+                        ? "#edeade"
+                        : "transparent"
+                    }`,
+                    color: `${
+                      activeUser?.id == otherUser?._id ? "black" : "inherit"
+                    }`,
+                  }}
                   onClick={() => handleUserClick(otherUser)}
                 >
                   <div className="profile flex">
@@ -175,7 +189,6 @@ const Chat = () => {
                   </div>
                   <div className="info flex col">
                     <p>{otherUser.userName}</p>
-                    <p>{otherUser.status ? "Online" : "Offline"}</p>
                   </div>
                 </div>
               );
@@ -203,7 +216,7 @@ const Chat = () => {
                 <p style={{ fontWeight: "600", fontSize: "1.2rem" }}>
                   {activeUser.userName}
                 </p>
-                <p>{activeUser.status ? "Online" : "Offline"}</p>
+                {/* Display online/offline status */}
               </div>
             </div>
             <div className="icon flex">
@@ -232,8 +245,6 @@ const Chat = () => {
                 }
               >
                 <p>{message.content}</p>
-                {console.log("sender Id" + message.sender)}
-                {console.log("User Id" + parsedUser._id)}
               </div>
             ))}
           </div>

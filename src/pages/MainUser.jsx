@@ -284,9 +284,9 @@ const MainUser = () => {
                 <button
                   style={{ border: "none" }}
                   onClick={() =>
-                    userId
-                      ? initializeConv()
-                      : toast.error("Please Login To Chat!")
+                    !parsedUser?._id
+                      ? toast.error("Please Login To Chat!")
+                      : initializeConv()
                   }
                 >
                   MESSAGE
