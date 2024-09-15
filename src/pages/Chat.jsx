@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Chat.scss";
 import { BiInfoCircle, BiLogOut, BiSend } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { CgSearch } from "react-icons/cg";
+import { CgLogOff, CgSearch } from "react-icons/cg";
 import axios from "axios";
 import io from "socket.io-client";
 import {
@@ -110,14 +110,18 @@ const Chat = () => {
   }, [newMessage]);
 
   const themeMode = window.localStorage.getItem("themeMode");
+  const logoutFn = () => {
+    window.localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <div className="chat-main flex">
       <div
         className="side-bar flex col"
-        style={{
-          background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
-        }}
+        // style={{
+        //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
+        // }}
       >
         <div className="logo">
           <img
@@ -134,17 +138,17 @@ const Chat = () => {
               onClick={() => navigate(`/user/${parsedUser?._id}`)}
             />
           </div>
-          <button className="flex">
-            <BiLogOut />
+          <button className="flex" onClick={() => logoutFn()}>
+            <CgLogOff />
           </button>
         </div>
       </div>
       <div className="users flex col">
         <div
-          className="top-search flex"
-          style={{
-            background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
-          }}
+          className="top-search border flex"
+          // style={{
+          //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
+          // }}
         >
           <input type="text" placeholder="Find A User!" />
           <button
@@ -201,21 +205,21 @@ const Chat = () => {
       </div>
       <div
         className="message-wrap flex col"
-        style={{
-          background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
-        }}
+        // style={{
+        //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
+        // }}
       >
         {activeUser.id ? (
           <div
-            className="user-info flex"
-            style={{
-              background:
-                themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
-            }}
+            className="user-info border flex"
+            // style={{
+            //   background:
+            //     themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
+            // }}
           >
             <div className="profile flex">
               <img src={activeUser.avatar} alt="active-user-avatar" />
-              <div className="flex col" style={{ alignItems: "start" }}>
+              <div className="flex  col" style={{ alignItems: "start" }}>
                 <p style={{ fontWeight: "600", fontSize: "1.2rem" }}>
                   {activeUser.userName}
                 </p>
@@ -247,7 +251,23 @@ const Chat = () => {
                     : "left-message"
                 }
               >
-                <p>{message.content}</p>
+                <p>
+                  {message.content}
+
+                  {message?.receiver?._id == activeUser?.id ? (
+                    <img
+                      style={{ right: "-25px", top: "-25px" }}
+                      src={parsedUser?.avatar}
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      style={{ right: "-25px", top: "-25px" }}
+                      src={activeUser?.avatar}
+                      alt=""
+                    />
+                  )}
+                </p>
               </div>
             ))}
           </div>
@@ -256,11 +276,11 @@ const Chat = () => {
         )}
         {activeUser.id ? (
           <div
-            className="message-send flex"
-            style={{
-              background:
-                themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
-            }}
+            className="message-send border flex"
+            // style={{
+            //   background:
+            //     themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
+            // }}
           >
             <input
               type="text"

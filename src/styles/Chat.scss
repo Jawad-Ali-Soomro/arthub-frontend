@@ -2,7 +2,6 @@
   min-height: 100vh;
   .side-bar {
     width: 100px;
-    height: 100vh;
     border-radius: 0;
     .logo {
       img {
@@ -11,7 +10,7 @@
       }
     }
     .menu {
-      margin-top: 600px;
+      margin-top: 550px;
       .img-sect {
         position: relative;
         img {
@@ -50,7 +49,11 @@
   }
   .users {
     width: 400px;
-    height: 100vh;
+    height: calc(80vh + 10px);
+    border: 1px solid #80808090;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     .top-search {
       width: 80%;
       border-radius: 25px;
@@ -123,13 +126,13 @@
   }
   .message-wrap {
     width: calc(100% - 500px);
-    height: 100vh;
+    height: 85svh;
     border-radius: 0;
     .user-info {
-      width: 750px;
+      width: 780px;
       border-radius: 50px;
       justify-content: space-between;
-      padding: 20px;
+      padding: 10px;
       .profile {
         gap: 10px;
         img {
@@ -158,7 +161,7 @@
     }
     .message-main {
       width: 800px;
-      height: 70%;
+      height: 75%;
       padding-bottom: 30px;
       padding-top: 30px;
       overflow-y: scroll;
@@ -171,12 +174,22 @@
         margin-left: 7%;
         padding: 10px; // Add padding for better spacing
         border-radius: 10px;
+        position: relative;
         p {
           padding: 10px 30px;
           background: #edeade;
           color: black;
           border-radius: 20px;
+          margin-right: 20px;
           border-top-right-radius: 0px;
+          position: relative;
+          overflow: visible;
+        }
+        img {
+          width: 25px;
+          height: 25px;
+          position: absolute;
+          border-radius: 20px;
         }
       }
       .left-message {
@@ -192,6 +205,17 @@
           border-radius: 20px;
           color: white;
           border-top-left-radius: 0px;
+          overflow: visible;
+          position: relative;
+          margin-left: 20px;
+        }
+        img {
+          width: 25px;
+          height: 25px;
+          position: absolute;
+          top: -25px;
+          left: -25px;
+          border-radius: 20px;
         }
       }
     }
