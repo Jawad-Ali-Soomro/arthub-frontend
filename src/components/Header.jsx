@@ -291,7 +291,7 @@ const Header = () => {
         ) : (
           <button
             style={{
-              background: "#EDEADE",
+              background: "#eee",
               color: "black",
               fontWeight: "600",
               border: "none",

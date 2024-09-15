@@ -280,7 +280,7 @@ const Login = ({ onClose }) => {
           <button
             className="flex border"
             style={{
-              background: "#EDEADE",
+              background: "#eee",
               color: "black",
               border: "none",
 
@@ -389,7 +389,7 @@ const Login = ({ onClose }) => {
             <div className="btns flex">
               <button
                 style={{
-                  background: "#EDEADE",
+                  background: "#eee",
                   color: "black",
                   border: "none",
                   background: `${themeMode == "dark" ? "white" : "#333"}`,

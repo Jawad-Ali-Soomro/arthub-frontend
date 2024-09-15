@@ -50,7 +50,7 @@ const Artists = () => {
               </div>
               <button
                 style={{
-                  background: "#EDEADE",
+                  background: "#eee",
                   color: "black",
                   border: "none",
                 }}

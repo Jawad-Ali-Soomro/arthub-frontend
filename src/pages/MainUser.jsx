@@ -271,7 +271,7 @@ const MainUser = () => {
                 <button
                   onClick={() => setUpdate(true)}
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -294,7 +294,7 @@ const MainUser = () => {
                 <button
                   className="border"
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -355,7 +355,7 @@ const MainUser = () => {
                   <button
                     className="flex"
                     style={{
-                      background: "#EDEADE",
+                      background: "#eee",
                       color: "black",
                       border: "none",
                       cursor: "pointer",
@@ -453,7 +453,7 @@ const MainUser = () => {
                         </h2>
                         <button
                           style={{
-                            background: "#EDEADE",
+                            background: "#eee",
                             color: "black",
                             border: "none",
                             cursor: "pointer",
@@ -505,7 +505,7 @@ const MainUser = () => {
                         <button
                           onClick={() => navigate(`/series/${card_item?._id}`)}
                           style={{
-                            background: "#EDEADE",
+                            background: "#eee",
                             color: "black",
                             border: "none",
                             cursor: "pointer",

@@ -174,7 +174,7 @@ const Series = () => {
                 <div className="btns flex col">
                   <button
                     style={{
-                      background: "#EDEADE",
+                      background: "#eee",
                       color: "black",
                       border: "none",
                     }}
@@ -248,7 +248,7 @@ const Series = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "#EDEADE",
+                        background: "#eee",
                         color: "black",
                         border: "none",
                       }}

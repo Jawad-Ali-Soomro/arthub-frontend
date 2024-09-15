@@ -362,7 +362,7 @@ const Art = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "#EDEADE",
+                        background: "#eee",
                         color: "black",
                         border: "none",
                       }}

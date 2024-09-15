@@ -27,7 +27,7 @@ const Popup = ({ message, onConfirm, onCancel }) => {
           <button
             onClick={handleConfirm}
             style={{
-              background: "#EDEADE",
+              background: "#eee",
               color: "black",
               border: "none",
             }}

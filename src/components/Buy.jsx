@@ -84,7 +84,7 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
                     fontWeight: "600",
                     fontSize: ".5rem",
                     borderRadius: "5px",
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -98,7 +98,7 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
             </div>
             <button
               style={{
-                background: "#EDEADE",
+                background: "#eee",
                 color: "black",
                 border: "none",
               }}

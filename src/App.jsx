@@ -51,7 +51,8 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={showLoader == true ? <Loader /> : <Home />}
+            // element={showLoader == true ? <Loader /> : <Home />}
+            element={<Home />}
           ></Route>
           <Route path="/explore/art" element={<Art />}></Route>
           <Route path="/explore/series" element={<Series />}></Route>

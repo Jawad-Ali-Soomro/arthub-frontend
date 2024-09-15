@@ -150,7 +150,7 @@ const Chat = () => {
           <button
             className="flex"
             style={{
-              background: "#EDEADE",
+              background: "#edeade",
               color: "black",
               border: "none",
             }}
@@ -171,12 +171,15 @@ const Chat = () => {
                   className="card flex"
                   style={{
                     background: `${
-                      activeUser?.id == otherUser?._id
-                        ? "#edeade"
-                        : "transparent"
+                      activeUser?.id == otherUser?._id ? "#eee" : "transparent"
                     }`,
                     color: `${
                       activeUser?.id == otherUser?._id ? "black" : "inherit"
+                    }`,
+                    border: `${
+                      activeUser?.id == otherUser?._id
+                        ? "none"
+                        : "1px solid #80808090"
                     }`,
                   }}
                   onClick={() => handleUserClick(otherUser)}
@@ -222,7 +225,7 @@ const Chat = () => {
             <div className="icon flex">
               <button
                 style={{
-                  background: "#EDEADE",
+                  background: "#eee",
                   color: "black",
                   border: "none",
                 }}
@@ -268,7 +271,7 @@ const Chat = () => {
             <button
               className="flex"
               style={{
-                background: "#EDEADE",
+                background: "#eee",
                 color: "black",
                 border: "none",
               }}

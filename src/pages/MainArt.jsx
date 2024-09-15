@@ -118,7 +118,7 @@ const MainArt = () => {
               <div className="icons flex">
                 <div
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -129,7 +129,7 @@ const MainArt = () => {
                 <div
                   className="icon border flex"
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -228,7 +228,7 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -239,7 +239,7 @@ const MainArt = () => {
               ) : (
                 <button
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -261,7 +261,7 @@ const MainArt = () => {
             <div className="more flex">
               <button
                 style={{
-                  background: "#EDEADE",
+                  background: "#eee",
                   color: "black",
                   border: "none",
                 }}
@@ -278,7 +278,7 @@ const MainArt = () => {
           More From {main_data?.owner?.username}{" "}
           <button
             style={{
-              background: "#EDEADE",
+              background: "#eee",
               color: "black",
               border: "none",
             }}
@@ -344,7 +344,7 @@ const MainArt = () => {
                       </h2>
                       <button
                         style={{
-                          background: "#EDEADE",
+                          background: "#eee",
                           color: "black",
                           border: "none",
                         }}

@@ -44,7 +44,7 @@ const Spotlight = () => {
           <button
             className="border"
             style={{
-              background: "#EDEADE",
+              background: "#eee",
               color: "black",
               border: "none",
             }}
@@ -109,7 +109,7 @@ const Spotlight = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "#EDEADE",
+                        background: "#eee",
                         color: "black",
                         border: "none",
                       }}

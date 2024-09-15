@@ -78,7 +78,7 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
                 <span
                   style={{
                     padding: "3px 10px",
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
 
@@ -96,7 +96,7 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
             </div>
             <button
               style={{
-                background: "#EDEADE",
+                background: "#eee",
                 color: "black",
                 border: "none",
               }}

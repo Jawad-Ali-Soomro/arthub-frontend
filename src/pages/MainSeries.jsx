@@ -139,7 +139,7 @@ const MainSeries = () => {
                 <button
                   className="border"
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
@@ -149,7 +149,7 @@ const MainSeries = () => {
               ) : (
                 <button
                   style={{
-                    background: "#EDEADE",
+                    background: "#eee",
                     color: "black",
                     border: "none",
                   }}
