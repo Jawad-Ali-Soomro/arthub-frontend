@@ -1,57 +1,124 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Chat.scss";
-import { BiLogOut, BiSend } from "react-icons/bi";
+import { BiInfoCircle, BiLogOut, BiSend } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { BsArrowRight, BsSearch } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import axios from "axios";
-import { useEffect } from "react";
-import { baseUserUrl } from "../utils/constant";
+import {
+  baseConversationUrl,
+  baseMessageUrl,
+  baseUserUrl,
+} from "../utils/constant";
 
 const Chat = () => {
   const userId = window.localStorage.getItem("userId");
   const parsedUser = JSON.parse(userId);
   const navigate = useNavigate();
 
-  const [data, set_data] = useState([]);
+  const [conversations, setConversations] = useState([]);
   const [activeUser, setActiveUser] = useState({
     userName: "",
     avatar: "",
     id: "",
     status: false,
   });
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
 
-  const fetch_data = async () => {
+  // Fetch conversations
+  const fetchConversations = async () => {
     try {
-      const response = await axios.get(`${baseUserUrl}/allUsers`);
-      set_data(response?.data?.users || []);
+      const response = await axios.get(
+        `${baseConversationUrl}/get/all/${parsedUser._id}`
+      );
+      setConversations(response.data.foundConversations || []);
     } catch (error) {
-      console.error("Error fetching data", error);
+      console.error("Error fetching conversations", error);
+    }
+  };
+
+  // Fetch messages for the active user
+  const fetchMessages = async (conversationId) => {
+    try {
+      const response = await axios.get(
+        `${baseMessageUrl}/get/${conversationId}`
+      );
+      setMessages(response.data.messages || []);
+    } catch (error) {
+      console.error("Error fetching messages", error);
+    }
+  };
+
+  // Handle user card click
+  const handleUserClick = (user) => {
+    setActiveUser({
+      userName: user.username,
+      avatar: user.avatar,
+      id: user._id,
+      status: user.status,
+    });
+
+    // Find conversation ID
+    const conversation = conversations.find(
+      (conv) =>
+        (conv.user_one._id === parsedUser._id &&
+          conv.user_two._id === user._id) ||
+        (conv.user_two._id === parsedUser._id && conv.user_one._id === user._id)
+    );
+
+    if (conversation) {
+      fetchMessages(conversation._id);
+    }
+  };
+
+  // Send a new message
+  const handleSendMessage = async () => {
+    if (newMessage.trim() === "") return;
+
+    try {
+      const conversation = conversations.find(
+        (conv) =>
+          (conv.user_one._id === parsedUser._id &&
+            conv.user_two._id === activeUser.id) ||
+          (conv.user_two._id === parsedUser._id &&
+            conv.user_one._id === activeUser.id)
+      );
+
+      if (conversation) {
+        await axios.post(`${baseMessageUrl}/send`, {
+          sender: parsedUser._id,
+          receiver: activeUser.id,
+          conversation: conversation._id,
+          content: newMessage,
+        });
+
+        // Update messages
+        fetchMessages(conversation._id);
+        setNewMessage(""); // Clear the input field
+      }
+    } catch (error) {
+      console.error("Error sending message", error);
     }
   };
 
   useEffect(() => {
-    fetch_data();
+    fetchConversations();
   }, []);
 
-  console.log(data);
-
-  document.title = "Artchain - Chat";
   const themeMode = window.localStorage.getItem("themeMode");
+
   return (
     <div className="chat-main flex">
       <div
         className="side-bar flex col"
         style={{
-          background: `${
-            themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
-          }`,
+          background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
         }}
       >
         <div className="logo">
           <img
             src={themeMode === "dark" ? "/logo-white.png" : "logo-black.png"}
-            alt=""
+            alt="logo"
             onClick={() => navigate("/")}
           />
         </div>
@@ -59,7 +126,7 @@ const Chat = () => {
           <div className="img-sect flex">
             <img
               src={parsedUser?.avatar}
-              alt=""
+              alt="user-avatar"
               onClick={() => navigate(`/user/${parsedUser?._id}`)}
             />
           </div>
@@ -72,9 +139,7 @@ const Chat = () => {
         <div
           className="top-search flex"
           style={{
-            background: `${
-              themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
-            }`,
+            background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
           }}
         >
           <input type="text" placeholder="Find A User!" />
@@ -91,24 +156,26 @@ const Chat = () => {
         </div>
         <div className="main-users flex">
           <div className="wrap flex col">
-            {data?.map((userItem) => {
+            {conversations.map((conv) => {
+              const otherUser =
+                conv.user_one._id === parsedUser._id
+                  ? conv.user_two
+                  : conv.user_one;
               return (
                 <div
+                  key={conv._id}
                   className="card flex"
-                  onClick={() =>
-                    setActiveUser({
-                      userName: userItem?.username,
-                      avatar: userItem?.avatar,
-                      id: userItem?._id,
-                    })
-                  }
+                  onClick={() => handleUserClick(otherUser)}
                 >
                   <div className="profile flex">
-                    <img src={userItem?.avatar} alt="" />
-                    <p>@{userItem?.handle.trim(" ")}</p>
+                    <img src={otherUser.avatar} alt="profile-avatar" />
+                    <p style={{ textTransform: "capitalize" }}>
+                      {otherUser.username}
+                    </p>
                   </div>
-                  <div className="arrow flex">
-                    <BsArrowRight />
+                  <div className="info flex col">
+                    <p>{otherUser.userName}</p>
+                    <p>{otherUser.status ? "Online" : "Offline"}</p>
                   </div>
                 </div>
               );
@@ -119,32 +186,24 @@ const Chat = () => {
       <div
         className="message-wrap flex col"
         style={{
-          background: `${
-            themeMode == "dark" ? "rgba(255,255,255,.05)" : "#eee"
-          }`,
+          background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
         }}
       >
-        {activeUser?.id ? (
+        {activeUser.id ? (
           <div
             className="user-info flex"
             style={{
-              background: `${
-                themeMode == "dark" ? "rgba(255,255,255,.05)" : "white"
-              }`,
+              background:
+                themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
             }}
           >
             <div className="profile flex">
-              <img src={activeUser?.avatar} alt="" />
+              <img src={activeUser.avatar} alt="active-user-avatar" />
               <div className="flex col" style={{ alignItems: "start" }}>
-                <p
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  {activeUser?.userName}
+                <p style={{ fontWeight: "600", fontSize: "1.2rem" }}>
+                  {activeUser.userName}
                 </p>
-                <p>{activeUser?.status ? "Online" : "Offline"}</p>
+                <p>{activeUser.status ? "Online" : "Offline"}</p>
               </div>
             </div>
             <div className="icon flex">
@@ -154,36 +213,60 @@ const Chat = () => {
                   color: "black",
                   border: "none",
                 }}
-                onClick={() => navigate(`/user/${activeUser?.id}`)}
+                onClick={() => navigate(`/user/${activeUser.id}`)}
               >
-                Profile
+                <BiInfoCircle />
               </button>
             </div>
           </div>
+        ) : null}
+        {activeUser.id ? (
+          <div className="message-main">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={
+                  message.sender._id === parsedUser._id
+                    ? "right-message"
+                    : "left-message"
+                }
+              >
+                <p>{message.content}</p>
+                {console.log("sender Id" + message.sender)}
+                {console.log("User Id" + parsedUser._id)}
+              </div>
+            ))}
+          </div>
         ) : (
-          this
+          <p>Select a user to start chatting</p>
         )}
-        <div className="message-main"></div>
-        <div
-          className="message-send flex"
-          style={{
-            background: `${
-              themeMode == "dark" ? "rgba(255,255,255,.05)" : "white"
-            }`,
-          }}
-        >
-          <input type="text" placeholder="Type your message here..." />
-          <button
-            className="flex"
+        {activeUser.id ? (
+          <div
+            className="message-send flex"
             style={{
-              background: "#EDEADE",
-              color: "black",
-              border: "none",
+              background:
+                themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
             }}
           >
-            <BiSend />
-          </button>
-        </div>
+            <input
+              type="text"
+              placeholder="Type your message here..."
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+            />
+            <button
+              className="flex"
+              style={{
+                background: "#EDEADE",
+                color: "black",
+                border: "none",
+              }}
+              onClick={handleSendMessage}
+            >
+              <BiSend />
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

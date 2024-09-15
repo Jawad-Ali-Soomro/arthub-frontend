@@ -28,8 +28,9 @@ body {
   font-family: Raleway;
 }
 
-body::-webkit-scrollbar {
-  width: 0; /* Hide scrollbar for Webkit browsers */
+*::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 a {

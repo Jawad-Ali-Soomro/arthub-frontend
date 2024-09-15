@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import "../styles/User.scss";
 import Footer from "../components/Footer";
-import { baseUserUrl, ethToUsd } from "../utils/constant";
+import { baseConversationUrl, baseUserUrl, ethToUsd } from "../utils/constant";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   BiAt,
@@ -26,6 +26,8 @@ const MainUser = () => {
   const { userId } = useParams();
   const [show_followers, set_show_followers] = useState(false);
   const [show_followings, set_show_followings] = useState(false);
+  const loggedInId = window.localStorage.getItem("userId");
+  const parsedUser = JSON.parse(loggedInId);
 
   const fetch_data = async () => {
     await axios.get(`${baseUserUrl}/get/${userId}`).then((res) => {
@@ -44,6 +46,16 @@ const MainUser = () => {
     date.getDate(),
   ];
   document.title = `${main_data?.username}'s Profile`;
+
+  const initializeConv = async () => {
+    const chatInitialized = await axios.post(`${baseConversationUrl}/start`, {
+      userOneId: parsedUser?._id,
+      userTwoId: userId,
+    });
+    chatInitialized
+      ? toast.success("Chat Initialized") + navigate("/chat")
+      : this;
+  };
 
   function getMonthName(monthNumber) {
     const monthNames = [
@@ -273,7 +285,7 @@ const MainUser = () => {
                   style={{ border: "none" }}
                   onClick={() =>
                     userId
-                      ? navigate("/chat")
+                      ? initializeConv()
                       : toast.error("Please Login To Chat!")
                   }
                 >
