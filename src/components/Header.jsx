@@ -84,7 +84,6 @@ const Header = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
     setUserData(null);
-    window.location.reload();
   };
 
   const openLogin = () => setShowLogin(true);

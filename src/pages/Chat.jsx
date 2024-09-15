@@ -19,15 +19,17 @@ const Chat = () => {
   const navigate = useNavigate();
 
   const [conversations, setConversations] = useState([]);
-  const [activeUser, setActiveUser] = useState({
-    userName: "",
-    avatar: "",
-    id: "",
-    status: false,
-  });
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [onlineUsers, setOnlineUsers] = useState({});
+  const [activeUser, setActiveUser] = useState({
+    userName: conversations[0]?.user_one?.username,
+    avatar: conversations[0]?.user_one?.avatar,
+    id: conversations[0]?.user_one?._id,
+    status: "",
+  });
+
+  console.log(conversations[0]);
 
   // Fetch conversations
   const fetchConversations = async () => {

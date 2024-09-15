@@ -128,7 +128,8 @@ const MainSeries = () => {
                   style={{ border: "none" }}
                   onClick={() =>
                     loggedInUserId
-                      ? navigate("/chat")
+                      ? navigate("/chat") +
+                        toast.success("Conversation Initialized!")
                       : toast.error("Please Login To Chat!")
                   }
                 >

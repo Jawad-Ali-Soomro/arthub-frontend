@@ -53,7 +53,7 @@ const MainUser = () => {
       userTwoId: userId,
     });
     chatInitialized
-      ? toast.success("Chat Initialized") + navigate("/chat")
+      ? toast.success("Conversation Initialized") + navigate("/chat")
       : this;
   };
 
