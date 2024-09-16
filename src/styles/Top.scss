@@ -8,16 +8,16 @@
   align-items: end;
   justify-content: center;
   .left {
-    width: 500px;
+    width: 370px;
     overflow: hidden;
     justify-content: center;
     align-items: center;
     display: flex;
-    height: 550px;
+    height: 450px !important;
     background: #eee;
     img {
-      max-width: 300px !important;
-      max-height: 350px !important;
+      max-width: 320px !important;
+      max-height: 400px !important;
       transition: 0.3s;
       cursor: pointer;
     }
@@ -101,9 +101,9 @@
 
   .right-side-data {
     .card {
-      width: 170px;
+      width: 185px;
       overflow: hidden;
-      height: 170px;
+      height: 185px;
       img {
         transition: 0.3s;
         width: 100%;
@@ -116,5 +116,15 @@
         scale: 1.1;
       }
     }
+  }
+}
+@media (max-width: 1000px) {
+  .top-wrap {
+    gap: 0;
+  }
+  .right-side-data {
+    margin-left: 0;
+    max-width: 0;
+    overflow: hidden;
   }
 }

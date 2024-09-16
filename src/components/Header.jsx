@@ -10,18 +10,15 @@ import {
   BiLogOut,
   BiSearch,
 } from "react-icons/bi";
-import { FaAdjust, FaArtstation, FaSignOutAlt } from "react-icons/fa";
+import { FaAdjust } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Login from "../pages/Login";
 import WalletSection from "./Connect";
 import toast from "react-hot-toast";
 import { connectMetaMask } from "../utils/wallet_connect";
-import { GrChat, GrDashboard } from "react-icons/gr";
-import { MdDashboard } from "react-icons/md";
+import { GrChat } from "react-icons/gr";
 import { RiDashboardLine } from "react-icons/ri";
-import { TiUserOutline } from "react-icons/ti";
 import { CgUser } from "react-icons/cg";
-import { BsChat } from "react-icons/bs";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -84,6 +81,7 @@ const Header = () => {
     window.localStorage.removeItem("authToken");
     window.localStorage.removeItem("userId");
     setUserData(null);
+    window.location.reload();
   };
 
   const openLogin = () => setShowLogin(true);

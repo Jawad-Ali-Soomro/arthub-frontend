@@ -33,7 +33,7 @@ const Artists = () => {
     <div>
       <Header />
       <div className="container-artists flex col">
-        <h1>Top Artists</h1>
+        {/* <h1>Top Artists</h1> */}
         <div className="artists-list flex col">
           {data.map((artist, index) => (
             <div key={index} className="artist-card flex">

@@ -66,7 +66,7 @@
       }
     }
   }
-  .right {
+  .right-footer {
     justify-content: center;
     gap: 100px;
     .community {
@@ -98,5 +98,15 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .footer-wrap {
+    justify-content: center;
+  }
+  .right-footer {
+    max-width: 0;
+    overflow: hidden;
   }
 }

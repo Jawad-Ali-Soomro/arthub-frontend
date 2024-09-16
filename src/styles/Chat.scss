@@ -3,6 +3,7 @@
   .side-bar {
     width: 100px;
     border-radius: 0;
+    border-right: 1px solid #80808025;
     .logo {
       img {
         width: 40px;
@@ -50,7 +51,6 @@
   .users {
     width: 400px;
     height: calc(80vh + 10px);
-    border: 1px solid #80808090;
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -126,8 +126,10 @@
   }
   .message-wrap {
     width: calc(100% - 500px);
-    height: 85svh;
+    height: 100vh;
     border-radius: 0;
+    border-left: 1px solid #80808025;
+    overflow: hidden;
     .user-info {
       width: 780px;
       border-radius: 50px;
@@ -161,11 +163,12 @@
     }
     .message-main {
       width: 800px;
-      height: 75%;
+      height: 70%;
       padding-bottom: 30px;
       padding-top: 30px;
       overflow-y: scroll;
       overflow-x: hidden;
+      border-radius: 30px;
       .right-message {
         display: flex;
         justify-content: flex-end;
@@ -220,7 +223,7 @@
       }
     }
     .message-send {
-      width: 80%;
+      width: calc(80% + 40px);
       height: 60px;
       justify-content: space-between;
       padding-left: 5px;

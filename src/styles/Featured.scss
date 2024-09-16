@@ -34,13 +34,13 @@
       position: relative;
       .img-sect {
         width: 370px;
-        height: 410px;
+        height: 450px;
         overflow: hidden;
         background: #eee;
         img {
           cursor: pointer;
           max-width: 320px !important;
-          max-height: 350px !important;
+          max-height: 400px !important;
           object-fit: contain;
           border-radius: 10px !important;
         }
@@ -138,5 +138,17 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .featuerd-wrap {
+    h1 {
+      text-align: center;
+    }
+  }
+  .wrapper {
+    justify-content: center !important;
+    align-items: center !important;
   }
 }

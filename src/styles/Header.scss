@@ -1,10 +1,10 @@
 .header-wrap {
   width: calc(100% - 200px) !important;
-  // height: 12vh;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
+  border-bottom: 1px solid #80808031;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
   justify-content: space-between;
   position: fixed;
   background: inherit;
@@ -301,4 +301,21 @@
 
 .header--visible {
   transform: translateY(0);
+}
+
+@media (max-width: 1000px) {
+  .search-bar {
+    max-width: 0;
+    overflow: hidden;
+    border: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .navs {
+    li {
+      max-width: 0;
+      overflow: hidden;
+    }
+  }
 }
