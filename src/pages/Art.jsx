@@ -329,17 +329,17 @@ const Art = () => {
                   <div
                     className="owner flex"
                     style={{ cursor: "pointer" }}
-                    onClick={() => navigate(`/user/${card_item.owner._id}`)}
+                    onClick={() => navigate(`/user/${card_item?.owner?._id}`)}
                   >
                     <div className="left flex" style={{ position: "relative" }}>
                       <img
                         onMouseEnter={() => setHoveredImage(card_item?._id)}
                         onMouseLeave={() => setHoveredImage(null)}
-                        src={card_item.owner.avatar}
-                        alt={card_item.owner.username}
+                        src={card_item?.owner?.avatar}
+                        alt={card_item?.owner?.username}
                       />
                       <h3 style={{ textTransform: "lowercase" }}>
-                        @{card_item.owner.username.split(" ")}
+                        @{card_item?.owner?.username.split(" ")}
                       </h3>
                       {hoveredImage === card_item?._id && (
                         <div className="image-popup">

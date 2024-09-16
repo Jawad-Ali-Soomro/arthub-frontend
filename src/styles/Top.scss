@@ -1,11 +1,10 @@
 .top-wrap {
-  padding-top: 15vh;
-  padding-bottom: 10vh;
+  height: 100vh;
   width: calc(100% - 200px);
   padding-left: 100px;
   padding-right: 100px;
   gap: 100px;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   .left {
     width: 370px;

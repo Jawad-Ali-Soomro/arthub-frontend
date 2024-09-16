@@ -18,6 +18,7 @@ import {
 import toast from "react-hot-toast";
 import { MdVerified } from "react-icons/md";
 import ImageModal from "../components/ImageModal";
+import uploadToPinata from "../utils/upload";
 
 const MainUser = () => {
   const navigate = useNavigate();
@@ -29,6 +30,17 @@ const MainUser = () => {
   const loggedInId = window.localStorage.getItem("userId");
   const parsedUser = JSON.parse(loggedInId);
 
+  const [avatar, setAvatar] = useState(main_data?.avatar);
+  const [imageUrl, setImageUrl] = useState(main_data?.avatar);
+  const [updateData, setUpdatedata] = useState({
+    username: main_data?.username,
+    handle: main_data?.handle,
+    facebook: main_data?.links[0]?.facebook,
+    instagram: main_data?.links[0]?.instagram,
+    twitter: main_data?.links[0]?.twitter,
+    avatar: imageUrl,
+  });
+
   const fetch_data = async () => {
     await axios.get(`${baseUserUrl}/get/${userId}`).then((res) => {
       set_data(res.data.data);
@@ -37,7 +49,7 @@ const MainUser = () => {
 
   useEffect(() => {
     fetch_data();
-  }, [userId]);
+  }, [updateData]);
 
   const date = new Date(main_data?.created_at);
   const [year, month, day] = [
@@ -169,6 +181,72 @@ const MainUser = () => {
 
   const hideUpdate = () => {
     setUpdate(false);
+  };
+
+  const handleAvatarChange = async (e) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatar(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+    try {
+      const uploadResult = await uploadToPinata(file);
+      setImageUrl(
+        "https://orange-large-reindeer-667.mypinata.cloud/ipfs/" +
+          uploadResult.IpfsHash
+      );
+    } catch (error) {
+      console.error(error);
+      toast.error("Please Upload Avatar!", {
+        style: {
+          borderRadius: "20px",
+          background: themeMode == "dark" ? "#212121" : "white",
+          color: themeMode == "dark" ? "white" : "black",
+          fontFamily: "Poppins",
+          border: "1px solid #808090",
+          boxShadow: "none",
+        },
+      });
+    }
+  };
+
+  const handleUpdateChange = (e) => {
+    setUpdatedata((prevState) => ({
+      ...prevState, // Preserve the other fields
+      [e.target.name]: e.target.value, // Update the field based on input name
+    }));
+  };
+
+  const handleUpdate = async () => {
+    if (
+      !updateData.username ||
+      !updateData?.handle ||
+      !updateData.facebook ||
+      !updateData?.instagram ||
+      !updateData.twitter
+    ) {
+      toast.error("Please Fill All Fields!");
+    } else {
+      const updatedUser = await axios.put(
+        `${baseUserUrl}/update/${parsedUser?._id}`,
+        {
+          username: updateData?.username,
+          handle: updateData?.handle,
+          facebook: updateData?.facebook,
+          instagram: updateData?.instagram,
+          twitter: updateData?.twitter,
+          avatar: imageUrl,
+        }
+      );
+      updatedUser?.data.message == "Account Updated!"
+        ? toast.success("Account Updated Login Again!") +
+          setUpdate(false) +
+          window.location.reload()
+        : toast.error(updatedUser?.data.message);
+    }
   };
 
   return (
@@ -602,11 +680,23 @@ const MainUser = () => {
               style={{ marginTop: "20px" }}
             >
               <BiUser />
-              <input type="text" placeholder={main_data?.username} />
+              <input
+                type="text"
+                placeholder={main_data?.username}
+                value={updateData.username}
+                name="username"
+                onChange={handleUpdateChange}
+              />
             </div>
             <div className="wrap flex border flex">
               <BiAt />
-              <input type="text" placeholder={main_data?.handle} />
+              <input
+                type="text"
+                placeholder={main_data?.handle}
+                value={updateData?.handle}
+                name="handle"
+                onChange={handleUpdateChange}
+              />
             </div>
             <div className="wrap flex border flex">
               <BiLogoTwitter />
@@ -617,6 +707,9 @@ const MainUser = () => {
                     ? main_data?.links[0]?.twitter
                     : "Twitter"
                 }
+                value={updateData?.twitter}
+                name="twitter"
+                onChange={handleUpdateChange}
               />
             </div>
             <div className="wrap flex border flex">
@@ -628,6 +721,9 @@ const MainUser = () => {
                     ? main_data?.links[0]?.instagram
                     : "Instagram"
                 }
+                value={updateData?.instagram}
+                name="instagram"
+                onChange={handleUpdateChange}
               />
             </div>
             <div className="wrap flex border flex">
@@ -639,6 +735,21 @@ const MainUser = () => {
                     ? main_data?.links[0]?.facebook
                     : "Facebook"
                 }
+                value={updateData?.facebook}
+                name="facebook"
+                onChange={handleUpdateChange}
+              />
+            </div>
+            <div className="wrap">
+              <img
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  border: "1px solid #80808090",
+                }}
+                src={imageUrl ? imageUrl : main_data?.avatar}
+                alt=""
               />
             </div>
             <div
@@ -655,6 +766,7 @@ const MainUser = () => {
                   zIndex: 10,
                   cursor: "pointer",
                 }}
+                onChange={handleAvatarChange}
               />
               <p
                 className="flex col"
@@ -677,6 +789,7 @@ const MainUser = () => {
                 background: `${themeMode == "dark" ? "white" : "#212121"}`,
                 color: `${themeMode == "dark" ? "black" : "white"}`,
               }}
+              onClick={handleUpdate}
             >
               Update
             </button>

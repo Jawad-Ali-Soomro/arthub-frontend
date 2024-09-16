@@ -1,0 +1,152 @@
+.top-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+.main-create {
+  background: white;
+  width: 100%;
+  border-radius: 0;
+  height: 100vh;
+  .left-display {
+    width: 30%;
+    height: 100vh;
+    padding-top: 10vh;
+    .card {
+      h1 {
+        font-size: 1.2rem;
+        margin-left: 20px;
+        margin-top: 10px;
+        font-weight: 600;
+      }
+      .img-sect {
+        width: 370px;
+        height: 410px;
+        img {
+          max-width: 320px;
+          max-height: 360px;
+        }
+      }
+
+      .owner {
+        margin-top: 10px;
+        margin-left: 20px;
+        img {
+          width: 40px;
+          border-radius: 50%;
+        }
+      }
+      .line {
+        width: 320px;
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+      .price {
+        margin-left: 20px;
+        width: 320px;
+        justify-content: space-between;
+        margin-top: 10px;
+        p {
+          font-family: Inter;
+          font-size: 0.8rem;
+        }
+        button {
+          background: #eee;
+          width: 100px;
+          height: 35px;
+          border: none;
+          color: black;
+        }
+      }
+    }
+  }
+  .right-display {
+    width: 30%;
+    padding-top: 10vh;
+    height: 100%;
+    gap: 10px;
+    .wrap {
+      width: 400px;
+      align-items: end;
+      position: relative;
+      justify-content: end;
+      p {
+        width: 200px;
+        height: 40px;
+        position: absolute;
+        left: calc(50% - 100px);
+        z-index: 0;
+        top: calc(50% - 20px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        span {
+          font-size: 0.6rem;
+        }
+      }
+      input,
+      textarea {
+        width: 400px;
+        height: 40px;
+        border: 1px solid #80808090;
+        background: inherit;
+        color: inherit;
+        padding-left: 15px;
+        outline: none;
+      }
+      textarea {
+        width: 400px;
+        max-width: 350px;
+        min-width: 385px;
+        border-radius: 10px;
+        height: 100px;
+        padding-top: 10px;
+        min-height: 100px;
+        height: 100px;
+        font-size: 0.8rem;
+        max-height: 100px;
+      }
+      .card {
+        width: 10px;
+        height: 30px;
+        border: 1px solid;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .wrap-card {
+      max-width: 400px;
+      gap: 10px;
+      justify-content: space-between;
+      .card {
+        width: 100px;
+        height: 25px;
+        font-size: 0.6rem;
+        border-radius: 17.5px;
+        cursor: pointer;
+        border: 1px solid #80808090;
+      }
+    }
+    .upload {
+      border: 1px dashed;
+      height: 80px;
+      input {
+        height: 100%;
+        position: absolute;
+        z-index: 10;
+        cursor: pointer;
+      }
+    }
+    button {
+      width: 150px;
+      height: 40px;
+      text-transform: uppercase;
+      background: #eee;
+      border: none;
+      font-size: 0.7rem;
+      margin-left: 250px;
+    }
+  }
+}

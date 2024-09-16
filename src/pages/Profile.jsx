@@ -1,5 +1,5 @@
 import React from "react";
-import { BiArrowToBottom, BiArrowToTop } from "react-icons/bi";
+import { BiArrowToBottom, BiArrowToTop, BiPlus } from "react-icons/bi";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.scss";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
+import { CgLogOff } from "react-icons/cg";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -73,7 +74,10 @@ const Profile = () => {
                 </button>
               </div>
             </div>
-            <div className="wrap flex">
+            <div
+              className="wrap flex"
+              style={{ justifyContent: "end", gap: "50px" }}
+            >
               <div
                 className="card flex  col"
                 onClick={() => set_show_art(true)}
@@ -104,58 +108,21 @@ const Profile = () => {
                   <h2>{profile_data?.series?.length}</h2>
                 )}
               </div>
-              <div className="card flex col">
-                <p>Total # events</p>
-                {profile_data?.events == undefined ? (
-                  <img
-                    src="/loader.svg"
-                    style={{ width: "50px", marginTop: "10px" }}
-                    alt=""
-                  />
-                ) : (
-                  <h2>{profile_data?.events?.length}</h2>
-                )}
-              </div>
             </div>
-            {/* <div className="wrap flex">
-              <div className="card flex border col">
-                <p>Total # followers</p>
-                {profile_data?.followers == undefined ? (
-                  <img
-                    src="/loader.svg"
-                    style={{ width: "50px", marginTop: "10px" }}
-                    alt=""
-                  />
-                ) : (
-                  <h2>{profile_data?.followers?.length}</h2>
-                )}
-              </div>
-              <div className="card flex border col">
-                <p>Total # following</p>
-                {profile_data?.following == undefined ? (
-                  <img
-                    src="/loader.svg"
-                    style={{ width: "50px", marginTop: "10px" }}
-                    alt=""
-                  />
-                ) : (
-                  <h2>{profile_data?.following?.length}</h2>
-                )}
-              </div>
-            </div> */}
+
+            <div className="btns-bottom flex col">
+              {userData?.isPrime ? (
+                <button onClick={() => navigate("/create")}>
+                  <BiPlus />
+                </button>
+              ) : (
+                this
+              )}
+              <button>
+                <CgLogOff />
+              </button>
+            </div>
           </div>
-          {/* <div className="btns-logout flex">
-              <button
-                data-text="Home"
-                className="flex border"
-                onClick={() => navigate("/")}
-              >
-                <BsArrowLeft />
-              </button>
-              <button data-text="logout" className="flex border">
-                <BiLogOut />
-              </button>
-            </div> */}
         </div>
         {show_art == true ? (
           <div className="art-sect flex" onClick={() => hideArt()}>

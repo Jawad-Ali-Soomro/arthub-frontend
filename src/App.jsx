@@ -19,7 +19,6 @@ import TrendingSeries from "./pages/TrendingSeries";
 import CreateArt from "./pages/CreateArt";
 import Artists from "./pages/Artists";
 import { useState } from "react";
-import Loader from "./pages/Loader";
 import { BsCloudSlash } from "react-icons/bs";
 import Deals from "./pages/Deals";
 import Chat from "./pages/Chat";
@@ -49,11 +48,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route
-            path="/"
-            // element={showLoader == true ? <Loader /> : <Home />}
-            element={<Home />}
-          ></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/explore/art" element={<Art />}></Route>
           <Route path="/explore/series" element={<Series />}></Route>
           <Route path="/art/:artId" element={<MainArt />}></Route>
@@ -80,6 +75,10 @@ function App() {
             element={userToken ? <Chat /> : <NotFound />}
           ></Route>
           <Route path="/featured-series" element={<TrendingSeries />}></Route>
+          <Route
+            path="/create"
+            element={userToken ? <CreateArt /> : <NotFound />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>
