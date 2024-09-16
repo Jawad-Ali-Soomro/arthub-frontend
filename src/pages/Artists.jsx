@@ -33,7 +33,6 @@ const Artists = () => {
     <div>
       <Header />
       <div className="container-artists flex col">
-        {/* <h1>Top Artists</h1> */}
         <div className="artists-list flex col">
           {data.map((artist, index) => (
             <div key={index} className="artist-card flex">
@@ -42,11 +41,11 @@ const Artists = () => {
                   onMouseEnter={() => setHoveredImage(artist.avatar)}
                   onMouseLeave={() => setHoveredImage(null)}
                   src={artist.avatar}
-                  alt={artist.username}
+                  alt={artist.handle}
                   className="avatar-img"
                   onClick={() => navigate(`/user/${artist?._id}`)}
                 />
-                <h3>@{artist.username.split(" ").join("_")}</h3>
+                <h3>@{artist.handle.split(" ").join("_")}</h3>
               </div>
               <button
                 style={{
