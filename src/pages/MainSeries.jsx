@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/mainSeries.scss";
 import Header from "../components/Header";
 import axios from "axios";
-import { baseSeriesUrl, ethToUsd } from "../utils/constant";
+import { baseSeriesUrl, baseUserUrl, ethToUsd } from "../utils/constant";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
@@ -45,11 +45,23 @@ const MainSeries = () => {
   const [show_deal, setDeal] = useState(false);
   const [showBuy, setBuy] = useState(false);
 
-  const onClose = () => setDeal(false) + setBuy(false);
+  const onClose = () => setDeal(false) + setBuy(false) + setArtPopup(false);
 
-  console.log(main_data);
   const themeMode = window.localStorage.getItem("themeMode");
-  console.log(main_data?._id);
+  const userId = window.localStorage.getItem("userId");
+  const parsedUserId = JSON.parse(userId);
+
+  const [showArtPopup, setArtPopup] = useState(false);
+  const [artData, setArtData] = useState();
+
+  const getUserArts = async () => {
+    const gotArts = await axios.get(`${baseUserUrl}/get/${parsedUserId?._id}`);
+    setArtData(gotArts?.data?.data?.art);
+  };
+
+  useEffect(() => {
+    getUserArts();
+  });
 
   return (
     <div>
@@ -120,8 +132,9 @@ const MainSeries = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   style={{ background: "#333", color: "white", border: "none" }}
+                  onClick={() => setArtPopup(true)}
                 >
-                  UPDATE
+                  ADD
                 </button>
               ) : (
                 <button
@@ -311,6 +324,7 @@ const MainSeries = () => {
           onClose={onClose}
         />
       )}
+
       <Footer />
     </div>
   );

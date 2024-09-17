@@ -27,3 +27,43 @@
     }
   }
 }
+
+.art-popup {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba($color: #000000, $alpha: 0.3);
+  z-index: 1000;
+  width: 100%;
+  .popup-main {
+    background: white;
+    padding: 30px 30px;
+    overflow: scroll;
+    flex-wrap: wrap;
+    max-width: 600px;
+    max-height: 500px;
+    justify-content: center;
+    gap: 20px;
+    .popup-wrap {
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: start;
+      justify-content: start;
+      img {
+        width: 100px;
+        cursor: pointer;
+        height: 120px;
+      }
+    }
+
+    button {
+      width: 150px;
+      height: 40px;
+      margin-left: 400px;
+      background: #333;
+      color: white;
+      border: none;
+    }
+  }
+}

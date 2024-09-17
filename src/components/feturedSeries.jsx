@@ -112,7 +112,9 @@ const FeaturedSeries = () => {
                     style={{
                       background: "#eee",
                       color: "black",
-                      border: "none",
+                      border: `${
+                        themeMode === "light" ? "1px  solid #80808090" : "none"
+                      }`,
                     }}
                     onClick={() => navigate(`/series/${card_item?._id}`)}
                   >

@@ -1,7 +1,7 @@
 .chat-main {
   min-height: 100vh;
   .side-bar {
-    width: 100px;
+    width: 80px;
     border-radius: 0;
     border-right: 1px solid #80808025;
     .logo {
@@ -132,6 +132,8 @@
     overflow: hidden;
     .user-info {
       width: 780px;
+      background: #edeade;
+      color: black;
       border-radius: 50px;
       justify-content: space-between;
       padding: 10px;
@@ -159,11 +161,14 @@
         text-transform: uppercase;
         font-size: 1rem;
         color: inherit;
+        background: #333 !important;
+        color: white !important;
+        border: none !important;
       }
     }
     .message-main {
       width: 800px;
-      height: 70%;
+      height: 490px;
       padding-bottom: 30px;
       padding-top: 30px;
       overflow-y: scroll;
@@ -193,6 +198,7 @@
           height: 25px;
           position: absolute;
           border-radius: 20px;
+          border: 1px solid #808090;
         }
       }
       .left-message {
@@ -219,6 +225,7 @@
           top: -25px;
           left: -25px;
           border-radius: 20px;
+          border: 1px solid #808090;
         }
       }
     }
@@ -238,6 +245,7 @@
         border: none;
         background: transparent;
         color: inherit;
+        font-size: 1rem;
       }
       button {
         width: 50px;

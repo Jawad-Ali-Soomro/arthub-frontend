@@ -75,7 +75,6 @@
       justify-content: start;
       h2 {
         font-weight: 600;
-        font-family: "Inter";
       }
     }
     .btns {
@@ -226,7 +225,6 @@
           h2 {
             font-size: 0.9rem;
             font-weight: 400;
-            font-family: "Inter";
           }
           button {
             width: 100px;
@@ -254,7 +252,6 @@
   top: 0;
   left: 0;
   background: rgba($color: #000000, $alpha: 0.5);
-  // backdrop-filter: blur(15px);
   border-radius: 0;
   z-index: 1000;
   .information {
@@ -274,7 +271,6 @@
       p {
         font-weight: 600;
         text-transform: capitalize;
-        font-family: "inter";
         font-size: 0.7rem;
         position: relative;
         cursor: pointer;

@@ -214,7 +214,8 @@ const MainArt = () => {
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (
-                <button className="border">Update</button>
+                // <button className="border">Update</button>
+                this
               ) : (
                 <button
                   className="border"
@@ -228,8 +229,9 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    width: "400px",
+                    background: "#333",
+                    color: "white",
                     border: "none",
                   }}
                   onClick={() => setShowPopup(true)}
@@ -395,7 +397,7 @@ const MainArt = () => {
               color: `${themeMode == "dark" ? "white" : "black"}`,
             }}
           >
-            <h1>Details</h1>
+            <h1 style={{ border: "none" }}>Details</h1>
             <div className="card flex">
               <p>Title</p>
               <p>{main_data?.title}</p>

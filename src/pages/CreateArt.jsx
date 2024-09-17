@@ -58,6 +58,7 @@ const CreateArt = () => {
           fontFamily: "Poppins",
           border: "1px solid #808090",
           boxShadow: "none",
+          featured: true,
         },
       });
     }

@@ -291,7 +291,9 @@ const Header = () => {
               background: "#eee",
               color: "black",
               fontWeight: "600",
-              border: "none",
+              border: `${
+                themeMode === "light" ? "1px  solid #80808090" : "none"
+              }`,
             }}
             onClick={() =>
               tokenId

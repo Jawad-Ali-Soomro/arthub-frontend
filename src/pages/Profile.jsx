@@ -111,13 +111,13 @@ const Profile = () => {
             </div>
 
             <div className="btns-bottom flex col">
-              {userData?.isPrime ? (
-                <button onClick={() => navigate("/create")}>
-                  <BiPlus />
-                </button>
+              {/* {userData?.isPrime ? (
               ) : (
                 this
-              )}
+              )} */}
+              <button onClick={() => navigate("/create")}>
+                <BiPlus />
+              </button>
               <button>
                 <CgLogOff />
               </button>

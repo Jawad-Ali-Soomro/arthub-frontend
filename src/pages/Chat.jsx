@@ -146,7 +146,7 @@ const Chat = () => {
         </div>
       </div>
       <div className="users flex col">
-        <div
+        {/* <div
           className="top-search border flex"
           // style={{
           //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
@@ -163,7 +163,7 @@ const Chat = () => {
           >
             <CgSearch />
           </button>
-        </div>
+        </div> */}
         <div className="main-users flex">
           <div className="wrap flex col">
             {conversations.map((conv) => {
@@ -177,14 +177,16 @@ const Chat = () => {
                   className="card flex"
                   style={{
                     background: `${
-                      activeUser?.id == otherUser?._id ? "#eee" : "transparent"
+                      activeUser?.id == otherUser?._id
+                        ? "#edeade"
+                        : "transparent"
                     }`,
                     color: `${
                       activeUser?.id == otherUser?._id ? "black" : "inherit"
                     }`,
                     border: `${
                       activeUser?.id == otherUser?._id
-                        ? "none"
+                        ? "1px solid #edeade"
                         : "1px solid #80808090"
                     }`,
                   }}
