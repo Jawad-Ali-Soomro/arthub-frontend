@@ -220,34 +220,44 @@ const MainUser = () => {
     }));
   };
 
+  console.log(updateData);
+
   const handleUpdate = async () => {
-    if (
-      !updateData.username ||
-      !updateData?.handle ||
-      !updateData.facebook ||
-      !updateData?.instagram ||
-      !updateData.twitter
-    ) {
-      toast.error("Please Fill All Fields!");
-    } else {
-      const updatedUser = await axios.put(
-        `${baseUserUrl}/update/${parsedUser?._id}`,
-        {
-          username: updateData?.username,
-          handle: updateData?.handle,
-          facebook: updateData?.facebook,
-          instagram: updateData?.instagram,
-          twitter: updateData?.twitter,
-          avatar: imageUrl,
-        }
-      );
-      updatedUser?.data.message == "Account Updated!"
-        ? toast.success("Account Updated Login Again!") +
-          setUpdate(false) +
-          window.location.reload()
-        : toast.error(updatedUser?.data.message);
-    }
+    // if (
+    //   !updateData.username ||
+    //   !updateData?.handle ||
+    //   !updateData.facebook ||
+    //   !updateData?.instagram ||
+    //   !updateData.twitter
+    // ) {
+    //   toast.error("Please Fill All Fields!");
+    // } else {
+    const updatedUser = await axios.put(
+      `${baseUserUrl}/update/${parsedUser?._id}`,
+      {
+        username: updateData?.username
+          ? updateData?.username
+          : main_data?.username,
+        handle: updateData?.handle ? updateData?.handle : main_data?.handle,
+        facebook: updateData?.facebook
+          ? updateData?.facebook
+          : main_data?.links[0]?.facebook,
+        instagram: updateData?.instagram
+          ? updateData?.instagram
+          : main_data?.links[0]?.instagram,
+        twitter: updateData?.twitter
+          ? updateData?.twitter
+          : main_data?.links[0]?.twitter,
+        avatar: imageUrl ? imageUrl : main_data?.avatar,
+      }
+    );
+    updatedUser?.data.message == "Account Updated!"
+      ? toast.success("Account Updated Login Again!") +
+        setUpdate(false) +
+        window.location.reload()
+      : toast.error(updatedUser?.data.message);
   };
+  // };
 
   return (
     <div>

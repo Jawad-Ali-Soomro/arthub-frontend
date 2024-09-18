@@ -15,7 +15,7 @@
       max-width: 400px;
     }
     p {
-      max-width: 400px;
+      max-width: 350px;
       text-align: justify;
     }
     button {
@@ -32,13 +32,15 @@
   }
 
   .left {
-    width: 80%;
+    width: 60%;
     height: 100%;
     gap: 20px;
     align-items: start;
-
+    background: #edeade;
+    padding-right: 50px;
+    color: black;
     h1 {
-      font-size: 12rem;
+      font-size: 10rem;
       font-weight: 900;
       margin-top: 40px;
       text-align: right;
@@ -47,7 +49,7 @@
     }
 
     p {
-      max-width: 450px;
+      max-width: 400px;
       font-weight: 300;
       font-size: 0.9rem;
     }

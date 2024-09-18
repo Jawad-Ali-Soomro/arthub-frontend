@@ -50,7 +50,7 @@ const CreateArt = () => {
       );
     } catch (error) {
       console.error(error);
-      toast.error("Please Upload Avatar!", {
+      toast.error("Please Upload File!", {
         style: {
           borderRadius: "20px",
           background: themeMode == "dark" ? "#212121" : "white",
@@ -104,8 +104,6 @@ const CreateArt = () => {
       ? toast.success("Art Created Successfully!") + navigate("/profile")
       : toast.error("Error While Creating Art Try Again!");
   };
-
-  console.log(imageUrl);
 
   return (
     <div

@@ -29,9 +29,10 @@ if (window.ethereum) {
   window.ethereum
     .request({ method: "eth_requestAccounts" })
     .then((accounts) => {
-      // Accounts now exposed, you can interact with the user
-
-      // Update the ETH price when accounts are exposed
+      const account = accounts[0];
+      window.sessionStorage.setItem("token", account);
+      window.sessionStorage.setItem("balance", balance);
+      window.location.reload();
       updateethToUsd();
     })
     .catch((error) =>

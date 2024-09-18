@@ -16,21 +16,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div className="banner flex">
-        <div className="right flex">
-          {/* <img src="/banner-1.png" alt="" /> */}
-          <p>
-            Dicover the most outstanding digital art in all aspect of life ,
-            create your own art and sell it here.
-          </p>
-          <button onClick={() => navigate("/explore/art")}>Explore</button>
-        </div>
-        <div className="left flex">
-          <h1>
-            Discover <br /> Collect & Sell Art
-          </h1>
-        </div>
-      </div>
+
       <Top />
 
       <Featured />
