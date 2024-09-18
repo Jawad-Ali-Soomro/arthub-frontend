@@ -8,25 +8,29 @@ import Footer from "../components/Footer";
 import Top from "../components/Top";
 import Support from "../components/Support";
 import { sendTransactions } from "../utils/constant";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   document.title = "Artchain";
   return (
     <div>
       <Header />
-      {/* <div className="banner flex">
-        <div className="left flex col">
-          <h1>Discover , Collect & Sell Art</h1>
+      <div className="banner flex">
+        <div className="right flex">
+          {/* <img src="/banner-1.png" alt="" /> */}
           <p>
             Dicover the most outstanding digital art in all aspect of life ,
             create your own art and sell it here.
           </p>
           <button onClick={() => navigate("/explore/art")}>Explore</button>
         </div>
-        <div className="right flex">
-          <img src="./hero.png" alt="" />
+        <div className="left flex">
+          <h1>
+            Discover <br /> Collect & Sell Art
+          </h1>
         </div>
-      </div> */}
+      </div>
       <Top />
 
       <Featured />
