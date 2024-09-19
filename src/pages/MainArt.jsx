@@ -27,7 +27,6 @@ const MainArt = () => {
   const [buy_opt, set_buy] = useState(false);
   const themeMode = window.localStorage.getItem("themeMode");
   const [show_details, set_details] = useState(false);
-  // console.log(main_data?._id);
 
   const fetch_data = async () => {
     await axios

@@ -28,42 +28,51 @@
   }
 }
 
-.art-popup {
+.art-to-add {
+  width: 100%;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   background: rgba($color: #000000, $alpha: 0.3);
   z-index: 1000;
-  width: 100%;
-  .popup-main {
-    background: white;
-    padding: 30px 30px;
-    overflow: scroll;
-    flex-wrap: wrap;
-    max-width: 600px;
-    max-height: 500px;
-    justify-content: center;
-    gap: 20px;
-    .popup-wrap {
-      gap: 20px;
+  backdrop-filter: blur(5px);
+  .container {
+    align-items: start;
+    padding: 30px 50px;
+    h1 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 0.8rem;
+      text-transform: lowercase;
+    }
+    .art-mapper {
       flex-wrap: wrap;
+      overflow: scroll;
+      max-width: 560px;
       align-items: start;
+      max-height: 500px;
+      margin-top: 20px;
       justify-content: start;
+      gap: 10px;
       img {
         width: 100px;
+        height: 100px;
         cursor: pointer;
-        height: 120px;
       }
     }
-
     button {
-      width: 150px;
+      justify-self: end;
+      align-self: flex-end;
+      width: 120px;
       height: 40px;
-      margin-left: 400px;
-      background: #333;
-      color: white;
+      background: royalblue;
       border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-top: 20px;
     }
   }
 }

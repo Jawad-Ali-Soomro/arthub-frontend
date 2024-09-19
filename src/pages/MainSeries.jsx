@@ -5,9 +5,7 @@ import axios from "axios";
 import { baseSeriesUrl, baseUserUrl, ethToUsd } from "../utils/constant";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
-import Skeleton from "react-loading-skeleton";
 import { BiLayer } from "react-icons/bi";
-import Deal from "../components/Deal";
 import Buy from "../components/Buy";
 import toast from "react-hot-toast";
 
@@ -41,8 +39,6 @@ const MainSeries = () => {
 
   const loggedInUser = localStorage.getItem("userId");
   const loggedInUserId = JSON.parse(loggedInUser);
-
-  const [show_deal, setDeal] = useState(false);
   const [showBuy, setBuy] = useState(false);
 
   const onClose = () => setDeal(false) + setBuy(false) + setArtPopup(false);
@@ -62,6 +58,51 @@ const MainSeries = () => {
   useEffect(() => {
     getUserArts();
   });
+
+  const [artToAddData, setArtToAddData] = useState();
+  const [selectedArtToAdd, setSelectedArtToAdd] = useState();
+
+  const getArts = async () => {
+    const res = await axios.get(`${baseUserUrl}/get/${main_data?.owner?._id}`);
+    setArtToAddData(res?.data?.data?.art);
+  };
+
+  const addItemToSeries = async () => {
+    const artToAdd = selectedArtToAdd;
+    const seriesAddId = main_data?._id;
+    if (!artToAdd) {
+      toast.error("Plase Select Art To Add", {
+        style: {
+          background: "white",
+          color: "black",
+          borderRadius: "20px",
+        },
+      });
+    } else {
+      const res = await axios.post(`${baseSeriesUrl}/add/`, {
+        art_id: artToAdd,
+        series_id: seriesAddId,
+      });
+      if (res?.data?.message == `Added to ${main_data?.title}!`) {
+        toast.success(`Added to ${main_data?.title}`, {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: "20px",
+          },
+        }) + window.location.reload();
+      } else {
+        toast.error(res?.data?.message),
+          {
+            style: {
+              background: "white",
+              color: "black",
+              borderRadius: "20px",
+            },
+          };
+      }
+    }
+  };
 
   return (
     <div>
@@ -120,19 +161,13 @@ const MainSeries = () => {
                     />
                   );
                 })}
-                {/* <img
-                  style={{ width: "25px", height: "25px", borderRadius: "50%" }}
-                  src={main_data?.owner?.avatar}
-                  alt=""
-                  className="border"
-                /> */}
               </div>
             </div>
             <div className="btns flex col">
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   style={{ background: "#333", color: "white", border: "none" }}
-                  onClick={() => setArtPopup(true)}
+                  onClick={() => setArtPopup(true) + getArts()}
                 >
                   ADD ART
                 </button>
@@ -345,6 +380,44 @@ const MainSeries = () => {
           price={totalPricesSum}
           onClose={onClose}
         />
+      )}
+
+      {showArtPopup ? (
+        <div className="art-to-add flex" onClick={() => setArtPopup(false)}>
+          <div
+            className="container flex col"
+            style={{
+              background: `${themeMode == "dark" ? "#212121" : "white"}`,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h1>Add Item!</h1>
+            <p>Remeber you can add one art at once!</p>
+            <div className="art-mapper flex">
+              {artToAddData?.map((art) => {
+                return main_data?.art?.some((item) => item._id === art?._id) ? (
+                  this
+                ) : (
+                  <img
+                    src={art?.image}
+                    onClick={() => setSelectedArtToAdd(art?._id)}
+                    style={{
+                      border: `${
+                        selectedArtToAdd === art?._id
+                          ? "2px solid royalblue"
+                          : "2px solid transparent"
+                      }`,
+                    }}
+                    alt=""
+                  />
+                );
+              })}
+            </div>
+            <button onClick={addItemToSeries}>ADD</button>
+          </div>
+        </div>
+      ) : (
+        this
       )}
 
       <Footer />
