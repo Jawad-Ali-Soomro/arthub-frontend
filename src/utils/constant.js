@@ -1,12 +1,16 @@
 import toast from "react-hot-toast";
 
-const baseUserUrl = "http://localhost:8080/api/v1/user";
-const baseArtUrl = "http://localhost:8080/api/v1/art";
-const baseSeriesUrl = "http://localhost:8080/api/v1/series";
-const baseDealUrl = "http://localhost:8080/api/v1/deal";
-const baseConversationUrl = "http://localhost:8080/api/v1/conversations";
-const baseMessageUrl = "http://localhost:8080/api/v1/messages";
-const baseTransactionUrl = "http://localhost:8080/api/v1/transaction";
+// to run localhost replace https://arthub-backend-rzuu.vercel.app/ with http://localhost:8080/
+
+const baseUserUrl = "https://arthub-backend-rzuu.vercel.app/api/v1/user";
+const baseArtUrl = "https://arthub-backend-rzuu.vercel.app/api/v1/art";
+const baseSeriesUrl = "https://arthub-backend-rzuu.vercel.app/api/v1/series";
+const baseDealUrl = "https://arthub-backend-rzuu.vercel.app/api/v1/deal";
+const baseConversationUrl =
+  "https://arthub-backend-rzuu.vercel.app/api/v1/conversations";
+const baseMessageUrl = "https://arthub-backend-rzuu.vercel.app/api/v1/messages";
+const baseTransactionUrl =
+  "https://arthub-backend-rzuu.vercel.app/api/v1/transaction";
 
 let ethToUsd = 2494.73; // Default value for global usage
 
