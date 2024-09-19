@@ -362,8 +362,8 @@ const Art = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "#eee",
-                        color: "black",
+                        background: "royalblue",
+                        color: "white",
                         border: "none",
                       }}
                       onClick={() => navigate(`/art/${card_item._id}`)}

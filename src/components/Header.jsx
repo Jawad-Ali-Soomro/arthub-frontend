@@ -180,7 +180,13 @@ const Header = () => {
               onClick={() =>
                 userData
                   ? navigate("/deals")
-                  : toast.error("Please Login To View Deals!")
+                  : toast.error("Please Login To View Deals!", {
+                      style: {
+                        background: "white",
+                        color: "black",
+                        borderRadius: " 20px",
+                      },
+                    })
               }
             >
               Deals
@@ -288,8 +294,8 @@ const Header = () => {
         ) : (
           <button
             style={{
-              background: "#eee",
-              color: "black",
+              background: "#3b82f6",
+              color: "white",
               fontWeight: "600",
               border: `${
                 themeMode === "light" ? "1px  solid #80808090" : "none"

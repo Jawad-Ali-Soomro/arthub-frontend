@@ -27,7 +27,7 @@ const Popup = ({ message, onConfirm, onCancel }) => {
           <button
             onClick={handleConfirm}
             style={{
-              background: "red",
+              background: "royalblue",
               color: "white",
               border: "none",
             }}
@@ -39,8 +39,8 @@ const Popup = ({ message, onConfirm, onCancel }) => {
             onClick={onCancel}
             className="cancel-button"
             style={{
-              background: "#eee",
-              color: "black",
+              background: "red",
+              color: "white",
               border: "none",
             }}
           >

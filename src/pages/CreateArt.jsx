@@ -52,13 +52,9 @@ const CreateArt = () => {
       console.error(error);
       toast.error("Please Upload File!", {
         style: {
-          borderRadius: "20px",
-          background: themeMode == "dark" ? "#212121" : "white",
-          color: themeMode == "dark" ? "white" : "black",
-          fontFamily: "Poppins",
-          border: "1px solid #808090",
-          boxShadow: "none",
-          featured: true,
+          background: "white",
+          color: "black",
+          borderRadius: " 20px",
         },
       });
     }
@@ -88,7 +84,13 @@ const CreateArt = () => {
   const navigate = useNavigate();
   const createArt = async () => {
     if (!imageUrl) {
-      return toast.error("Please Upload Image");
+      return toast.error("Please Upload Image", {
+        style: {
+          background: "white",
+          color: "black",
+          borderRadius: " 20px",
+        },
+      });
     }
 
     const createArt = await axios.post(`${baseArtUrl}/create`, {
@@ -101,8 +103,20 @@ const CreateArt = () => {
       tags: selectedTags,
     });
     createArt.data.message == "Art Created!"
-      ? toast.success("Art Created Successfully!") + navigate("/profile")
-      : toast.error("Error While Creating Art Try Again!");
+      ? toast.success("Art Created Successfully!", {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
+          },
+        }) + navigate("/profile")
+      : toast.error("Error While Creating Art Try Again!", {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
+          },
+        });
   };
 
   return (
@@ -143,7 +157,9 @@ const CreateArt = () => {
               <p>
                 {artData?.price}Ξ(${ethToUsd * artData?.price})
               </p>
-              <button>BUY</button>
+              <button style={{ background: "royalblue", color: "white" }}>
+                BUY
+              </button>
             </div>
           </div>
         </div>
@@ -252,7 +268,11 @@ const CreateArt = () => {
             </p>
           </div>
           <button
-            style={{ background: "#eee", cursor: "pointer" }}
+            style={{
+              background: "royalblue",
+              color: "white",
+              cursor: "pointer",
+            }}
             onClick={createArt}
           >
             Create

@@ -110,8 +110,8 @@ const FeaturedSeries = () => {
                   <button
                     className="flex"
                     style={{
-                      background: "#eee",
-                      color: "black",
+                      background: "royalblue",
+                      color: "white",
                       border: `${
                         themeMode === "light" ? "1px  solid #80808090" : "none"
                       }`,

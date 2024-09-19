@@ -132,9 +132,10 @@
     overflow: hidden;
     .user-info {
       width: 780px;
-      background: #edeade;
-      color: black;
+      background: royalblue;
+      color: white;
       border-radius: 50px;
+      border: none;
       justify-content: space-between;
       padding: 10px;
       .profile {
@@ -161,7 +162,7 @@
         text-transform: uppercase;
         font-size: 1rem;
         color: inherit;
-        background: #333 !important;
+        background: rgba($color: white, $alpha: 0.1) !important;
         color: white !important;
         border: none !important;
       }

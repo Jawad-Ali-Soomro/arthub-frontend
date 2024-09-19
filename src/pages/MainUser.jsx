@@ -65,7 +65,13 @@ const MainUser = () => {
       userTwoId: userId,
     });
     chatInitialized
-      ? toast.success("Conversation Initialized") + navigate("/chat")
+      ? toast.success("Conversation Initialized", {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
+          },
+        }) + navigate("/chat")
       : this;
   };
 
@@ -116,12 +122,9 @@ const MainUser = () => {
           setBtnText("UNFOLLOW");
           toast.success(`Following ${main_data?.username}!`, {
             style: {
-              borderRadius: "20px",
-              background: themeMode == "dark" ? "#212121" : "white",
-              color: themeMode == "dark" ? "white" : "black",
-              fontFamily: "Poppins",
-              boxShadow: "none",
-              border: "1px solid #808090",
+              background: "white",
+              color: "black",
+              borderRadius: " 20px",
             },
           });
           set_data((prevData) => ({
@@ -132,12 +135,9 @@ const MainUser = () => {
           setBtnText("FOLLOW");
           toast.success(`Unfollowing ${main_data?.username}!`, {
             style: {
-              borderRadius: "20px",
-              background: themeMode == "dark" ? "#212121" : "white",
-              color: themeMode == "dark" ? "white" : "black",
-              fontFamily: "Poppins",
-              boxShadow: "none",
-              border: "1px solid #808090",
+              background: "white",
+              color: "black",
+              borderRadius: " 20px",
             },
           });
           set_data((prevData) => ({
@@ -149,17 +149,20 @@ const MainUser = () => {
         }
       } catch (error) {
         console.error("Error following/unfollowing user:", error);
-        toast.error("An error occurred. Please try again!");
+        toast.error("An error occurred. Please try again!", {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
+          },
+        });
       }
     } else {
-      toast.error("Please Connect Wallet!", {
+      toast.error("Please Login!", {
         style: {
-          borderRadius: "20px",
-          background: themeMode == "dark" ? "#212121" : "white",
-          color: themeMode == "dark" ? "white" : "black",
-          fontFamily: "Poppins",
-          border: "1px solid #808090",
-          boxShadow: "none",
+          background: "white",
+          color: "black",
+          borderRadius: " 20px",
         },
       });
     }
@@ -202,12 +205,9 @@ const MainUser = () => {
       console.error(error);
       toast.error("Please Upload Avatar!", {
         style: {
-          borderRadius: "20px",
-          background: themeMode == "dark" ? "#212121" : "white",
-          color: themeMode == "dark" ? "white" : "black",
-          fontFamily: "Poppins",
-          border: "1px solid #808090",
-          boxShadow: "none",
+          background: "white",
+          color: "black",
+          borderRadius: " 20px",
         },
       });
     }
@@ -252,10 +252,22 @@ const MainUser = () => {
       }
     );
     updatedUser?.data.message == "Account Updated!"
-      ? toast.success("Account Updated Login Again!") +
+      ? toast.success("Account Updated Login Again!", {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
+          },
+        }) +
         setUpdate(false) +
         window.location.reload()
-      : toast.error(updatedUser?.data.message);
+      : toast.error(updatedUser?.data.message, {
+          style: {
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
+          },
+        });
   };
   // };
 
@@ -359,8 +371,8 @@ const MainUser = () => {
                 <button
                   onClick={() => setUpdate(true)}
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                 >
@@ -373,7 +385,13 @@ const MainUser = () => {
                   style={{ border: "none" }}
                   onClick={() =>
                     !parsedUser?._id
-                      ? toast.error("Please Login To Chat!")
+                      ? toast.error("Please Login To Chat!", {
+                          style: {
+                            background: "white",
+                            color: "black",
+                            borderRadius: " 20px",
+                          },
+                        })
                       : initializeConv()
                   }
                 >
@@ -382,8 +400,8 @@ const MainUser = () => {
                 <button
                   className="border"
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                   onClick={() => toggleFollow()}
@@ -443,8 +461,8 @@ const MainUser = () => {
                   <button
                     className="flex"
                     style={{
-                      background: "#eee",
-                      color: "black",
+                      background: "royalblue",
+                      color: "white",
                       border: "none",
                       cursor: "pointer",
                     }}
@@ -541,8 +559,8 @@ const MainUser = () => {
                         </h2>
                         <button
                           style={{
-                            background: "#eee",
-                            color: "black",
+                            background: "royalblue",
+                            color: "white",
                             border: "none",
                             cursor: "pointer",
                           }}
@@ -593,8 +611,8 @@ const MainUser = () => {
                         <button
                           onClick={() => navigate(`/series/${card_item?._id}`)}
                           style={{
-                            background: "#eee",
-                            color: "black",
+                            background: "royalblue",
+                            color: "white",
                             border: "none",
                             cursor: "pointer",
                           }}

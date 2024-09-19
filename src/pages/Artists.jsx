@@ -49,8 +49,8 @@ const Artists = () => {
               </div>
               <button
                 style={{
-                  background: "#eee",
-                  color: "black",
+                  background: "royalblue",
+                  color: "white",
                   border: "none",
                 }}
                 onClick={() => navigate(`/user/${artist?._id}`)}

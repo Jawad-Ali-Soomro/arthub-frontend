@@ -6,6 +6,7 @@ const baseSeriesUrl = "http://localhost:8080/api/v1/series";
 const baseDealUrl = "http://localhost:8080/api/v1/deal";
 const baseConversationUrl = "http://localhost:8080/api/v1/conversations";
 const baseMessageUrl = "http://localhost:8080/api/v1/messages";
+const baseTransactionUrl = "http://localhost:8080/api/v1/transaction";
 
 let ethToUsd = 2494.73; // Default value for global usage
 
@@ -112,5 +113,6 @@ export {
   checkWalletExtensions,
   baseMessageUrl,
   formatPrice,
+  baseTransactionUrl,
   sendTransactions,
 };

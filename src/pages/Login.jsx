@@ -36,12 +36,9 @@ const Login = ({ onClose }) => {
     if (!loginData.email || !loginData.password) {
       toast.error("Fill All The Fileds!", {
         style: {
-          borderRadius: "20px",
-          background: themeMode == "dark" ? "#212121" : "white",
-          color: themeMode == "dark" ? "white" : "black",
-          fontFamily: "Poppins",
-          border: "1px solid #808090",
-          boxShadow: "none",
+          background: "white",
+          color: "black",
+          borderRadius: " 20px",
         },
       });
     } else {
@@ -57,27 +54,27 @@ const Login = ({ onClose }) => {
           window.localStorage.setItem("userId", JSON.stringify(data));
           toast.loading("Redirecting!", {
             style: {
-              borderRadius: "20px",
-              background: themeMode == "dark" ? "#212121" : "white",
-              color: themeMode == "dark" ? "white" : "black",
-              fontFamily: "Poppins",
-              border: "1px solid #808090",
-              boxShadow: "none",
+              background: "white",
+              color: "black",
+              borderRadius: " 20px",
             },
           });
           window.location.reload();
         } else {
-          toast.error(message);
+          toast.error(message, {
+            style: {
+              background: "white",
+              color: "black",
+              borderRadius: " 20px",
+            },
+          });
         }
       } catch (error) {
         toast.error("Error Logging In!", {
           style: {
-            borderRadius: "20px",
-            background: themeMode == "dark" ? "#212121" : "white",
-            color: themeMode == "dark" ? "white" : "black",
-            fontFamily: "Poppins",
-            border: "1px solid #808090",
-            boxShadow: "none",
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
           },
         });
       }
@@ -153,23 +150,17 @@ const Login = ({ onClose }) => {
         if (registerResponse.data.message === "User exists already!") {
           toast.error("Email Already Exists!", {
             style: {
-              borderRadius: "20px",
-              background: themeMode == "dark" ? "#212121" : "white",
-              color: themeMode == "dark" ? "white" : "black",
-              fontFamily: "Poppins",
-              border: "1px solid #808090",
-              boxShadow: "none",
+              background: "white",
+              color: "black",
+              borderRadius: " 20px",
             },
           });
         } else {
           toast.success("Account Created!", {
             style: {
-              borderRadius: "20px",
-              background: themeMode == "dark" ? "#212121" : "white",
-              color: themeMode == "dark" ? "white" : "black",
-              fontFamily: "Poppins",
-              border: "1px solid #808090",
-              boxShadow: "none",
+              background: "white",
+              color: "black",
+              borderRadius: " 20px",
             },
           });
           setRegisterData({
@@ -187,12 +178,9 @@ const Login = ({ onClose }) => {
       } catch (error) {
         toast.error("Error While Creating Account!", {
           style: {
-            borderRadius: "20px",
-            background: themeMode == "dark" ? "#212121" : "white",
-            color: themeMode == "dark" ? "white" : "black",
-            fontFamily: "Poppins",
-            border: "1px solid #808090",
-            boxShadow: "none",
+            background: "white",
+            color: "black",
+            borderRadius: " 20px",
           },
         });
       }
@@ -218,12 +206,9 @@ const Login = ({ onClose }) => {
       console.error(error);
       toast.error("Please Upload Avatar!", {
         style: {
-          borderRadius: "20px",
-          background: themeMode == "dark" ? "#212121" : "white",
-          color: themeMode == "dark" ? "white" : "black",
-          fontFamily: "Poppins",
-          border: "1px solid #808090",
-          boxShadow: "none",
+          background: "white",
+          color: "black",
+          borderRadius: " 20px",
         },
       });
     }
@@ -280,8 +265,8 @@ const Login = ({ onClose }) => {
           <button
             className="flex border"
             style={{
-              background: "#eee",
-              color: "black",
+              background: "royalblue",
+              color: "white",
               border: "none",
 
               height: "35px",
@@ -389,11 +374,9 @@ const Login = ({ onClose }) => {
             <div className="btns flex">
               <button
                 style={{
-                  background: "#eee",
-                  color: "black",
+                  background: "royalblue",
+                  color: "white",
                   border: "none",
-                  background: `${themeMode == "dark" ? "white" : "#333"}`,
-                  color: `${themeMode == "dark" ? "black" : "white"}`,
                   height: "35px",
                   width: "120px",
                   marginLeft: "170px",

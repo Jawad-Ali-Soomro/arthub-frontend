@@ -3,11 +3,12 @@
   width: 100%;
   height: 100vh;
   background: rgba($color: #000000, $alpha: 0.5);
-  // backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   border-radius: 0;
   z-index: 1000;
   top: 0;
   .main-wrap {
+    animation: animate 100ms linear;
     padding: 40px;
     .wrap {
       width: 100%;
@@ -77,6 +78,14 @@
           border: 1px solid #808090;
         }
       }
+    }
+  }
+  @keyframes animate {
+    from {
+      scale: 0.9;
+    }
+    to {
+      scale: 1;
     }
   }
 }

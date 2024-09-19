@@ -134,7 +134,7 @@ const MainSeries = () => {
                   style={{ background: "#333", color: "white", border: "none" }}
                   onClick={() => setArtPopup(true)}
                 >
-                  ADD
+                  ADD ART
                 </button>
               ) : (
                 <button
@@ -142,8 +142,20 @@ const MainSeries = () => {
                   onClick={() =>
                     loggedInUserId
                       ? navigate("/chat") +
-                        toast.success("Conversation Initialized!")
-                      : toast.error("Please Login To Chat!")
+                        toast.success("Conversation Initialized!", {
+                          style: {
+                            background: "white",
+                            color: "black",
+                            borderRadius: " 20px",
+                          },
+                        })
+                      : toast.error("Please Login To Chat!", {
+                          style: {
+                            background: "white",
+                            color: "black",
+                            borderRadius: " 20px",
+                          },
+                        })
                   }
                 >
                   MESSAGE
@@ -153,18 +165,18 @@ const MainSeries = () => {
                 <button
                   className="border"
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "red",
+                    color: "white",
                     border: "none",
                   }}
                 >
-                  DELETE
+                  REMOVE ART
                 </button>
               ) : (
                 <button
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                   onClick={() => setBuy(true)}
@@ -222,8 +234,8 @@ const MainSeries = () => {
                   <button
                     className="flex"
                     style={{
-                      background: "white",
-                      color: "black",
+                      background: "royalblue",
+                      color: "white",
                       border: "1px solid #808090",
                     }}
                     onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
@@ -239,7 +251,13 @@ const MainSeries = () => {
       <div className="more-by-artist flex col">
         <h1>
           Art In {main_data?.title}{" "}
-          <button onClick={() => navigate(`/user/${main_data?.owner?._id}`)}>
+          <button
+            style={{
+              background: "royalblue",
+              color: "white",
+            }}
+            onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
+          >
             Profile
           </button>
         </h1>
@@ -302,6 +320,10 @@ const MainSeries = () => {
                         </span>
                       </h2>
                       <button
+                        style={{
+                          background: "royalblue",
+                          color: "white",
+                        }}
                         onClick={() => navigate(`/art/${card_item?._id}`)}
                       >
                         Buy

@@ -141,8 +141,8 @@ const Top = () => {
               </h2>
               <button
                 style={{
-                  background: "#eee",
-                  color: "black",
+                  background: "royalblue",
+                  color: "white",
                   border: `${
                     themeMode === "light" ? "1px  solid #80808090" : "none"
                   }`,

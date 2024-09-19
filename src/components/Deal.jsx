@@ -17,7 +17,13 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
       artId: artId,
       offering_user: userId?._id,
     });
-    toast.success(res.data.message);
+    toast.success(res.data.message, {
+      style: {
+        background: "white",
+        color: "black",
+        borderRadius: " 20px",
+      },
+    });
     onClose();
   };
 
@@ -78,8 +84,8 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
                 <span
                   style={{
                     padding: "3px 10px",
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
 
                     textTransform: "uppercase",
@@ -96,14 +102,20 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
             </div>
             <button
               style={{
-                background: "#eee",
-                color: "black",
+                background: "royalblue",
+                color: "white",
                 border: "none",
               }}
               onClick={() =>
                 userId
                   ? offeringArt()
-                  : toast.error("Please Login To Make A Deal!")
+                  : toast.error("Please Login To Make A Deal!", {
+                      style: {
+                        background: "white",
+                        color: "black",
+                        borderRadius: " 20px",
+                      },
+                    })
               }
             >
               Submit Deal

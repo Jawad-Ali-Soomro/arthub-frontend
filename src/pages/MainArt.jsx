@@ -55,7 +55,13 @@ const MainArt = () => {
   const handleDelete = async () => {
     const res = await axios.delete(`${baseArtUrl}/delete/${main_data?._id}`);
     setShowPopup(false);
-    toast.success(res.data.message);
+    toast.success(res.data.message, {
+      style: {
+        background: "white",
+        color: "black",
+        borderRadius: "20px",
+      },
+    });
 
     navigate(`/user/${main_data?.owner?._id}`);
   };
@@ -118,8 +124,8 @@ const MainArt = () => {
               <div className="icons flex">
                 <div
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                   className="icon border flex"
@@ -129,8 +135,8 @@ const MainArt = () => {
                 <div
                   className="icon border flex"
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                   onClick={() => {
@@ -162,7 +168,7 @@ const MainArt = () => {
                       textTransform: "uppercase",
                     }}
                   >
-                    Artist
+                    OWNER
                   </p>
                   <h2>{main_data?.owner?.username}</h2>
                 </div>
@@ -191,8 +197,12 @@ const MainArt = () => {
             </div>
             <div className="line"></div>
             <div className="price flex">
-              <p>PRICE</p> &nbsp; : &nbsp;
-              {main_data?.price}Ξ(${Math.round(main_data?.price * ethToUsd)})
+              <p>PRICE</p> &nbsp;:&nbsp;
+              {main_data?.price >= 0.001
+                ? `${main_data?.price}Ξ(${Math.round(
+                    main_data?.price * ethToUsd
+                  )})`
+                : "NOT FOR SALE (DEALS ONLY)"}
               {main_data?.price >= 1000 ? (
                 <div
                   className="tag-main flex"
@@ -214,13 +224,19 @@ const MainArt = () => {
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (
-                // <button className="border">Update</button>
                 this
               ) : (
                 <button
                   className="border"
                   onClick={() => {
                     set_buy(true);
+                  }}
+                  disabled={main_data?.price <= 0}
+                  style={{
+                    cursor: `${
+                      main_data?.price <= 0 ? "not-allowed" : "pointer"
+                    }`,
+                    opacity: main_data?.price <= 0 ? 0.5 : 1, // optional: opacity to visually show disabled state
                   }}
                 >
                   BUY
@@ -230,7 +246,7 @@ const MainArt = () => {
                 <button
                   style={{
                     width: "400px",
-                    background: "#333",
+                    background: "red",
                     color: "white",
                     border: "none",
                   }}
@@ -241,8 +257,8 @@ const MainArt = () => {
               ) : (
                 <button
                   style={{
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                   onClick={() => {
@@ -263,8 +279,8 @@ const MainArt = () => {
             <div className="more flex">
               <button
                 style={{
-                  background: "#eee",
-                  color: "black",
+                  background: "royalblue",
+                  color: "white",
                   border: "none",
                 }}
                 onClick={() => set_desc(!show_desc)}
@@ -280,8 +296,8 @@ const MainArt = () => {
           More From {main_data?.owner?.username}{" "}
           <button
             style={{
-              background: "#eee",
-              color: "black",
+              background: "royalblue",
+              color: "white",
               border: "none",
             }}
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
@@ -346,8 +362,8 @@ const MainArt = () => {
                       </h2>
                       <button
                         style={{
-                          background: "#eee",
-                          color: "black",
+                          background: "royalblue",
+                          color: "white",
                           border: "none",
                         }}
                         onClick={() => navigate(`/art/${card_item?._id}`)}

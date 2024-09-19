@@ -84,8 +84,8 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
                     fontWeight: "600",
                     fontSize: ".5rem",
                     borderRadius: "5px",
-                    background: "#eee",
-                    color: "black",
+                    background: "royalblue",
+                    color: "white",
                     border: "none",
                   }}
                 >
@@ -98,8 +98,8 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
             </div>
             <button
               style={{
-                background: "#eee",
-                color: "black",
+                background: "royalblue",
+                color: "white",
                 border: "none",
               }}
               onClick={() =>
@@ -109,7 +109,13 @@ const Buy = ({ onClose, title, price, receiverAddress }) => {
                       receiverAccount: receiverAddress,
                       amount: price,
                     })
-                  : toast.error("Please Login To Buy!")
+                  : toast.error("Please Login To Buy!", {
+                      style: {
+                        background: "white",
+                        color: "black",
+                        borderRadius: " 20px",
+                      },
+                    })
               }
             >
               buy

@@ -61,10 +61,9 @@
           button {
             width: 150px;
             height: 40px;
-            background: white;
-            border: 1px solid #80808090;
             font-size: 0.7rem;
             cursor: pointer;
+            cursor: inherit;
           }
         }
       }

@@ -174,8 +174,8 @@ const Series = () => {
                 <div className="btns flex col">
                   <button
                     style={{
-                      background: "#eee",
-                      color: "black",
+                      background: "royalblue",
+                      color: "white",
                       border: "none",
                     }}
                   >
@@ -248,8 +248,8 @@ const Series = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "#eee",
-                        color: "black",
+                        background: "royalblue",
+                        color: "white",
                         border: "none",
                       }}
                       onClick={() => navigate(`/series/${card_item._id}`)}

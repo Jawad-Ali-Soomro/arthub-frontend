@@ -156,7 +156,7 @@ const Chat = () => {
           <button
             className="flex"
             style={{
-              background: "#edeade",
+              background: "royalblue",
               color: "black",
               border: "none",
             }}
@@ -178,15 +178,15 @@ const Chat = () => {
                   style={{
                     background: `${
                       activeUser?.id == otherUser?._id
-                        ? "#edeade"
+                        ? "royalblue"
                         : "transparent"
                     }`,
                     color: `${
-                      activeUser?.id == otherUser?._id ? "black" : "inherit"
+                      activeUser?.id == otherUser?._id ? "white" : "inherit"
                     }`,
                     border: `${
                       activeUser?.id == otherUser?._id
-                        ? "1px solid #edeade"
+                        ? "1px solid royalblue"
                         : "1px solid #80808090"
                     }`,
                   }}
@@ -233,8 +233,8 @@ const Chat = () => {
             <div className="icon flex">
               <button
                 style={{
-                  background: "#eee",
-                  color: "black",
+                  background: "royalblue",
+                  color: "white",
                   border: "none",
                 }}
                 onClick={() => navigate(`/user/${activeUser.id}`)}
@@ -295,8 +295,8 @@ const Chat = () => {
             <button
               className="flex"
               style={{
-                background: "#eee",
-                color: "black",
+                background: "royalblue",
+                color: "white",
                 border: "none",
               }}
               onClick={handleSendMessage}

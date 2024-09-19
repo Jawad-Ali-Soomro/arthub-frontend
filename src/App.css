@@ -21,8 +21,3 @@ input {
 .icon {
   border: 1px solid transparent !important;
 }
-
-button:hover {
-  border: 1px solid #80808090 !important;
-  cursor: pointer !important;
-}

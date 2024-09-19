@@ -252,6 +252,7 @@
   top: 0;
   left: 0;
   background: rgba($color: #000000, $alpha: 0.5);
+  backdrop-filter: blur(5px);
   border-radius: 0;
   z-index: 1000;
   .information {
@@ -259,6 +260,7 @@
     padding: 30px;
     align-items: start;
     gap: 20px;
+    animation: animate 100ms linear;
     h1 {
       font-weight: 900;
       font-size: 1.5rem;
@@ -341,6 +343,14 @@
           font-weight: 400;
         }
       }
+    }
+  }
+  @keyframes animate {
+    from {
+      scale: 0.9;
+    }
+    to {
+      scale: 1;
     }
   }
 }
