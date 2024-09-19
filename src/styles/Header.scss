@@ -252,16 +252,16 @@
               position: relative;
             }
             li:hover {
-              background: #edeade;
-              color: black;
-              border: 1px solid #edeade;
+              background: royalblue;
+              color: white;
+              border: 1px solid royalblue;
             }
             li:hover::after {
               transition: 0.3s;
               content: attr(data-nav);
               width: 120px;
               height: 30px;
-              background: #edeade;
+              background: royalblue;
               position: absolute;
               right: 40px;
               display: flex;
@@ -270,7 +270,7 @@
               font-size: 0.7rem;
               border-top-left-radius: 15px;
               border-bottom-left-radius: 15px;
-              color: black;
+              color: white;
               border-top-right-radius: 15px;
               top: -20px;
             }

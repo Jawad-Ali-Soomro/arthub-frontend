@@ -100,6 +100,7 @@ const CreateArt = () => {
       title: artData?.title,
       image: imageUrl,
       owner: parsedUser?._id,
+      featured: true,
       tags: selectedTags,
     });
     createArt.data.message == "Art Created!"

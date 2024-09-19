@@ -244,10 +244,11 @@ const MainArt = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   style={{
-                    width: "400px",
+                    width: "200px",
                     background: "red",
                     color: "white",
                     border: "none",
+                    justifySelf: "end",
                   }}
                   onClick={() => setShowPopup(true)}
                 >

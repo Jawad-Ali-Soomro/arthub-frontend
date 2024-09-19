@@ -74,7 +74,7 @@
         height: 200px;
         position: relative;
         cursor: pointer;
-        background: #edeade;
+        background: royalblue;
         .icon {
           width: 40px;
           height: 40px;
@@ -173,6 +173,8 @@
           cursor: pointer;
           position: relative;
           color: inherit;
+          background: royalblue;
+          color: white;
         }
         button::after {
           content: attr(data-text);
@@ -180,14 +182,15 @@
           text-transform: uppercase;
           position: absolute;
           bottom: -20px;
+          color: royalblue;
           font-weight: 600;
         }
       }
       .card {
         width: 320px;
         height: 150px;
-        background: #edeade;
-        color: black;
+        background: royalblue;
+        color: white;
         align-items: start;
         padding-left: 20px;
         cursor: pointer;
@@ -210,10 +213,12 @@
         width: 50px;
         height: 50px;
         border: none;
-        background: #edeade;
+        background: royalblue;
+        color: white;
         text-transform: uppercase;
         font-size: 1.2rem;
         cursor: pointer;
+        color: whites;
         border-radius: 50%;
         display: flex;
         justify-content: center;
