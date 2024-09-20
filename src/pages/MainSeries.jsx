@@ -41,7 +41,7 @@ const MainSeries = () => {
   const loggedInUserId = JSON.parse(loggedInUser);
   const [showBuy, setBuy] = useState(false);
 
-  const onClose = () => setDeal(false) + setBuy(false) + setArtPopup(false);
+  const onClose = () => setBuy(false) && setArtPopup(false);
 
   const themeMode = window.localStorage.getItem("themeMode");
   const userId = window.localStorage.getItem("userId");
@@ -166,7 +166,11 @@ const MainSeries = () => {
             <div className="btns flex col">
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
-                  style={{ background: "#333", color: "white", border: "none" }}
+                  style={{
+                    background: "royalblue",
+                    color: "white",
+                    border: "none",
+                  }}
                   onClick={() => setArtPopup(true) + getArts()}
                 >
                   ADD ART
@@ -373,13 +377,15 @@ const MainSeries = () => {
         )}
       </div>
 
-      {showBuy && (
+      {showBuy ? (
         <Buy
           title={"(series)" + main_data?.title}
           receiverAddress={main_data?.owner?.wallet_address}
           price={totalPricesSum}
           onClose={onClose}
         />
+      ) : (
+        this
       )}
 
       {showArtPopup ? (

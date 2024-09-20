@@ -22,6 +22,7 @@ import { useState } from "react";
 import { BsCloudSlash } from "react-icons/bs";
 import Deals from "./pages/Deals";
 import Chat from "./pages/Chat";
+import CreateSeries from "./pages/CreateSeries";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -78,6 +79,10 @@ function App() {
           <Route
             path="/create"
             element={userToken ? <CreateArt /> : <NotFound />}
+          ></Route>
+          <Route
+            path="/create/series"
+            element={userToken ? <CreateSeries /> : <NotFound />}
           ></Route>
         </Routes>
       </BrowserRouter>

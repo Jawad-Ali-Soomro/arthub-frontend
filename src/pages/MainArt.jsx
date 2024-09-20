@@ -197,11 +197,11 @@ const MainArt = () => {
             <div className="line"></div>
             <div className="price flex">
               <p>PRICE</p> &nbsp;:&nbsp;
-              {main_data?.price >= 0.001
-                ? `${main_data?.price}Ξ(${Math.round(
+              {main_data?.price <= 0.001
+                ? "NOT FOR SALE (DEALS ONLY)"
+                : `${main_data?.price}Ξ(${Math.round(
                     main_data?.price * ethToUsd
-                  )})`
-                : "NOT FOR SALE (DEALS ONLY)"}
+                  )})`}
               {main_data?.price >= 1000 ? (
                 <div
                   className="tag-main flex"
@@ -223,7 +223,16 @@ const MainArt = () => {
             </div>
             <div className="btns flex">
               {main_data?.owner?._id == loggedInUserId?._id ? (
-                this
+                <button
+                  style={{
+                    width: "200px",
+                    background: "royalblue",
+                    color: "white",
+                    border: "none",
+                  }}
+                >
+                  TRANSFER
+                </button>
               ) : (
                 <button
                   className="border"
@@ -248,7 +257,6 @@ const MainArt = () => {
                     background: "red",
                     color: "white",
                     border: "none",
-                    justifySelf: "end",
                   }}
                   onClick={() => setShowPopup(true)}
                 >

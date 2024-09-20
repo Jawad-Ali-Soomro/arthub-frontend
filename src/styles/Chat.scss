@@ -50,33 +50,27 @@
   }
   .users {
     width: 400px;
-    height: calc(80vh + 10px);
+    height: 100vh;
     border-radius: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    position: relative;
     .top-search {
-      width: 80%;
-      border-radius: 25px;
-      height: 50px;
       justify-content: space-between;
-      overflow: hidden;
+      border: none;
+      position: absolute;
+      top: 20px;
       input {
+        width: 250px;
         background: transparent;
+        margin-bottom: 20px;
         color: inherit;
-        height: 50px;
-        width: calc(100% - 100px);
+        height: 50px !important;
         border: none;
         outline: none;
         padding-left: 15px;
-      }
-      button {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 5px;
-        border: none;
-        color: white;
-        cursor: pointer;
+        color: inherit;
+        border-radius: 25px;
+        margin-right: 70px;
+        border: 1px solid royalblue;
       }
     }
     .main-users {
@@ -130,6 +124,7 @@
     border-radius: 0;
     border-left: 1px solid #80808025;
     overflow: hidden;
+    position: relative;
     .user-info {
       width: 780px;
       background: royalblue;
@@ -138,6 +133,9 @@
       border: none;
       justify-content: space-between;
       padding: 10px;
+      position: absolute;
+      top: 20px;
+      z-index: 1;
       .profile {
         gap: 10px;
         img {
@@ -169,7 +167,7 @@
     }
     .message-main {
       width: 800px;
-      height: 490px;
+      height: 70%;
       padding-bottom: 30px;
       padding-top: 30px;
       overflow-y: scroll;
@@ -238,6 +236,8 @@
       padding-right: 5px;
       border-radius: 30px;
       overflow: hidden;
+      position: absolute;
+      bottom: 20px;
       input {
         width: 80%;
         height: 50px;

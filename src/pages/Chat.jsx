@@ -10,8 +10,9 @@ import {
   baseMessageUrl,
   baseUserUrl,
 } from "../utils/constant";
+import { useRef } from "react";
 
-const socket = io("http://localhost:8080"); // Change this to your server URL
+const socket = io("http://localhost:8080");
 
 const Chat = () => {
   const userId = window.localStorage.getItem("userId");
@@ -28,10 +29,18 @@ const Chat = () => {
     id: conversations[0]?.user_one?._id,
     status: "",
   });
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
 
-  console.log(conversations[0]);
+  const chatEndRef = useRef(null);
 
-  // Fetch conversations
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const fetchConversations = async () => {
     try {
       const response = await axios.get(
@@ -64,7 +73,6 @@ const Chat = () => {
       status: onlineUsers[user._id] ? true : false, // Check online status
     });
 
-    // Find conversation ID
     const conversation = conversations.find(
       (conv) =>
         (conv.user_one._id === parsedUser._id &&
@@ -98,7 +106,6 @@ const Chat = () => {
           content: newMessage,
         });
 
-        // Update messages
         fetchMessages(conversation._id);
         setNewMessage(""); // Clear the input field
       }
@@ -117,14 +124,17 @@ const Chat = () => {
     navigate("/");
   };
 
+  // Filter users based on search input
+  const filteredConversations = conversations.filter((conv) => {
+    const otherUser =
+      conv.user_one._id === parsedUser._id ? conv.user_two : conv.user_one;
+
+    return otherUser.username.toLowerCase().includes(searchTerm.toLowerCase()); // Filter by username
+  });
+
   return (
     <div className="chat-main flex">
-      <div
-        className="side-bar flex col"
-        // style={{
-        //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
-        // }}
-      >
+      <div className="side-bar flex col">
         <div className="logo">
           <img
             src={themeMode === "dark" ? "/logo-white.png" : "logo-black.png"}
@@ -146,27 +156,17 @@ const Chat = () => {
         </div>
       </div>
       <div className="users flex col">
-        {/* <div
-          className="top-search border flex"
-          // style={{
-          //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
-          // }}
-        >
-          <input type="text" placeholder="Find A User!" />
-          <button
-            className="flex"
-            style={{
-              background: "royalblue",
-              color: "black",
-              border: "none",
-            }}
-          >
-            <CgSearch />
-          </button>
-        </div> */}
+        <div className="top-search border flex">
+          <input
+            type="text"
+            placeholder="Find A User!"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} // Update search input
+          />
+        </div>
         <div className="main-users flex">
           <div className="wrap flex col">
-            {conversations.map((conv) => {
+            {filteredConversations.map((conv) => {
               const otherUser =
                 conv.user_one._id === parsedUser._id
                   ? conv.user_two
@@ -198,36 +198,21 @@ const Chat = () => {
                       {otherUser.username}
                     </p>
                   </div>
-                  <div className="info flex col">
-                    <p>{otherUser.userName}</p>
-                  </div>
                 </div>
               );
             })}
           </div>
         </div>
       </div>
-      <div
-        className="message-wrap flex col"
-        // style={{
-        //   background: themeMode === "dark" ? "rgba(255,255,255,.05)" : "#eee",
-        // }}
-      >
+      <div className="message-wrap flex col">
         {activeUser.id ? (
-          <div
-            className="user-info border flex"
-            // style={{
-            //   background:
-            //     themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
-            // }}
-          >
+          <div className="user-info border flex">
             <div className="profile flex">
               <img src={activeUser.avatar} alt="active-user-avatar" />
-              <div className="flex  col" style={{ alignItems: "start" }}>
+              <div className="flex col" style={{ alignItems: "start" }}>
                 <p style={{ fontWeight: "600", fontSize: "1.2rem" }}>
                   {activeUser.userName}
                 </p>
-                {/* Display online/offline status */}
               </div>
             </div>
             <div className="icon flex">
@@ -255,37 +240,16 @@ const Chat = () => {
                     : "left-message"
                 }
               >
-                <p>
-                  {message.content}
-
-                  {message?.receiver?._id == activeUser?.id ? (
-                    <img
-                      style={{ right: "-25px", top: "-25px" }}
-                      src={parsedUser?.avatar}
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      style={{ right: "-25px", top: "-25px" }}
-                      src={activeUser?.avatar}
-                      alt=""
-                    />
-                  )}
-                </p>
+                <p>{message.content}</p>
               </div>
             ))}
+            <div ref={chatEndRef} />
           </div>
         ) : (
           <p>Select a user to start chatting</p>
         )}
         {activeUser.id ? (
-          <div
-            className="message-send border flex"
-            // style={{
-            //   background:
-            //     themeMode === "dark" ? "rgba(255,255,255,.05)" : "white",
-            // }}
-          >
+          <div className="message-send border flex">
             <input
               type="text"
               placeholder="Type your message here..."

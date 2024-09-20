@@ -368,10 +368,12 @@
   border-radius: 0;
   z-index: 1000;
   background: rgba($color: #111, $alpha: 0.5);
+  backdrop-filter: blur(5px);
   border-radius: 0;
   .update-container {
     align-items: start;
     gap: 10px;
+    animation: animate 100ms linear;
     h1 {
       font-size: 1.5rem;
       font-weight: 900;
