@@ -534,7 +534,7 @@ const MainUser = () => {
                             textTransform: "lowercase",
                           }}
                         >
-                          @{main_data?.username.split(" ")}
+                          @{main_data?.handle.split(" ")}
                         </h2>
                       </div>
                       <div className="line border"></div>
@@ -602,7 +602,7 @@ const MainUser = () => {
                             textTransform: "lowercase",
                           }}
                         >
-                          @{main_data?.username.split(" ")}
+                          @{main_data?.handle.split(" ")}
                         </h2>
                       </div>
                       <div className="line border"></div>
@@ -647,7 +647,7 @@ const MainUser = () => {
                     }
                   >
                     <img src={follower?.avatar} className="border" alt="" />
-                    <h2>@{follower?.username.split(" ")}</h2>
+                    <h2>@{follower?.handle.split(" ")}</h2>
                   </div>
                 </div>
               );

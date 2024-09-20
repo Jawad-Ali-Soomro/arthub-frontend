@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Chat.scss";
-import { BiInfoCircle, BiLogOut, BiSend } from "react-icons/bi";
+import { BiInfoCircle, BiLogOut, BiSearch, BiSend } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { CgLogOff, CgSearch } from "react-icons/cg";
 import axios from "axios";
@@ -159,10 +159,13 @@ const Chat = () => {
         <div className="top-search border flex">
           <input
             type="text"
-            placeholder="Find A User!"
+            placeholder="find a user!"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} // Update search input
           />
+          <div className="icon flex">
+            <BiSearch />
+          </div>
         </div>
         <div className="main-users flex">
           <div className="wrap flex col">
@@ -252,8 +255,9 @@ const Chat = () => {
           <div className="message-send border flex">
             <input
               type="text"
-              placeholder="Type your message here..."
+              placeholder="type your message here..."
               value={newMessage}
+              onKeyUp={(e) => (e.key === "Enter" ? handleSendMessage() : null)}
               onChange={(e) => setNewMessage(e.target.value)}
             />
             <button

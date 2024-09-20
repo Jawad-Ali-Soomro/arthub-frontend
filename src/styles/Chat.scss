@@ -11,7 +11,7 @@
       }
     }
     .menu {
-      margin-top: 550px;
+      margin-top: 72vh;
       .img-sect {
         position: relative;
         img {
@@ -54,23 +54,26 @@
     border-radius: 20px;
     position: relative;
     .top-search {
-      justify-content: space-between;
       border: none;
       position: absolute;
+      height: 40px;
+      border: 1px solid #80808090;
       top: 20px;
+      justify-content: space-between;
+      .icon {
+        width: 40px;
+        height: 40px;
+      }
       input {
         width: 250px;
+        border: none;
+        padding-left: 10px;
         background: transparent;
-        margin-bottom: 20px;
         color: inherit;
         height: 50px !important;
-        border: none;
         outline: none;
-        padding-left: 15px;
         color: inherit;
         border-radius: 25px;
-        margin-right: 70px;
-        border: 1px solid royalblue;
       }
     }
     .main-users {
@@ -90,7 +93,7 @@
         color: black;
         border-radius: 0;
         cursor: pointer;
-        border-radius: 30px;
+        border-radius: 10px;
         .profile {
           gap: 5px;
           img {
@@ -129,7 +132,7 @@
       width: 780px;
       background: royalblue;
       color: white;
-      border-radius: 50px;
+      border-radius: 10px;
       border: none;
       justify-content: space-between;
       padding: 10px;
@@ -151,7 +154,7 @@
       button {
         width: 50px;
         height: 50px;
-        border-radius: 25px;
+        border-radius: 10px;
         border: none;
         cursor: pointer;
         display: flex;
@@ -166,7 +169,7 @@
       }
     }
     .message-main {
-      width: 800px;
+      width: 850px;
       height: 70%;
       padding-bottom: 30px;
       padding-top: 30px;
@@ -229,19 +232,19 @@
       }
     }
     .message-send {
-      width: calc(80% + 40px);
+      width: 750px;
       height: 60px;
       justify-content: space-between;
       padding-left: 5px;
       padding-right: 5px;
-      border-radius: 30px;
+      border-radius: 10px;
       overflow: hidden;
       position: absolute;
       bottom: 20px;
       input {
         width: 80%;
         height: 50px;
-        padding-left: 20px;
+        padding-left: 10px;
         outline: none;
         border: none;
         background: transparent;
@@ -251,11 +254,10 @@
       button {
         width: 50px;
         height: 50px;
-        border-radius: 50%;
+        border-radius: 10px;
         border: none;
         color: white;
         font-size: 1.2rem;
-        transform: rotate(-45deg);
         cursor: pointer;
       }
     }

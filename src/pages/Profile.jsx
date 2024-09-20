@@ -50,6 +50,10 @@ const Profile = () => {
       <Header />
       <div className="main-profile flex">
         <div className="dashboard flex col">
+          <h2 style={{ fontWeight: "300" }}>
+            Welcome{" "}
+            <span style={{ fontWeight: 600 }}>{userData?.username}</span>
+          </h2>
           <h1>Dashboard</h1>
           <div className="wrapper flex col">
             <div className="wrap flex">
