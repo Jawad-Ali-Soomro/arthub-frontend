@@ -10,7 +10,7 @@ const Spotlight = () => {
   const fetch_data = async () => {
     try {
       const response = await axios.get(
-        `${baseUserUrl}/get/66ec5a57ababb47478b8ef3e`
+        `${baseUserUrl}/get/66e102fec85c33fa8d758d35`
       );
       const featuredImages = response.data.data.art;
       const shuffledImages = shuffleArray(featuredImages);
@@ -50,7 +50,7 @@ const Spotlight = () => {
                 themeMode === "light" ? "1px  solid #80808090" : "none"
               }`,
             }}
-            onClick={() => navigate("/user/66ec5a57ababb47478b8ef3e")}
+            onClick={() => navigate("/user/66e102fec85c33fa8d758d35")}
           >
             See all
           </button>

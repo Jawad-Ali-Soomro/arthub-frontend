@@ -7,12 +7,13 @@
   left: 0;
   z-index: 1000;
   .popup-content {
-    padding: 50px;
+    padding: 50px 30px;
+    animation: animate 100ms linear;
+    gap: 10px;
     h1 {
       color: red;
     }
     button {
-      margin-top: 10px;
       width: 350px;
       height: 40px;
       text-transform: uppercase;
@@ -24,6 +25,14 @@
       background: royalblue;
       border: none;
       color: white;
+    }
+  }
+  @keyframes animate {
+    from {
+      scale: 0.9;
+    }
+    to {
+      scale: 1;
     }
   }
 }

@@ -60,15 +60,28 @@ const Deals = () => {
     }
   };
 
-  const rejectDeal = async ({ id }) => {
-    const res = await axios.delete(`${baseDealUrl}/delete/${id}`);
-    toast.success(res.data.message, {
-      style: {
-        background: "white",
-        color: "black",
-        borderRadius: "20px",
-      },
-    });
+  const rejectDeal = async (dealId) => {
+    try {
+      const res = await axios.delete(`${baseDealUrl}/delete/${dealId}`);
+      toast.success(res.data.message, {
+        style: {
+          background: "white",
+          color: "black",
+          borderRadius: "20px",
+        },
+      });
+      dealsFetching();
+    } catch (error) {
+      toast.error("Error rejecting the deal", {
+        style: {
+          background: "white",
+          color: "black",
+          borderRadius: "20px",
+        },
+      });
+      console.error("Error deleting deal:", error);
+    }
+    console.log(dealId);
   };
 
   const handleAcceptClick = (deal) => {
@@ -202,8 +215,9 @@ const Deals = () => {
                             background: "red",
                             color: "white",
                             border: "none",
+                            cursor: "pointer",
                           }}
-                          onClick={() => rejectDeal({ id: item?._id })}
+                          onClick={() => rejectDeal(item?._id)} // Pass the correct deal id here
                         >
                           REJECT
                         </button>

@@ -158,6 +158,7 @@
     .wrap {
       width: 100%;
       justify-content: space-between;
+      gap: 0;
       h1 {
         font-size: 3rem;
         font-weight: 400;
@@ -187,13 +188,12 @@
         }
       }
       .card {
-        width: 320px;
+        width: 180px;
         height: 150px;
         background: royalblue;
         color: white;
-        align-items: start;
-        padding-left: 20px;
         cursor: pointer;
+        border-radius: 20px;
         p {
           font-size: 0.5rem;
           text-transform: uppercase;
@@ -201,8 +201,7 @@
         }
         h2 {
           font-size: 3rem;
-          font-weight: 600;
-          padding-left: 20px;
+          font-weight: 900;
         }
       }
     }

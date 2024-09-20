@@ -230,10 +230,10 @@ const MainArt = () => {
                   onClick={() => {
                     set_buy(true);
                   }}
-                  disabled={main_data?.price <= 0}
+                  disabled={main_data?.price <= 0.001}
                   style={{
                     cursor: `${
-                      main_data?.price <= 0 ? "not-allowed" : "pointer"
+                      main_data?.price <= 0.001 ? "not-allowed" : "pointer"
                     }`,
                     opacity: main_data?.price <= 0 ? 0.5 : 1, // optional: opacity to visually show disabled state
                   }}

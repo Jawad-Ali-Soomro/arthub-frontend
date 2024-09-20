@@ -76,7 +76,7 @@ const Profile = () => {
             </div>
             <div
               className="wrap flex"
-              style={{ justifyContent: "end", gap: "50px" }}
+              style={{ justifyContent: "end", gap: "10px" }}
             >
               <div
                 className="card flex  col"
