@@ -2,17 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../styles/Chat.scss";
 import { BiInfoCircle, BiLogOut, BiSearch, BiSend } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { CgLogOff, CgSearch } from "react-icons/cg";
+import { CgLogOff } from "react-icons/cg";
 import axios from "axios";
-import io from "socket.io-client";
-import {
-  baseConversationUrl,
-  baseMessageUrl,
-  baseUserUrl,
-} from "../utils/constant";
+import { baseConversationUrl, baseMessageUrl } from "../utils/constant";
 import { useRef } from "react";
-
-const socket = io("http://localhost:8080");
 
 const Chat = () => {
   const userId = window.localStorage.getItem("userId");
@@ -22,7 +15,6 @@ const Chat = () => {
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState({});
   const [activeUser, setActiveUser] = useState({
     userName: conversations[0]?.user_one?.username,
     avatar: conversations[0]?.user_one?.avatar,
@@ -52,7 +44,6 @@ const Chat = () => {
     }
   };
 
-  // Fetch messages for the active user
   const fetchMessages = async (conversationId) => {
     try {
       const response = await axios.get(
@@ -64,13 +55,11 @@ const Chat = () => {
     }
   };
 
-  // Handle user card click
   const handleUserClick = (user) => {
     setActiveUser({
       userName: user.username,
       avatar: user.avatar,
       id: user._id,
-      status: onlineUsers[user._id] ? true : false, // Check online status
     });
 
     const conversation = conversations.find(

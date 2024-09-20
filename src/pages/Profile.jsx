@@ -13,7 +13,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
-import { CgLogOff } from "react-icons/cg";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");

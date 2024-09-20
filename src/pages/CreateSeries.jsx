@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/Create.scss";
 import Header from "../components/Header";
-import { baseArtUrl, baseSeriesUrl, ethToUsd } from "../utils/constant";
+import { baseSeriesUrl } from "../utils/constant";
 import Footer from "../components/Footer";
 import uploadToPinata from "../utils/upload";
 import axios from "axios";
