@@ -46,10 +46,9 @@ const MainUser = () => {
       set_data(res.data.data);
     });
   };
-
   useEffect(() => {
     fetch_data();
-  }, [updateData]);
+  }, [updateData, main_data]);
 
   const date = new Date(main_data?.created_at);
   const [year, month, day] = [

@@ -28,9 +28,9 @@ const Header = () => {
   const [profileMenu, setProfileMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showWallets, setShowWallets] = useState(false);
-  const [userData, setUserData] = useState(
-    JSON.parse(window.localStorage.getItem("userId"))
-  );
+  const userToken = window.localStorage.getItem("userId");
+  const parsedUser = JSON.parse(userToken);
+  const [userData, setUserData] = useState(parsedUser);
 
   // State for scroll visibility
   const [isVisible, setIsVisible] = useState(true);
