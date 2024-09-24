@@ -79,7 +79,7 @@ const Spotlight = () => {
             <button
               className="border"
               style={{
-                background: "royalblue",
+                background: "rgb(167, 155, 91)",
                 color: "white",
                 border: `${
                   themeMode === "light" ? "1px  solid #80808090" : "none"
@@ -149,7 +149,7 @@ const Spotlight = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "royalblue",
+                        background: "rgb(167, 155, 91)",
                         color: "white",
                         border: `${
                           themeMode === "light"

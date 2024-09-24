@@ -20,8 +20,8 @@ const Footer = () => {
             <input type="text" placeholder="EMAIL ADDRESS" />
             <button
               style={{
-                background: "#eee",
-                color: "black",
+                background: "rgb(167, 155, 91)",
+                color: "white",
                 border: "none",
               }}
             >

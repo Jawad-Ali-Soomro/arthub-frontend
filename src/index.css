@@ -117,3 +117,19 @@ button:hover {
     text-transform: uppercase;
   }
 }
+
+button,
+div,
+section,
+img,
+section,
+.input-sect,
+input,
+textarea,
+.icon {
+  border-radius: 25px !important;
+}
+
+button {
+  height: 40px;
+}

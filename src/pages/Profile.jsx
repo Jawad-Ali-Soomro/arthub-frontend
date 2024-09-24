@@ -3,6 +3,7 @@ import {
   BiArrowToBottom,
   BiArrowToTop,
   BiCollection,
+  BiImage,
   BiImageAdd,
   BiPlus,
 } from "react-icons/bi";
@@ -93,7 +94,9 @@ const Profile = () => {
                 className="card flex  col"
                 onClick={() => set_show_art(true)}
               >
-                <p>Total # creations</p>
+                <p>
+                  <BiImage />
+                </p>
                 {profile_data == undefined ? (
                   <img
                     src="/loader.svg"
@@ -108,7 +111,9 @@ const Profile = () => {
                 className="card flex col"
                 onClick={() => set_show_series(true)}
               >
-                <p>total # sreies</p>{" "}
+                <p>
+                  <BiCollection />
+                </p>{" "}
                 {profile_data == undefined ? (
                   <img
                     src="/loader.svg"

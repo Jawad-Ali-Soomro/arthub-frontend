@@ -170,7 +170,7 @@ const Chat = () => {
                   style={{
                     background: `${
                       activeUser?.id == otherUser?._id
-                        ? "royalblue"
+                        ? "rgb(167, 155, 91)"
                         : "transparent"
                     }`,
                     color: `${
@@ -178,7 +178,7 @@ const Chat = () => {
                     }`,
                     border: `${
                       activeUser?.id == otherUser?._id
-                        ? "1px solid royalblue"
+                        ? "1px solid rgb(167, 155, 91)"
                         : "1px solid #80808090"
                     }`,
                   }}
@@ -210,7 +210,7 @@ const Chat = () => {
             <div className="icon flex">
               <button
                 style={{
-                  background: "royalblue",
+                  background: "rgb(167, 155, 91)",
                   color: "white",
                   border: "none",
                 }}
@@ -252,7 +252,7 @@ const Chat = () => {
             <button
               className="flex"
               style={{
-                background: "royalblue",
+                background: "rgb(167, 155, 91)",
                 color: "white",
                 border: "none",
               }}

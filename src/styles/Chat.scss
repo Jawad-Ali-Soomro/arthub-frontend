@@ -2,7 +2,7 @@
   min-height: 100vh;
   .side-bar {
     width: 80px;
-    border-radius: 0;
+    border-radius: 0 !important;
     border-right: 1px solid #80808025;
     .logo {
       img {
@@ -67,7 +67,7 @@
       input {
         width: 250px;
         border: none;
-        padding-left: 10px;
+        padding-left: 20px;
         background: transparent;
         color: inherit;
         height: 50px !important;
@@ -91,9 +91,8 @@
         padding-left: 20px;
         padding-right: 20px;
         color: black;
-        border-radius: 0;
+        border-radius: 30px !important;
         cursor: pointer;
-        border-radius: 10px;
         .profile {
           gap: 5px;
           img {
@@ -124,18 +123,18 @@
   .message-wrap {
     width: calc(100% - 500px);
     height: 100vh;
-    border-radius: 0;
+    border-radius: 0 !important;
     border-left: 1px solid #80808025;
     overflow: hidden;
     position: relative;
     .user-info {
       width: 780px;
-      background: royalblue;
+      background: rgb(167, 155, 91);
       color: white;
-      border-radius: 10px;
+      border-radius: 60px !important;
       border: none;
       justify-content: space-between;
-      padding: 10px;
+      padding: 10px 20px;
       position: absolute;
       top: 20px;
       z-index: 1;
@@ -237,14 +236,14 @@
       justify-content: space-between;
       padding-left: 5px;
       padding-right: 5px;
-      border-radius: 10px;
+      border-radius: 30px !important;
       overflow: hidden;
       position: absolute;
       bottom: 20px;
       input {
         width: 80%;
         height: 50px;
-        padding-left: 10px;
+        padding-left: 20px;
         outline: none;
         border: none;
         background: transparent;

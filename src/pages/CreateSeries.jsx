@@ -129,7 +129,7 @@ const CreateSeries = () => {
             <div className="price flex">
               <button
                 style={{
-                  background: "royalblue",
+                  background: "rgb(167, 155, 91)",
                   color: "white",
                   justifySelf: "flex-end",
                   marginLeft: "230px",
@@ -165,7 +165,7 @@ const CreateSeries = () => {
           </div>
           <button
             style={{
-              background: "royalblue",
+              background: "rgb(167, 155, 91)",
               color: "white",
               cursor: "pointer",
             }}

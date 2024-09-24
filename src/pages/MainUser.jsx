@@ -219,8 +219,6 @@ const MainUser = () => {
     }));
   };
 
-  console.log(updateData);
-
   const handleUpdate = async () => {
     // if (
     //   !updateData.username ||
@@ -370,7 +368,7 @@ const MainUser = () => {
                 <button
                   onClick={() => setUpdate(true)}
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -399,7 +397,7 @@ const MainUser = () => {
                 <button
                   className="border"
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -460,7 +458,7 @@ const MainUser = () => {
                   <button
                     className="flex"
                     style={{
-                      background: "royalblue",
+                      background: "rgb(167, 155, 91)",
                       color: "white",
                       border: "none",
                       cursor: "pointer",
@@ -558,7 +556,7 @@ const MainUser = () => {
                         </h2>
                         <button
                           style={{
-                            background: "royalblue",
+                            background: "rgb(167, 155, 91)",
                             color: "white",
                             border: "none",
                             cursor: "pointer",
@@ -610,7 +608,7 @@ const MainUser = () => {
                         <button
                           onClick={() => navigate(`/series/${card_item?._id}`)}
                           style={{
-                            background: "royalblue",
+                            background: "rgb(167, 155, 91)",
                             color: "white",
                             border: "none",
                             cursor: "pointer",

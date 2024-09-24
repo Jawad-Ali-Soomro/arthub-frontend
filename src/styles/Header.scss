@@ -8,7 +8,7 @@
   position: fixed;
   background: inherit;
   transition: 0.3s;
-  border-radius: 0;
+  border-radius: 0 !important;
   z-index: 10;
   .logo {
     cursor: pointer;
@@ -165,6 +165,7 @@
         border-bottom: 1px solid;
         border-radius: 0;
         margin-bottom: 10px;
+        border-radius: 0 !important;
       }
       .links {
         width: 100%;
@@ -252,16 +253,16 @@
               position: relative;
             }
             li:hover {
-              background: royalblue;
+              background: rgb(167, 155, 91);
               color: white;
-              border: 1px solid royalblue;
+              border: 1px solid rgb(167, 155, 91);
             }
             li:hover::after {
               transition: 0.3s;
               content: attr(data-nav);
               width: 120px;
               height: 30px;
-              background: royalblue;
+              background: rgb(167, 155, 91);
               position: absolute;
               right: 40px;
               display: flex;

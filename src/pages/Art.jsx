@@ -362,7 +362,7 @@ const Art = () => {
                     <button
                       className="flex"
                       style={{
-                        background: "royalblue",
+                        background: "rgb(167, 155, 91)",
                         color: "white",
                         border: "none",
                       }}

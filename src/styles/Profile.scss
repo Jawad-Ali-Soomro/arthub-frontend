@@ -68,26 +68,25 @@
       }
       .card {
         width: 150px;
-        height: 120px;
+        padding: 10px;
         background: #eee;
         color: black;
         cursor: pointer;
         border-radius: 10px;
         position: relative;
         p {
-          font-size: 0.5rem;
+          font-size: 1.5rem;
           text-transform: uppercase;
           font-weight: 600;
-          position: absolute;
-          top: 20px;
-          left: 20px;
+          align-self: flex-start;
+          justify-self: flex-start;
         }
         h2 {
-          font-size: 3rem;
+          font-size: 6rem;
           font-weight: 900;
-          position: absolute;
-          bottom: 20px;
-          right: 20px;
+          align-self: flex-end;
+          justify-self: flex-end;
+          line-height: 75px;
         }
       }
     }
@@ -175,7 +174,7 @@
       }
     }
     .card:hover {
-      background: royalblue !important;
+      background: rgb(167, 155, 91) !important;
       color: white;
     }
   }

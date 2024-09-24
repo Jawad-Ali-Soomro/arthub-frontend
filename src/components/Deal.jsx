@@ -84,17 +84,16 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
                 <span
                   style={{
                     padding: "3px 10px",
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
-
                     textTransform: "uppercase",
                     fontWeight: "600",
                     fontSize: ".5rem",
                     borderRadius: "5px",
                   }}
                 >
-                  submit deal
+                  deal
                 </span>{" "}
                 button you agree to our <Link>Privacy Policy</Link> &{" "}
                 <Link>Terms of Service</Link>
@@ -102,7 +101,7 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
             </div>
             <button
               style={{
-                background: "royalblue",
+                background: "rgb(167, 155, 91)",
                 color: "white",
                 border: "none",
               }}
@@ -118,7 +117,7 @@ const Deal = ({ onClose, title, price, artOwnerId, artId }) => {
                     })
               }
             >
-              Submit Deal
+              Deal
             </button>
           </div>
         </div>

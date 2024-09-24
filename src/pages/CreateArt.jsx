@@ -158,7 +158,9 @@ const CreateArt = () => {
               <p>
                 {artData?.price}Ξ(${ethToUsd * artData?.price})
               </p>
-              <button style={{ background: "royalblue", color: "white" }}>
+              <button
+                style={{ background: "rgb(167, 155, 91)", color: "white" }}
+              >
                 BUY
               </button>
             </div>
@@ -270,7 +272,7 @@ const CreateArt = () => {
           </div>
           <button
             style={{
-              background: "royalblue",
+              background: "rgb(167, 155, 91)",
               color: "white",
               cursor: "pointer",
             }}

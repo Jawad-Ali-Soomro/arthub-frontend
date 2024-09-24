@@ -189,7 +189,7 @@ const Deals = () => {
                           background:
                             item?.artId?.owner !== parsedUser?._id
                               ? "#eee"
-                              : "royalblue",
+                              : "rgb(167, 155, 91)",
                           color:
                             item?.artId?.owner !== parsedUser?._id
                               ? "black"

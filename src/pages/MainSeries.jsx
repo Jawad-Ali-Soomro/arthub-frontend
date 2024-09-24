@@ -167,7 +167,7 @@ const MainSeries = () => {
               {main_data?.owner?._id == loggedInUserId?._id ? (
                 <button
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -214,7 +214,7 @@ const MainSeries = () => {
               ) : (
                 <button
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -273,7 +273,7 @@ const MainSeries = () => {
                   <button
                     className="flex"
                     style={{
-                      background: "royalblue",
+                      background: "rgb(167, 155, 91)",
                       color: "white",
                       border: "1px solid #808090",
                     }}
@@ -292,7 +292,7 @@ const MainSeries = () => {
           Art In {main_data?.title}{" "}
           <button
             style={{
-              background: "royalblue",
+              background: "rgb(167, 155, 91)",
               color: "white",
             }}
             onClick={() => navigate(`/user/${main_data?.owner?._id}`)}
@@ -360,7 +360,7 @@ const MainSeries = () => {
                       </h2>
                       <button
                         style={{
-                          background: "royalblue",
+                          background: "rgb(167, 155, 91)",
                           color: "white",
                         }}
                         onClick={() => navigate(`/art/${card_item?._id}`)}
@@ -410,7 +410,7 @@ const MainSeries = () => {
                     style={{
                       border: `${
                         selectedArtToAdd === art?._id
-                          ? "2px solid royalblue"
+                          ? "2px solid rgb(167, 155, 91)"
                           : "2px solid transparent"
                       }`,
                     }}

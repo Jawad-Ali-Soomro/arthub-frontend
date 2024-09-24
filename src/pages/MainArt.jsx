@@ -123,7 +123,7 @@ const MainArt = () => {
               <div className="icons flex">
                 <div
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -134,7 +134,7 @@ const MainArt = () => {
                 <div
                   className="icon border flex"
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -226,7 +226,7 @@ const MainArt = () => {
                 <button
                   style={{
                     width: "200px",
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -265,7 +265,7 @@ const MainArt = () => {
               ) : (
                 <button
                   style={{
-                    background: "royalblue",
+                    background: "rgb(167, 155, 91)",
                     color: "white",
                     border: "none",
                   }}
@@ -287,7 +287,7 @@ const MainArt = () => {
             <div className="more flex">
               <button
                 style={{
-                  background: "royalblue",
+                  background: "rgb(167, 155, 91)",
                   color: "white",
                   border: "none",
                 }}
@@ -304,7 +304,7 @@ const MainArt = () => {
           More From {main_data?.owner?.username}{" "}
           <button
             style={{
-              background: "royalblue",
+              background: "rgb(167, 155, 91)",
               color: "white",
               border: "none",
             }}
@@ -370,7 +370,7 @@ const MainArt = () => {
                       </h2>
                       <button
                         style={{
-                          background: "royalblue",
+                          background: "rgb(167, 155, 91)",
                           color: "white",
                           border: "none",
                         }}
