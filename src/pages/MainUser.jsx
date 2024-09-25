@@ -299,7 +299,18 @@ const MainUser = () => {
                       this
                     )}{" "}
                   </p>
-                  <p>
+                  <p
+                    onClick={() => {
+                      navigator.clipboard.writeText(main_data?.wallet_address);
+                      toast.success("Copied To Clipboard!", {
+                        style: {
+                          background: "white",
+                          color: "black",
+                          borderRadius: " 20px",
+                        },
+                      });
+                    }}
+                  >
                     {main_data?.wallet_address.substring(0, 5)}...
                     {main_data?.wallet_address.substring(
                       main_data?.wallet_address.length - 5

@@ -14,6 +14,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { baseUserUrl, ethToUsd } from "../utils/constant";
+import QRCode from "react-qr-code";
 
 const Profile = () => {
   const dataToParse = window.localStorage.getItem("userId");
@@ -50,11 +51,6 @@ const Profile = () => {
       <Header />
       <div className="main-profile flex">
         <div className="dashboard flex col">
-          <h2 style={{ fontWeight: "300" }}>
-            Welcome{" "}
-            <span style={{ fontWeight: 600 }}>{userData?.username}</span>
-          </h2>
-          <h1>Dashboard</h1>
           <div className="wrapper flex col">
             <div className="wrap flex">
               <h1>
@@ -124,6 +120,13 @@ const Profile = () => {
                   <h2>{profile_data?.series?.length}</h2>
                 )}
               </div>
+            </div>
+
+            <div className="scanner flex">
+              <QRCode
+                value={`http://localhost:5173/user/${userData?._id}`}
+                size={100}
+              />
             </div>
 
             <div className="btns-bottom flex col">
