@@ -130,13 +130,13 @@ const Profile = () => {
             </div>
 
             <div className="btns-bottom flex col">
-              {/* {userData?.isPrime ? (
+              {userData?.isPrime ? (
+                <button onClick={() => setShowCreateOPtion(true)}>
+                  <BiPlus />
+                </button>
               ) : (
                 this
-              )} */}
-              <button onClick={() => setShowCreateOPtion(true)}>
-                <BiPlus />
-              </button>
+              )}
             </div>
           </div>
         </div>

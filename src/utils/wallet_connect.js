@@ -12,8 +12,6 @@ export const connectMetaMask = async () => {
 
       if (accounts.length > 0) {
         const account = accounts[0];
-
-        // Create an ethers provider
         const provider = new ethers.BrowserProvider(window.ethereum);
 
         // Get the balance of the connected account
