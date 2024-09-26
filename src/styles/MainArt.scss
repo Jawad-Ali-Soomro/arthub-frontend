@@ -355,3 +355,25 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .main-art {
+    flex-direction: column;
+    .main-art-left {
+      max-width: 120%;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  .more-by-artist {
+    width: calc(100% - 100px);
+    justify-content: center !important;
+    align-items: center !important;
+    padding-left: 50px;
+    margin-top: 200px;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}

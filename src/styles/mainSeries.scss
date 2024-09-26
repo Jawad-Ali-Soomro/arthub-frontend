@@ -10,6 +10,7 @@
 }
 
 .more-by-artist {
+  padding-top: 0;
   .wrapper {
     flex-wrap: wrap;
     gap: 20px;
@@ -85,5 +86,21 @@
   }
   to {
     scale: 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .top-profile {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .left {
+      align-self: center;
+    }
+    .right {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
   }
 }

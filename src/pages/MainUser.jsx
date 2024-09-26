@@ -476,7 +476,7 @@ const MainUser = () => {
                     }}
                     onClick={() => navigate(`/art/${main_data?.art[0]?._id}`)}
                   >
-                    {main_data?._id === userData?._id ? "edit" : "BUY"}
+                    {main_data?._id === userData?._id ? "VIEW" : "BUY"}
                   </button>
                 </div>
               </div>
@@ -574,7 +574,7 @@ const MainUser = () => {
                           }}
                           onClick={() => navigate(`/art/${card_item?._id}`)}
                         >
-                          {main_data?._id === userData?._id ? "edit" : "BUY"}
+                          {main_data?._id === userData?._id ? "VIEW" : "BUY"}
                         </button>
                       </div>
                       <div className="btns flex"></div>
