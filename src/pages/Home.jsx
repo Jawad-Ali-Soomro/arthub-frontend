@@ -18,10 +18,18 @@ const Home = () => {
   document.title = "Artchain";
   const [carouselStep, setStep] = useState(1);
   useEffect(() => {
-    setTimeout(() => {
-      carouselStep <= 4 ? setStep(carouselStep + 1) : setStep(1);
+    const timer = setTimeout(() => {
+      if (carouselStep <= 4) {
+        setStep(carouselStep + 1);
+      } else {
+        setStep(1);
+      }
     }, 2000);
-  });
+
+    // Cleanup the timeout on unmount or when carouselStep changes
+    return () => clearTimeout(timer);
+  }, [carouselStep]); // Runs only when `carouselStep` changes
+
   return (
     <div>
       <Header />
@@ -46,13 +54,13 @@ const Home = () => {
             className="card"
             style={{
               transform: `${
-                carouselStep === 2 ? "translateY(0)" : "translateY(-200%)"
+                carouselStep === 2 ? "translateX(0)" : "translateX(-200%)"
               }`,
               opacity: `${carouselStep === 2 ? "1" : "0"}`,
             }}
           >
             <img
-              src="https://orange-large-reindeer-667.mypinata.cloud/ipfs/QmTToULXJdGSicZ7pGCyhtLotqxpZsrAx3wgC3Hkpe198K"
+              src="https://orange-large-reindeer-667.mypinata.cloud/ipfs/QmbVou36UiXYjUpb5VAgDvgCKGF82d8ZCftjFbmgAYJi62"
               alt=""
             />
           </div>
@@ -60,13 +68,13 @@ const Home = () => {
             className="card"
             style={{
               transform: `${
-                carouselStep === 3 ? "translateY(0)" : "translateY(-200%)"
+                carouselStep === 3 ? "translateX(0)" : "translateX(-200%)"
               }`,
               opacity: `${carouselStep === 3 ? "1" : "0"}`,
             }}
           >
             <img
-              src="https://orange-large-reindeer-667.mypinata.cloud/ipfs/Qmcmh8U7hALPDzJvH5WvMbZbon57xXP23t6iBpnAveuJvW"
+              src="https://orange-large-reindeer-667.mypinata.cloud/ipfs/QmZtBTCgTe43bM9FT84UwDWL18WNyCjD8q7uNMGYRMJDgh"
               alt=""
             />
           </div>
@@ -90,7 +98,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Top />
+      {/* <Top /> */}
       <Featured />
       <FeaturedSeries />
       <Spotlight />

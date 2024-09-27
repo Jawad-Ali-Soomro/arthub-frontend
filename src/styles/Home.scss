@@ -1,5 +1,7 @@
 .intro {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden !important;
   h1 {
     font-weight: 900;
     font-size: 10rem;
@@ -7,6 +9,7 @@
     text-align: center;
     line-height: 130px;
     position: relative;
+    z-index: 1;
   }
   h1::after {
     content: "";
@@ -27,18 +30,21 @@
     background: rgb(167, 155, 91);
   }
   .carousel {
+    width: 100%;
     position: absolute;
+    height: 100%;
     .card {
-      width: 350px;
-      height: 450px;
+      width: 40%;
+      height: 80%;
       backdrop-filter: blur(10px);
       position: absolute;
       transition: 1s;
       opacity: 0.5;
-      z-index: 0;
+      overflow: hidden;
       img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
   }
