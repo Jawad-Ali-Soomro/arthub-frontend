@@ -144,7 +144,7 @@
         }
         .text {
           position: relative;
-          border: 1px dashed;
+          border: 1px solid #80808090;
           background: transparent;
           width: 275px;
           height: 90px;
@@ -152,7 +152,7 @@
             z-index: 1000;
             width: 200px;
             height: 90px;
-            border: 1px dashed;
+            border: 1px solid;
             opacity: 0;
             cursor: pointer;
             position: absolute;
