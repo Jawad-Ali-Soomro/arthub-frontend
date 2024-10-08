@@ -127,7 +127,11 @@ section,
 input,
 textarea,
 .icon {
-  border-radius: 25px !important;
+  border-radius: 5px !important;
+}
+
+.avatar {
+  border-radius: 50% !important;
 }
 
 button {

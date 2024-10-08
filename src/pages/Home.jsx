@@ -90,9 +90,9 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="arrow-down flex">
+        {/* <div className="arrow-down flex">
           <BsArrowDown />
-        </div>
+        </div> */}
       </div>
 
       {/* <Top /> */}

@@ -21,6 +21,7 @@ import { BsCloudSlash } from "react-icons/bs";
 import Deals from "./pages/Deals";
 import Chat from "./pages/Chat";
 import CreateSeries from "./pages/CreateSeries";
+import { ToastBar } from "react-hot-toast";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");

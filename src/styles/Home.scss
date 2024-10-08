@@ -10,6 +10,7 @@
     line-height: 130px;
     position: relative;
     z-index: 1;
+    color: rgb(167, 155, 91);
   }
   h1::after {
     content: "";
@@ -39,7 +40,7 @@
       backdrop-filter: blur(10px);
       position: absolute;
       transition: 1s;
-      opacity: 0.5;
+
       overflow: hidden;
       img {
         width: 100%;
