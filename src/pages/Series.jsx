@@ -34,11 +34,14 @@ const Series = () => {
   };
   const [showTags, setShowTags] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
+
+  console.log(main_data);
+
   const applyFilters = () => {
     let filtered = main_data;
 
     if (filters.tags) {
-      const selectedTags = filters.tags
+      const selectedTags = filters?.tags
         .toLowerCase()
         .split(",")
         .map((tag) => tag.trim());
@@ -71,8 +74,7 @@ const Series = () => {
       filtered = filtered.filter(
         (art) =>
           art.title.toLowerCase().includes(lowercasedQuery) ||
-          art.owner.username.toLowerCase().includes(lowercasedQuery) ||
-          art.tags.some((tag) => tag.toLowerCase().includes(lowercasedQuery))
+          art.owner.username.toLowerCase().includes(lowercasedQuery)
       );
     }
 

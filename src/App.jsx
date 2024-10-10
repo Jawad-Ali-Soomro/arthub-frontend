@@ -17,11 +17,10 @@ import TrendingSeries from "./pages/TrendingSeries";
 import CreateArt from "./pages/CreateArt";
 import Artists from "./pages/Artists";
 import { useState, useEffect } from "react";
-import { BsCloudSlash } from "react-icons/bs";
 import Deals from "./pages/Deals";
 import Chat from "./pages/Chat";
 import CreateSeries from "./pages/CreateSeries";
-import { ToastBar } from "react-hot-toast";
+import { listArtForSale } from "./utils/wallet_connect";
 
 function App() {
   const userToken = window.localStorage.getItem("authToken");
@@ -48,22 +47,10 @@ function App() {
     };
   }, []);
 
-  if (!isOnline) {
-    return (
-      <div className="offline-message flex col">
-        <BsCloudSlash className="icon" />
-        <h1>Oops</h1>
-        <p>
-          It looks like you lost your connection.{" "}
-          <span>Check it & try again!</span>
-        </p>
-      </div>
-    );
-  }
-
   return (
     <>
       <Toaster position="top-left" />
+      {/* <button onClick={handleListArt}>BUY</button> */}
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

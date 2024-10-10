@@ -44,7 +44,7 @@ const Profile = () => {
   };
 
   const themeMode = window.localStorage.getItem("themeMode");
-
+  const amount = window.sessionStorage.getItem("balance");
   const [showCreateOption, setShowCreateOPtion] = useState();
   return (
     <div>
@@ -54,10 +54,9 @@ const Profile = () => {
           <div className="wrapper flex col">
             <div className="wrap flex">
               <h1>
-                5.5 <span style={{ fontSize: "1rem" }}>~</span>{" "}
-                <span style={{ fontSize: "1rem" }}>
-                  ${Math.round(5.5 * ethToUsd)}
-                </span>
+                <h6>YOUR BALANCE</h6>
+                {amount} <span style={{ fontSize: "1rem" }}>~</span>{" "}
+                <span style={{ fontSize: "1rem" }}>{amount * ethToUsd}</span>
               </h1>
               <div className="btns flex">
                 <button className="flex border" data-text="Send">
@@ -68,7 +67,7 @@ const Profile = () => {
                 </button>
               </div>
             </div>
-            <div className="wrap flex">
+            {/* <div className="wrap flex">
               <h1>
                 10 <span style={{ fontSize: "1rem" }}>~</span>{" "}
                 <span style={{ fontSize: "1rem" }}>$RARE</span>
@@ -81,7 +80,7 @@ const Profile = () => {
                   <BiArrowToBottom />
                 </button>
               </div>
-            </div>
+            </div> */}
             <div
               className="wrap flex"
               style={{ justifyContent: "end", gap: "10px" }}
@@ -90,9 +89,7 @@ const Profile = () => {
                 className="card flex  col"
                 onClick={() => set_show_art(true)}
               >
-                <p>
-                  <BiImage />
-                </p>
+                <p>YOUR ARTS</p>
                 {profile_data == undefined ? (
                   <img
                     src="/loader.svg"
@@ -100,16 +97,18 @@ const Profile = () => {
                     alt=""
                   />
                 ) : (
-                  <h2>{profile_data?.art?.length}</h2>
+                  <h2>
+                    {" "}
+                    <span>{profile_data?.art?.length <= 9 ? "0" : ""}</span>
+                    {profile_data?.art?.length}
+                  </h2>
                 )}
               </div>
               <div
                 className="card flex col"
                 onClick={() => set_show_series(true)}
               >
-                <p>
-                  <BiCollection />
-                </p>{" "}
+                <p>YOUR COLLECTION</p>{" "}
                 {profile_data == undefined ? (
                   <img
                     src="/loader.svg"
@@ -117,7 +116,10 @@ const Profile = () => {
                     alt=""
                   />
                 ) : (
-                  <h2>{profile_data?.series?.length}</h2>
+                  <h2>
+                    <span>{profile_data?.series?.length <= 9 ? "0" : ""}</span>
+                    {profile_data?.series?.length}
+                  </h2>
                 )}
               </div>
             </div>
@@ -131,7 +133,10 @@ const Profile = () => {
 
             <div className="btns-bottom flex col">
               {userData?.isPrime ? (
-                <button onClick={() => setShowCreateOPtion(true)}>
+                <button
+                  onClick={() => setShowCreateOPtion(true)}
+                  style={{ borderRadius: "10px" }}
+                >
                   <BiPlus />
                 </button>
               ) : (

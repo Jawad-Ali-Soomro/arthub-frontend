@@ -11,13 +11,24 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Suse";
+  font-family: Nova Square !important;
+  /* font-family: Inter; */
 }
 
 input {
-  font-family: Suse;
+  font-family: Inter;
 }
 
 .icon {
   border: 1px solid transparent !important;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400 !important;
 }

@@ -3,7 +3,7 @@
   max-height: 100vh;
   overflow: hidden !important;
   h1 {
-    font-weight: 900;
+    font-weight: 900 !important;
     font-size: 10rem;
     max-width: 63%;
     text-align: center;
@@ -37,7 +37,7 @@
     .card {
       width: 40%;
       height: 80%;
-      backdrop-filter: blur(10px);
+      // backdrop-filter: blur(10px);
       position: absolute;
       transition: 1s;
 

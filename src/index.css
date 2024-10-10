@@ -118,18 +118,6 @@ button:hover {
   }
 }
 
-button,
-div,
-section,
-img,
-section,
-.input-sect,
-input,
-textarea,
-.icon {
-  border-radius: 5px !important;
-}
-
 .avatar {
   border-radius: 50% !important;
 }
