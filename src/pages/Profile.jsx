@@ -55,8 +55,11 @@ const Profile = () => {
             <div className="wrap flex">
               <h1>
                 <h6>YOUR BALANCE</h6>
-                {amount} <span style={{ fontSize: "1rem" }}>~</span>{" "}
-                <span style={{ fontSize: "1rem" }}>{amount * ethToUsd}</span>
+                {amount ? amount : "1"}{" "}
+                <span style={{ fontSize: "1rem" }}></span>
+                <span style={{ fontSize: "1rem" }}>
+                  = ${amount ? amount * ethToUsd : 1 * ethToUsd}
+                </span>
               </h1>
               <div className="btns flex">
                 <button className="flex border" data-text="Send">
